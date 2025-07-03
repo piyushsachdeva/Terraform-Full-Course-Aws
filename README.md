@@ -150,8 +150,10 @@ This course consists of video lessons covering basic to advanced Terraform conce
 
 #### Video 20: EKS Cluster ( Real-time Project 1)
 - Kubernetes cluster setup
+- EKS cluster with managed node groups
 - Custom module usage
 - Custom module creation for EKS, Secrets Manager, IAM etc
+- Networking and security configuration
 - [Code Sample](/lessons/day20)
 
 #### Video 21: AWS Policy and Governance ( Mini Project 7 )
@@ -171,36 +173,52 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Log alerts
 - [Code Sample](/lessons/day23)
 
+#### Video 24: Static Website Hosting ( Mini Project 10 )
+- S3 static website hosting
+- CloudFront distribution
+- Route 53 DNS configuration
+- SSL/TLS certificate management
+- [Code Sample](/lessons/day24)
+
 ### Module 3: Advanced Concepts
 
-#### Video 24: Terraform Import (Real-time project 2)
+#### Video 25: Terraform Import (Real-time project 2)
 - Different ways of importing AWS resource to Terraform
 - Terraform Import
 - Importing a live infrastructure to Terraform using Terraform Import
 - AWS Config
 - Importing a live infrastructure to Terraform using AWS Config
 - Terraformer
-- [Code Sample](/lessons/day24)
-
-#### Video 25: Terraform Cloud and Workspaces
-- Cloud setup
-- Workspace management
 - [Code Sample](/lessons/day25)
 
-#### Video 26: AWS DevOps with Terraform (Real-time project 3)
-- CI/CD pipeline setup
-- Automation
+#### Video 26: Terraform Cloud and Workspaces
+- Cloud setup
+- Workspace management
 - [Code Sample](/lessons/day26)
 
-#### Video 27: 3-Tier Architecture (Real-time project 4)
-- Complete architecture setup
-- Best practices
+#### Video 27: AWS DevOps with Terraform (Real-time project 3)
+- CI/CD pipeline setup
+- Automation
 - [Code Sample](/lessons/day27)
 
-#### Video 28: EKS Upgrade with Zero Downtime (Real-time project 5)
+#### Video 28: GitOps with Terraform (Real-time project 4)
+- GitOps workflow implementation
+- ArgoCD setup with Terraform
+- Git-based infrastructure management
+- Automated deployments
+- [Code Sample](/lessons/day28)
+
+#### Video 29: 3-Tier Architecture (Real-time project 5)
+- Complete architecture setup
+- Web tier, Application tier, Database tier
+- Load balancing and auto-scaling
+- Best practices
+- [Code Sample](/lessons/day29)
+
+#### Video 30: EKS Upgrade with Zero Downtime (Real-time project 6)
 - Upgrade strategy
 - Implementation
-- [Code Sample](/lessons/day28)
+- [Code Sample](/lessons/day30)
 
 ## 📂 Repository Structure
 ```
