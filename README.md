@@ -113,12 +113,13 @@ This course consists of video lessons covering basic to advanced Terraform conce
   
 ### Module 2: AWS resources using Terraform 
 
-#### Video 14: High available/scalable Infrastructure Deployment ( Mini Project 1 )
-- Creating EC2 Instances
-- Auto Scaling Groups
-- Security Groups
-- Application Load Balancer, NAT Gateway, Elastic IP, Auto Scaling rules etc
+#### Video 24: Static Website Hosting ( Mini Project 1 )
+- S3 static website hosting
+- CloudFront distribution
+- Route 53 DNS configuration
+- SSL/TLS certificate management
 - [Code Sample](/lessons/day14)
+
 
 #### Video 15: VPC and Peering ( Mini Project 2 )
 - Virtual Private Cloud Creation
@@ -173,11 +174,12 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Log alerts
 - [Code Sample](/lessons/day23)
 
-#### Video 24: Static Website Hosting ( Mini Project 10 )
-- S3 static website hosting
-- CloudFront distribution
-- Route 53 DNS configuration
-- SSL/TLS certificate management
+#### Video 24: High available/scalable Infrastructure Deployment ( Mini Project 10 )
+
+- Creating EC2 Instances
+- Auto Scaling Groups
+- Security Groups
+- Application Load Balancer, NAT Gateway, Elastic IP, Auto Scaling rules etc
 - [Code Sample](/lessons/day24)
 
 ### Module 3: Advanced Concepts
@@ -201,12 +203,12 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Automation
 - [Code Sample](/lessons/day27)
 
-#### Video 28: GitOps with Terraform (Real-time project 4)
-- GitOps workflow implementation
-- ArgoCD setup with Terraform
-- Git-based infrastructure management
-- Automated deployments
-- [Code Sample](/lessons/day28)
+#### Video 30: EKS Upgrade with Zero Downtime (Real-time project 6)
+
+- Upgrade strategy
+- Implementation
+- [Code Sample](/lessons/day30)
+
 
 #### Video 29: 3-Tier Architecture (Real-time project 5)
 - Complete architecture setup
@@ -215,10 +217,21 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Best practices
 - [Code Sample](/lessons/day29)
 
-#### Video 30: EKS Upgrade with Zero Downtime (Real-time project 6)
-- Upgrade strategy
-- Implementation
+#### Video 30: GitOps with Terraform (Real-time project 4)
+
+- GitOps workflow implementation
+- ArgoCD setup with Terraform
+- Git-based infrastructure management
+- Automated deployments
 - [Code Sample](/lessons/day30)
+
+
+### Video 31: Terrafrom Drift Detection using Terraform Cloud
+- Drift detection setup
+- Monitoring infrastructure changes
+- [Code Sample](/lessons/day31)
+
+
 
 ## 📂 Repository Structure
 ```
