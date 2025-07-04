@@ -203,21 +203,15 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Automation
 - [Code Sample](/lessons/day27)
 
-#### Video 30: EKS Upgrade with Zero Downtime (Real-time project 6)
 
-- Upgrade strategy
-- Implementation
-- [Code Sample](/lessons/day30)
-
-
-#### Video 29: 3-Tier Architecture (Real-time project 5)
+#### Video 28: 3-Tier Architecture (Real-time project 5)
 - Complete architecture setup
 - Web tier, Application tier, Database tier
 - Load balancing and auto-scaling
 - Best practices
 - [Code Sample](/lessons/day29)
 
-#### Video 30: GitOps with Terraform (Real-time project 4)
+#### Video 29: GitOps with Terraform (Real-time project 4)
 
 - GitOps workflow implementation
 - ArgoCD setup with Terraform
@@ -226,7 +220,7 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - [Code Sample](/lessons/day30)
 
 
-### Video 31: Terrafrom Drift Detection using Terraform Cloud
+### Video 0: Terrafrom Drift Detection using Terraform Cloud
 - Drift detection setup
 - Monitoring infrastructure changes
 - [Code Sample](/lessons/day31)
