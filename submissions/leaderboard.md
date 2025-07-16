@@ -6,7 +6,7 @@
 
 | Rank | Participant | Days Completed | Current Streak | Latest Day | Last Submission | Status |
 |------|-------------|----------------|----------------|------------|-----------------|--------|
-| 🥇 | ![itsBaivab](https://github.com/itsBaivab.png?size=32) [@itsBaivab](https://github.com/itsBaivab) | 1/30 | 1 day | Day 13 | 2025-07-16 | 🔥 Active |
+| 🥇 | ![itsBaivab](https://github.com/itsBaivab.png?size=32) [@itsBaivab](https://github.com/itsBaivab) | 2/30 | 1 day | Day 44 | 2025-07-16 | 🔥 Active |
 | 🥈 | ![Souradip121](https://github.com/Souradip121.png?size=32) [@Souradip121](https://github.com/Souradip121) | 1/30 | 1 day | Day 10 | 2025-07-16 | 🔥 Active |
 
 ---
@@ -14,7 +14,7 @@
 ## 📊 Challenge Statistics
 
 - **Total Participants:** 2
-- **Total Submissions:** 2
+- **Total Submissions:** 3
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-07-16
 
