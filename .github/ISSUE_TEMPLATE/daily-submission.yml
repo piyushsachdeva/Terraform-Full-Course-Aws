@@ -1,0 +1,73 @@
+name: 📝 Daily Challenge Submission
+description: Submit your daily blog post and progress
+title: "Day [DAY] - [YOUR_USERNAME]"
+labels: ["submission"]
+body: 
+  - type: input
+    id: day_number
+    attributes:
+      label: Day Number
+      description: Which day of the challenge (1-30)
+      placeholder: "5"
+    validations:
+      required: true
+  
+  - type: input
+    id: challenge_topic
+    attributes:
+      label: Challenge Topic
+      description: Today's challenge topic
+      placeholder: "EC2 Instance Creation"
+    validations:
+      required: true
+      
+  - type: input
+    id: blog_url
+    attributes:
+      label: Blog Post URL
+      description: Link to your blog post
+      placeholder: https://yourblog.com/terraform-aws-day-5
+    validations:
+      required: true
+  
+  - type: input
+    id: social_media_url
+    attributes:
+      label: Social Media Post URL
+      description: Twitter/LinkedIn post link with #TerraformAWS30Days
+      placeholder: https://twitter.com/username/status/123456789
+    validations:
+      required: true
+      
+  - type: input
+    id: github_repo_url
+    attributes:
+      label: Your Practice Repository
+      description: Link to your GitHub repo with today's code
+      placeholder: https://github.com/username/terraform-practice
+    validations:
+      required: false
+  
+  - type: textarea
+    id: key_learnings
+    attributes:
+      label: Key Learnings
+      description: What did you learn today? (3-5 sentences)
+      placeholder: "Today I learned how to..."
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: completion_checklist
+    attributes:
+      label: Completion Checklist
+      description: Confirm you've completed all requirements
+      options:
+        - label: "✅ Completed today's challenge"
+          required: true
+        - label: "✅ Published blog post with code examples"
+          required: true
+        - label: "✅ Posted on social media with #TerraformAWS30Days hashtag"
+          required: true
+        - label: "✅ Pushed code to GitHub repository"
+          required: true
