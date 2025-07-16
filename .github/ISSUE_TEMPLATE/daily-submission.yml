@@ -1,4 +1,4 @@
-name: 📝 Daily Challenge Submission
+name: 📝#30daysofawsterraform Challenge Submission
 description: Submit your daily blog post and progress
 title: "Day [DAY] - [YOUR_USERNAME]"
 labels: ["submission"]
@@ -63,11 +63,13 @@ body:
       label: Completion Checklist
       description: Confirm you've completed all requirements
       options:
-        - label: "✅ Completed today's challenge"
+        - label: "✅ Completed today's task present in the GitHub repository"
           required: true
         - label: "✅ Published blog post with code examples"
           required: true
-        - label: "✅ Posted on social media with #TerraformAWS30Days hashtag"
+        - label: "✅ Video Embed in blog post"
           required: true
-        - label: "✅ Pushed code to GitHub repository"
+        - label: "✅ Posted on social media with #30daysofawsterraform hashtag"
           required: true
+        - label: "✅ Pushed code to GitHub repository(if applicable)"
+          required: false
