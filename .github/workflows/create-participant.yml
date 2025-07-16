@@ -26,20 +26,20 @@ jobs:
           # Extract GitHub username
           USERNAME="${{ github.event.issue.user.login }}"
 
-          # Extract day number
-          DAY_NUMBER=$(echo "$ISSUE_BODY" | grep -A1 "Day Number" | tail -1 | tr -d '\r\n ')
+          # Extract day number - improved extraction
+          DAY_NUMBER=$(echo "$ISSUE_BODY" | sed -n '/### Day Number/,/###/p' | grep -v "###" | grep -v "^$" | head -1 | tr -d '\r\n ')
 
-          # Extract challenge topic
-          TOPIC=$(echo "$ISSUE_BODY" | grep -A1 "Challenge Topic" | tail -1 | tr -d '\r\n')
+          # Extract challenge topic - improved extraction
+          TOPIC=$(echo "$ISSUE_BODY" | sed -n '/### Challenge Topic/,/###/p' | grep -v "###" | grep -v "^$" | head -1 | tr -d '\r\n')
 
-          # Extract blog URL
-          BLOG_URL=$(echo "$ISSUE_BODY" | grep -A1 "Blog Post URL" | tail -1 | tr -d '\r\n ')
+          # Extract blog URL - improved extraction
+          BLOG_URL=$(echo "$ISSUE_BODY" | sed -n '/### Blog Post URL/,/###/p' | grep -v "###" | grep -v "^$" | head -1 | tr -d '\r\n ')
 
-          # Extract social media URL
-          SOCIAL_URL=$(echo "$ISSUE_BODY" | grep -A1 "Social Media Post URL" | tail -1 | tr -d '\r\n ')
+          # Extract social media URL - improved extraction
+          SOCIAL_URL=$(echo "$ISSUE_BODY" | sed -n '/### Social Media Post URL/,/###/p' | grep -v "###" | grep -v "^$" | head -1 | tr -d '\r\n ')
 
-          # Extract GitHub repo URL
-          REPO_URL=$(echo "$ISSUE_BODY" | grep -A1 "Your Practice Repository" | tail -1 | tr -d '\r\n ')
+          # Extract GitHub repo URL - improved extraction
+          REPO_URL=$(echo "$ISSUE_BODY" | sed -n '/### Your Practice Repository/,/###/p' | grep -v "###" | grep -v "^$" | head -1 | tr -d '\r\n ')
 
           # Extract key learnings
           LEARNINGS=$(echo "$ISSUE_BODY" | sed -n '/Key Learnings/,/Completion Checklist/p' | head -n -1 | tail -n +2 | tr -d '\r')
@@ -72,6 +72,32 @@ jobs:
           # Define file path
           FILE_PATH="submissions/participants/${USERNAME}.md"
 
+          # Calculate streak
+          CURRENT_STREAK=1
+          if [ -f "$FILE_PATH" ]; then
+            # Get the last submission date
+            LAST_SUBMISSION=$(grep "Last Submission:" "$FILE_PATH" | sed 's/.*Last Submission:\*\* //' || echo "")
+            CURRENT_STREAK_VALUE=$(grep "Current Streak:" "$FILE_PATH" | sed 's/.*Current Streak:\*\* //' | sed 's/ day.*//' || echo "1")
+            
+            if [ ! -z "$LAST_SUBMISSION" ]; then
+              # Calculate days difference
+              LAST_DATE_EPOCH=$(date -d "$LAST_SUBMISSION" +%s 2>/dev/null || echo "0")
+              CURRENT_DATE_EPOCH=$(date -d "$CURRENT_DATE" +%s)
+              DAYS_DIFF=$(( (CURRENT_DATE_EPOCH - LAST_DATE_EPOCH) / 86400 ))
+              
+              if [ $DAYS_DIFF -eq 1 ]; then
+                # Consecutive day - increment streak
+                CURRENT_STREAK=$((CURRENT_STREAK_VALUE + 1))
+              elif [ $DAYS_DIFF -gt 1 ]; then
+                # Gap in submissions - reset streak
+                CURRENT_STREAK=1
+              else
+                # Same day or future date - keep current streak
+                CURRENT_STREAK=$CURRENT_STREAK_VALUE
+              fi
+            fi
+          fi
+
           # Create file header if file doesn't exist
           if [ ! -f "$FILE_PATH" ]; then
             cat > "$FILE_PATH" << EOF
@@ -84,7 +110,7 @@ jobs:
 
           ## Progress Overview
           - **Days Completed:** 1/30
-          - **Current Streak:** 1 day
+          - **Current Streak:** ${CURRENT_STREAK} day$([ $CURRENT_STREAK -ne 1 ] && echo "s" || echo "")
           - **Last Submission:** ${CURRENT_DATE}
 
           ---
@@ -116,6 +142,7 @@ jobs:
           # Update progress overview
           TOTAL_DAYS=$(grep -c "## Day" "$FILE_PATH")
           sed -i "s/Days Completed.*$/Days Completed:** ${TOTAL_DAYS}\/30/" "$FILE_PATH"
+          sed -i "s/Current Streak.*$/Current Streak:** ${CURRENT_STREAK} day$([ $CURRENT_STREAK -ne 1 ] && echo "s" || echo "")/" "$FILE_PATH"
           sed -i "s/Last Submission.*$/Last Submission:** ${CURRENT_DATE}/" "$FILE_PATH"
 
       - name: Update progress tracker
