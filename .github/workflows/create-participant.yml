@@ -1,0 +1,212 @@
+name: 🤖 Create/Update Participant File
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  process-submission:
+    if: contains(github.event.issue.labels.*.name, 'verified')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract submission data
+        id: extract
+        run: |
+          # Parse issue body to extract form data
+          ISSUE_BODY="${{ github.event.issue.body }}"
+
+          # Extract GitHub username
+          USERNAME="${{ github.event.issue.user.login }}"
+
+          # Extract day number
+          DAY_NUMBER=$(echo "$ISSUE_BODY" | grep -A1 "Day Number" | tail -1 | tr -d '\r\n ')
+
+          # Extract challenge topic
+          TOPIC=$(echo "$ISSUE_BODY" | grep -A1 "Challenge Topic" | tail -1 | tr -d '\r\n')
+
+          # Extract blog URL
+          BLOG_URL=$(echo "$ISSUE_BODY" | grep -A1 "Blog Post URL" | tail -1 | tr -d '\r\n ')
+
+          # Extract social media URL
+          SOCIAL_URL=$(echo "$ISSUE_BODY" | grep -A1 "Social Media Post URL" | tail -1 | tr -d '\r\n ')
+
+          # Extract GitHub repo URL
+          REPO_URL=$(echo "$ISSUE_BODY" | grep -A1 "Your Practice Repository" | tail -1 | tr -d '\r\n ')
+
+          # Extract key learnings
+          LEARNINGS=$(echo "$ISSUE_BODY" | sed -n '/Key Learnings/,/Completion Checklist/p' | head -n -1 | tail -n +2 | tr -d '\r')
+
+          # Set outputs
+          echo "username=$USERNAME" >> $GITHUB_OUTPUT
+          echo "day_number=$DAY_NUMBER" >> $GITHUB_OUTPUT
+          echo "topic=$TOPIC" >> $GITHUB_OUTPUT
+          echo "blog_url=$BLOG_URL" >> $GITHUB_OUTPUT
+          echo "social_url=$SOCIAL_URL" >> $GITHUB_OUTPUT
+          echo "repo_url=$REPO_URL" >> $GITHUB_OUTPUT
+          echo "learnings<<EOF" >> $GITHUB_OUTPUT
+          echo "$LEARNINGS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create/Update participant file
+        run: |
+          USERNAME="${{ github.event.issue.user.login }}"
+          DAY_NUMBER="${{ steps.extract.outputs.day_number }}"
+          TOPIC="${{ steps.extract.outputs.topic }}"
+          BLOG_URL="${{ steps.extract.outputs.blog_url }}"
+          SOCIAL_URL="${{ steps.extract.outputs.social_url }}"
+          REPO_URL="${{ steps.extract.outputs.repo_url }}"
+          LEARNINGS="${{ steps.extract.outputs.learnings }}"
+          CURRENT_DATE=$(date +%Y-%m-%d)
+
+          # Create participants directory if it doesn't exist
+          mkdir -p submissions/participants
+
+          # Define file path
+          FILE_PATH="submissions/participants/${USERNAME}.md"
+
+          # Create file header if file doesn't exist
+          if [ ! -f "$FILE_PATH" ]; then
+            cat > "$FILE_PATH" << EOF
+          # ${USERNAME} - 30 Days Terraform & AWS Challenge
+
+          **Participant:** @${USERNAME}  
+          **Start Date:** ${CURRENT_DATE}  
+          **Challenge Repository:** [terraform-aws-30days](https://github.com/${{ github.repository }})  
+          **Personal Practice Repo:** ${REPO_URL}
+
+          ## Progress Overview
+          - **Days Completed:** 1/30
+          - **Current Streak:** 1 day
+          - **Last Submission:** ${CURRENT_DATE}
+
+          ---
+
+          EOF
+          fi
+
+          # Add new day entry
+          cat >> "$FILE_PATH" << EOF
+          ## Day ${DAY_NUMBER}: ${TOPIC}
+          **Date:** ${CURRENT_DATE}  
+          **Status:** ✅ Completed
+
+          ### 📝 Blog Post
+          [Day ${DAY_NUMBER} - ${TOPIC}](${BLOG_URL})
+
+          ### 🔗 Links
+          - **Social Media:** [Post](${SOCIAL_URL})
+          - **Code Repository:** [GitHub](${REPO_URL})
+          - **Issue:** [#${{ github.event.issue.number }}](${{ github.event.issue.html_url }})
+
+          ### 🎯 Key Learnings
+          ${LEARNINGS}
+
+          ---
+
+          EOF
+
+          # Update progress overview
+          TOTAL_DAYS=$(grep -c "## Day" "$FILE_PATH")
+          sed -i "s/Days Completed.*$/Days Completed:** ${TOTAL_DAYS}\/30/" "$FILE_PATH"
+          sed -i "s/Last Submission.*$/Last Submission:** ${CURRENT_DATE}/" "$FILE_PATH"
+
+      - name: Update progress tracker
+        run: |
+          USERNAME="${{ github.event.issue.user.login }}"
+          DAY_NUMBER="${{ steps.extract.outputs.day_number }}"
+          CURRENT_DATE=$(date +%Y-%m-%d)
+
+          # Update or create progress tracker
+          TRACKER_FILE="submissions/progress-tracker.md"
+
+          if [ ! -f "$TRACKER_FILE" ]; then
+            cat > "$TRACKER_FILE" << EOF
+          # 📊 Challenge Progress Tracker
+
+          **Last Updated:** ${CURRENT_DATE}
+
+          | Participant | Days Completed | Latest Day | Last Submission | Status |
+          |-------------|----------------|------------|-----------------|--------|
+          EOF
+          fi
+
+          # Count completed days for this participant
+          PARTICIPANT_FILE="submissions/participants/${USERNAME}.md"
+          if [ -f "$PARTICIPANT_FILE" ]; then
+            COMPLETED_DAYS=$(grep -c "## Day" "$PARTICIPANT_FILE")
+          else
+            COMPLETED_DAYS=1
+          fi
+
+          # Update or add participant row
+          if grep -q "| ${USERNAME} |" "$TRACKER_FILE"; then
+            # Update existing row
+            sed -i "/| ${USERNAME} |/c\| ${USERNAME} | ${COMPLETED_DAYS}/30 | Day ${DAY_NUMBER} | ${CURRENT_DATE} | 🔥 Active |" "$TRACKER_FILE"
+          else
+            # Add new participant
+            echo "| ${USERNAME} | ${COMPLETED_DAYS}/30 | Day ${DAY_NUMBER} | ${CURRENT_DATE} | 🔥 Active |" >> "$TRACKER_FILE"
+          fi
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add submissions/
+          git commit -m "📝 Add Day ${{ steps.extract.outputs.day_number }} submission for @${{ steps.extract.outputs.username }} (#${{ github.event.issue.number }})"
+          git push
+
+      - name: Add verification label and comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Add verification label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['✅ auto-processed']
+            });
+
+            // Add success comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `🎉 **Submission Processed Successfully!**
+              
+              Your Day ${{ steps.extract.outputs.day_number }} submission has been automatically processed and added to your progress file:
+              
+              📄 **Your Progress File:** [submissions/participants/${{ steps.extract.outputs.username }}.md](https://github.com/${{ github.repository }}/blob/main/submissions/participants/${{ steps.extract.outputs.username }}.md)
+              
+              📊 **Overall Progress:** [submissions/progress-tracker.md](https://github.com/${{ github.repository }}/blob/main/submissions/progress-tracker.md)
+              
+              Keep up the great work! 🚀`
+            });
+
+      - name: Close issue with accepted label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Add accepted label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['accepted']
+            });
+
+            // Close the issue
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
