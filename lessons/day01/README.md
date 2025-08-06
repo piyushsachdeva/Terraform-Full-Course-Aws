@@ -52,6 +52,8 @@ Write Terraform files → Run Terraform commands → Call AWS APIs through Terra
 ### Install Terraform
 Follow the installation guide: https://developer.hashicorp.com/terraform/install
 
+or 
+
 ### Common Installation Commands
 ```bash
 # For macOS
