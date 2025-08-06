@@ -33,6 +33,62 @@ Terraform automatically determines the order in which resources should be create
 2. **Install AWS CLI**: Download and install from AWS official website
 3. **Configure Credentials**: Set up your AWS access keys
 
+#### AWS CLI Installation
+
+**Check your system architecture first:**
+```bash
+# Linux/macOS
+uname -m
+
+# Windows PowerShell
+$env:PROCESSOR_ARCHITECTURE
+```
+
+**Official Website**: https://aws.amazon.com/cli/
+
+**Windows:**
+```powershell
+# Using MSI installer (recommended)
+# Download from: https://awscli.amazonaws.com/AWSCLIV2.msi
+
+# Using winget
+winget install Amazon.AWSCLI
+
+# Using chocolatey
+choco install awscli
+```
+
+**macOS:**
+```bash
+# Using official installer
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+
+# Using Homebrew
+brew install awscli
+```
+
+**Ubuntu/Debian:**
+```bash
+# Update package index
+sudo apt update
+
+# Install AWS CLI v2 (choose based on your architecture)
+# For x86_64
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+# For ARM64
+curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+
+unzip awscliv2.zip
+sudo ./aws/install
+
+# Verify installation
+aws --version
+```
+
+
+
 ### Authentication Setup
 
 #### Method 1: AWS CLI Configuration
@@ -68,13 +124,6 @@ export AWS_DEFAULT_REGION="us-east-1"
    - Apply the configuration
    - Verify resources in AWS Console
 
-### Configuration Structure
-Create separate files for better organization:
-- `provider.tf` - Provider configuration
-- `vpc.tf` - VPC resources
-- `s3.tf` - S3 bucket resources
-- `variables.tf` - Input variables
-- `outputs.tf` - Output values
 
 ### Important Notes
 - **Resource Names**: S3 bucket names must be globally unique
