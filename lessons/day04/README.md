@@ -170,7 +170,6 @@ terraform state pull
 ## Assignment for Day 4
 Create AWS resources (VPC and S3 bucket) using a remote backend with:
 - S3 bucket for state storage with versioning enabled
-- DynamoDB table for state locking
 - Proper encryption and access controls
 - Test the setup by applying and modifying infrastructure
 
