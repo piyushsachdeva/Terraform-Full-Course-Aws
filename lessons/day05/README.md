@@ -1,312 +1,124 @@
-# Day 5: Variables
+# Day 5/28 - Terraform Variables Demo
 
-## Topics Covered
-- Input variables
-- Output variables
-- Local values
-- Variable precedence
-- Variable files (tfvars)
+A simple demo showing the three types of Terraform variables using a basic S3 bucket.
 
-## Key Learning Points
+## 🎯 Three Types of Variables
 
-### Input Variables
-Input variables allow you to parameterize your Terraform configuration, making it reusable across different environments.
-
-### Types of Variables
-1. **Input Variables**: Parameters that users can provide
-2. **Output Variables**: Values exposed after infrastructure creation
-3. **Local Values**: Computed values used within configuration
-
-### Variable Types
-- `string` - Text values
-- `number` - Numeric values
-- `bool` - True/false values
-- `list(type)` - Ordered collection
-- `set(type)` - Unordered collection of unique values
-- `map(type)` - Key-value pairs
-- `object({...})` - Complex structured data
-- `tuple([...])` - Ordered collection with specific types
-
-### Variable Precedence (highest to lowest)
-1. Command-line flags (`-var` or `-var-file`)
-2. `*.auto.tfvars` files (alphabetical order)
-3. `terraform.tfvars` file
-4. Environment variables (`TF_VAR_name`)
-5. Variable defaults
-
-### Local Values
-Local values assign a name to an expression, allowing you to reuse it multiple times without repeating the expression.
-
-## Tasks for Practice
-
-### Task 1: Update Previous Configuration with Variables
-Using the files created in Day 4, update them to use variables:
-
-1. **Add input variable named "environment"**
-   - Set default value to "staging"
-   - Use in resource naming and tagging
-
-2. **Create terraform.tfvars file**
-   - Set environment value to "demo"
-   - Add other relevant variables
-
-3. **Test variable precedence**
-   - Pass variables via tfvars file
-   - Override via environment variables
-   - Override via command line
-
-### Variable Configuration Examples
-
-#### variables.tf
+### 1. **Input Variables** (`variables.tf`)
+Values you provide to Terraform - like function parameters
 ```hcl
 variable "environment" {
   description = "Environment name"
   type        = string
   default     = "staging"
 }
-
-variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
-
-variable "vpc_cidr" {
-  description = "CIDR block for VPC"
-  type        = string
-  default     = "10.0.0.0/16"
-}
-
-variable "project_name" {
-  description = "Name of the project"
-  type        = string
-}
-
-variable "tags" {
-  description = "Common tags to apply to resources"
-  type        = map(string)
-  default     = {}
-}
 ```
 
-#### terraform.tfvars
-```hcl
-environment  = "demo"
-project_name = "aws-terraform-course"
-region       = "us-east-1"
-vpc_cidr     = "10.0.0.0/16"
-
-tags = {
-  Project     = "TerraformLearning"
-  Environment = "demo"
-  Owner       = "DevOps-Team"
-}
-```
-
-#### locals.tf
+### 2. **Local Variables** (`locals.tf`)
+Internal computed values - like local variables in programming
 ```hcl
 locals {
-  common_tags = merge(var.tags, {
+  common_tags = {
     Environment = var.environment
-    ManagedBy   = "Terraform"
-    Project     = var.project_name
-  })
-
-  # Resource naming convention
-  name_prefix = "${var.project_name}-${var.environment}"
+    Project     = "Terraform-Demo"
+  }
   
-  # VPC configuration
-  vpc_name = "${local.name_prefix}-vpc"
-  
-  # S3 bucket name (must be globally unique)
-  bucket_name = "${local.name_prefix}-terraform-state-${random_id.bucket_suffix.hex}"
-}
-
-resource "random_id" "bucket_suffix" {
-  byte_length = 4
+  full_bucket_name = "${var.environment}-${var.bucket_name}-${random_string.suffix.result}"
 }
 ```
 
-#### outputs.tf
+### 3. **Output Variables** (`output.tf`)
+Values returned after deployment - like function return values
 ```hcl
-output "vpc_id" {
-  description = "ID of the VPC"
-  value       = aws_vpc.main.id
-}
-
-output "vpc_cidr" {
-  description = "CIDR block of the VPC"
-  value       = aws_vpc.main.cidr_block
-}
-
-output "s3_bucket_name" {
+output "bucket_name" {
   description = "Name of the S3 bucket"
-  value       = aws_s3_bucket.main.bucket
-}
-
-output "s3_bucket_arn" {
-  description = "ARN of the S3 bucket"
-  value       = aws_s3_bucket.main.arn
-}
-
-output "environment" {
-  description = "Environment name"
-  value       = var.environment
+  value       = aws_s3_bucket.demo.bucket
 }
 ```
 
-### Task 2: Variable Precedence Testing
+## 🏗️ What This Creates
 
-Test different ways to pass variables:
+Just one simple S3 bucket that demonstrates all three variable types:
+- Uses **input variables** for environment and bucket name
+- Uses **local variables** for computed bucket name and tags
+- Uses **output variables** to show the created bucket details
 
-1. **Default values** (in variables.tf)
+## 🚀 Variable Precedence Testing
+
+### 1. **Default Values** (temporarily hide terraform.tfvars)
+```bash
+mv terraform.tfvars terraform.tfvars.backup
+terraform plan
+# Uses: environment = "staging" (from variables.tf default)
+mv terraform.tfvars.backup terraform.tfvars  # restore
+```
+
+### 2. **Using terraform.tfvars** (automatically loaded)
 ```bash
 terraform plan
+# Uses: environment = "demo" (from terraform.tfvars)
 ```
 
-2. **Via terraform.tfvars**
+### 3. **Command Line Override** (highest precedence)
 ```bash
-terraform plan -var-file="terraform.tfvars"
+terraform plan -var="environment=production"
+# Overrides tfvars: environment = "production"
 ```
 
-3. **Via environment variables**
+### 4. **Environment Variables**
 ```bash
-export TF_VAR_environment="production"
+export TF_VAR_environment="staging-from-env"
 terraform plan
+# Uses environment variable (but command line still wins)
 ```
 
-4. **Via command line**
+### 5. **Using Different tfvars Files**
 ```bash
-terraform plan -var="environment=development"
+terraform plan -var-file="dev.tfvars"        # environment = "development"
+terraform plan -var-file="production.tfvars"  # environment = "production"
+```
 ```
 
-### Task 3: Create Local Variables
-Create a local variable with common tags:
-- env = dev
-- department = engineering  
-- stage = alpha
-- project = aws-learning
+## 📁 Simple File Structure
 
-Use the local variable in the tags section of your resources.
-
-### Task 4: Create Output Variables
-Create output variables to print:
-- VPC ID
-- S3 bucket name
-- S3 bucket ARN
-- Environment name
-
-### Variable Validation
-```hcl
-variable "environment" {
-  description = "Environment name"
-  type        = string
-  default     = "staging"
-  
-  validation {
-    condition = contains(["dev", "staging", "production"], var.environment)
-    error_message = "Environment must be dev, staging, or production."
-  }
-}
-
-variable "instance_count" {
-  description = "Number of instances"
-  type        = number
-  default     = 1
-  
-  validation {
-    condition     = var.instance_count > 0 && var.instance_count <= 10
-    error_message = "Instance count must be between 1 and 10."
-  }
-}
+```
+├── main.tf           # S3 bucket resource
+├── variables.tf      # Input variables (2 simple variables)
+├── locals.tf         # Local variables (tags and computed name)
+├── output.tf         # Output variables (bucket details)
+├── provider.tf       # AWS provider
+├── terraform.tfvars  # Default variable values
+└── README.md         # This file
 ```
 
-### Sensitive Variables
-```hcl
-variable "database_password" {
-  description = "Database password"
-  type        = string
-  sensitive   = true
-}
+## 🔧 Try These Commands
 
-output "database_endpoint" {
-  description = "Database endpoint"
-  value       = aws_db_instance.main.endpoint
-  sensitive   = true
-}
-```
-
-### Commands for Testing
 ```bash
-# Plan with default values
+# Initialize
+terraform init
+
+# Plan with defaults
 terraform plan
 
-# Plan with specific tfvars file
-terraform plan -var-file="production.tfvars"
+# Plan with command line override
+terraform plan -var="environment=test"
 
-# Plan with command-line variables
-terraform plan -var="environment=test" -var="region=us-west-2"
+# Plan with different tfvars file
+terraform plan -var-file="dev.tfvars"
 
-# Apply with variables
-terraform apply -var="environment=demo"
-
-# Show outputs
+# Apply and see outputs
+terraform apply
 terraform output
 
-# Show specific output
-terraform output vpc_id
-
-# Show sensitive outputs
-terraform output -json
+# Clean up
+terraform destroy
 ```
 
-### Best Practices
-1. **Always provide descriptions** for variables
-2. **Use meaningful default values** where appropriate
-3. **Validate variable inputs** to catch errors early
-4. **Group related variables** logically
-5. **Use locals for computed values** and complex expressions
-6. **Mark sensitive variables** appropriately
-7. **Use consistent naming conventions**
-8. **Document variable requirements** in README
+## 💡 Key Takeaways
 
-### Common Patterns
-```hcl
-# Environment-specific values
-variable "instance_types" {
-  description = "Instance types by environment"
-  type        = map(string)
-  default = {
-    dev     = "t3.micro"
-    staging = "t3.small"
-    prod    = "t3.medium"
-  }
-}
+- **Input variables**: Parameterize your configuration
+- **Local variables**: Compute and reuse values
+- **Output variables**: Share results after deployment
+- **Precedence**: Command line > tfvars > environment vars > defaults
 
-# List of allowed values
-variable "allowed_regions" {
-  description = "List of allowed AWS regions"
-  type        = list(string)
-  default     = ["us-east-1", "us-west-2", "eu-west-1"]
-}
-
-# Complex object
-variable "vpc_config" {
-  description = "VPC configuration"
-  type = object({
-    cidr_block           = string
-    enable_dns_hostnames = bool
-    enable_dns_support   = bool
-    tags                 = map(string)
-  })
-  default = {
-    cidr_block           = "10.0.0.0/16"
-    enable_dns_hostnames = true
-    enable_dns_support   = true
-    tags                 = {}
-  }
-}
-```
-
-## Next Steps
-Proceed to Day 6 to learn about Terraform file structure and organization best practices for maintainable infrastructure code.
+This simple example shows exactly how the video explains variables - clear, focused, and easy to understand!
