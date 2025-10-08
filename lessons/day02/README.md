@@ -74,43 +74,6 @@ terraform {
 }
 ```
 
-## Tasks for Practice
-
-1. **Create a basic provider configuration**
-   - Specify AWS provider with version constraint
-   - Set your preferred AWS region
-
-2. **Explore version constraints**
-   - Try different version operators
-   - Understand the difference between `~>` and `>=`
-
-3. **Check provider documentation**
-   - Visit the Terraform AWS provider documentation
-   - Familiarize yourself with available resources
-
-4. **Initialize and validate**
-   - Run `terraform init` to download the provider
-   - Run `terraform validate` to check syntax
-
-## Commands Used
-```bash
-# Initialize Terraform (downloads providers)
-terraform init
-
-# Validate configuration syntax
-terraform validate
-
-# Show provider information
-terraform providers
-
-# View provider requirements
-terraform version
-```
-
-## Common Issues
-- **Version conflicts**: Ensure provider version is compatible with Terraform core
-- **Missing credentials**: AWS provider needs proper authentication
-- **Region errors**: Some AWS services are not available in all regions
 
 ## Next Steps
 Proceed to Day 3 to learn about creating your first AWS resources with Terraform.
