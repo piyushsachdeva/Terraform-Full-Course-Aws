@@ -8,7 +8,7 @@
     - Embed the video in your blog.
 3. **Share your blog** on LinkedIn and Twitter/X with `#30daysofawsterraform`.
     - Tag **Piyush Sachdeva**.
-4. **Submit your work** (see `submission.md` for instructions).
+4. **Submit your work** (see `submission.md` for instructions) .
 
 ---
 

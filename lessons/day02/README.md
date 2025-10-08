@@ -76,4 +76,4 @@ terraform {
 
 
 ## Next Steps
-Proceed to Day 3 to learn about creating your first AWS resources with Terraform.
+Proceed to Day 3 to learn about creating your first AWS resources with Terraform and check task.md for your assignments.
