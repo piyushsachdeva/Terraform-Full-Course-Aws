@@ -2,7 +2,7 @@
 
 ## What to Do
 
-- [ ] Watch the Day 01 video and take notes
+- [ ] Watch the Day 03 video and take notes
 - [ ] Write a short blog (500-800 words) about what you learned
   - Include your own diagrams and code examples
   - Embed the video
