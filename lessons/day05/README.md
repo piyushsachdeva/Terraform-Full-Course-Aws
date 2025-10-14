@@ -45,93 +45,60 @@ Input variables are like **function parameters** - they allow you to customize y
 ```hcl
 variable "variable_name" {
   description = "What this variable is for"
-  type        = string|number|bool|list|map|object
+  type        = string
   default     = "default_value"  # Optional
-  sensitive   = true|false       # Optional
-  validation {                   # Optional
-    condition     = length(var.variable_name) > 0
-    error_message = "Variable cannot be empty."
-  }
 }
 ```
 
-### Input Variable Types
-
-#### Primitive Types
+### How to Use Input Variables
 ```hcl
-# String
-variable "environment" {
-  type    = string
-  default = "staging"
-}
-
-# Number
-variable "instance_count" {
-  type    = number
-  default = 2
-}
-
-# Boolean
-variable "enable_monitoring" {
-  type    = bool
-  default = true
-}
-```
-
-#### Complex Types
-```hcl
-# List
-variable "availability_zones" {
-  type    = list(string)
-  default = ["us-east-1a", "us-east-1b"]
-}
-
-# Map
-variable "instance_types" {
-  type = map(string)
-  default = {
-    dev  = "t3.micro"
-    prod = "t3.large"
-  }
-}
-
-# Object
-variable "vpc_config" {
-  type = object({
-    cidr_block = string
-    name       = string
-  })
-  default = {
-    cidr_block = "10.0.0.0/16"
-    name       = "main-vpc"
-  }
-}
-```
-
-### Using Input Variables
-```hcl
-# Reference input variables with var. prefix
-resource "aws_s3_bucket" "example" {
-  bucket = var.bucket_name  # Using input variable
-  
-  tags = {
-    Environment = var.environment      # Using input variable
-    Count       = var.instance_count   # Using input variable
-  }
-}
-```
-
-### Variable Validation Example
-```hcl
+# Define in variables.tf
 variable "environment" {
   description = "Environment name"
   type        = string
+  default     = "staging"
+}
+
+variable "bucket_name" {
+  description = "S3 bucket name"
+  type        = string
+  default     = "my-terraform-bucket"
+}
+
+# Reference with var. prefix in main.tf
+resource "aws_s3_bucket" "demo" {
+  bucket = var.bucket_name  # Using input variable
   
-  validation {
-    condition     = contains(["dev", "staging", "prod"], var.environment)
-    error_message = "Environment must be dev, staging, or prod."
+  tags = {
+    Environment = var.environment  # Using input variable
   }
 }
+```
+
+### Providing Values to Input Variables
+
+**1. Default values** (in variables.tf)
+```hcl
+variable "environment" {
+  default = "staging"
+}
+```
+
+**2. terraform.tfvars file** (auto-loaded)
+```hcl
+environment = "demo"
+bucket_name = "terraform-demo-bucket"
+```
+
+**3. Command line**
+```bash
+terraform plan -var="environment=production"
+```
+
+**4. Environment variables**
+```bash
+export TF_VAR_environment="development"
+terraform plan
 ```
 
 ## 📤 Understanding Output Variables in Detail
@@ -144,100 +111,56 @@ Output variables are like **function return values** - they display important in
 output "output_name" {
   description = "What this output shows"
   value       = resource.resource_name.attribute
-  sensitive   = true|false  # Optional - hides sensitive data
 }
 ```
 
-### Types of Output Values
+### How to Use Output Variables
 
-#### Simple Resource Attributes
+**Define in output.tf**
 ```hcl
-# Single attribute
+# Output a resource attribute
 output "bucket_name" {
-  description = "S3 bucket name"
+  description = "Name of the S3 bucket"
   value       = aws_s3_bucket.demo.bucket
 }
 
 output "bucket_arn" {
-  description = "S3 bucket ARN"
+  description = "ARN of the S3 bucket"
   value       = aws_s3_bucket.demo.arn
 }
-```
 
-#### Complex Computed Values
-```hcl
-# Multiple attributes in an object
-output "bucket_info" {
-  description = "Complete S3 bucket information"
-  value = {
-    name   = aws_s3_bucket.demo.bucket
-    arn    = aws_s3_bucket.demo.arn
-    region = aws_s3_bucket.demo.region
-  }
-}
-```
-
-#### List of Resources (using count or for_each)
-```hcl
-# If you had multiple resources
-output "all_bucket_names" {
-  description = "Names of all S3 buckets"
-  value       = aws_s3_bucket.demo[*].bucket  # Using splat operator
-}
-```
-
-#### Input Variables as Outputs
-```hcl
-# Show what input was used
-output "environment_used" {
-  description = "Environment that was deployed"
+# Output an input variable (to confirm what was used)
+output "environment" {
+  description = "Environment from input variable"
   value       = var.environment
 }
-```
 
-#### Local Variables as Outputs
-```hcl
-# Show computed local values
-output "computed_tags" {
-  description = "Tags that were applied"
+# Output a local variable (to see computed values)
+output "tags" {
+  description = "Tags from local variable"
   value       = local.common_tags
 }
 ```
 
 ### Viewing Outputs
+
+After running `terraform apply`, you can view outputs:
+
 ```bash
-# After terraform apply
 terraform output                    # Show all outputs
 terraform output bucket_name        # Show specific output
 terraform output -json              # Show all outputs in JSON format
-terraform output -json bucket_name  # Show specific output in JSON
 ```
 
-### Sensitive Outputs
-```hcl
-output "database_password" {
-  description = "Database password"
-  value       = random_password.db_password.result
-  sensitive   = true  # This will be hidden in terraform output
-}
+**Example output:**
 ```
-
-### Using Outputs in Other Configurations
-Outputs are essential when using **modules** - they let you pass data between different parts of your infrastructure:
-
-```hcl
-# In a module
-output "vpc_id" {
-  value = aws_vpc.main.id
-}
-
-# In another configuration using the module
-module "networking" {
-  source = "./modules/vpc"
-}
-
-resource "aws_subnet" "app" {
-  vpc_id = module.networking.vpc_id  # Using output from module
+bucket_arn = "arn:aws:s3:::demo-terraform-demo-bucket-abc123"
+bucket_name = "demo-terraform-demo-bucket-abc123"
+environment = "demo"
+tags = {
+  "Environment" = "demo"
+  "Owner" = "DevOps-Team"
+  "Project" = "Terraform-Demo"
 }
 ```
 
