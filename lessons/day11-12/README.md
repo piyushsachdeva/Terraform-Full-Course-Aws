@@ -83,7 +83,7 @@ terraform destroy -auto-approve
 
 ### Numeric Functions
 `abs()`, `max()`, `min()`, `ceil()`, `floor()`, `sum()`
-
+ 
 ### Collection Functions
 `length()`, `concat()`, `merge()`, `reverse()`, `toset()`, `tolist()`
 
@@ -94,7 +94,7 @@ terraform destroy -auto-approve
 `file()`, `fileexists()`, `dirname()`, `basename()`
 
 ### Date/Time Functions
-`timestamp()`, `formatdate()`, `timeadd()`
+`timestamp()`, `formatdate()`, `timeadd()`art
 
 ### Validation Functions
 `can()`, `regex()`, `contains()`, `startswith()`, `endswith()`
