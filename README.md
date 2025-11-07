@@ -123,11 +123,9 @@ This course consists of video lessons covering basic to advanced Terraform conce
   
 ### Module 2: AWS resources using Terraform 
 
-#### Video 24: Static Website Hosting ( Mini Project 1 )
+#### Video 14: Static Website Hosting ( Mini Project 1 )
 - S3 static website hosting
 - CloudFront distribution
-- Route 53 DNS configuration
-- SSL/TLS certificate management
 - [Code Sample](/lessons/day14)
 
 
