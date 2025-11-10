@@ -13,5 +13,6 @@ secondary_subnet_cidr = "10.1.1.0/24"
 instance_type = "t2.micro"
 
 # IMPORTANT: Create an EC2 key pair in both regions before running this demo
-# You can use the same key name in both regions
-key_name = "your-key-pair-name"
+# Use different key names for clarity
+primary_key_name   = "vpc-peering-demo-east"
+secondary_key_name = "vpc-peering-demo-west"

@@ -270,17 +270,9 @@ resource "aws_instance" "primary_instance" {
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.primary_subnet.id
   vpc_security_group_ids = [aws_security_group.primary_sg.id]
-  key_name               = var.key_name
+  key_name               = var.primary_key_name
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y httpd
-              systemctl start httpd
-              systemctl enable httpd
-              echo "<h1>Primary VPC Instance - ${var.primary_region}</h1>" > /var/www/html/index.html
-              echo "<p>Private IP: $(hostname -I)</p>" >> /var/www/html/index.html
-              EOF
+  user_data = local.primary_user_data
 
   tags = {
     Name        = "Primary-VPC-Instance"
@@ -298,17 +290,9 @@ resource "aws_instance" "secondary_instance" {
   instance_type          = var.instance_type
   subnet_id              = aws_subnet.secondary_subnet.id
   vpc_security_group_ids = [aws_security_group.secondary_sg.id]
-  key_name               = var.key_name
+  key_name               = var.secondary_key_name
 
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y httpd
-              systemctl start httpd
-              systemctl enable httpd
-              echo "<h1>Secondary VPC Instance - ${var.secondary_region}</h1>" > /var/www/html/index.html
-              echo "<p>Private IP: $(hostname -I)</p>" >> /var/www/html/index.html
-              EOF
+  user_data = local.secondary_user_data
 
   tags = {
     Name        = "Secondary-VPC-Instance"

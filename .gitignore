@@ -28,3 +28,7 @@ override.tf.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+lessons/day15/vpc-peering-demo-east.pem
+
+
+*.pem

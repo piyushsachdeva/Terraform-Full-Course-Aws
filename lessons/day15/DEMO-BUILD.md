@@ -2,6 +2,23 @@
 
 This is a comprehensive, step-by-step guide to build, deploy, and test the VPC Peering demo from scratch.
 
+## ⚠️ CRITICAL: SSH Key Security
+
+**Before you begin**, understand that PEM key files MUST be properly secured or SSH will fail!
+
+**For Windows users:**
+- ❌ `chmod 400` does NOT work (it's a Linux command)
+- ✅ Use `icacls` commands to set Windows ACL permissions
+- See [Step 4.1](#step-41-secure-your-pem-key-files-critical) for detailed instructions
+
+**For Linux/Ubuntu/Mac users:**
+- ✅ Use `chmod 400` to restrict permissions
+- See [Step 4.1](#step-41-secure-your-pem-key-files-critical) for detailed instructions
+
+**Common SSH username:**
+- ❌ NOT `ec2-user` for Ubuntu
+- ✅ Use `ubuntu` as the SSH username
+
 ## Table of Contents
 1. [Prerequisites Setup](#prerequisites-setup)
 2. [Infrastructure Deployment](#infrastructure-deployment)
@@ -52,26 +69,148 @@ Expected output: `Terraform v1.x.x`
 ```powershell
 # Create key pair in us-east-1
 aws ec2 create-key-pair `
-  --key-name vpc-peering-demo `
+  --key-name vpc-peering-demo-east `
   --region us-east-1 `
   --query 'KeyMaterial' `
   --output text | Out-File -FilePath vpc-peering-demo-east.pem -Encoding ASCII
 
 # Verify the key was created
-aws ec2 describe-key-pairs --region us-east-1 --key-names vpc-peering-demo
+aws ec2 describe-key-pairs --region us-east-1 --key-names vpc-peering-demo-east
 ```
 
 **For US-WEST-2:**
 ```powershell
 # Create key pair in us-west-2
 aws ec2 create-key-pair `
-  --key-name vpc-peering-demo `
+  --key-name vpc-peering-demo-west `
   --region us-west-2 `
   --query 'KeyMaterial' `
   --output text | Out-File -FilePath vpc-peering-demo-west.pem -Encoding ASCII
 
 # Verify the key was created
-aws ec2 describe-key-pairs --region us-west-2 --key-names vpc-peering-demo
+aws ec2 describe-key-pairs --region us-west-2 --key-names vpc-peering-demo-west
+```
+
+### Step 4.1: Secure Your PEM Key Files (CRITICAL!)
+
+**⚠️ IMPORTANT:** PEM files must have restricted permissions or SSH will reject them with errors like:
+- `WARNING: UNPROTECTED PRIVATE KEY FILE!`
+- `Permissions 0644 are too open`
+- `Load key "file.pem": invalid format`
+
+#### **For Windows Users (PowerShell):**
+
+**Why `chmod 400` doesn't work on Windows:**
+- `chmod` is a Linux/Unix command that only works in WSL/Git Bash
+- Windows uses ACLs (Access Control Lists), not Unix permissions
+- Even if you run `chmod 400` in Git Bash, **Windows SSH still checks Windows NTFS permissions**
+- You MUST use `icacls` to properly secure PEM files on Windows
+
+**Secure the East PEM file:**
+```powershell
+# Remove all inherited permissions (critical step!)
+icacls vpc-peering-demo-east.pem /inheritance:r
+
+# Grant read-only access ONLY to your user account
+icacls vpc-peering-demo-east.pem /grant:r "$($env:USERNAME):R"
+
+# Verify permissions (should show only your username with R)
+icacls vpc-peering-demo-east.pem
+```
+
+**Secure the West PEM file:**
+```powershell
+# Remove all inherited permissions
+icacls vpc-peering-demo-west.pem /inheritance:r
+
+# Grant read-only access ONLY to your user account
+icacls vpc-peering-demo-west.pem /grant:r "$($env:USERNAME):R"
+
+# Verify permissions
+icacls vpc-peering-demo-west.pem
+```
+
+**Expected output after verification:**
+```
+vpc-peering-demo-east.pem YourUsername:(R)
+Successfully processed 1 files; Failed processing 0 files
+```
+
+#### **For Linux/Ubuntu/Mac Users (Bash/Terminal):**
+
+**Why strict permissions are required:**
+- SSH refuses to use keys that other users can read
+- This prevents unauthorized access to your private keys
+- `chmod 400` = read-only for owner, no access for anyone else
+
+**Secure both PEM files:**
+```bash
+# Set read-only permissions for owner only
+chmod 400 vpc-peering-demo-east.pem
+chmod 400 vpc-peering-demo-west.pem
+
+# Verify permissions (should show -r--------)
+ls -la vpc-peering-demo-*.pem
+```
+
+**Expected output:**
+```
+-r-------- 1 username username 1704 Nov 10 21:46 vpc-peering-demo-east.pem
+-r-------- 1 username username 1704 Nov 10 21:46 vpc-peering-demo-west.pem
+```
+
+#### **Common SSH Permission Errors and Solutions:**
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| `UNPROTECTED PRIVATE KEY FILE!` | Permissions too open | Run `icacls` (Windows) or `chmod 400` (Linux) |
+| `Load key: invalid format` | Wrong file encoding (UTF-8 with BOM) | Recreate with `-Encoding ASCII` flag |
+| `Permission denied (publickey)` | Wrong key or wrong username | Verify key name matches Terraform config |
+| `Bad permissions` | Inherited Windows permissions | Run `icacls /inheritance:r` first |
+
+#### **How to Restore Normal Permissions (For Easy Deletion):**
+
+After securing PEM files with restricted permissions, you may encounter "Access Denied" errors when trying to delete them. Here's how to restore normal permissions:
+
+**For Windows (PowerShell):**
+```powershell
+# Grant full control to allow deletion of the PEM files
+icacls vpc-peering-demo-east.pem /grant:r "$($env:USERNAME):F"
+icacls vpc-peering-demo-west.pem /grant:r "$($env:USERNAME):F"
+
+# Now you can delete them normally
+Remove-Item vpc-peering-demo-east.pem -Force
+Remove-Item vpc-peering-demo-west.pem -Force
+```
+
+**For Linux/Ubuntu/Mac (Bash/Terminal):**
+```bash
+# Restore write permissions to allow deletion
+chmod 600 vpc-peering-demo-east.pem
+chmod 600 vpc-peering-demo-west.pem
+
+# Or grant full permissions
+chmod 644 vpc-peering-demo-east.pem
+chmod 644 vpc-peering-demo-west.pem
+
+# Now you can delete them normally
+rm vpc-peering-demo-east.pem vpc-peering-demo-west.pem
+```
+
+**Why this is needed:**
+- **Windows:** The `icacls /inheritance:r` command removes all permissions except read-only. To delete, you need write permissions (`F` = Full control).
+- **Linux:** The `chmod 400` command makes files read-only. To delete, you need write permissions on the parent directory (which you usually have), but setting `chmod 600` or `644` makes it clearer.
+
+**Quick cleanup command (Windows):**
+```powershell
+# One-liner to restore permissions and delete both PEM files
+icacls *.pem /grant:r "$($env:USERNAME):F"; Remove-Item *.pem -Force
+```
+
+**Quick cleanup command (Linux/Mac):**
+```bash
+# One-liner to restore permissions and delete both PEM files
+chmod 644 *.pem && rm *.pem
 ```
 
 **Important:** Keep these `.pem` files secure! They are needed to SSH into instances.
@@ -296,23 +435,65 @@ Write-Host "Secondary Private IP: $SECONDARY_PRIVATE_IP"
 
 ### Step 18: Test SSH Access
 
-**Test Primary Instance:**
-```powershell
-# SSH into Primary instance (use Git Bash or WSL if using Windows)
-ssh -i vpc-peering-demo-east.pem ec2-user@$PRIMARY_PUBLIC_IP
+**IMPORTANT:** Ubuntu AMI uses `ubuntu` as the default user, NOT `ec2-user`!
 
-# If using PuTTY, convert .pem to .ppk first
+**Test Primary Instance:**
+
+*For Windows PowerShell:*
+```powershell
+# SSH into Primary instance (us-east-1)
+ssh -i .\vpc-peering-demo-east.pem ubuntu@$PRIMARY_PUBLIC_IP
 ```
 
-**Common SSH issues:**
-- If permission denied: The key file may have wrong permissions
-- If timeout: Check security group allows SSH from your IP
-- If connection refused: Instance may still be initializing
+*For Linux/Mac/Git Bash:*
+```bash
+# SSH into Primary instance (us-east-1)
+ssh -i vpc-peering-demo-east.pem ubuntu@$PRIMARY_PUBLIC_IP
+```
+
+*For PuTTY Users (Windows):*
+```powershell
+# First, convert .pem to .ppk format using PuTTYgen:
+# 1. Open PuTTYgen
+# 2. Click "Load" and select vpc-peering-demo-east.pem
+# 3. Click "Save private key" and save as vpc-peering-demo-east.ppk
+# 4. In PuTTY, use ubuntu@<public-ip> and load the .ppk file under SSH > Auth
+```
+
+**Common SSH issues and solutions:**
+
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| `Permission denied (publickey)` | Wrong username or key | Use `ubuntu` not `ec2-user` for Ubuntu AMI |
+| `UNPROTECTED PRIVATE KEY FILE!` | Wrong file permissions | Run `icacls /inheritance:r` (Windows) or `chmod 400` (Linux) |
+| `Load key: invalid format` | UTF-8 BOM encoding | Recreate key with `-Encoding ASCII` |
+| `Connection timed out` | Security group or network | Check SG allows SSH from your IP (0.0.0.0/0) |
+| `Connection refused` | Instance still initializing | Wait 2-3 minutes after `terraform apply` |
 
 **Test Secondary Instance:**
+
+*For Windows PowerShell:*
 ```powershell
-# SSH into Secondary instance
-ssh -i vpc-peering-demo-west.pem ec2-user@$SECONDARY_PUBLIC_IP
+# SSH into Secondary instance (us-west-2)
+ssh -i .\vpc-peering-demo-west.pem ubuntu@$SECONDARY_PUBLIC_IP
+```
+
+*For Linux/Mac/Git Bash:*
+```bash
+# SSH into Secondary instance (us-west-2)
+ssh -i vpc-peering-demo-west.pem ubuntu@$SECONDARY_PUBLIC_IP
+```
+
+**Verify you're connected:**
+```bash
+# Check OS version
+cat /etc/os-release
+
+# Check private IP matches Terraform output
+hostname -I
+
+# Check Apache is running
+systemctl status apache2
 ```
 
 ### Step 19: Test VPC Peering - Ping Test
@@ -591,14 +772,33 @@ aws ec2 describe-vpc-peering-connections --region us-east-1 --filters "Name=stat
 
 ### Step 29: Delete Key Pairs (Optional)
 
+**Note:** If you secured your PEM files earlier and get "Access Denied" errors, see [Step 4.1 - Restore Normal Permissions](#step-41-secure-your-pem-key-files-critical) for instructions on how to grant delete permissions.
+
 ```powershell
+# If you get "Access Denied", restore permissions first:
+icacls vpc-peering-demo-east.pem /grant:r "$($env:USERNAME):F"
+icacls vpc-peering-demo-west.pem /grant:r "$($env:USERNAME):F"
+
 # Delete key pairs from AWS
-aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-east-1
-aws ec2 delete-key-pair --key-name vpc-peering-demo --region us-west-2
+aws ec2 delete-key-pair --key-name vpc-peering-demo-east --region us-east-1
+aws ec2 delete-key-pair --key-name vpc-peering-demo-west --region us-west-2
 
 # Delete local key files
-Remove-Item vpc-peering-demo-east.pem
-Remove-Item vpc-peering-demo-west.pem
+Remove-Item vpc-peering-demo-east.pem -Force
+Remove-Item vpc-peering-demo-west.pem -Force
+```
+
+**For Linux/Mac users:**
+```bash
+# If needed, restore permissions first:
+chmod 644 vpc-peering-demo-east.pem vpc-peering-demo-west.pem
+
+# Delete key pairs from AWS
+aws ec2 delete-key-pair --key-name vpc-peering-demo-east --region us-east-1
+aws ec2 delete-key-pair --key-name vpc-peering-demo-west --region us-west-2
+
+# Delete local key files
+rm vpc-peering-demo-east.pem vpc-peering-demo-west.pem
 ```
 
 ### Step 30: Clean Local Files (Optional)

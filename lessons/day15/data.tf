@@ -12,36 +12,46 @@ data "aws_availability_zones" "secondary" {
   state    = "available"
 }
 
-# Data source for Primary region AMI (Amazon Linux 2)
+# Data source for Primary region AMI (Ubuntu 24.04 LTS)
 data "aws_ami" "primary_ami" {
   provider    = aws.primary
   most_recent = true
-  owners      = ["amazon"]
+  owners      = ["099720109477"] # Canonical (Ubuntu)
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
   }
 
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
   }
 }
 
-# Data source for Secondary region AMI (Amazon Linux 2)
+# Data source for Secondary region AMI (Ubuntu 24.04 LTS)
 data "aws_ami" "secondary_ami" {
   provider    = aws.secondary
   most_recent = true
-  owners      = ["amazon"]
+  owners      = ["099720109477"] # Canonical (Ubuntu)
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
   }
 
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
   }
 }

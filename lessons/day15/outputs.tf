@@ -64,11 +64,11 @@ output "test_connectivity_command" {
   description = "Command to test connectivity between VPCs"
   value       = <<-EOT
     To test VPC peering connectivity:
-    1. SSH into Primary instance: ssh -i your-key.pem ec2-user@${aws_instance.primary_instance.public_ip}
+    1. SSH into Primary instance: ssh -i your-key.pem ubuntu@${aws_instance.primary_instance.public_ip}
     2. Ping Secondary instance: ping ${aws_instance.secondary_instance.private_ip}
     
     Or:
-    1. SSH into Secondary instance: ssh -i your-key.pem ec2-user@${aws_instance.secondary_instance.public_ip}
+    1. SSH into Secondary instance: ssh -i your-key.pem ubuntu@${aws_instance.secondary_instance.public_ip}
     2. Ping Primary instance: ping ${aws_instance.primary_instance.private_ip}
   EOT
 }
