@@ -16,20 +16,25 @@ This course consists of video lessons covering basic to advanced Terraform conce
 <a href="https://www.linkedin.com/company/thecloudopscomm/"><img src="https://img.icons8.com/fluency/2x/linkedin.png" height="60px"></img></a>
 <a href="https://www.instagram.com/techtutorialswithpiyush/"><img src="https://user-images.githubusercontent.com/91791257/235086447-47658b7b-71fa-4baf-830a-3ba9b3a76a47.png" height="60px"></img></a>
 
-## 📋 Prerequisites
-- AWS free account or subscription
+<details>
+<summary>## 📋 Prerequisites</summary>
+- [AWS free account or subscription](https://aws.amazon.com/free/)
 - AWS Fundamentals
-- Visual Studio Code or preferred IDE
-- Git installed and working knowledge of it
+- OSI model and protocols - SSH, HTTP, HTTPS, TCP,UDP, SMTP, etc
+- Visual Studio Code or preferred IDE installed
+- Git installed and working knowledge of Git and Github
 - Linux or Mac or WSL(Windows Subsystem for Linux)
 - Linux and Shell scripting
 - Basic understanding of YAML and JSON
-- Networking Fundamentals
-- IP Addressing
+- [Deployment Strategies](https://youtu.be/uj0qDN1EWus)
+- [Networking Fundamentals](https://youtu.be/yUhzvVrwkV8)
+- [IP Addressing](https://youtu.be/G1azmL5-eQI)
+</details>
 
 ## 📚 Course Curriculum
 
-### Module 1: Core Concepts
+<details>
+<summary>### Module 1: Core Concepts</summary>
 
 #### Day1: Introduction to Terraform
 - Understanding Infrastructure as Code (IaC)
@@ -120,8 +125,11 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Using data sources
 - Practical examples
 - [Code Sample](/lessons/day13)
-  
-### Module 2: AWS resources using Terraform 
+
+</details>
+
+<details>
+<summary>### Module 2: AWS resources using Terraform</summary>
 
 #### Video 14: Static Website Hosting ( Mini Project 1 )
 - S3 static website hosting
@@ -190,7 +198,10 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Application Load Balancer, NAT Gateway, Elastic IP, Auto Scaling rules etc
 - [Code Sample](/lessons/day24)
 
-### Module 3: Advanced Concepts
+</details>
+
+<details>
+<summary>### Module 3: Advanced Concepts</summary>
 
 #### Video 25: Terraform Import (Real-time project 2)
 - Different ways of importing AWS resource to Terraform
@@ -233,7 +244,7 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - Monitoring infrastructure changes
 - [Code Sample](/lessons/day31)
 
-
+</details>
 
 ## 📂 Repository Structure
 ```
@@ -249,7 +260,7 @@ This course consists of video lessons covering basic to advanced Terraform conce
 
 ## 🎓 Learning Path
 1. Follow videos in sequence
-2. Complete hands-on exercises
+2. Complete hands-on exercises in task.md
 3. Implement projects
 4. Practice with provided code samples
 
