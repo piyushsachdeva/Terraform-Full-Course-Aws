@@ -17,7 +17,8 @@ This course consists of video lessons covering basic to advanced Terraform conce
 <a href="https://www.instagram.com/techtutorialswithpiyush/"><img src="https://user-images.githubusercontent.com/91791257/235086447-47658b7b-71fa-4baf-830a-3ba9b3a76a47.png" height="60px"></img></a>
 
 <details>
-<summary>## 📋 Prerequisites</summary>
+<summary> 📋 Prerequisites</summary>
+  
 - [AWS free account or subscription](https://aws.amazon.com/free/)
 - AWS Fundamentals
 - OSI model and protocols - SSH, HTTP, HTTPS, TCP,UDP, SMTP, etc
@@ -29,12 +30,13 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - [Deployment Strategies](https://youtu.be/uj0qDN1EWus)
 - [Networking Fundamentals](https://youtu.be/yUhzvVrwkV8)
 - [IP Addressing](https://youtu.be/G1azmL5-eQI)
+  
 </details>
 
 ## 📚 Course Curriculum
 
 <details>
-<summary>### Module 1: Core Concepts</summary>
+<summary> Module 1: Core Concepts</summary>
 
 #### Day1: Introduction to Terraform
 - Understanding Infrastructure as Code (IaC)
@@ -129,7 +131,7 @@ This course consists of video lessons covering basic to advanced Terraform conce
 </details>
 
 <details>
-<summary>### Module 2: AWS resources using Terraform</summary>
+<summary>Module 2: AWS resources using Terraform</summary>
 
 #### Video 14: Static Website Hosting ( Mini Project 1 )
 - S3 static website hosting
@@ -201,7 +203,7 @@ This course consists of video lessons covering basic to advanced Terraform conce
 </details>
 
 <details>
-<summary>### Module 3: Advanced Concepts</summary>
+<summary>Module 3: Advanced Concepts</summary>
 
 #### Video 25: Terraform Import (Real-time project 2)
 - Different ways of importing AWS resource to Terraform
@@ -245,18 +247,6 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - [Code Sample](/lessons/day31)
 
 </details>
-
-## 📂 Repository Structure
-```
-├── lessons/
-│   ├── day01/
-│   ├── day02/
-│   └── ...
-├── docs/
-│   ├── setup.md
-│   └── troubleshooting.md
-└── README.md
-```
 
 ## 🎓 Learning Path
 1. Follow videos in sequence
