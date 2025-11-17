@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/piyushsachdeva/Terraform-Full-Course-Aws1
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-07-17
+- **Last Submission:** 2025-11-17
 
 ---
 
@@ -27,6 +27,25 @@
 ### 🎯 Key Learnings
 
 This is a test issue
+
+---
+
+## Day 3: s3 bucket and vpc creation
+**Date:** 2025-11-17  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - s3 bucket and vpc creation](https://www.thecloudopscommunity.org)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.thecloudopscommunity.org)
+- **Code Repository:** [GitHub](https://www.thecloudopscommunity.org)
+- **Issue:** [#9](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/9)
+
+### 🎯 Key Learnings
+
+- how to implement s3 bucket and vpc
+- created dependencies b/w multiple resources
 
 ---
 
