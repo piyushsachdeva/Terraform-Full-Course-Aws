@@ -1,6 +1,6 @@
 # Day 01 - Quick Tasks
 
-## What to Do
+## What to D0
 
 - [X] Watch the Day 01 video and take notes
 - [X] Write a short blog (500-800 words) about what you learned
