@@ -19,10 +19,10 @@ if ! command -v terraform &> /dev/null; then
     exit 1
 fi
 
-# Build Lambda layer
-echo "📦 Building Lambda layer..."
-chmod +x "$SCRIPT_DIR/build_layer.sh"
-bash "$SCRIPT_DIR/build_layer.sh"
+# Build Lambda layer using Docker (works on all platforms)
+echo "📦 Building Lambda layer with Docker..."
+chmod +x "$SCRIPT_DIR/build_layer_docker.sh"
+bash "$SCRIPT_DIR/build_layer_docker.sh"
 
 # Initialize Terraform
 echo "🔧 Initializing Terraform..."

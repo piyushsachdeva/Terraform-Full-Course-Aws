@@ -15,10 +15,10 @@ fi
 
 cd "$PROJECT_DIR/terraform"
 
-# Get bucket names before destroying
-UPLOAD_BUCKET=$(terraform output -raw upload_bucket_name 2>/dev/null || echo "")
-PROCESSED_BUCKET=$(terraform output -raw processed_bucket_name 2>/dev/null || echo "")
-FRONTEND_BUCKET=$(terraform output -raw frontend_bucket_name 2>/dev/null || echo "")
+# Get bucket names from terraform state (more reliable than outputs)
+UPLOAD_BUCKET=$(terraform state show 'aws_s3_bucket.upload_bucket' 2>/dev/null | grep -E '^\s+id\s+=' | awk -F'"' '{print $2}' || echo "")
+PROCESSED_BUCKET=$(terraform state show 'aws_s3_bucket.processed_bucket' 2>/dev/null | grep -E '^\s+id\s+=' | awk -F'"' '{print $2}' || echo "")
+FRONTEND_BUCKET=$(terraform state show 'aws_s3_bucket.frontend_bucket' 2>/dev/null | grep -E '^\s+id\s+=' | awk -F'"' '{print $2}' || echo "")
 
 # Function to empty versioned S3 bucket
 empty_versioned_bucket() {
