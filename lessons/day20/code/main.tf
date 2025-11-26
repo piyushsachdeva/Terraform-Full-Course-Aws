@@ -61,9 +61,10 @@ module "eks" {
     vpc-cni = {
       most_recent = true
     }
-    aws-ebs-csi-driver = {
-      most_recent = true
-    }
+    # EBS CSI driver can be added later if needed
+    # aws-ebs-csi-driver = {
+    #   most_recent = true
+    # }
   }
 
   vpc_id     = module.vpc.vpc_id
@@ -105,7 +106,7 @@ module "eks" {
       taints = [{
         key    = "spot"
         value  = "true"
-        effect = "NoSchedule"
+        effect = "NO_SCHEDULE"
       }]
 
       tags = {

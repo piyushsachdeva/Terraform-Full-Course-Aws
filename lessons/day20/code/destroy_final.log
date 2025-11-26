@@ -1,0 +1,186 @@
+nohup: ignoring input
+[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1mmodule.eks.module.eks_managed_node_group["general"].data.aws_partition.current: Reading...[0m[0m
+[0m[1mmodule.eks.data.aws_caller_identity.current[0]: Reading...[0m[0m
+[0m[1mmodule.eks.module.eks_managed_node_group["spot"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[0m[1mmodule.eks.module.eks_managed_node_group["spot"].data.aws_partition.current: Reading...[0m[0m
+[0m[1mmodule.eks.module.eks_managed_node_group["general"].data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[0m[1mmodule.eks.data.aws_partition.current[0]: Reading...[0m[0m
+[0m[1mmodule.eks.module.kms.data.aws_caller_identity.current[0]: Reading...[0m[0m
+[0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Reading...[0m[0m
+[0m[1mmodule.vpc.aws_vpc.this[0]: Refreshing state... [id=vpc-0995ef00da398e40a][0m
+[0m[1mmodule.eks.data.aws_partition.current[0]: Read complete after 0s [id=aws][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["general"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["general"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["spot"].data.aws_partition.current: Read complete after 0s [id=aws][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["spot"].data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2560088296][0m
+[0m[1mmodule.eks.data.aws_iam_policy_document.assume_role_policy[0]: Read complete after 0s [id=2830595799][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["spot"].data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mdata.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.eks.module.eks_managed_node_group["general"].data.aws_caller_identity.current: Reading...[0m[0m
+[0m[1mmodule.eks.module.kms.data.aws_partition.current[0]: Reading...[0m[0m
+[0m[1mmodule.eks.module.kms.data.aws_partition.current[0]: Read complete after 0s [id=aws][0m
+[0m[1mmodule.eks.data.aws_iam_policy_document.custom[0]: Reading...[0m[0m
+[0m[1mmodule.eks.data.aws_iam_policy_document.custom[0]: Read complete after 0s [id=513122117][0m
+[0m[1mmodule.eks.data.aws_caller_identity.current[0]: Read complete after 1s [id=038806790653][0m
+[0m[1mmodule.eks.data.aws_iam_session_context.current[0]: Reading...[0m[0m
+[0m[1mmodule.eks.data.aws_iam_session_context.current[0]: Read complete after 0s [id=arn:aws:iam::038806790653:user/Baivab-Admin][0m
+[0m[1mmodule.eks.module.kms.data.aws_caller_identity.current[0]: Read complete after 1s [id=038806790653][0m
+[0m[1mdata.aws_caller_identity.current: Read complete after 2s [id=038806790653][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["spot"].data.aws_caller_identity.current: Read complete after 2s [id=038806790653][0m
+[0m[1mmodule.eks.module.eks_managed_node_group["general"].data.aws_caller_identity.current: Read complete after 2s [id=038806790653][0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 2s [id=us-east-1][0m
+[0m[1mmodule.vpc.aws_internet_gateway.this[0]: Refreshing state... [id=igw-01f19661e4eb6769c][0m
+[0m[1mmodule.vpc.aws_subnet.public[1]: Refreshing state... [id=subnet-00bf4b17fa14553bb][0m
+[0m[1mmodule.vpc.aws_subnet.public[2]: Refreshing state... [id=subnet-08c13d64b8f2c0345][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # module.vpc.aws_internet_gateway.this[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_internet_gateway" "this" {
+      [31m-[0m[0m arn      = "arn:aws:ec2:us-east-1:038806790653:internet-gateway/igw-01f19661e4eb6769c" [90m-> null[0m[0m
+      [31m-[0m[0m id       = "igw-01f19661e4eb6769c" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id = "038806790653" [90m-> null[0m[0m
+      [31m-[0m[0m tags     = {
+          [31m-[0m[0m "Environment" = "development"
+          [31m-[0m[0m "Name"        = "eks-vpc"
+          [31m-[0m[0m "Terraform"   = "true"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all = {
+          [31m-[0m[0m "Environment" = "development"
+          [31m-[0m[0m "ManagedBy"   = "Terraform"
+          [31m-[0m[0m "Name"        = "eks-vpc"
+          [31m-[0m[0m "Project"     = "Day20-EKS-Cluster"
+          [31m-[0m[0m "Terraform"   = "true"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id   = "vpc-0995ef00da398e40a" [90m-> null[0m[0m
+    }
+
+[1m  # module.vpc.aws_subnet.public[1][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "public" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-1:038806790653:subnet/subnet-00bf4b17fa14553bb" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-1b" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use1-az1" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.102.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-00bf4b17fa14553bb" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = false [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "038806790653" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Environment"                     = "development"
+          [31m-[0m[0m "Name"                            = "eks-vpc-public-us-east-1b"
+          [31m-[0m[0m "Terraform"                       = "true"
+          [31m-[0m[0m "kubernetes.io/cluster/day20-eks" = "shared"
+          [31m-[0m[0m "kubernetes.io/role/elb"          = "1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Environment"                     = "development"
+          [31m-[0m[0m "ManagedBy"                       = "Terraform"
+          [31m-[0m[0m "Name"                            = "eks-vpc-public-us-east-1b"
+          [31m-[0m[0m "Project"                         = "Day20-EKS-Cluster"
+          [31m-[0m[0m "Terraform"                       = "true"
+          [31m-[0m[0m "kubernetes.io/cluster/day20-eks" = "shared"
+          [31m-[0m[0m "kubernetes.io/role/elb"          = "1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0995ef00da398e40a" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.vpc.aws_subnet.public[2][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_subnet" "public" {
+      [31m-[0m[0m arn                                            = "arn:aws:ec2:us-east-1:038806790653:subnet/subnet-08c13d64b8f2c0345" [90m-> null[0m[0m
+      [31m-[0m[0m assign_ipv6_address_on_creation                = false [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone                              = "us-east-1c" [90m-> null[0m[0m
+      [31m-[0m[0m availability_zone_id                           = "use1-az2" [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                                     = "10.0.103.0/24" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns64                                   = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_lni_at_device_index                     = 0 [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_a_record_on_launch    = false [90m-> null[0m[0m
+      [31m-[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                             = "subnet-08c13d64b8f2c0345" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_native                                    = false [90m-> null[0m[0m
+      [31m-[0m[0m map_customer_owned_ip_on_launch                = false [90m-> null[0m[0m
+      [31m-[0m[0m map_public_ip_on_launch                        = false [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                                       = "038806790653" [90m-> null[0m[0m
+      [31m-[0m[0m private_dns_hostname_type_on_launch            = "ip-name" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                           = {
+          [31m-[0m[0m "Environment"                     = "development"
+          [31m-[0m[0m "Name"                            = "eks-vpc-public-us-east-1c"
+          [31m-[0m[0m "Terraform"                       = "true"
+          [31m-[0m[0m "kubernetes.io/cluster/day20-eks" = "shared"
+          [31m-[0m[0m "kubernetes.io/role/elb"          = "1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                                       = {
+          [31m-[0m[0m "Environment"                     = "development"
+          [31m-[0m[0m "ManagedBy"                       = "Terraform"
+          [31m-[0m[0m "Name"                            = "eks-vpc-public-us-east-1c"
+          [31m-[0m[0m "Project"                         = "Day20-EKS-Cluster"
+          [31m-[0m[0m "Terraform"                       = "true"
+          [31m-[0m[0m "kubernetes.io/cluster/day20-eks" = "shared"
+          [31m-[0m[0m "kubernetes.io/role/elb"          = "1"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m vpc_id                                         = "vpc-0995ef00da398e40a" [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # module.vpc.aws_vpc.this[0][0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "aws_vpc" "this" {
+      [31m-[0m[0m arn                                  = "arn:aws:ec2:us-east-1:038806790653:vpc/vpc-0995ef00da398e40a" [90m-> null[0m[0m
+      [31m-[0m[0m assign_generated_ipv6_cidr_block     = false [90m-> null[0m[0m
+      [31m-[0m[0m cidr_block                           = "10.0.0.0/16" [90m-> null[0m[0m
+      [31m-[0m[0m default_network_acl_id               = "acl-006a2d32cfc2942b8" [90m-> null[0m[0m
+      [31m-[0m[0m default_route_table_id               = "rtb-0c4c0ef4c72ce9a27" [90m-> null[0m[0m
+      [31m-[0m[0m default_security_group_id            = "sg-0c053bed51ba39593" [90m-> null[0m[0m
+      [31m-[0m[0m dhcp_options_id                      = "dopt-3beafa43" [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_hostnames                 = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_dns_support                   = true [90m-> null[0m[0m
+      [31m-[0m[0m enable_network_address_usage_metrics = false [90m-> null[0m[0m
+      [31m-[0m[0m id                                   = "vpc-0995ef00da398e40a" [90m-> null[0m[0m
+      [31m-[0m[0m instance_tenancy                     = "default" [90m-> null[0m[0m
+      [31m-[0m[0m ipv6_netmask_length                  = 0 [90m-> null[0m[0m
+      [31m-[0m[0m main_route_table_id                  = "rtb-0c4c0ef4c72ce9a27" [90m-> null[0m[0m
+      [31m-[0m[0m owner_id                             = "038806790653" [90m-> null[0m[0m
+      [31m-[0m[0m tags                                 = {
+          [31m-[0m[0m "Environment" = "development"
+          [31m-[0m[0m "Name"        = "eks-vpc"
+          [31m-[0m[0m "Terraform"   = "true"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m tags_all                             = {
+          [31m-[0m[0m "Environment" = "development"
+          [31m-[0m[0m "ManagedBy"   = "Terraform"
+          [31m-[0m[0m "Name"        = "eks-vpc"
+          [31m-[0m[0m "Project"     = "Day20-EKS-Cluster"
+          [31m-[0m[0m "Terraform"   = "true"
+        } [90m-> null[0m[0m
+        [90m# (4 unchanged attributes hidden)[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 0 to change, 4 to destroy.
+[0m
+Changes to Outputs:
+  [31m-[0m[0m cluster_name      = "day20-eks" [90m-> null[0m[0m
+  [31m-[0m[0m configure_kubectl = "aws eks --region us-east-1 update-kubeconfig --name day20-eks" [90m-> null[0m[0m
+  [31m-[0m[0m region            = "us-east-1" [90m-> null[0m[0m
+  [31m-[0m[0m vpc_id            = "vpc-0995ef00da398e40a" [90m-> null[0m[0m
+[0m[1mmodule.vpc.aws_internet_gateway.this[0]: Destroying... [id=igw-01f19661e4eb6769c][0m[0m
+[0m[1mmodule.vpc.aws_subnet.public[2]: Destroying... [id=subnet-08c13d64b8f2c0345][0m[0m
+[0m[1mmodule.vpc.aws_subnet.public[1]: Destroying... [id=subnet-00bf4b17fa14553bb][0m[0m
+[0m[1mmodule.vpc.aws_subnet.public[1]: Destruction complete after 2s[0m
+[0m[1mmodule.vpc.aws_internet_gateway.this[0]: Destruction complete after 2s[0m
+[0m[1mmodule.vpc.aws_subnet.public[2]: Destruction complete after 5s[0m
+[0m[1mmodule.vpc.aws_vpc.this[0]: Destroying... [id=vpc-0995ef00da398e40a][0m[0m
+[0m[1mmodule.vpc.aws_vpc.this[0]: Destruction complete after 2s[0m
+[0m[1m[32m
+Destroy complete! Resources: 4 destroyed.
+[0m
