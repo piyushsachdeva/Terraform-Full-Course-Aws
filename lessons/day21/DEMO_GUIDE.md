@@ -1,756 +1,425 @@
-# Demo Guide: AWS Policy and Governance
-
-**Tested with Terraform - Creates 24 AWS resources**
+# Demo Guide: AWS Policy and Governance (Day 21)
 
 ---
 
-## ⚡ Quick Demo (10 minutes)
+## 📖 Part 1: Theory & Concepts (Explain First)
 
-### Step 1: Deploy
+### What is AWS Governance?
 
-```bash
-terraform init
-terraform plan         # Shows 24 resources
-terraform apply -auto-approve
+Governance = **Rules + Enforcement + Monitoring**
+
+It ensures your AWS resources follow security and compliance standards automatically.
+
+### Why Do We Need It?
+
+| Problem | Solution |
+|---------|----------|
+| Developers create public S3 buckets | Config rule detects & alerts |
+| EC2 launched without tags | IAM policy blocks it |
+| Someone deletes critical data | MFA policy prevents it |
+| Manual audits are slow | Automated 24/7 monitoring |
+
+### Two Types of Controls
+
+```
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│   1. PREVENTIVE (IAM Policies)                     │
+│      → Blocks bad actions BEFORE they happen       │
+│      → Example: "Cannot delete S3 without MFA"     │
+│                                                     │
+│   2. DETECTIVE (AWS Config)                        │
+│      → Finds violations AFTER they happen          │
+│      → Example: "This bucket is not encrypted"     │
+│                                                     │
+└─────────────────────────────────────────────────────┘
 ```
 
-**Creates:**
-- 4 IAM Policies (MFA, encryption, tagging)
-- 1 IAM User
-- 1 S3 Bucket (encrypted, versioned, locked down)
-- 7 Config Rules (compliance monitoring)
-- 1 Config Recorder (auto-started)
+### Architecture Overview
 
-### Step 2: View Outputs
-
-```bash
-terraform output
+```
+         ┌──────────────────┐
+         │   IAM POLICIES   │  ◄── PREVENT bad actions
+         │  • MFA Delete    │
+         │  • Encryption    │
+         │  • Required Tags │
+         └────────┬─────────┘
+                  │
+                  ▼
+         ┌──────────────────┐
+         │   AWS CONFIG     │  ◄── DETECT violations
+         │   6 Rules        │
+         │  (Compliance)    │
+         └────────┬─────────┘
+                  │
+                  ▼
+         ┌──────────────────┐
+         │    S3 BUCKET     │  ◄── STORE logs
+         │  🔒 Encrypted    │
+         │  🔒 Versioned    │
+         └──────────────────┘
 ```
 
-Shows: Policy ARNs, bucket name, recorder status, all 7 rules
+### What We'll Build
 
-### Step 3: Verify in Console
-
-**IAM:**
-```bash
-aws iam list-policies --scope Local | grep terraform-governance
-```
-Console: IAM → Policies → Customer managed
-
-**S3:**
-```bash
-aws s3api get-bucket-encryption --bucket $(terraform output -raw config_bucket_name)
-aws s3api get-bucket-versioning --bucket $(terraform output -raw config_bucket_name)
-```
-Console: S3 → Find bucket → Check Properties & Permissions
-
-**Config:**
-```bash
-aws configservice describe-configuration-recorder-status
-aws configservice describe-config-rules | grep RuleName
-```
-Console: AWS Config → Dashboard (wait 5-10 min) → Rules
-
-### Step 4: Test Compliance
-
-```bash
-# Create non-compliant bucket
-aws s3 mb s3://test-violation-$(date +%s)
-
-# Wait 2-3 minutes, check Config console
-# Will show as Non-Compliant
-
-# Cleanup
-aws s3 rb s3://test-violation-* --force
-```
-
-### Step 5: Cleanup
-
-```bash
-terraform destroy -auto-approve
-```
+| Component | Count | Purpose |
+|-----------|-------|---------|
+| IAM Policies | 3 | Prevent bad actions |
+| IAM User | 1 | Demo policy attachment |
+| S3 Bucket | 1 | Secure log storage |
+| Config Rules | 6 | Compliance checks |
+| Config Recorder | 1 | Monitor resources |
 
 ---
 
-## 📚 Full Teaching Demo (45 minutes)
+## 🛠️ Part 2: Demo - File by File Explanation
 
-### Part 1: Introduction (5 min)
+### File Structure
 
-**Why Governance?**
-- Prevent security misconfigurations
-- Meet compliance requirements (SOC 2, HIPAA, GDPR)
-- Detect configuration drift
-- Audit trail
-
-**Manual Audits vs Automated Governance:**
-- Manual: Point-in-time, error-prone, slow
-- Automated: Continuous, consistent, scalable
-
-**Architecture:**
 ```
-IAM Policies (preventive) → Enforce security at action level
-         ↓
-   AWS Config (detective) → Monitor compliance continuously
-         ↓
-   S3 Bucket (storage) → Encrypted logs with versioning
+day21/
+├── provider.tf    → AWS provider setup
+├── variables.tf   → Customizable inputs
+├── iam.tf         → Policies (PREVENT)
+├── config.tf      → Config rules (DETECT)
+├── main.tf        → S3 bucket (STORE)
+└── outputs.tf     → Display results
 ```
 
 ---
 
-### Part 2: Code Walkthrough (15 min)
+### 📄 provider.tf - AWS Provider
 
-#### File Structure
-```
-provider.tf   - AWS provider config
-variables.tf  - Region, project name
-iam.tf       - 4 policies + demo user
-main.tf      - S3 bucket with security
-config.tf    - Recorder + 7 rules
-outputs.tf   - Key info display
+**What it does:** Tells Terraform to use AWS
+
+```hcl
+provider "aws" {
+  region = var.aws_region   # us-east-1 by default
+}
 ```
 
-#### IAM Policies Explained
+**Explain:** This connects Terraform to your AWS account.
 
-**1. MFA Delete Policy** (`iam.tf`)
-```json
+---
+
+### 📄 variables.tf - Inputs
+
+**What it does:** Makes the code reusable
+
+```hcl
+variable "aws_region" {
+  default = "us-east-1"
+}
+
+variable "project_name" {
+  default = "terraform-governance-demo"
+}
+```
+
+**Explain:** You can change region or project name without editing other files.
+
+---
+
+### 📄 iam.tf - IAM Policies (PREVENTIVE CONTROLS)
+
+**What it does:** Creates 3 security policies
+
+#### Policy 1: MFA Delete Policy
+
+```hcl
+# Denies S3 deletion unless user has MFA
 "Condition": {
   "BoolIfExists": {
     "aws:MultiFactorAuthPresent": "false"
   }
 }
 ```
-- **What:** Denies S3 object deletion without MFA
-- **Why:** Protect production data from accidental/malicious deletion
-- **Use case:** Financial records, customer data
 
-**2. S3 Encryption in Transit**
-```json
+**Explain:** 
+- If someone tries to delete S3 objects WITHOUT MFA → DENIED
+- Protects critical data from accidental deletion
+
+#### Policy 2: S3 Encryption in Transit
+
+```hcl
+# Denies uploads over HTTP (requires HTTPS)
 "Condition": {
   "Bool": {
     "aws:SecureTransport": "false"
   }
 }
 ```
-- **What:** Requires HTTPS for all S3 operations
-- **Why:** Prevent man-in-the-middle attacks
-- **Use case:** Any sensitive data transfer
 
-**3. Required Tags Policy**
+**Explain:**
+- Forces all S3 uploads to use HTTPS
+- Prevents man-in-the-middle attacks
+
+#### Policy 3: Required Tags
+
 ```hcl
-Condition: {
-  StringNotLike: {
-    "aws:RequestTag/Environment": ["dev", "staging", "prod"]
+# Denies EC2 creation without Environment + Owner tags
+"Condition": {
+  "Null": {
+    "aws:RequestTag/Owner": "true"
   }
 }
 ```
-- **What:** Enforces Environment and Owner tags on EC2
-- **Why:** Cost allocation, resource tracking, accountability
-- **Use case:** Multi-team organizations
 
-**4. Demo User**
-- Shows real policy attachment
-- Uses /governance/ path for organization
-- Tagged for tracking
+**Explain:**
+- Cannot launch EC2 without proper tags
+- Helps with cost tracking and accountability
 
-#### S3 Security Features
+#### Demo User
 
 ```hcl
-# Versioning - audit trail
-aws_s3_bucket_versioning
-
-# Encryption - AES256 at rest
-aws_s3_bucket_server_side_encryption_configuration
-
-# Block all public access
-aws_s3_bucket_public_access_block
-
-# Bucket policy - Config service only
-aws_s3_bucket_policy
+resource "aws_iam_user" "demo_user" {
+  name = "terraform-governance-demo-demo-user"
+}
 ```
 
-**Point out:** Multiple layers of security (defense in depth)
-
-#### AWS Config Rules
-
-**7 Compliance Checks:**
-
-1. **s3-bucket-public-write-prohibited**
-   - Prevents public write access to S3
-   
-2. **s3-bucket-server-side-encryption-enabled**
-   - Ensures all buckets are encrypted
-   
-3. **s3-bucket-public-read-prohibited**
-   - Blocks public read access
-   
-4. **encrypted-volumes**
-   - Verifies EBS volumes are encrypted
-   
-5. **required-tags**
-   - Checks for Environment and Owner tags
-   - Scope: EC2 instances, S3 buckets
-   
-6. **iam-password-policy**
-   - Min 14 chars, uppercase, lowercase, numbers, symbols
-   - Max password age: 90 days
-   
-7. **root-account-mfa-enabled**
-   - Ensures root account has MFA
-
-**Key:** `aws_config_configuration_recorder_status` starts the recorder automatically!
+**Explain:** Creates a user and attaches the MFA policy to show how policies work in practice.
 
 ---
 
-### Part 3: Live Deployment (10 min)
+### 📄 config.tf - AWS Config (DETECTIVE CONTROLS)
 
-#### Initialize
+**What it does:** Creates Config recorder + 6 compliance rules
+
+#### Config Recorder
+
+```hcl
+resource "aws_config_configuration_recorder" "main" {
+  recording_group {
+    all_supported = true  # Monitor ALL resource types
+  }
+}
+```
+
+**Explain:** This records every configuration change in your AWS account.
+
+#### Config Rule Example: S3 Encryption
+
+```hcl
+resource "aws_config_config_rule" "s3_encryption" {
+  name = "s3-bucket-server-side-encryption-enabled"
+  source {
+    owner             = "AWS"
+    source_identifier = "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED"
+  }
+}
+```
+
+**Explain:** 
+- AWS provides pre-built rules (managed rules)
+- This checks if ALL S3 buckets have encryption enabled
+- Non-compliant buckets are flagged
+
+#### All 6 Rules We Create
+
+| Rule | What It Checks |
+|------|----------------|
+| `s3-bucket-public-write-prohibited` | No public write access |
+| `s3-bucket-server-side-encryption-enabled` | Encryption enabled |
+| `s3-bucket-public-read-prohibited` | No public read access |
+| `encrypted-volumes` | EBS volumes encrypted |
+| `required-tags` | Has Environment + Owner tags |
+| `root-account-mfa-enabled` | Root has MFA |
+
+---
+
+### 📄 main.tf - S3 Bucket (SECURE STORAGE)
+
+**What it does:** Creates a fully secured S3 bucket for Config logs
+
+```hcl
+# Versioning - keeps history
+resource "aws_s3_bucket_versioning" {
+  status = "Enabled"
+}
+
+# Encryption - protects data at rest
+resource "aws_s3_bucket_server_side_encryption_configuration" {
+  sse_algorithm = "AES256"
+}
+
+# Block public access - all 4 settings ON
+resource "aws_s3_bucket_public_access_block" {
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+```
+
+**Explain:** This bucket follows ALL the security best practices we're checking with Config rules. It's compliant by design!
+
+---
+
+### 📄 outputs.tf - Display Results
+
+**What it does:** Shows important information after deployment
+
+```hcl
+output "config_rules" {
+  value = [list of all rule names]
+}
+
+output "config_recorder_status" {
+  value = true  # Recorder is running
+}
+```
+
+---
+
+## 🚀 Part 3: Run the Demo
+
+### Step 1: Initialize
+
 ```bash
 terraform init
 ```
-- Downloads AWS provider (v5.x)
-- Creates .terraform directory
-- Generates lock file
 
-#### Plan
+**Explain:** Downloads AWS provider plugins.
+
+### Step 2: Plan
+
 ```bash
 terraform plan
 ```
 
-**Walk through the output:**
-- "Plan: 24 to add, 0 to change, 0 to destroy"
-- Show policy JSON in plan
-- Point out Config rule parameters
-- Explain resource dependencies
+**Explain:** Shows 23 resources will be created. Walk through key ones:
+- IAM policies
+- S3 bucket with security settings
+- Config recorder
+- 6 Config rules
 
-**Key resources to highlight:**
-- `random_string.suffix` - Makes bucket name unique
-- `aws_iam_policy` resources - Show JSON policies
-- `aws_config_config_rule` with `input_parameters`
-- `depends_on` relationships
+### Step 3: Apply
 
-#### Apply
 ```bash
-terraform apply
+terraform apply -auto-approve
 ```
 
-**While deploying (2-3 minutes):**
-1. IAM resources created first (no dependencies)
-2. S3 bucket created
-3. S3 configurations applied (versioning, encryption, etc.)
-4. IAM role for Config
-5. Config recorder created
-6. Config delivery channel
-7. Config recorder started
-8. All 7 Config rules deployed
+**Explain:** Takes 2-3 minutes. Creates everything.
 
-#### Outputs
+### Step 4: View Outputs
+
 ```bash
 terraform output
 ```
 
-**Explain each:**
-- `mfa_delete_policy_arn` - Can attach to other users/roles
-- `s3_encryption_transit_policy_arn` - Enforce HTTPS
-- `require_tags_policy_arn` - Enforce tagging
-- `demo_user_name` - Sample user with policies
-- `config_bucket_name` - Where Config stores snapshots
-- `config_recorder_status` - Should be `true` (enabled)
-- `config_rules` - All 7 rule names
-- `compliance_dashboard_info` - Console access info
+**Show:**
+- Policy ARNs
+- S3 bucket name
+- Config recorder status = true
+- List of 6 rules
 
 ---
 
-### Part 4: AWS Console Walkthrough (10 min)
+## 🔍 Part 4: Verify in AWS Console
 
-#### IAM Policies
+### Check IAM Policies
 
-**Via CLI:**
 ```bash
-aws iam list-policies --scope Local --query 'Policies[?contains(PolicyName, `terraform-governance`)]'
+aws iam list-policies --scope Local | grep terraform-governance
 ```
 
-**In Console:**
-1. Navigate to IAM → Policies
-2. Filter: "Customer managed"
-3. Find "terraform-governance-demo-mfa-delete-policy"
-4. Click it → Review JSON
-5. Go to "Policy usage" tab → Shows attached to demo-user
-6. Click demo-user → See attached policies
+**Console:** IAM → Policies → Filter "Customer managed"
 
-**Teaching point:** Show the JSON structure, explain each statement
+**Show:** Click on MFA policy → View JSON → Explain the condition
 
-#### S3 Bucket
+### Check S3 Bucket
 
-**Via CLI:**
 ```bash
-BUCKET=$(terraform output -raw config_bucket_name)
-
-# Encryption
-aws s3api get-bucket-encryption --bucket $BUCKET
-
-# Versioning
-aws s3api get-bucket-versioning --bucket $BUCKET
-
-# Public access block
-aws s3api get-public-access-block --bucket $BUCKET
+aws s3api get-bucket-encryption --bucket $(terraform output -raw config_bucket_name)
 ```
 
-**In Console:**
-1. S3 → Find bucket (terraform-governance-demo-config-bucket-XXXXXX)
-2. **Properties tab:**
-   - Bucket Versioning: **Enabled**
-   - Default encryption: **AES-256**
-   - Show version history (will build over time)
-3. **Permissions tab:**
-   - Block public access: **All 4 settings ON**
-   - Bucket policy: Show JSON (Config service access)
-   - Explain least privilege
+**Console:** S3 → Find bucket → Properties tab
 
-**Teaching point:** Multiple security layers on one bucket
+**Show:**
+- ✅ Versioning: Enabled
+- ✅ Encryption: AES-256
+- ✅ Block public access: All ON
 
-#### AWS Config
+### Check AWS Config
 
-**Via CLI:**
 ```bash
-# Recorder status
 aws configservice describe-configuration-recorder-status
-
-# All rules
-aws configservice describe-config-rules --query 'ConfigRules[].ConfigRuleName'
-
-# Specific rule compliance
-aws configservice describe-compliance-by-config-rule \
-  --config-rule-names s3-bucket-server-side-encryption-enabled
 ```
 
-**In Console:**
-1. Navigate to AWS Config
-2. **Dashboard:**
-   - Shows "Evaluating..." initially
-   - Wait 5-10 minutes for first results
-   - Shows compliant vs non-compliant resources
-3. **Rules (left sidebar):**
-   - Shows all 7 rules
-   - Each has status (Compliant, Non-compliant, etc.)
-4. **Click "s3-bucket-server-side-encryption-enabled":**
-   - Shows rule details
-   - Lists resources in scope
-   - Shows compliance status per resource
-   - Can see evaluation history
-5. **Click "Resources" tab:**
-   - Shows all S3 buckets
-   - Config bucket should be compliant
+**Console:** AWS Config → Dashboard → Rules
 
-**Teaching points:**
-- Config continuously evaluates
-- Rules can have different scopes
-- Compliance status updates automatically
-- Can export compliance reports
+**Show:**
+- Recorder running
+- 6 rules listed
+- Compliance status (may take 5-10 min)
 
 ---
 
-### Part 5: Demonstrate Compliance Detection (5 min)
+## 🧪 Part 5: Test Compliance Detection
 
-#### Create a Violation
+### Create a Violation
 
 ```bash
-# Create bucket WITHOUT encryption (violates rule)
-aws s3 mb s3://demo-violation-$(date +%s)
-
-# Optional: Add some content
-echo "test" > test.txt
-aws s3 cp test.txt s3://demo-violation-*/
+# Create bucket WITHOUT encryption
+aws s3 mb s3://test-violation-$(date +%s)
 ```
 
-#### Watch Config Detect It
+### Check Config
 
-**After 2-3 minutes:**
+**Wait 2-3 minutes, then:**
 
 1. Go to AWS Config → Rules
 2. Click "s3-bucket-server-side-encryption-enabled"
-3. Refresh → Should see new bucket
-4. Status: **Non-Compliant** (red)
-5. Click on the resource → Shows why it's non-compliant
+3. See new bucket as **NON-COMPLIANT** (red)
 
-**Teaching points:**
-- Config detected the violation automatically
-- No manual audit needed
-- Can set up SNS notifications for this
-- Can trigger automatic remediation
+**Explain:** Config detected the violation automatically!
 
-#### Cleanup Test Bucket
+### Cleanup Test
 
 ```bash
-# Remove test bucket
-aws s3 rb s3://demo-violation-* --force
-
-# After 2-3 minutes, Config will show it as deleted
+aws s3 rb s3://test-violation-* --force
 ```
 
 ---
 
-### Part 6: Best Practices Discussion (5 min)
-
-#### 1. Policy as Code Benefits
-- ✅ Version controlled (Git)
-- ✅ Repeatable across environments
-- ✅ Team collaboration via PRs
-- ✅ Audit trail of changes
-- ✅ Can test before applying
-
-#### 2. Continuous Compliance
-- ✅ 24/7 monitoring
-- ✅ Automatic detection of drift
-- ✅ No manual audits
-- ✅ Real-time alerts possible
-- ✅ Historical compliance data
-
-#### 3. Defense in Depth
-- **Layer 1:** IAM policies (prevent bad actions)
-- **Layer 2:** S3 bucket policies (resource-level control)
-- **Layer 3:** Encryption (protect data)
-- **Layer 4:** Config rules (detect violations)
-- **Result:** Multiple failsafes
-
-#### 4. Real-World Applications
-- **Compliance:** SOC 2, HIPAA, GDPR, PCI-DSS
-- **Security:** Prevent misconfigurations
-- **Operations:** Detect drift, audit changes
-- **Finance:** Cost allocation via tags
-- **Governance:** Enforce organizational standards
-
----
-
-### Part 7: Cleanup (5 min)
+## 🧹 Part 6: Cleanup
 
 ```bash
 terraform destroy -auto-approve
 ```
 
-**While destroying:**
-- Explain deletion order (reverse of dependencies)
-- Config rules deleted first
-- Config recorder stopped and deleted
-- S3 bucket force-destroyed (including contents)
-- IAM resources last
-
-**Cost consideration:**
-- Config: ~$2-3/month for 7 rules
-- Always destroy demo environments
-- Production: keep running for compliance
-
-**Verify cleanup:**
-```bash
-aws s3 ls | grep config-bucket        # Should be empty
-aws iam list-users | grep demo-user   # Should be empty
-aws configservice describe-configuration-recorders  # Should be empty
-```
+**Explain:** Removes all 23 resources. Important for cost control.
 
 ---
 
-## 💡 Advanced Topics (Optional)
+## 💡 Key Takeaways
 
-### Automated Remediation
-
-Add SNS topic and Lambda function:
-```hcl
-resource "aws_config_remediation_configuration" "auto_fix" {
-  config_rule_name = aws_config_config_rule.s3_encryption.name
-  target_type      = "SSM_DOCUMENT"
-  target_identifier = "AWS-EnableS3BucketEncryption"
-}
-```
-
-### Multi-Account Setup
-
-Use AWS Organizations and Config Aggregator:
-```hcl
-resource "aws_config_configuration_aggregator" "organization" {
-  name = "organization-aggregator"
-  organization_aggregation_source {
-    all_regions = true
-    role_arn    = aws_iam_role.aggregator.arn
-  }
-}
-```
-
-### Custom Config Rules
-
-Use Lambda for custom logic:
-```hcl
-resource "aws_config_config_rule" "custom" {
-  name = "custom-compliance-check"
-  source {
-    owner             = "CUSTOM_LAMBDA"
-    source_identifier = aws_lambda_function.compliance.arn
-  }
-}
-```
+1. **IAM Policies = PREVENT** → Block bad actions before they happen
+2. **AWS Config = DETECT** → Find violations after they happen
+3. **Defense in Depth** → Use both for complete protection
+4. **Infrastructure as Code** → Governance is version controlled
+5. **Automated Compliance** → 24/7 monitoring, no manual audits
 
 ---
 
-## 🎯 Common Questions
+## 📊 Quick Reference
 
-**Q: How much does this cost?**
-A: ~$2-3/month for Config (7 rules × $0.001 per evaluation). S3 storage < $0.10. Destroy after demo.
+| File | Purpose | Controls |
+|------|---------|----------|
+| `iam.tf` | Policies | Preventive |
+| `config.tf` | Rules | Detective |
+| `main.tf` | S3 Bucket | Storage |
 
-**Q: Can I customize the rules?**
-A: Yes! Edit `input_parameters` in `config.tf`. Example: change password length from 14 to 16.
-
-**Q: How do I add more policies?**
-A: Add new `aws_iam_policy` resources in `iam.tf`. Use `jsonencode()` for the policy document.
-
-**Q: Does this work in all regions?**
-A: Yes. Change `aws_region` variable. Config is regional; use aggregator for multi-region.
-
-**Q: Is this production-ready?**
-A: Base is solid. Add:
-- Remote backend (S3 + DynamoDB)
-- SNS notifications
-- Automated remediation
-- CloudTrail integration
-- More granular policies
-
-**Q: What if a rule shows non-compliant?**
-A: That's the goal! It alerts you to fix the issue. Can trigger auto-remediation.
-
-**Q: How often do rules evaluate?**
-A: Continuous for config changes, periodic (24h) for batch checks.
-
-**Q: Can I exclude resources from rules?**
-A: Yes, use `scope` block in rule definition to filter by resource type, tag, etc.
+| Commands | |
+|----------|---|
+| `terraform init` | Setup |
+| `terraform plan` | Preview |
+| `terraform apply` | Deploy |
+| `terraform output` | View results |
+| `terraform destroy` | Cleanup |
 
 ---
 
-## 🔧 Troubleshooting
+**Demo Time: ~30 minutes**
 
-### Issue: "Access Denied" during apply
-
-**Diagnosis:**
-```bash
-aws sts get-caller-identity  # Check your identity
-aws iam get-user             # Check permissions
-```
-
-**Solution:**
-Ensure your AWS credentials have permissions for:
-- IAM (policies, users, roles)
-- S3 (buckets, bucket policies)
-- AWS Config (recorders, rules)
-
-### Issue: Config rules not evaluating
-
-**Diagnosis:**
-```bash
-aws configservice describe-configuration-recorder-status
-```
-
-**Solutions:**
-1. Wait 5-10 minutes for initial evaluation
-2. Create test resources to trigger evaluation
-3. Check recorder is running: `is_enabled: true`
-4. Verify delivery channel is configured
-
-### Issue: S3 bucket name already exists
-
-**Diagnosis:**
-Error: "BucketAlreadyExists"
-
-**Solution:**
-Random suffix should prevent this. If it happens:
-```bash
-terraform apply -var="project_name=my-unique-name-123"
-```
-
-### Issue: Terraform state locked
-
-**Diagnosis:**
-Error: "Error acquiring the state lock"
-
-**Solution:**
-```bash
-# Check lock info
-terraform force-unlock <lock-id>
-
-# Or wait for lock to expire (usually 15 min)
-```
-
-### Issue: Config recorder already exists
-
-**Diagnosis:**
-Error: "ConfigurationRecorderNameAlreadyExistsException"
-
-**Solution:**
-```bash
-# List existing recorders
-aws configservice describe-configuration-recorders
-
-# Delete if needed (careful!)
-aws configservice delete-configuration-recorder --name <recorder-name>
-```
-
----
-
-## 📊 Resource Breakdown
-
-| Resource Type | Count | Purpose |
-|--------------|-------|---------|
-| `aws_iam_policy` | 4 | Security policies (MFA, encryption, tagging) |
-| `aws_iam_user` | 1 | Demo user for policy attachment |
-| `aws_iam_user_policy_attachment` | 1 | Attach MFA policy to user |
-| `aws_iam_role` | 1 | Config service role |
-| `aws_iam_role_policy` | 1 | S3 write policy for Config |
-| `aws_iam_role_policy_attachment` | 1 | Managed Config policy |
-| `aws_s3_bucket` | 1 | Config log storage |
-| `aws_s3_bucket_versioning` | 1 | Enable versioning |
-| `aws_s3_bucket_server_side_encryption_configuration` | 1 | AES256 encryption |
-| `aws_s3_bucket_public_access_block` | 1 | Block all public access |
-| `aws_s3_bucket_policy` | 1 | Allow Config service |
-| `aws_config_configuration_recorder` | 1 | Record config changes |
-| `aws_config_configuration_recorder_status` | 1 | Start the recorder |
-| `aws_config_delivery_channel` | 1 | Deliver to S3 |
-| `aws_config_config_rule` | 7 | Compliance rules |
-| `random_string` | 1 | Unique bucket suffix |
-| **TOTAL** | **24** | **Complete governance setup** |
-
----
-
-## 🎓 Student Exercises
-
-### Beginner Level
-
-1. **Customize the project name**
-   ```bash
-   terraform apply -var="project_name=my-governance"
-   ```
-
-2. **Add tags to the S3 bucket**
-   Edit `main.tf` and add more tags
-
-3. **View a different Config rule**
-   Check "required-tags" rule in console
-
-### Intermediate Level
-
-1. **Add RDS encryption rule**
-   ```hcl
-   resource "aws_config_config_rule" "rds_encryption" {
-     name = "rds-storage-encrypted"
-     source {
-       owner             = "AWS"
-       source_identifier = "RDS_STORAGE_ENCRYPTED"
-     }
-   }
-   ```
-
-2. **Modify password policy**
-   Change `MinimumPasswordLength` to 16
-
-3. **Create second IAM user**
-   Add another user with different policies
-
-4. **Add S3 bucket logging**
-   Enable access logs on the Config bucket
-
-### Advanced Level
-
-1. **Add SNS notifications**
-   ```hcl
-   resource "aws_sns_topic" "config_alerts" {
-     name = "config-compliance-alerts"
-   }
-   
-   resource "aws_config_delivery_channel" "main" {
-     sns_topic_arn = aws_sns_topic.config_alerts.arn
-   }
-   ```
-
-2. **Create custom Config rule with Lambda**
-   Write Lambda function to check custom compliance
-
-3. **Implement automated remediation**
-   Use SSM documents to fix violations automatically
-
-4. **Set up Config aggregator**
-   Centralize compliance across multiple regions/accounts
-
-5. **Integrate with Security Hub**
-   Send Config findings to Security Hub
-
----
-
-## 📚 Additional Resources
-
-### Documentation
-- [AWS Config User Guide](https://docs.aws.amazon.com/config/latest/developerguide/)
-- [Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html)
-- [IAM Policy Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
-- [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
-
-### Tools
-- [IAM Policy Simulator](https://policysim.aws.amazon.com/)
-- [Config Rules Development Kit](https://github.com/awslabs/aws-config-rdk)
-- [AWS Well-Architected Tool](https://aws.amazon.com/well-architected-tool/)
-
-### Compliance Frameworks
-- [CIS AWS Foundations Benchmark](https://www.cisecurity.org/benchmark/amazon_web_services)
-- [AWS Security Best Practices](https://docs.aws.amazon.com/security/)
-- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
-
----
-
-## ✅ Demo Checklist
-
-**Before Demo:**
-- [ ] AWS account access verified
-- [ ] AWS CLI configured (`aws sts get-caller-identity`)
-- [ ] Terraform installed (`terraform version`)
-- [ ] Code downloaded/cloned
-- [ ] Run `terraform init` beforehand
-- [ ] Test `terraform plan` works
-- [ ] Prepare AWS Console in browser
-- [ ] Have architecture diagram ready
-- [ ] Review key talking points
-
-**During Demo:**
-- [ ] Explain why governance matters
-- [ ] Walk through code files
-- [ ] Show terraform plan output
-- [ ] Apply configuration
-- [ ] Verify in console (IAM, S3, Config)
-- [ ] Demonstrate compliance detection
-- [ ] Answer questions
-- [ ] Destroy resources
-
-**After Demo:**
-- [ ] Verify all resources destroyed
-- [ ] Share code repository
-- [ ] Provide additional resources
-- [ ] Assign exercises
-
----
-
-## 🎬 Pro Presentation Tips
-
-1. **Prep Time:** Run `terraform init` before demo starts
-2. **Two Screens:** Code in one, AWS Console in other
-3. **Explain As You Go:** Don't just run commands
-4. **Show Failures:** Create non-compliant resources
-5. **Real Examples:** Reference actual compliance requirements
-6. **Q&A Ready:** Know common questions
-7. **Backup Plan:** Have pre-deployed environment if live demo fails
-8. **Record It:** Students can review later
-9. **Hands-On:** Have students follow along
-10. **Cost Aware:** Always mention costs and cleanup
-
----
-
-**Demo Status: ✅ Tested November 2025**
-
-- Terraform plan: 24 resources
-- All policies validated
-- Config rules working
-- Compliance detection verified
-- Cleanup confirmed
-
-**Happy Teaching! 🚀**
+**Cost: ~$2/month (destroy after demo)**
