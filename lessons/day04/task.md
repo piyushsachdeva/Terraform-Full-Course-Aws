@@ -8,7 +8,7 @@
   - Embed the video
 - [ ] Share your blog on LinkedIn and Twitter/X with **#30daysofawsterraform**
 - [ ] Tag me (Piyush Sachdeva)
-- [ ] Submit your work (see `submission.md` for how)
+- [ ] Submit your work (by creating an issue using the provided template)
 
 ## Tips
 
