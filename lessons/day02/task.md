@@ -1,8 +1,8 @@
-## Day 01 - Quick Tasks
+## Day 02 - Quick Tasks
 
 ### What to Do
 
-1. **Watch the Day 01 video** and take notes.
+1. **Watch the Day 02 video** and take notes.
 2. **Write a short blog** (500-800 words) about what you learned.
     - Include your own diagrams and code examples.
     - Embed the video in your blog.
