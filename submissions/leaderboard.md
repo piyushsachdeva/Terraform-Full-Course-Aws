@@ -10,36 +10,37 @@
 | 🥈 | ![itsBaivab](https://github.com/itsBaivab.png?size=32) [@itsBaivab](https://github.com/itsBaivab) | 2/30 | 1 day | Day 44 | 2025-07-16 | 💤 Inactive |
 | 🥉 | ![Saurabh-shukla1](https://github.com/Saurabh-shukla1.png?size=32) [@Saurabh-shukla1](https://github.com/Saurabh-shukla1) | 2/30 | 2 days | Day 2 | 2025-11-25 | 🔥 Active |
 | #4 | ![piyusdev2006](https://github.com/piyusdev2006.png?size=32) [@piyusdev2006](https://github.com/piyusdev2006) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #5 | ![medashabari](https://github.com/medashabari.png?size=32) [@medashabari](https://github.com/medashabari) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
-| #6 | ![manujayakumar](https://github.com/manujayakumar.png?size=32) [@manujayakumar](https://github.com/manujayakumar) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
-| #7 | ![kutt27](https://github.com/kutt27.png?size=32) [@kutt27](https://github.com/kutt27) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #8 | ![kamaleshgovindarajan](https://github.com/kamaleshgovindarajan.png?size=32) [@kamaleshgovindarajan](https://github.com/kamaleshgovindarajan) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #9 | ![bishalranjit0606](https://github.com/bishalranjit0606.png?size=32) [@bishalranjit0606](https://github.com/bishalranjit0606) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #10 | ![bhaskaratejabulusu](https://github.com/bhaskaratejabulusu.png?size=32) [@bhaskaratejabulusu](https://github.com/bhaskaratejabulusu) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #11 | ![arnab-logs](https://github.com/arnab-logs.png?size=32) [@arnab-logs](https://github.com/arnab-logs) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #12 | ![anjali76Codes](https://github.com/anjali76Codes.png?size=32) [@anjali76Codes](https://github.com/anjali76Codes) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #13 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #14 | ![YashChavanWeb](https://github.com/YashChavanWeb.png?size=32) [@YashChavanWeb](https://github.com/YashChavanWeb) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #15 | ![Vrushal10](https://github.com/Vrushal10.png?size=32) [@Vrushal10](https://github.com/Vrushal10) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #16 | ![Souradip121](https://github.com/Souradip121.png?size=32) [@Souradip121](https://github.com/Souradip121) | 1/30 | 1 day | Day 10 | 2025-07-16 | 💤 Inactive |
-| #17 | ![ShahJabir](https://github.com/ShahJabir.png?size=32) [@ShahJabir](https://github.com/ShahJabir) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #18 | ![Rudraksh121a](https://github.com/Rudraksh121a.png?size=32) [@Rudraksh121a](https://github.com/Rudraksh121a) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #19 | ![Rajesh180118](https://github.com/Rajesh180118.png?size=32) [@Rajesh180118](https://github.com/Rajesh180118) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #20 | ![Nandan3](https://github.com/Nandan3.png?size=32) [@Nandan3](https://github.com/Nandan3) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
-| #21 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #22 | ![BejadiRajeshReddy](https://github.com/BejadiRajeshReddy.png?size=32) [@BejadiRajeshReddy](https://github.com/BejadiRajeshReddy) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #23 | ![Amitkushwaha7](https://github.com/Amitkushwaha7.png?size=32) [@Amitkushwaha7](https://github.com/Amitkushwaha7) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #24 | ![Akshaysrajan](https://github.com/Akshaysrajan.png?size=32) [@Akshaysrajan](https://github.com/Akshaysrajan) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #25 | ![Adityapradhan14](https://github.com/Adityapradhan14.png?size=32) [@Adityapradhan14](https://github.com/Adityapradhan14) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #26 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #27 | ![00suryavanshi00](https://github.com/00suryavanshi00.png?size=32) [@00suryavanshi00](https://github.com/00suryavanshi00) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #5 | ![nazeer-s-cloud](https://github.com/nazeer-s-cloud.png?size=32) [@nazeer-s-cloud](https://github.com/nazeer-s-cloud) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
+| #6 | ![medashabari](https://github.com/medashabari.png?size=32) [@medashabari](https://github.com/medashabari) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
+| #7 | ![manujayakumar](https://github.com/manujayakumar.png?size=32) [@manujayakumar](https://github.com/manujayakumar) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
+| #8 | ![kutt27](https://github.com/kutt27.png?size=32) [@kutt27](https://github.com/kutt27) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #9 | ![kamaleshgovindarajan](https://github.com/kamaleshgovindarajan.png?size=32) [@kamaleshgovindarajan](https://github.com/kamaleshgovindarajan) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #10 | ![bishalranjit0606](https://github.com/bishalranjit0606.png?size=32) [@bishalranjit0606](https://github.com/bishalranjit0606) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #11 | ![bhaskaratejabulusu](https://github.com/bhaskaratejabulusu.png?size=32) [@bhaskaratejabulusu](https://github.com/bhaskaratejabulusu) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #12 | ![arnab-logs](https://github.com/arnab-logs.png?size=32) [@arnab-logs](https://github.com/arnab-logs) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #13 | ![anjali76Codes](https://github.com/anjali76Codes.png?size=32) [@anjali76Codes](https://github.com/anjali76Codes) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #14 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #15 | ![YashChavanWeb](https://github.com/YashChavanWeb.png?size=32) [@YashChavanWeb](https://github.com/YashChavanWeb) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #16 | ![Vrushal10](https://github.com/Vrushal10.png?size=32) [@Vrushal10](https://github.com/Vrushal10) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #17 | ![Souradip121](https://github.com/Souradip121.png?size=32) [@Souradip121](https://github.com/Souradip121) | 1/30 | 1 day | Day 10 | 2025-07-16 | 💤 Inactive |
+| #18 | ![ShahJabir](https://github.com/ShahJabir.png?size=32) [@ShahJabir](https://github.com/ShahJabir) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #19 | ![Rudraksh121a](https://github.com/Rudraksh121a.png?size=32) [@Rudraksh121a](https://github.com/Rudraksh121a) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #20 | ![Rajesh180118](https://github.com/Rajesh180118.png?size=32) [@Rajesh180118](https://github.com/Rajesh180118) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #21 | ![Nandan3](https://github.com/Nandan3.png?size=32) [@Nandan3](https://github.com/Nandan3) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
+| #22 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #23 | ![BejadiRajeshReddy](https://github.com/BejadiRajeshReddy.png?size=32) [@BejadiRajeshReddy](https://github.com/BejadiRajeshReddy) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #24 | ![Amitkushwaha7](https://github.com/Amitkushwaha7.png?size=32) [@Amitkushwaha7](https://github.com/Amitkushwaha7) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #25 | ![Akshaysrajan](https://github.com/Akshaysrajan.png?size=32) [@Akshaysrajan](https://github.com/Akshaysrajan) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #26 | ![Adityapradhan14](https://github.com/Adityapradhan14.png?size=32) [@Adityapradhan14](https://github.com/Adityapradhan14) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #27 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #28 | ![00suryavanshi00](https://github.com/00suryavanshi00.png?size=32) [@00suryavanshi00](https://github.com/00suryavanshi00) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
 
 ---
 
 ## 📊 Challenge Statistics
 
-- **Total Participants:** 27
-- **Total Submissions:** 30
+- **Total Participants:** 28
+- **Total Submissions:** 31
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-11-28
 
