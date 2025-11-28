@@ -1,22 +1,25 @@
-# EKS Cluster Configuration
-# Using AWS Provider 5.x (Latest stable version compatible with EKS module 20.x)
+# EKS Cluster Configuration with Custom Modules
+# Day 20: Custom Module Demo for EKS, VPC, IAM, and Secrets Manager
 
-# VPC Module for EKS
+# Data sources
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+data "aws_caller_identity" "current" {}
+
+# Custom VPC Module
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  source = "./modules/vpc"
 
-  name = "eks-vpc"
-  cidr = var.vpc_cidr
-
-  azs             = data.aws_availability_zones.available.names
+  name_prefix     = var.cluster_name
+  vpc_cidr        = var.vpc_cidr
+  azs             = slice(data.aws_availability_zones.available.names, 0, 3)
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
 
-  enable_nat_gateway   = true
-  single_nat_gateway   = true
-  enable_dns_hostnames = true
-  enable_dns_support   = true
+  enable_nat_gateway = true
+  single_nat_gateway = true
 
   # Required tags for EKS
   public_subnet_tags = {
@@ -32,72 +35,67 @@ module "vpc" {
   tags = {
     Environment = var.environment
     Terraform   = "true"
+    Project     = "EKS-Day20"
   }
 }
 
-# EKS Cluster Module
+# Custom IAM Module
+module "iam" {
+  source = "./modules/iam"
+
+  cluster_name = var.cluster_name
+
+  tags = {
+    Environment = var.environment
+    Terraform   = "true"
+    Project     = "EKS-Day20"
+  }
+}
+
+# Custom EKS Module
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.0"
+  source = "./modules/eks"
 
-  cluster_name    = var.cluster_name
-  cluster_version = var.kubernetes_version
+  cluster_name       = var.cluster_name
+  kubernetes_version = var.kubernetes_version
+  vpc_id             = module.vpc.vpc_id
+  subnet_ids         = module.vpc.private_subnets
 
-  # Enable cluster endpoint access
-  cluster_endpoint_public_access  = true
-  cluster_endpoint_private_access = true
+  cluster_role_arn = module.iam.cluster_role_arn
+  node_role_arn    = module.iam.node_group_role_arn
 
-  # Enable IRSA (IAM Roles for Service Accounts)
+  endpoint_public_access  = true
+  endpoint_private_access = true
+  public_access_cidrs     = ["0.0.0.0/0"]
+
   enable_irsa = true
 
-  # Cluster addons
-  cluster_addons = {
-    coredns = {
-      most_recent = true
-    }
-    kube-proxy = {
-      most_recent = true
-    }
-    vpc-cni = {
-      most_recent = true
-    }
-    # EBS CSI driver can be added later if needed
-    # aws-ebs-csi-driver = {
-    #   most_recent = true
-    # }
-  }
-
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
-
-  # EKS Managed Node Groups
-  eks_managed_node_groups = {
+  # Node groups configuration
+  node_groups = {
     general = {
-      name           = "general"
       instance_types = ["t3.medium"]
-
-      min_size     = 2
-      max_size     = 4
-      desired_size = 2
+      desired_size   = 2
+      min_size       = 2
+      max_size       = 4
+      capacity_type  = "ON_DEMAND"
+      disk_size      = 20
 
       labels = {
         role = "general"
       }
 
       tags = {
-        Environment = var.environment
-        NodeGroup   = "general"
+        NodeGroup = "general"
       }
     }
 
     spot = {
-      name           = "spot"
       instance_types = ["t3.medium", "t3a.medium"]
+      desired_size   = 1
+      min_size       = 1
+      max_size       = 3
       capacity_type  = "SPOT"
-
-      min_size     = 1
-      max_size     = 3
-      desired_size = 1
+      disk_size      = 20
 
       labels = {
         role = "spot"
@@ -110,14 +108,45 @@ module "eks" {
       }]
 
       tags = {
-        Environment = var.environment
-        NodeGroup   = "spot"
+        NodeGroup = "spot"
       }
     }
   }
 
-  # Cluster access entry for the current AWS caller
-  enable_cluster_creator_admin_permissions = true
+  tags = {
+    Environment = var.environment
+    Terraform   = "true"
+    Project     = "EKS-Day20"
+  }
+
+  depends_on = [module.iam]
+}
+
+# Custom Secrets Manager Module (Optional - for demo)
+module "secrets_manager" {
+  source = "./modules/secrets-manager"
+
+  name_prefix = var.cluster_name
+
+  # Enable secrets as needed
+  create_db_secret         = var.enable_db_secret
+  create_api_secret        = var.enable_api_secret
+  create_app_config_secret = var.enable_app_config_secret
+
+  # Database credentials (if enabled)
+  db_username = var.db_username
+  db_password = var.db_password
+  db_engine   = var.db_engine
+  db_host     = var.db_host
+  db_port     = var.db_port
+  db_name     = var.db_name
+
+  # API keys (if enabled)
+  api_key    = var.api_key
+  api_secret = var.api_secret
+
+  # App config (if enabled)
+  app_config = var.app_config
 
   tags = {
     Environment = var.environment
@@ -125,11 +154,3 @@ module "eks" {
     Project     = "EKS-Day20"
   }
 }
-
-# Data source for AWS availability zones
-data "aws_availability_zones" "available" {
-  state = "available"
-}
-
-# Data source for AWS caller identity
-data "aws_caller_identity" "current" {}

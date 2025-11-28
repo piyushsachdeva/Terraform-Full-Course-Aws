@@ -1,4 +1,4 @@
-# Variables for EKS Cluster Configuration
+# Variables for EKS Cluster Configuration with Custom Modules
 
 variable "aws_region" {
   description = "AWS region where resources will be created"
@@ -40,4 +40,82 @@ variable "public_subnets" {
   description = "List of public subnet CIDR blocks"
   type        = list(string)
   default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+}
+
+# Secrets Manager Variables (Optional)
+variable "enable_db_secret" {
+  description = "Enable database credentials secret"
+  type        = bool
+  default     = false
+}
+
+variable "db_username" {
+  description = "Database username"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "db_password" {
+  description = "Database password"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "db_engine" {
+  description = "Database engine"
+  type        = string
+  default     = "postgres"
+}
+
+variable "db_host" {
+  description = "Database host"
+  type        = string
+  default     = ""
+}
+
+variable "db_port" {
+  description = "Database port"
+  type        = number
+  default     = 5432
+}
+
+variable "db_name" {
+  description = "Database name"
+  type        = string
+  default     = ""
+}
+
+variable "enable_api_secret" {
+  description = "Enable API keys secret"
+  type        = bool
+  default     = false
+}
+
+variable "api_key" {
+  description = "API key"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "api_secret" {
+  description = "API secret"
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "enable_app_config_secret" {
+  description = "Enable application config secret"
+  type        = bool
+  default     = false
+}
+
+variable "app_config" {
+  description = "Application configuration as a map"
+  type        = map(string)
+  default     = {}
+  sensitive   = true
 }
