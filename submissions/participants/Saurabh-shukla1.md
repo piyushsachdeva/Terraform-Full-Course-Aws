@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-25
 
 ---
 
@@ -31,6 +31,24 @@ Intro Terrraform
 What is Iac
 Terrafrom workflow
 Terraform Installation
+
+---
+
+## Day 2: Providers in Terraform
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Providers in Terraform](https://medium.com/@saurabhshukla6392/terraform-providers-fab346f0cc30)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Tech_KeenMe/status/1993263955779744118)
+- **Code Repository:** [GitHub](https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws)
+- **Issue:** [#50](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/50)
+
+### 🎯 Key Learnings
+
+Today I learned provider, plugins, written first .tf (hcl) config
 
 ---
 
