@@ -1,0 +1,32 @@
+# Nandan3 - 30 Days Terraform & AWS Challenge
+
+**Participant:** @Nandan3  
+**Start Date:** 2025-11-25  
+**Challenge Repository:** [terraform-aws-30days](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws)  
+**Personal Practice Repo:** https://github.com/Nandan3/Terraform-Full-Course-Aws
+
+## Progress Overview
+- **Days Completed:** 1/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-25
+
+---
+
+## Day 1: Infrastructure as a Code
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Infrastructure as a Code](https://dev.to/nandan_52cdba1f39/description-of-infrastructure-as-a-code-4kkb)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7399026528908607488/)
+- **Code Repository:** [GitHub](https://github.com/Nandan3/Terraform-Full-Course-Aws)
+- **Issue:** [#53](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/53)
+
+### 🎯 Key Learnings
+
+Today I learnt advantages of Infrastructure as a Code (IaC) over Traditional Infrastructure creation. Various automation tools for configuring the infrastructure mainly Terraform. ended with terraform workflow terraform architecture and installation proceedure.
+
+---
+
