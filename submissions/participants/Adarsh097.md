@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 3 days
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -50,6 +50,27 @@
 2. Creating IAM user for authentication.
 3. sample of provider.tf file
 4. versioning 
+
+---
+
+## Day 3:  Create an AWS S3 Bucket Using Terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 -  Create an AWS S3 Bucket Using Terraform](https://lnkd.in/gKKNfCWx)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/adarsh-gupta-ad555_30daysofawsterraform-terraform-aws-activity-7399405730895818752-nMol?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5K1_4BxQQMT1CdUK4VCPo8aRp9A-CUcYw)
+- **Code Repository:** [GitHub](https://lnkd.in/gSsJm-qv)
+- **Issue:** [#102](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/102)
+
+### 🎯 Key Learnings
+
+1. Creating IAM user and attaching policies for S3,VPC
+2. Creating S3  bucket
+3. Creating VPC 
+4. Implementing the implicit dependency between s3-bucket and vpc in task.
 
 ---
 
