@@ -15,6 +15,15 @@ provider "aws" {
   region = var.aws_region
 }
 
+# Secrets Module
+module "secrets" {
+  source = "./modules/secrets"
+
+  project_name = var.project_name
+  environment  = var.environment
+  db_username  = var.db_username
+}
+
 # VPC Module
 module "vpc" {
   source = "./modules/vpc"
@@ -46,7 +55,7 @@ module "rds" {
   db_security_group_id = module.security_groups.db_sg_id
   db_name              = var.db_name
   db_username          = var.db_username
-  db_password          = var.db_password
+  db_password          = module.secrets.db_password
   instance_class       = var.db_instance_class
   allocated_storage    = var.db_allocated_storage
   engine_version       = var.db_engine_version
@@ -63,6 +72,6 @@ module "ec2" {
   web_security_group_id = module.security_groups.web_sg_id
   db_host               = module.rds.db_endpoint
   db_username           = var.db_username
-  db_password           = var.db_password
+  db_password           = module.secrets.db_password
   db_name               = var.db_name
 }

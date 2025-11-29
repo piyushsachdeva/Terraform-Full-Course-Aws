@@ -60,13 +60,6 @@ variable "db_username" {
   sensitive   = true
 }
 
-variable "db_password" {
-  description = "Database master password"
-  type        = string
-  default     = "Password123!"
-  sensitive   = true
-}
-
 variable "db_instance_class" {
   description = "RDS instance class"
   type        = string

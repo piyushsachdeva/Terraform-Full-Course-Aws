@@ -17,7 +17,7 @@ ec2_instance_type = "t2.micro"
 # RDS Settings
 db_name              = "webappdb"
 db_username          = "admin"
-db_password          = "YourSecurePassword123!"  # Change this!
+# db_password is now automatically generated and stored in Secrets Manager
 db_instance_class    = "db.t3.micro"
 db_allocated_storage = 10
 db_engine_version    = "8.0"
