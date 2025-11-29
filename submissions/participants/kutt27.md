@@ -6,9 +6,9 @@
 **Personal Practice Repo:** n/a
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-25
 
 ---
 
@@ -31,6 +31,33 @@
 - Different tools
 - Terraform commands such as init, validate, plan, apply, destory.
 - Terraform architecture
+
+---
+
+## Day 2: Terraform Providers - AWS
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform Providers - AWS](https://amals27.hashnode.dev/terraform-providers)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amal-s27_30daysofawsterraform-activity-7399129272457654272-ifix?utm_source=share&utm_medium=member_desktop&rcm=ACoAADITuXYB_z6HwgAdORpOS6vf6yoneZlgQFQ)
+- **Code Repository:** [GitHub](https://github.com/kutt27/terraform-30-days/)
+- **Issue:** [#70](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/70)
+
+### 🎯 Key Learnings
+
+- Providers
+- How HCL works with other providers
+- Version 
+- Version operators
+- Random provider as a useful tool
+- Different providers - official, partner, community
+- Writing simple .tf file for vpc creation
+- iam creation for specific use cases
+- terraform init, plan
+- State file creation
 
 ---
 
