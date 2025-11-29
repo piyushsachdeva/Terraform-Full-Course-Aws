@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform/tree/main/Day1
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-25
 
 ---
 
@@ -27,6 +27,24 @@
 ### 🎯 Key Learnings
 
 Today i learn about what is **IAC** and why need IAC  and  why  we use **Terraform** and  its benefit and terraform flow how it work
+
+---
+
+## Day 2: Terraform AWS Providers
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform AWS Providers](https://x.com/Rudraks42272163/status/1993359195962589617?s=20)
+
+### 🔗 Links
+- **Social Media:** [Post](https://medium.com/@rudrakshkanungo2022/understanding-terraform-providers-the-real-engine-behind-your-iac-f751a1ef6e80)
+- **Code Repository:** [GitHub](https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform/tree/main/day02-terraform-providers)
+- **Issue:** [#69](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/69)
+
+### 🎯 Key Learnings
+
+I learn behind how terraform able to make resource on aws and how i configure my aws with terraform
 
 ---
 
