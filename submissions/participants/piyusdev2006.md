@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/piyusdev2006/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -39,6 +39,32 @@
 - Provides consistency and automation
 
 - Easy Terraform installation steps
+
+---
+
+## Day 2: Terraform Provider
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform Provider](https://codedotdev.medium.com/terraform-day-02-understanding-providers-writing-my-first-script-deploying-aws-resources-ef9072910f82)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/ns51_devops-terraform-iac-activity-7399398537819770880-PnY2?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvV2UIBPRm9p0cACKvqC65HEDLocVKNy9Y)
+- **Code Repository:** [GitHub](https://github.com/piyusdev2006/Terraform-Full-Course-Aws)
+- **Issue:** [#101](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/101)
+
+### 🎯 Key Learnings
+
+## Today I successfully learned:
+
+- How Terraform Providers work
+- Why provider versions matter
+- Created my first Terraform script
+- Installed / configured AWS CLI
+- Authenticated Terraform with AWS
+- Ran terraform init, validate, and plan
+- Verified infrastructure execution plan
 
 ---
 
