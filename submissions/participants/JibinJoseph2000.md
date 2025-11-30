@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/JibinJoseph2000/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-25
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -30,6 +30,27 @@
 - Challenges faced in Manual Infrastructure Management
 - How Terraform solves the challenges
 - Terraform Installation
+
+---
+
+## Day 4: Terraform State file Management
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file Management](https://getting-started-with-terraform-aws.hashnode.dev/iac-day-4-of-my-30daysofawsterraform-journey?showSharer=true)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/jibinjoseph2000_30daysofawsterraform-terraform-aws-activity-7400587721745973248-twai?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjmrYsB3rFK78_GdvzE8PFRYAW9QrhWdkw)
+- **Code Repository:** [GitHub](https://github.com/JibinJoseph2000/Terraform-Full-Course-Aws/tree/main/lessons/day04)
+- **Issue:** [#254](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/254)
+
+### 🎯 Key Learnings
+
+- What is terraform.tfstate
+- Why terraform.tfstate is important
+- Uses of Remote backend and State Locking
+- Sample hands on scripts.
 
 ---
 
