@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/AlAfiz/Practice-terraform-providers/tree/master/Day%2004
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-28
 
@@ -31,6 +31,26 @@
 3. S3 remote backend makes Terraform professional and safe.
 4. State locking prevents broken deployments.
 5. Understanding state and how Terraform really works.
+
+---
+
+## Day 3: S3 Bucket 
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - S3 Bucket ](https://dev.to/alafiz/creating-my-first-s3-bucket-with-terraform-5268)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/zakariyau-mukhtar-01162137b_creating-my-first-s3-bucket-with-terraform-activity-7400171529545646080-FyVx?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF3i4M0Bz3am0ywJwnZx8RbfVrIVxsqgAug)
+- **Code Repository:** [GitHub](https://github.com/AlAfiz/Practice-terraform-providers/tree/master/Day%2003)
+- **Issue:** [#206](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/206)
+
+### 🎯 Key Learnings
+
+1. Terraform apply to create resources.
+2. How to auto approve Terraform apply.
+3. Terraform destroy to destroy resources.
 
 ---
 
