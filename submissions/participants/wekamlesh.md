@@ -6,9 +6,9 @@
 **Personal Practice Repo:** _Noresponse_
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 2 days
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-25
 
 ---
 
@@ -46,6 +46,26 @@
 ### 🎯 Key Learnings
 
 - How to create a vpc and S3
+
+---
+
+## Day 1: How does terrraform work intro to IaC
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - How does terrraform work intro to IaC](https://kamleshmerugu.me/blogs/1-of-30-how-does-terraform-work-intro-to-iac/)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/kamleshmerugu_day-1-of-30-how-does-terraform-work-intro-activity-7398973399018086400-Cw55?utm_source=share&utm_medium=member_desktop&rcm=ACoAACayXUQBSP9aP5sVEIgoeFRjNtC1cI7uAc4)
+- **Code Repository:** [GitHub](_Noresponse_)
+- **Issue:** [#47](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/47)
+
+### 🎯 Key Learnings
+
+- what is terraform
+- How it is used by Infra engineers
+- what problem does it solve in infrastructure provision. 
 
 ---
 
