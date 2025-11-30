@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/dhanushboopthy/Terraform-Full-Course-Aws/tree/main/lessons/day02
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-24
 
 ---
 
@@ -45,6 +45,27 @@ I have created a terraform file for creating a aws resource.
 ### 🎯 Key Learnings
 
 I have learned about the statefile . Remote backend for the statefile . I have learned about the concept of current state and desired state has difference.
+
+---
+
+## Day 1: Terraform installation and setup
+**Date:** 2025-11-24  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Terraform installation and setup](https://medium.com/@dhanushbopathy/starting-my-30daysofawsterraform-challenge-347c3d6d7ee7)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/ab-dhanush_30daysofawsterraform-30daysofawsterraform-activity-7398769875436904448-8Kau?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbJNxIB2332pCFsPAtdN9vLvEgI46rvzDY)
+- **Code Repository:** [GitHub](https://github.com/dhanushboopthy/Terraform-Full-Course-Aws)
+- **Issue:** [#25](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/25)
+
+### 🎯 Key Learnings
+
+Infra as a code
+Why we need IAC
+How terraform works
+Terraform installation
 
 ---
 
