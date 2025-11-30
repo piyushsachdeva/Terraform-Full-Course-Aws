@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/BejadiRajeshReddy/30-Days-AWS-Terraform-Challenge.git
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 3/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -47,6 +47,24 @@
 ### 🎯 Key Learnings
 
 Today I Learnt Terraform Providers & Versioning in Depth
+
+---
+
+## Day 4: Terraform State Management & Remote Backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State Management & Remote Backend](https://bejadirajeshreddy.hashnode.dev/day-4-terraform-state-management-and-remote-backend)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/rajeshreddybejadi_430-terraform-state-file-management-with-activity-7399812881669869568-oflz?utm_source=share&utm_medium=member_desktop&rcm=ACoAACtOAmUBhMKAawGNShowAOwp-oCW6MwdWis)
+- **Code Repository:** [GitHub](https://github.com/BejadiRajeshReddy/30-Days-AWS-Terraform-Challenge.git)
+- **Issue:** [#163](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/163)
+
+### 🎯 Key Learnings
+
+Today I learnt state management in terraform
 
 ---
 
