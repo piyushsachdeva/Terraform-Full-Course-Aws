@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/bhaskaratejabulusu/aws-terraform
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-25
 
 ---
 
@@ -31,6 +31,29 @@ Today I learned
 - Flow of Terraform
 - Pros of using Terraform
 - what exactly is IaC
+
+---
+
+## Day 2: Understanding Terraform Provider and Versioning 
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Understanding Terraform Provider and Versioning ](https://dev.to/bhaskara_tejabulusu_b4bf/day-02-terraform-provider-2n67)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/bhaskara-teja-bulusu-31408a332_30daysofawsterraform-aws-terraform-activity-7399030513002250240-epyb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOpLUABzFgozxh_N038umSXOQa-mnC8Rmc)
+- **Code Repository:** [GitHub](https://github.com/bhaskaratejabulusu/aws-terraform)
+- **Issue:** [#52](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/52)
+
+### 🎯 Key Learnings
+
+Today I learned
+- What is terraform provider
+- internal working of terraform provider
+- versioning 
+- why versioning matters
+- versioning constraints
 
 ---
 
