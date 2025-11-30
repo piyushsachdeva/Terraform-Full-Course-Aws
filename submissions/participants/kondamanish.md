@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/kondamanish/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -27,6 +27,24 @@
 ### 🎯 Key Learnings
 
 learned more about the terraform providers and versions
+
+---
+
+## Day 3: EC2 instance creation
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - EC2 instance creation](https://medium.com/@kondamanish14/day-03-creating-an-s3-bucket-with-terraform-62f61d119979)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KondaManish3/status/1993735793672622207)
+- **Code Repository:** [GitHub](https://github.com/kondamanish/Terraform-Full-Course-Aws/blob/main/lessons/day03/)
+- **Issue:** [#124](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/124)
+
+### 🎯 Key Learnings
+
+I learnt how to create the s3 bucket using terraform in AWS and also learnt about the aws authentication
 
 ---
 
