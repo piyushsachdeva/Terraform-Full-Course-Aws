@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/TanseerS/Terraform-AWS/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 3/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -62,6 +62,33 @@ Covered:
 <img width=973 height=348 alt=Image src=https://github.com/user-attachments/assets/5500a7bd-7347-46bc-a081-116552a2006f />
 
 <img width=933 height=346 alt=Image src=https://github.com/user-attachments/assets/abb43b45-e878-42a8-b696-25dc2484dddd />
+
+---
+
+## Day 4: Terraform State file management with AWS S3 & Remote Backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management with AWS S3 & Remote Backend](https://terraform-and-aws.hashnode.dev/how-to-manage-terraform-state-files-with-aws-s3)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KhanTanseer2/status/1993977691201233058?s=20)
+- **Code Repository:** [GitHub](https://github.com/TanseerS/Terraform-AWS/tree/main/Day-4)
+- **Issue:** [#146](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/146)
+
+### 🎯 Key Learnings
+
+Day - 4 :
+
+- Terraform state file basics
+- Problems with local state
+- Using AWS S3 as a remote backend
+- State locking with s3
+
+<img width=1085 height=473 alt=Image src=https://github.com/user-attachments/assets/6398376f-8ede-47ff-a543-ecdeb71c7bb3 />
+
+<img width=1440 height=900 alt=Image src=https://github.com/user-attachments/assets/e681a81f-e5c0-4993-bbd5-19c56b245093 />
 
 ---
 
