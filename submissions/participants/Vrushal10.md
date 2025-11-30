@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Vrushal10/Terraform-Full-Course-Aws.git
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -51,6 +51,27 @@
 - What are the version operators with exmaples
 - Created a new main,tf file a simple provider code and initialized it using terraform init.
 - Used terraform plan to see how does terraform plan the resource deployment.
+
+---
+
+## Day 3: S3 Bucket Creation
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - S3 Bucket Creation](https://medium.com/@vrushalkamate/creating-an-aws-s3-bucket-using-terraform-a-beginner-friendly-guide-39f9a7da3d8f)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/vrushalkamate_terraform-30daysofawsterraform-aws-share-7399654923040174080-EI8r?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAU-jI8B7fEllG7wethHYN4tpVIcukpu6Mg)
+- **Code Repository:** [GitHub](https://github.com/Vrushal10/30daysofawsterraform.git)
+- **Issue:** [#139](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/139)
+
+### 🎯 Key Learnings
+
+- USe of aws configure for AWS auth
+- Writing the S3 bucket main.tf using example code from terraformregistry.io
+- Use of terraform init → plan → apply commands
+- Automation with terraform apply --auto-approve
 
 ---
 
