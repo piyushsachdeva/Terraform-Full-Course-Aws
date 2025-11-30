@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ShajithSritharan/30daysofAWSTerraform/tree/main/Day-02
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -33,6 +33,28 @@ Today I learned
 -  Where to find and read provider docs
 - How to write a provider block with version constraints
 - Why pinning versions matters and how to do it safely
+
+---
+
+## Day 4: Terraform State file management with AWS S3 | Remote Backend
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management with AWS S3 | Remote Backend](https://medium.com/@shajithsritharan/30daysofawsterraform-73c0a50071c1?postPublishedType=initial)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/shanshri2/status/1993780354126356845)
+- **Code Repository:** [GitHub](https://github.com/ShajithSritharan/30daysofAWSTerraform/tree/main/Day-04)
+- **Issue:** [#192](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/192)
+
+### 🎯 Key Learnings
+
+Today I learned
+    - Why Terraform state matters and how it tracks desired vs. actual infrastructure.
+    - How to move state to an S3 backend and initialize it safely.
+    - The core state commands (list, show, pull, rm, import, mv) and when to use each.
+    - Best practices to keep state secure, isolated per environment, and recoverable.
 
 ---
 
