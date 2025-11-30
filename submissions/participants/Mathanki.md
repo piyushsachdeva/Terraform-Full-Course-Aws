@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Mathanki/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -57,6 +57,26 @@ Here's what I learned on Day 4:
 ✅ Remote backend setup with S3
 ✅ S3 Native State Locking (No DynamoDB required)
 ✅ State management
+
+---
+
+## Day 3: https://www.youtube.com/watch?v=09HQ_R1P7Lw&list=PLl4APkPHzsUXcfBSJDExYR-a4fQiZGmMp&index=4
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - https://www.youtube.com/watch?v=09HQ_R1P7Lw&list=PLl4APkPHzsUXcfBSJDExYR-a4fQiZGmMp&index=4](https://medium.com/@mathanki-nirojan/day-3-creating-a-vpc-and-s3-bucket-with-terraform-30daysofawsterraform-f5e5c03a9fee)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/mathanki-nirojan_day-3-creating-a-vpc-and-s3-bucket-with-activity-7399905361530421248-pOJt?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABdk3b0BiBXxhhkt3X2ADBwOUnQwgbYsTzQ)
+- **Code Repository:** [GitHub](https://github.com/Mathanki/Terraform-Full-Course-Aws/tree/master/Day3)
+- **Issue:** [#188](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/188)
+
+### 🎯 Key Learnings
+
+Today i have learned 
+✅Authentication and Authorization to AWS resources
+✅Created a terraform file to provision VPC and S3 bucket and created implicit dependency between them
 
 ---
 
