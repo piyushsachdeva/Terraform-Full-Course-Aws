@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/bishalranjit0606/30-Days-Of-Aws-Terraform
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -45,6 +45,24 @@ today i learned about that iac helps to provision and maintain or infrastructure
 ### 🎯 Key Learnings
 
 Today i learned about terraform providers. typer of provider and the operators used in terraform provider
+
+---
+
+## Day 4: Terraform State File
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State File](https://medium.com/@bishalranjit2002/day-4-terraform-state-file-7496e26798d3?postPublishedType=initial)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/BishalRanjit66/status/1994223662074089954?s=20)
+- **Code Repository:** [GitHub](https://github.com/bishalranjit0606/30-Days-Of-Aws-Terraform/blob/main/day4/main.tf)
+- **Issue:** [#190](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/190)
+
+### 🎯 Key Learnings
+
+Today I learned the vital importance of the Terraform State File! I successfully implemented an AWS S3 Remote Backend to ensure state durability, team collaboration, and state locking.
 
 ---
 
