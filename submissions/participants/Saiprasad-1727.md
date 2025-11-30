@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/blob/main/DAY-02/DAY-02-Providerd.md
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-25
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -49,6 +49,30 @@ Best practices:
 ⏭️ Use and commit the lock file
 
 ⏭️ Document version requirements
+
+---
+
+## Day 4: Terraform State Files and Remote Backends
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State Files and Remote Backends](https://saiprasadannam.substack.com/p/infrastructure-as-code-iac-day-04)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7399888055622393857/?originTrackingId=SkplmjVKA%2FHY%2BSf9SC19UQ%3D%3D)
+- **Code Repository:** [GitHub](https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/tree/main/DAY-04)
+- **Issue:** [#185](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/185)
+
+### 🎯 Key Learnings
+
+Today i have learned that how 
+
+• Terraform uses a state file to remember the resources it creates.
+• It compares desired vs actual state to decide what to add or change.
+• The state file contains sensitive data and must be stored safely.
+• Using a remote backend (AWS S3) keeps it secure and enables team collaboration.
+• State locking prevents conflicts and keeps Terraform operations reliable.
 
 ---
 
