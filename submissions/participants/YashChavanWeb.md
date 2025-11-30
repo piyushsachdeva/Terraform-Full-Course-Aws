@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/YashChavanWeb/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -50,6 +50,28 @@ Here’s what I learned:
 
 - Some beginner tf commands for creating resources
 - Setting up AWS resources like EC2 instances and VPCs using Terraform.
+
+---
+
+## Day 4: Terraform State file management with AWS S3 as Remote Backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management with AWS S3 as Remote Backend](https://terraform-with-aws.hashnode.dev/day-4-terraform-state-file-and-remote-backend)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/yashchavanweb_30daysofawsterraform-terraform-aws-activity-7399807892268322816-E3qN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOxF0Bb_jrJGYnEfOH6ZnNkRuI2CZ235Y)
+- **Code Repository:** [GitHub](https://github.com/YashChavanWeb/Terraform-Full-Course-Aws)
+- **Issue:** [#161](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/161)
+
+### 🎯 Key Learnings
+
+Today I got to know about, 
+ 
+- 𝗦𝘁𝗮𝘁𝗲 𝗹𝗼𝗰𝗸𝗶𝗻𝗴 to prevent conflicts
+- Resource migration 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀
+- Best practices like environment isolation and 𝗿𝗲𝗴𝘂𝗹𝗮𝗿 𝗯𝗮𝗰𝗸𝘂𝗽𝘀
 
 ---
 
