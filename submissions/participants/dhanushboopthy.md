@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/dhanushboopthy/Terraform-Full-Course-Aws/tree/main/lessons/day02
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -66,6 +66,24 @@ Infra as a code
 Why we need IAC
 How terraform works
 Terraform installation
+
+---
+
+## Day 3: Aws s3 creation
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Aws s3 creation](https://medium.com/@dhanushbopathy/day-03-creating-aws-s3-buckets-understanding-aws-authentication-30daysofawsterraform-dd91acf81ca7)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/ab-dhanush_30daysofawsterraform-30daysofawsterraform-activity-7399802317509726208-ilN2?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbJNxIB2332pCFsPAtdN9vLvEgI46rvzDY)
+- **Code Repository:** [GitHub](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/tree/main/lessons/day03)
+- **Issue:** [#158](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/158)
+
+### 🎯 Key Learnings
+
+I have learned about how to create a s3 bucket using the Terraform. I have got y hands dirty with it
 
 ---
 
