@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 3 days
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -56,6 +56,26 @@ What exactly are terraform providers.
 How they will be used and what works under the hood.
 Why Versions are super important and what are the version contarints.
 What is the process to authenticate and authorize into AWS Cloud and create resources using Terraform.
+
+---
+
+## Day 3: S3 Bucket creation using terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - S3 Bucket creation using terraform](https://dev.to/anil_kumar_noolu/day-3-creating-aws-s3-bucket-using-terraform-1fcl)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/anilkumarr17147/status/1993697158386622941?t=i9uxwUI3BiT8eVEDVFMbLw&s=19)
+- **Code Repository:** [GitHub](https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws)
+- **Issue:** [#110](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/110)
+
+### 🎯 Key Learnings
+
+Today I learned on creating S3 Buckets using terraform.
+Authenticating and Authorizing for AWS Account.
+S3 bucket management.
 
 ---
 
