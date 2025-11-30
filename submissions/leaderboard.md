@@ -44,18 +44,19 @@
 | #36 | ![Souradip121](https://github.com/Souradip121.png?size=32) [@Souradip121](https://github.com/Souradip121) | 1/30 | 1 day | Day 10 | 2025-07-16 | 💤 Inactive |
 | #37 | ![ShajithSritharan](https://github.com/ShajithSritharan.png?size=32) [@ShajithSritharan](https://github.com/ShajithSritharan) | 1/30 | 1 day | Day 2 | 2025-11-26 | 🔥 Active |
 | #38 | ![ShahJabir](https://github.com/ShahJabir.png?size=32) [@ShahJabir](https://github.com/ShahJabir) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #39 | ![Nandan3](https://github.com/Nandan3.png?size=32) [@Nandan3](https://github.com/Nandan3) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
-| #40 | ![JibinJoseph2000](https://github.com/JibinJoseph2000.png?size=32) [@JibinJoseph2000](https://github.com/JibinJoseph2000) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
-| #41 | ![Akshaysrajan](https://github.com/Akshaysrajan.png?size=32) [@Akshaysrajan](https://github.com/Akshaysrajan) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #42 | ![Adityapradhan14](https://github.com/Adityapradhan14.png?size=32) [@Adityapradhan14](https://github.com/Adityapradhan14) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
-| #43 | ![00suryavanshi00](https://github.com/00suryavanshi00.png?size=32) [@00suryavanshi00](https://github.com/00suryavanshi00) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #39 | ![Saiprasad-1727](https://github.com/Saiprasad-1727.png?size=32) [@Saiprasad-1727](https://github.com/Saiprasad-1727) | 1/30 | 1 day | Day 2 | 2025-11-25 | 🔥 Active |
+| #40 | ![Nandan3](https://github.com/Nandan3.png?size=32) [@Nandan3](https://github.com/Nandan3) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
+| #41 | ![JibinJoseph2000](https://github.com/JibinJoseph2000.png?size=32) [@JibinJoseph2000](https://github.com/JibinJoseph2000) | 1/30 | 1 day | Day 1 | 2025-11-25 | 🔥 Active |
+| #42 | ![Akshaysrajan](https://github.com/Akshaysrajan.png?size=32) [@Akshaysrajan](https://github.com/Akshaysrajan) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #43 | ![Adityapradhan14](https://github.com/Adityapradhan14.png?size=32) [@Adityapradhan14](https://github.com/Adityapradhan14) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
+| #44 | ![00suryavanshi00](https://github.com/00suryavanshi00.png?size=32) [@00suryavanshi00](https://github.com/00suryavanshi00) | 1/30 | 1 day | Day 1 | 2025-11-24 | 🔥 Active |
 
 ---
 
 ## 📊 Challenge Statistics
 
-- **Total Participants:** 43
-- **Total Submissions:** 64
+- **Total Participants:** 44
+- **Total Submissions:** 65
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-11-30
 
