@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/prasoongupta925/Terraform-Full-Course-Aws/blob/main/lessons/day02/main.tf
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -45,6 +45,24 @@ Providers are essential plugins that translate Terraform configuration into API 
 ### 🎯 Key Learnings
 
 Today I learned how important the Terraform state file is as the single source of truth that tracks real cloud resources and keeps Terraform in sync with your infrastructure. I also understood why using a secure remote backend like S3 with locking and versioning is critical to avoid corruption, enable team collaboration, and protect sensitive state data.
+
+---
+
+## Day 3: Create a terraform file to provision VPC and S3 bucket and create implicit dependency between them
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create a terraform file to provision VPC and S3 bucket and create implicit dependency between them](https://medium.com/@prasoongupta925/day-3-my-first-aws-resource-creating-s3-buckets-and-understanding-dependencies-52d21d55c2a3)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/iamprasoongupta_day-3my-first-aws-resource-creating-s3-activity-7399780620589256704-EyLw?utm_source=share&utm_medium=member_desktop&rcm=ACoAABfI4XUBg2PLJq8QJM-2rBJ2md6awJCoxHg)
+- **Code Repository:** [GitHub](https://github.com/prasoongupta925/Terraform-Full-Course-Aws/blob/main/lessons/day03/main.tf)
+- **Issue:** [#155](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/155)
+
+### 🎯 Key Learnings
+
+Today I learned how Terraform tracks every change using its state file and updates only what’s necessary with complete precision. I also understood how implicit dependencies work automatically, making infrastructure creation cleaner and more efficient.
 
 ---
 
