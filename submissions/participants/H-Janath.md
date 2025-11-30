@@ -6,9 +6,9 @@
 **Personal Practice Repo:** _Noresponse_
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -30,6 +30,28 @@ Why did the concept of Infrastructure as Code (IaC) appear in cloud native world
 What tools are available for Infrastructure as Code
 What is the most popular and universal IaC tool
 How does Terraform work
+
+---
+
+## Day 2: Terraform AWS Provider
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform AWS Provider](https://www.linkedin.com/pulse/what-terraform-provider-janath-h-m-a-wk1kc/?trackingId=XWMS4ZuERj68aB5GM%2FYDeg%3D%3D)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7399751303079575552/)
+- **Code Repository:** [GitHub](https://github.com/H-Janath/AWS-with-Terraform-02)
+- **Issue:** [#151](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/151)
+
+### 🎯 Key Learnings
+
+Learned about Terraform Providers
+What is the difference between Provider version vs Terraform core version
+Why version matters
+Version constraints
+Operators for versions
 
 ---
 
