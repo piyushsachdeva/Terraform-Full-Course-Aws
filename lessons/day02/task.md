@@ -1,4 +1,4 @@
-## Day 01 - Quick Tasks
+## Day 02 - Quick Tasks
 
 ### What to Do
 
