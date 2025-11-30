@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Amitkushwaha7/TerraformFullCourse.git
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -49,6 +49,31 @@ Today, I learned the fundamentals of Infrastructure as Code (IaC) and why automa
 - Got a clear idea about version constraints and why locking provider versions is important. 
 - Practiced creating a basic AWS provider setup in Terraform. 
 - Run the essential commands (terraform init, aws configure, terraform plan) and understood what each one does.
+
+---
+
+## Day 4: Terraform State file management with AWS S3 | Remote Backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management with AWS S3 | Remote Backend](https://dev.to/amit_kumar_7db8e36a64dd45/terraform-state-file-management-with-aws-s3-22dj)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amitkushwaha7_30daysofterraformchallenge-30daysofterraformchallenge-activity-7399827705564860416-nI7H?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9oIyoBad7iXzGfT0vr42stLe45G8ym-YY)
+- **Code Repository:** [GitHub](https://github.com/Amitkushwaha7/TerraformFullCourse/tree/d16244f975acbb50d5afcd85a5b73161cdeb52e0/Day-04)
+- **Issue:** [#168](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/168)
+
+### 🎯 Key Learnings
+
+- Configured AWS provider
+- Set up S3 as the remote backend
+- Enabled encryption for secure state storage
+- Created a test bucket to verify everything
+- Fixed the “bucket does not exist” error while initializing
+
+<img width=1839 height=473 alt=Image src=https://github.com/user-attachments/assets/5097885b-140d-43af-a5d3-23271a3f70f4 />
+<img width=737 height=531 alt=Image src=https://github.com/user-attachments/assets/6cdcfeb5-2afd-48c2-8c79-81b43bd81199 />
 
 ---
 
