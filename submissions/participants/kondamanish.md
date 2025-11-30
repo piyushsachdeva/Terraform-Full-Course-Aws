@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/kondamanish/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 3/30
+- **Current Streak:** 3 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -45,6 +45,25 @@ learned more about the terraform providers and versions
 ### 🎯 Key Learnings
 
 I learnt how to create the s3 bucket using terraform in AWS and also learnt about the aws authentication
+
+---
+
+## Day 4: Terraform remote backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform remote backend](https://medium.com/@kondamanish14/day-04-remote-state-management-backend-setup-in-terraform-138235498b9f)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KondaManish3/status/1994103441195766141)
+- **Code Repository:** [GitHub](https://github.com/kondamanish/Terraform-Full-Course-Aws)
+- **Issue:** [#180](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/180)
+
+### 🎯 Key Learnings
+
+learned how to maintain the tf state files in  s3 bucket with lock file, securely without corrupted. 
+did the hands on for this one. 
 
 ---
 
