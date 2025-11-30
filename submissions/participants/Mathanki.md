@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Mathanki/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -33,6 +33,30 @@ Today i have learned :
 ✅ Challenges with the traditional approach
 ✅ Terraform Workflow
 ✅ Installing Terraform
+
+---
+
+## Day 4: https://www.youtube.com/watch?v=YsEdrl9O5os&list=PLl4APkPHzsUXcfBSJDExYR-a4fQiZGmMp&index=5
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - https://www.youtube.com/watch?v=YsEdrl9O5os&list=PLl4APkPHzsUXcfBSJDExYR-a4fQiZGmMp&index=5](https://medium.com/@mathanki-nirojan/day-4-terraform-state-file-management-with-aws-s3-30daysofawsterraform-38e313b8694a)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/mathanki-nirojan_day-4-terraform-state-file-management-with-activity-7399998165111848960-kdy6?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABdk3b0BiBXxhhkt3X2ADBwOUnQwgbYsTzQ)
+- **Code Repository:** [GitHub](https://github.com/Mathanki/Terraform-Full-Course-Aws/tree/master/Day4)
+- **Issue:** [#191](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/191)
+
+### 🎯 Key Learnings
+
+Here's what I learned on Day 4:
+✅ How Terraform updates Infrastructure
+✅ Terraform state file
+✅ State file best practices
+✅ Remote backend setup with S3
+✅ S3 Native State Locking (No DynamoDB required)
+✅ State management
 
 ---
 
