@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 3 days
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 4/30
+- **Current Streak:** 4 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -67,6 +67,24 @@ Today I learned provider, plugins, written first .tf (hcl) config
 ### 🎯 Key Learnings
 
 Managed my first S3 bucket using Terraform
+
+---
+
+## Day 4: Terraform state file management
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform state file management](https://medium.com/@saurabhshukla6392/day-04-bd44f6d71da2)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Tech_KeenMe/status/1993997506854969703)
+- **Code Repository:** [GitHub](https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws)
+- **Issue:** [#148](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/148)
+
+### 🎯 Key Learnings
+
+state file management in Terraform
 
 ---
 
