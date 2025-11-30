@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ankitgadling/terraformwithaws
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-25
+- **Last Submission:** 2025-11-24
 
 ---
 
@@ -28,6 +28,24 @@
 
 Providers = the connection between Terraform and AWS
 Versioning matters - lock it down to avoid surprises
+
+---
+
+## Day 1: Intro to IAC
+**Date:** 2025-11-24  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Intro to IAC](https://dev.to/ankitgadling/day-1-introduction-to-infrastructure-as-code-iac-29m4)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/ankit_gadling/status/1993004014406127668?s=20)
+- **Code Repository:** [GitHub](https://github.com/ankitgadling/terraformwithaws)
+- **Issue:** [#27](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/27)
+
+### 🎯 Key Learnings
+
+IaC is useful when we need to create cloud resources repeatedly. Using Terraform provides the ability to automate this process, saving time, money, and reducing manual errors.
 
 ---
 
