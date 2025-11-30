@@ -132,11 +132,12 @@ Below are 10 conceptual tasks, one for each variable type constraint you provide
 **Task:** Create a Terraform output block named `deployment_summary`. This output must display the following three key pieces of information, sourced from their respective variables: the overall `environment` (string), the `instance_count` (number), and the `Name` tag extracted from the `tags` map.
 
 </details>
+
   - Include your own diagrams and code examples
   - Embed the video
 - [ ] Share your blog on LinkedIn and Twitter/X with **#30daysofawsterraform**
 - [ ] Tag me (Piyush Sachdeva)
-- [ ] Submit your work (see `submission.md` for how)
+- [ ] Submit your work by creating the issue
 
 ## Tips
 
