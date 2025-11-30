@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Mo-Adnan-Mo-Ayyub/Aws-with-Terraform
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 3 days
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 4/30
+- **Current Streak:** 4 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -73,6 +73,24 @@
 - terraform apply — Deploys infrastructure
 - State file — Tracks real vs desired configuration
 - terraform destroy — Deletes infra cleanly and safely
+
+---
+
+## Day 4: Terraform State file management
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management](https://adnandevops.blogspot.com/2025/11/aws-with-terraform-day-04.html)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/mohammad-adnan-m_aws-with-terraform-day-04-activity-7399833499874131968-SVby?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJTUhEBPnFLRxXGbxJoYkEJyPfNMXNQVvI)
+- **Code Repository:** [GitHub](https://github.com/Mo-Adnan-Mo-Ayyub/Aws-with-Terraform)
+- **Issue:** [#169](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/169)
+
+### 🎯 Key Learnings
+
+- Today's session dove deep into a concept that's absolutely crucial for anyone working with Terraform, especially in team environments: the Terraform State File and how to manage it effectively using remote backends.
 
 ---
 
