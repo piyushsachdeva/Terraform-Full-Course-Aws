@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/dhanushboopthy/Terraform-Full-Course-Aws/tree/main/lessons/day02
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-25
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -27,6 +27,24 @@
 ### 🎯 Key Learnings
 
 I have created a terraform file for creating a aws resource.
+
+---
+
+## Day 4: Statefile
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Statefile](https://medium.com/@dhanushbopathy/day-04-terraform-state-file-management-remote-backend-with-s3-30daysofawsterraform-08731cd51d00)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/ab-dhanush_30daysofawsterraform-30daysofawsterraform-ugcPost-7399808639336890368-2mjn?utm_source=share&utm_medium=member_desktop&rcm=ACoAADbJNxIB2332pCFsPAtdN9vLvEgI46rvzDY)
+- **Code Repository:** [GitHub](https://github.com/dhanushboopthy/Terraform-Full-Course-Aws/tree/main/lessons/day04)
+- **Issue:** [#162](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/162)
+
+### 🎯 Key Learnings
+
+I have learned about the statefile . Remote backend for the statefile . I have learned about the concept of current state and desired state has difference.
 
 ---
 
