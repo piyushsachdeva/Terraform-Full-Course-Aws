@@ -2,6 +2,10 @@
 
 Welcome to the comprehensive Terraform with AWS video course! This repository contains all code samples and documentation corresponding to each video lesson.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=piyushsachdeva/Terraform-Full-Course-Aws&type=date&legend=top-left)](https://www.star-history.com/#piyushsachdeva/Terraform-Full-Course-Aws&type=date&legend=top-left)
+
 ## 🎯 Course Overview
 This course consists of video lessons covering basic to advanced Terraform concepts with AWS cloud, including hands-on projects and real-world scenarios.
 
