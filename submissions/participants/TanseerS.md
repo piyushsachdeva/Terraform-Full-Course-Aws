@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/TanseerS/Terraform-AWS/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 4/30
+- **Current Streak:** 3 days
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -89,6 +89,36 @@ Day - 4 :
 <img width=1085 height=473 alt=Image src=https://github.com/user-attachments/assets/6398376f-8ede-47ff-a543-ecdeb71c7bb3 />
 
 <img width=1440 height=900 alt=Image src=https://github.com/user-attachments/assets/e681a81f-e5c0-4993-bbd5-19c56b245093 />
+
+---
+
+## Day 5: DataTypes and Variables in Terraform
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - DataTypes and Variables in Terraform](https://terraform-and-aws.hashnode.dev/learn-terraform-variables-a-simple-explanation)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KhanTanseer2/status/1994357133387747508?s=20)
+- **Code Repository:** [GitHub](https://github.com/TanseerS/Terraform-AWS/tree/main/Day-5)
+- **Issue:** [#199](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/199)
+
+### 🎯 Key Learnings
+
+Topics Covered:
+
+- Terraform variables and locals
+- Data types like string, list, and map
+- Output variables
+- Using TF_VAR_environment
+- Understanding variable precedence
+
+<img width=1440 height=900 alt=Image src=https://github.com/user-attachments/assets/bae38875-fa39-4214-93be-89bc9ac9a968 />
+
+<img width=1018 height=516 alt=Image src=https://github.com/user-attachments/assets/98aeaf8a-c745-4e76-9cf8-8643bdf5aef4 />
+
+<img width=1055 height=510 alt=Image src=https://github.com/user-attachments/assets/bfd76760-8f85-418e-9a47-ba77cfe466ce />
 
 ---
 
