@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/TanseerS/Terraform-AWS/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 3 days
-- **Last Submission:** 2025-11-28
+- **Days Completed:** 5/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -119,6 +119,33 @@ Topics Covered:
 <img width=1018 height=516 alt=Image src=https://github.com/user-attachments/assets/98aeaf8a-c745-4e76-9cf8-8643bdf5aef4 />
 
 <img width=1055 height=510 alt=Image src=https://github.com/user-attachments/assets/bfd76760-8f85-418e-9a47-ba77cfe466ce />
+
+---
+
+## Day 6: Terraform folder structure
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform folder structure](https://terraform-and-aws.hashnode.dev/a-clear-guide-to-organizing-terraform-code-the-right-way)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KhanTanseer2/status/1995004675717042360?s=20)
+- **Code Repository:** [GitHub](https://github.com/TanseerS/Terraform-AWS/tree/main/Day-6)
+- **Issue:** [#262](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/262)
+
+### 🎯 Key Learnings
+
+Topics Covered:
+- How Terraform loads files
+- How to organize configs cleanly
+- Best practices for naming and grouping
+- Environment and service based layouts
+- Refactored older configs into a clean structure
+
+<img width=1440 height=900 alt=Image src=https://github.com/user-attachments/assets/539fd86e-5d68-4e31-b6de-61ec3329a4d9 />
+
+<img width=1202 height=504 alt=Image src=https://github.com/user-attachments/assets/aa84369c-5baf-4b94-8c70-b76cbc9d35da />
 
 ---
 
