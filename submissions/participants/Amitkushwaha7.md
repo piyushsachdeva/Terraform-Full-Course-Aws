@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Amitkushwaha7/TerraformFullCourse.git
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -74,6 +74,26 @@ Today, I learned the fundamentals of Infrastructure as Code (IaC) and why automa
 
 <img width=1839 height=473 alt=Image src=https://github.com/user-attachments/assets/5097885b-140d-43af-a5d3-23271a3f70f4 />
 <img width=737 height=531 alt=Image src=https://github.com/user-attachments/assets/6cdcfeb5-2afd-48c2-8c79-81b43bd81199 />
+
+---
+
+## Day 6: AWS Terraform Project Structure
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - AWS Terraform Project Structure](https://dev.to/amit_kumar_7db8e36a64dd45/-day-06-aws-terraform-project-structure-3o7h)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amitkushwaha7_30daysofterraformchallenge-terraform-learninpublic-activity-7400900683438403584-aja_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9oIyoBad7iXzGfT0vr42stLe45G8ym-YY)
+- **Code Repository:** [GitHub](https://github.com/Amitkushwaha7/TerraformFullCourse/tree/43ef1b1d766986756a381886315338388a6d7813/Day-06)
+- **Issue:** [#280](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/280)
+
+### 🎯 Key Learnings
+
+ I learned how Terraform Loads .tf files, why file structure matters, and how separating resources like VPC, S3, and providers into different files makes the project much easier to manage.
+
+<img width=1491 height=611 alt=Image src=https://github.com/user-attachments/assets/3e94a9fc-6121-4a1e-a192-e031a559b3d6 />
 
 ---
 
