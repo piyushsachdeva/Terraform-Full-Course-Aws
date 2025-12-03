@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/varshith-mohan/Terraform-AWS/tree/main
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-29
 
@@ -33,6 +33,28 @@ S3 remote backend makes Terraform professional and safe.
 State locking prevents broken deployments.
 Understanding state and how Terraform really works.
 Authentication and Authorization to AWS resources and follow IaC best practices.
+
+---
+
+## Day 5: Terraform Variables in AWS
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS](https://medium.com/@iamvarshith45/day-5-terraform-variables-in-aws-329c3e94f25d)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/varshithmohan_terraform-aws-cloudautomation-activity-7400602325641252864-7wb9?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOUsG0BKiRvXjdtA3TgVX7vet_QBEoly48)
+- **Code Repository:** [GitHub](https://github.com/varshith-mohan/Terraform-AWS)
+- **Issue:** [#257](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/257)
+
+### 🎯 Key Learnings
+
+understood Terraform variable types which are essential for writing clean, modular, and production-ready IaC. With the right use of variables, you can significantly improve Code quality, Reusability and Collaboration across teams, Improve readability and make configurations easier to understand and Store sensitive information more securely, additionally Make code more flexible, scalable, and maintainable
+
+Input Variables – To pass values into Terraform configurations
+Output Variables – To display values from a Terraform configuration.
+Local Values – To create internal variables for organizing and simplifying infrastructure code.
 
 ---
 
