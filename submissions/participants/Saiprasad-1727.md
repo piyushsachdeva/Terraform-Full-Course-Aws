@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/blob/main/DAY-02/DAY-02-Providerd.md
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -73,6 +73,28 @@ Today i have learned that how
 • The state file contains sensitive data and must be stored safely.
 • Using a remote backend (AWS S3) keeps it secure and enables team collaboration.
 • State locking prevents conflicts and keeps Terraform operations reliable.
+
+---
+
+## Day 6: Terraform File Structure
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform File Structure](https://saiprasadannam.substack.com/p/infrastructure-as-code-iac-day-06)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/saiprasad-annam_30daysofawsterraform-aws-terraform-ugcPost-7400944247409012736-URRJ?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAChoEAoBkIo2wehBR8kDv3DVqnQ29h7OqvI)
+- **Code Repository:** [GitHub](_Noresponse_)
+- **Issue:** [#287](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/287)
+
+### 🎯 Key Learnings
+
+Today i have learned about 
+-- Importance of File Organization
+-- Terraform Automatically Loads All .tf Files
+-- Recommended Terraform File Structure
+-- Introduction to Advanced Structures
 
 ---
 
