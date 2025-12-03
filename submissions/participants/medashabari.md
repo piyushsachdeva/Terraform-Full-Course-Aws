@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/medashabari/terraform-aws-complete/tree/main/day1
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Days Completed:** 4/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-12-01
 
 ---
 
@@ -79,6 +79,29 @@ What I learned today:
 • Terraform 1.10+ now supports native S3 state locking (no DynamoDB needed!)
 • How state locking prevents conflicts in collaborative/team environments
 • Testing lock behavior by running concurrent Terraform operations
+
+---
+
+## Day 5: Terraform variables
+**Date:** 2025-12-01  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform variables](https://medium.com/@shabarimeda/terraform-variables-input-local-output-precedence-deep-dive-2a9a9c83ecb2)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/shabarish-meda_terraform-aws-devops-share-7401138342588784640-mefa?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD3PQ5gBrzRUsYrFvDAHTj93UBwyIwLTeYs)
+- **Code Repository:** [GitHub](https://github.com/medashabari/terraform-aws-complete/tree/main/day5)
+- **Issue:** [#300](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/300)
+
+### 🎯 Key Learnings
+
+- Input variables → Accept values from users, files, CLI, or automation
+- Local variables → Compute and reuse internal values
+- Output variables → Expose useful information after deployment
+- Variable precedence → CLI > auto.tfvars > tfvars > environment variables > defaults > prompt
+
+<img width=1881 height=3344 alt=Image src=https://github.com/user-attachments/assets/b9d6f3e1-beef-4595-8ed6-995911eb0c3b />
 
 ---
 
