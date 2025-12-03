@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/priyanshuprafful/AWS-Terraform-
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -48,6 +48,24 @@ Installation On RHEL 9 server with full aws admin access .
 
 1. Terraform Variables
 2. Terraform Variables Precedence 
+
+---
+
+## Day 6: Terraform File Structure
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform File Structure](https://terraform-day1.hashnode.dev/from-chaos-to-clarity-mastering-terraform-file-structure)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/priyanshu8787_terraform-aws-devops-activity-7400857978490335232-TEmo)
+- **Code Repository:** [GitHub](https://github.com/priyanshuprafful/AWS-Terraform-)
+- **Issue:** [#275](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/275)
+
+### 🎯 Key Learnings
+
+Terraform File Structure Best Practices 
 
 ---
 
