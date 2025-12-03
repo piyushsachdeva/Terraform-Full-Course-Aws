@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Mathanki/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 4/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -77,6 +77,24 @@ Here's what I learned on Day 4:
 Today i have learned 
 ✅Authentication and Authorization to AWS resources
 ✅Created a terraform file to provision VPC and S3 bucket and created implicit dependency between them
+
+---
+
+## Day 5: https://www.youtube.com/watch?v=V-2yC39BONc&list=PLl4APkPHzsUXcfBSJDExYR-a4fQiZGmMp&index=8
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - https://www.youtube.com/watch?v=V-2yC39BONc&list=PLl4APkPHzsUXcfBSJDExYR-a4fQiZGmMp&index=8](https://terraformwithaws.hashnode.dev/day-5-terraform-variables-30daysofawsterraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/mathanki-nirojan_aws-terraform-iac-activity-7400225178250805248-ZqWy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABdk3b0BiBXxhhkt3X2ADBwOUnQwgbYsTzQ)
+- **Code Repository:** [GitHub](https://github.com/Mathanki/Terraform-Full-Course-Aws/tree/master/Day5)
+- **Issue:** [#219](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/219)
+
+### 🎯 Key Learnings
+
+Today learned about terraform variables
 
 ---
 
