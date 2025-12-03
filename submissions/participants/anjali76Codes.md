@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anjali76Codes/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -68,6 +68,24 @@ Plus I went through some basic Terraform commands that help in planning and appl
 Today I learned how to split my Terraform setup into a proper multi-file structure instead of keeping everything in one place.
 I set up files for variables, locals, providers, backend and outputs so the project stays clean and easier to manage.
 I also added tfvars, gitignore and example files to follow a safe workflow that works well for bigger setups.
+
+---
+
+## Day 5: Terraform Variables & Precedence
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables & Precedence](https://terraformlacwithawschallenge.hashnode.dev/day05-terraform-variables)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7400221837105963008/)
+- **Code Repository:** [GitHub](https://github.com/anjali76Codes/Terraform-Full-Course-Aws/blob/main/lessons/day03/Notes.md)
+- **Issue:** [#218](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/218)
+
+### 🎯 Key Learnings
+
+Terraform variables help avoid repetition and keep environments consistent across resources. Input variables control values from outside, locals help build clean naming patterns, and outputs return important IDs after apply. Understanding when to use each type makes the configuration easier to maintain and reduces errors. This keeps the setup flexible as the project grows.
 
 ---
 
