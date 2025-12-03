@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/Sh1vam6/30Days-of-AWS-Terraform
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-30
 
@@ -31,6 +31,24 @@ Learning Terraform core concepts today —
  Why it's important
  Remote backend
  State locking mechanism
+
+---
+
+## Day 5: Terraform Variables
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables](https://shivamgautam.hashnode.dev/day-5-of-aws-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/sh1vam6_30daysofawsterraform-30daysofawsterraform-activity-7400979177430188033-hJId?utm_source=share&utm_medium=member_desktop&rcm=ACoAADMI-FsBQ31jhDHEDb_pOSpvLKTm5ja2Z2E)
+- **Code Repository:** [GitHub](https://github.com/Sh1vam6/30Days-of-AWS-Terraform)
+- **Issue:** [#293](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/293)
+
+### 🎯 Key Learnings
+
+Today I learned about different Terraform Variables and also did hands-on.
 
 ---
 
