@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/BejadiRajeshReddy/30-Days-AWS-Terraform-Challenge.git
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 5/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -83,6 +83,24 @@ Today I learnt state management in terraform
 ### 🎯 Key Learnings
 
 Today I Learnt how to provision S3 bucket and VPC in Terraform
+
+---
+
+## Day 5: Terraform variables
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform variables](https://bejadirajeshreddy.hashnode.dev/day-5-terraform-variables-input-output-locals-and-precedence)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/rajeshreddybejadi_530-terraform-variables-in-aws-input-activity-7400446518522105857-ichZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAACtOAmUBhMKAawGNShowAOwp-oCW6MwdWis)
+- **Code Repository:** [GitHub](https://github.com/BejadiRajeshReddy/30-Days-AWS-Terraform-Challenge.git)
+- **Issue:** [#234](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/234)
+
+### 🎯 Key Learnings
+
+Today I Learnt Variables —> how they work, why we use them, and how Terraform decides their values.
 
 ---
 
