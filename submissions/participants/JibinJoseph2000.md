@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/JibinJoseph2000/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Days Completed:** 3/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -51,6 +51,28 @@
 - Why terraform.tfstate is important
 - Uses of Remote backend and State Locking
 - Sample hands on scripts.
+
+---
+
+## Day 5: Using Variables in Terraform
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Using Variables in Terraform](https://getting-started-with-terraform-aws.hashnode.dev/iac-day-5-of-my-30daysofawsterraform-journey?showSharer=true)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/jibinjoseph2000_30daysofawsterraform-terraform-aws-activity-7400948847436324864-jntl?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjmrYsB3rFK78_GdvzE8PFRYAW9QrhWdkw)
+- **Code Repository:** [GitHub](https://github.com/JibinJoseph2000/Terraform-Full-Course-Aws/tree/main/lessons/day05)
+- **Issue:** [#288](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/288)
+
+### 🎯 Key Learnings
+
+- What is a variable in terraform
+- Why variables are used in terraform
+- Types of variables
+- Precedence of input variable configurations possible
+- Sample practice guide
 
 ---
 
