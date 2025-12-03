@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 5/30
-- **Current Streak:** 5 days
-- **Last Submission:** 2025-11-28
+- **Days Completed:** 6/30
+- **Current Streak:** 6 days
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -113,6 +113,26 @@
 3. Output variable
 4. Introduction of complex and any type
 5. precedence of variable initialization
+
+---
+
+## Day 6: AWS Terraform Project Structure Best Practices
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - AWS Terraform Project Structure Best Practices](https://dev.to/adarsh_gupta_c5fecf658fd7/aws-terraform-project-structure-best-practices-1mjl)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/adarsh-gupta-ad555_30daysofawsterraform-terraform-infrastructureascode-activity-7400546780612001792-K7C2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5K1_4BxQQMT1CdUK4VCPo8aRp9A-CUcYw)
+- **Code Repository:** [GitHub](https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-6)
+- **Issue:** [#244](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/244)
+
+### 🎯 Key Learnings
+
+1. Project structure
+2. Organising folder on the basis of environment, services and modules.
+3. Practice same for the day-5 code
 
 ---
 
