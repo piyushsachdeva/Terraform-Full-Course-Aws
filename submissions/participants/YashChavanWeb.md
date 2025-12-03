@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/YashChavanWeb/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 4/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -72,6 +72,27 @@ Today I got to know about,
 - 𝗦𝘁𝗮𝘁𝗲 𝗹𝗼𝗰𝗸𝗶𝗻𝗴 to prevent conflicts
 - Resource migration 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀
 - Best practices like environment isolation and 𝗿𝗲𝗴𝘂𝗹𝗮𝗿 𝗯𝗮𝗰𝗸𝘂𝗽𝘀
+
+---
+
+## Day 5: Terraform Variables in AWS - Input vs Output vs Local Variables
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS - Input vs Output vs Local Variables](https://terraform-with-aws.hashnode.dev/day-5-understanding-terraform-variables-in-aws)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/yashchavanweb_30daysofawsterraform-terraform-infrastructureascode-activity-7400180114006802433-OII0?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOxF0Bb_jrJGYnEfOH6ZnNkRuI2CZ235Y)
+- **Code Repository:** [GitHub](https://github.com/YashChavanWeb/Terraform-Full-Course-Aws)
+- **Issue:** [#208](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/208)
+
+### 🎯 Key Learnings
+
+- Today I learned that Input Variables let me customize configurations easily.
+- I discovered Local Variables help avoid repetition in modules.
+- I found Output Variables capture resource details after deployment.
+- I realized Variable Precedence controls how values get overridden.
 
 ---
 
