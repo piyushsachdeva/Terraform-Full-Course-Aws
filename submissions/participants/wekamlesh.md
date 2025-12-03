@@ -6,9 +6,9 @@
 **Personal Practice Repo:** _Noresponse_
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 4/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -66,6 +66,24 @@
 - what is terraform
 - How it is used by Infra engineers
 - what problem does it solve in infrastructure provision. 
+
+---
+
+## Day 4: Terraform remote state
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform remote state](https://kamleshmerugu.me/blogs/4-of-30-terraform-state-file---the-lesson-that-changes-everything/)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/kamleshmerugu_day-4-of-30-terraform-state-file-the-lesson-activity-7400274918413668352-ku38?utm_source=share&utm_medium=member_desktop&rcm=ACoAACayXUQBSP9aP5sVEIgoeFRjNtC1cI7uAc4)
+- **Code Repository:** [GitHub](https://github.com/wekamlesh/terraform-learn/tree/main/Day3-terraform-state)
+- **Issue:** [#227](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/227)
+
+### 🎯 Key Learnings
+
+terraform remote state 
 
 ---
 
