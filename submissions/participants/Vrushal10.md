@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Vrushal10/Terraform-Full-Course-Aws.git
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-28
+- **Days Completed:** 5/30
+- **Current Streak:** 3 days
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -97,6 +97,27 @@
  🔹 Environment-based isolation (dev / non-prod / prod)
  🔹 Versioning and rollback safety
  🔹 Manual backend provisioning for reliability 
+
+---
+
+## Day 05: Terraform Variables and Precedence
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 05 - Terraform Variables and Precedence](https://medium.com/@vrushalkamate/write-smarter-terraform-code-using-variables-precedence-rules-7565de83b909)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/vrushalkamate_devops-terraform-infrastructureascode-share-7400606247592542208-WSZK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAU-jI8B7fEllG7wethHYN4tpVIcukpu6Mg)
+- **Code Repository:** [GitHub](https://github.com/Vrushal10/30daysofawsterraform.git)
+- **Issue:** [#258](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/258)
+
+### 🎯 Key Learnings
+
+As part of day5 I learnt a lot about variables: 
+- Why we should avoid hardcoding values
+- How Input, Output & Local variables work
+- How Terraform decides which variable takes priority (variable precedence)
 
 ---
 
