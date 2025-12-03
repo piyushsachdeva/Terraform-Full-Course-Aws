@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/deepakkushwahax/Terraform/tree/main/Day-01
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -38,6 +38,24 @@
 🗺 State tracking
 🌎 Same workflow across all cloud providers
 4. The Workflow: Write → Plan → Apply
+
+---
+
+## Day 4: creating the s3 bucket by .tf and enable the Encryption and stored the statefile.
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - creating the s3 bucket by .tf and enable the Encryption and stored the statefile.](https://medium.com/@deepakkushwaha7523/day-4-configuring-a-remote-backend-in-terraform-using-aws-s3-928f6b12b60b)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:share:7400263323151347712/)
+- **Code Repository:** [GitHub](https://github.com/deepakkushwahax/Terraform/tree/main/Day-04)
+- **Issue:** [#226](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/226)
+
+### 🎯 Key Learnings
+
+<img width=1620 height=758 alt=Image src=https://github.com/user-attachments/assets/2bc22c77-1deb-4217-88b2-b93a5f3ffd98 />
 
 ---
 
