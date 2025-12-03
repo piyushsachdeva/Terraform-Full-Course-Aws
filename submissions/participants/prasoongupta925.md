@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/prasoongupta925/Terraform-Full-Course-Aws/blob/main/lessons/day02/main.tf
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -63,6 +63,24 @@ Today I learned how important the Terraform state file is as the single source o
 ### 🎯 Key Learnings
 
 Today I learned how Terraform tracks every change using its state file and updates only what’s necessary with complete precision. I also understood how implicit dependencies work automatically, making infrastructure creation cleaner and more efficient.
+
+---
+
+## Day 5: Terraform Variables in AWS - Input vs Output vs Local Variables
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS - Input vs Output vs Local Variables](https://medium.com/@prasoongupta925/day-5-terraform-variables-making-infrastructure-code-reusable-and-dynamic-b7fd3dd45688)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/iamprasoongupta_day-5terraform-variables-making-infrastructure-activity-7400439134059839488-Z9SO?utm_source=share&utm_medium=member_desktop&rcm=ACoAABfI4XUBg2PLJq8QJM-2rBJ2md6awJCoxHg)
+- **Code Repository:** [GitHub](https://github.com/prasoongupta925/Terraform-Full-Course-Aws/tree/main/lessons/day05/code)
+- **Issue:** [#233](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/233)
+
+### 🎯 Key Learnings
+
+Today I learned Variables transform hardcoded values into flexible, reusable infrastructure code. Mastered three variable types (input, local, output) and variable precedence to create DRY, maintainable Terraform configurations that work across multiple environments.
 
 ---
 
