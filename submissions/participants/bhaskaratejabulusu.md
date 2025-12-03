@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/bhaskaratejabulusu/aws-terraform
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -76,6 +76,26 @@ Today I learned
 - State file management using S3 bucket
 - State file best practices
 - Security considerations for S3 bucket for storing state file
+
+---
+
+## Day 6: Project Structure and its best practices
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Project Structure and its best practices](https://dev.to/bhaskara_tejabulusu_b4bf/day-06-aws-terraform-project-structure-best-practices-2a76)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/bhaskara-teja-bulusu-31408a332_30daysofawsterraform-activity-7400595351906279425-T2tz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOpLUABzFgozxh_N038umSXOQa-mnC8Rmc)
+- **Code Repository:** [GitHub](https://github.com/bhaskaratejabulusu/aws-terraform)
+- **Issue:** [#255](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/255)
+
+### 🎯 Key Learnings
+
+Today I learned and implemented:
+- Project structure
+- Best practices of file structure
 
 ---
 
