@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 4 days
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 5/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -85,6 +85,24 @@ Managed my first S3 bucket using Terraform
 ### 🎯 Key Learnings
 
 state file management in Terraform
+
+---
+
+## Day 6:  AWS Terraform Project Structure and Its Best Practices
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 -  AWS Terraform Project Structure and Its Best Practices](https://medium.com/@saurabhshukla6392/day-6-terraform-file-organization-load-order-best-practices-c40b41d4839b)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Tech_KeenMe/status/1994796730735628548)
+- **Code Repository:** [GitHub](https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws)
+- **Issue:** [#248](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/248)
+
+### 🎯 Key Learnings
+
+Its fun learning how to organize the file in terraform with its best practices
 
 ---
 
