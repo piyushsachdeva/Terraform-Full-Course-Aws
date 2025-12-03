@@ -6,8 +6,8 @@
 
 | Rank | Participant | Days Completed | Current Streak | Latest Day | Last Submission | Status |
 |------|-------------|----------------|----------------|------------|-----------------|--------|
-| 🥇 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 5/30 | 2 days | Day 6 | 2025-11-29 | 🔥 Active |
-| 🥈 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 5/30 | 5 days | Day 5 | 2025-11-28 | 🔥 Active |
+| 🥇 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 6/30 | 6 days | Day 6 | 2025-11-29 | 🔥 Active |
+| 🥈 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 5/30 | 2 days | Day 6 | 2025-11-29 | 🔥 Active |
 | 🥉 | ![BejadiRajeshReddy](https://github.com/BejadiRajeshReddy.png?size=32) [@BejadiRajeshReddy](https://github.com/BejadiRajeshReddy) | 5/30 | 1 day | Day 5 | 2025-11-29 | 🔥 Active |
 | #4 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 5/30 | 5 days | Day 5 | 2025-11-28 | 🔥 Active |
 | #5 | ![prasoongupta925](https://github.com/prasoongupta925.png?size=32) [@prasoongupta925](https://github.com/prasoongupta925) | 4/30 | 1 day | Day 5 | 2025-11-29 | 🔥 Active |
@@ -64,7 +64,7 @@
 ## 📊 Challenge Statistics
 
 - **Total Participants:** 52
-- **Total Submissions:** 139
+- **Total Submissions:** 140
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-12-03
 

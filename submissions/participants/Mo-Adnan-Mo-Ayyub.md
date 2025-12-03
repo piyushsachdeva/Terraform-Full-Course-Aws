@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Mo-Adnan-Mo-Ayyub/Aws-with-Terraform
 
 ## Progress Overview
-- **Days Completed:** 5/30
-- **Current Streak:** 5 days
-- **Last Submission:** 2025-11-28
+- **Days Completed:** 6/30
+- **Current Streak:** 6 days
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -113,6 +113,26 @@ Terraform variable precedence priorities
 - tfvars
 - environment variables
 - -var flag (highest priority)
+
+---
+
+## Day 6: AWS Terraform Project Structure Best Practices
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - AWS Terraform Project Structure Best Practices](https://adnandevops.blogspot.com/2025/11/aws-with-terraform-day-06.html)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/mohammad-adnan-m_aws-with-terraform-day-06-activity-7400521043305545728-RA3s?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJTUhEBPnFLRxXGbxJoYkEJyPfNMXNQVvI)
+- **Code Repository:** [GitHub](https://github.com/Mo-Adnan-Mo-Ayyub/Aws-with-Terraform)
+- **Issue:** [#240](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/240)
+
+### 🎯 Key Learnings
+
+- I finally understood why structuring Terraform files properly matters more than people think.
+- Resource-specific files keep infra clean.
+- .gitignore file is essential to protect state, logs, and sensitive files from Git
 
 ---
 
