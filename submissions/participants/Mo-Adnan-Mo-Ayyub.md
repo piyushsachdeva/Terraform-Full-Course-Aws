@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Mo-Adnan-Mo-Ayyub/Aws-with-Terraform
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 4 days
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 5/30
+- **Current Streak:** 5 days
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -91,6 +91,28 @@
 ### 🎯 Key Learnings
 
 - Today's session dove deep into a concept that's absolutely crucial for anyone working with Terraform, especially in team environments: the Terraform State File and how to manage it effectively using remote backends.
+
+---
+
+## Day 5: Terraform Variables in AWS
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS](https://adnandevops.blogspot.com/2025/11/aws-with-terraform-day-05.html)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/mohammad-adnan-m_aws-with-terraform-day-05-activity-7400159444229197824-1YTd?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJTUhEBPnFLRxXGbxJoYkEJyPfNMXNQVvI)
+- **Code Repository:** [GitHub](https://github.com/Mo-Adnan-Mo-Ayyub/Aws-with-Terraform)
+- **Issue:** [#203](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/203)
+
+### 🎯 Key Learnings
+
+Terraform variable precedence priorities
+- default
+- tfvars
+- environment variables
+- -var flag (highest priority)
 
 ---
 
