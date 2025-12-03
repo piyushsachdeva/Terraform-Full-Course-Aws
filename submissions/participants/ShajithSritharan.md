@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ShajithSritharan/30daysofAWSTerraform/tree/main/Day-02
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-12-03
 
 ---
 
@@ -55,6 +55,29 @@ Today I learned
     - How to move state to an S3 backend and initialize it safely.
     - The core state commands (list, show, pull, rm, import, mv) and when to use each.
     - Best practices to keep state secure, isolated per environment, and recoverable.
+
+---
+
+## Day 5: Terraform Variables in AWS: Input vs Output vs Local
+**Date:** 2025-12-03  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS: Input vs Output vs Local](https://medium.com/@shajithsritharan/30daysofawsterraform-c295e8b7dfdc)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/shanshri2/status/1994432052226060592)
+- **Code Repository:** [GitHub](https://github.com/ShajithSritharan/30daysofAWSTerraform/tree/main/Day-05)
+- **Issue:** [#382](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/382)
+
+### 🎯 Key Learnings
+
+Today I learned to
+-  When to use input variables and how to declare them.
+- How locals keep names and tags consistent across resources.
+- How outputs surface important IDs for humans and parent modules.
+- How Terraform variable precedence works (defaults, tfvars, env vars, CLI).
+- How to run the sample stack and override values safely.
 
 ---
 
