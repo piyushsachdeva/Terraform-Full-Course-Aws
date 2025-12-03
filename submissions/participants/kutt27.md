@@ -6,9 +6,9 @@
 **Personal Practice Repo:** n/a
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -58,6 +58,24 @@
 - iam creation for specific use cases
 - terraform init, plan
 - State file creation
+
+---
+
+## Day 5: Terraform Variables
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables](https://amals27.hashnode.dev/variables-in-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amal-s27_30daysofawsterraform-activity-7400197469457977344-iGNK?utm_source=share&utm_medium=member_desktop&rcm=ACoAADITuXYB_z6HwgAdORpOS6vf6yoneZlgQFQ)
+- **Code Repository:** [GitHub](n/a)
+- **Issue:** [#211](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/211)
+
+### 🎯 Key Learnings
+
+- Terraform variables
 
 ---
 
