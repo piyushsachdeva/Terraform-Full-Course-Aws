@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform/tree/main/Day1
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-25
+- **Days Completed:** 3/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -45,6 +45,24 @@ Today i learn about what is **IAC** and why need IAC  and  why  we use **Terrafo
 ### 🎯 Key Learnings
 
 I learn behind how terraform able to make resource on aws and how i configure my aws with terraform
+
+---
+
+## Day 5: Terraform Variables 
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables ](https://medium.com/@rudrakshkanungo2022/understanding-variables-in-terraform-6f7e8a6311c9)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Rudraks42272163/status/1994470885206425944?s=20)
+- **Code Repository:** [GitHub](https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform)
+- **Issue:** [#222](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/222)
+
+### 🎯 Key Learnings
+
+Today i learn about why variable are important
 
 ---
 
