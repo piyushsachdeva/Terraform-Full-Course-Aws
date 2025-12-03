@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Days Completed:** 5/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -94,6 +94,24 @@ S3 bucket management.
 ### 🎯 Key Learnings
 
 Today I learned about variables in Terraform, variable types and their precedence
+
+---
+
+## Day 6: Terraform project Structure Best practices
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform project Structure Best practices](https://dev.to/anil_kumar_noolu/terraform-project-structure-best-practices-3cob)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/anilkumarr17147/status/1994723620753739989?t=CuxzYDqX4wi9hE1M9RtKsg&s=19)
+- **Code Repository:** [GitHub](https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws)
+- **Issue:** [#237](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/237)
+
+### 🎯 Key Learnings
+
+Today I learned about Terraform project Structure Best practices, how to organize and split terraform code to multiple .tf files and keep them logically organized.
 
 ---
 
