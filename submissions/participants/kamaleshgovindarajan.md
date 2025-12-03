@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/kamaleshgovindarajan/AWSTerraform.git
 
 ## Progress Overview
-- **Days Completed:** 1/30
+- **Days Completed:** 2/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -27,6 +27,25 @@
 ### 🎯 Key Learnings
 
 Today I have learnt about What is IaC and How terraform is efficient in provisioning and managing Infra across cloud platforms. I had a basic understanding of the terraform commands and how the workflow of terraform in provisioning, updating and deleting Infrastructure
+
+---
+
+## Day 5: Terraform Variables
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables](https://medium.com/@kamaleshhgovindarajan/mastering-variables-in-terraform-input-local-output-and-precedence-6e427b170b2e)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/kamalesh-govindarajan-4317782b4_130-how-does-terraform-work-intro-to-activity-7398767889568264193--gVr?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEuTg2UB52I1OR5VCjK9ADsiJUI-0mWVTpk)
+- **Code Repository:** [GitHub](https://github.com/kamaleshgovindarajan/AWSTerraform.git)
+- **Issue:** [#236](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/236)
+
+### 🎯 Key Learnings
+
+Today I learned about the variables in Terraform - based on purpose and precedence in Terraform Variables.
+Learned the separate file structures for main.tf, variable.tf, locals.tf, outputs.tf, provider.tf.
 
 ---
 
