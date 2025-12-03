@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/kondamanish/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-29
 
@@ -82,6 +82,24 @@ did the hands on for this one.
 ### 🎯 Key Learnings
 
 Learned about the terraform variables
+
+---
+
+## Day 6: Terraform file structure
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform file structure](https://medium.com/@kondamanish14/day-06-terraform-file-structure-best-practices-10acd52867c2)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KondaManish3/status/1994834452707758313)
+- **Code Repository:** [GitHub](https://github.com/kondamanish/Terraform-Full-Course-Aws/)
+- **Issue:** [#256](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/256)
+
+### 🎯 Key Learnings
+
+I learned the folder structure and Best practices regarding the terraform folder structure and implemented it. 
 
 ---
 
