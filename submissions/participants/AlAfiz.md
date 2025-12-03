@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/AlAfiz/Practice-terraform-providers/tree/master/Day%2004
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -51,6 +51,28 @@
 1. Terraform apply to create resources.
 2. How to auto approve Terraform apply.
 3. Terraform destroy to destroy resources.
+
+---
+
+## Day 5: Terraform variables Demo
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform variables Demo](https://dev.to/alafiz/day-5-terraform-variables-in-aws-2bma)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/threeandhalfman/status/1995183657422885335?s=20)
+- **Code Repository:** [GitHub](https://github.com/AlAfiz/Practice-terraform-providers/tree/1caf1a66f9a030786971ef3c2fb8f74b63c9865b/Day%2005)
+- **Issue:** [#295](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/295)
+
+### 🎯 Key Learnings
+
+1. How Variables make configuration blocks organized.
+2. Input variables are used for for passing values into resources.
+3. Ouput variables are useful when i need resource IDs after provisioning.
+4. How dynamic Local variables are for computed values.
+5. How to change variable values using terraform,tfvars, environment variables and terraform plan -var=environment=test.
 
 ---
 
