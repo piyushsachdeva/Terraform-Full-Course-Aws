@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform/tree/main/Day1
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -63,6 +63,24 @@ I learn behind how terraform able to make resource on aws and how i configure my
 ### 🎯 Key Learnings
 
 Today i learn about why variable are important
+
+---
+
+## Day 6: Terraform File Structure & Best Practices
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform File Structure & Best Practices](https://medium.com/@rudrakshkanungo2022/terraform-file-structure-best-practices-a580ea8db3d6)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Rudraks42272163/status/1995008449231687753?s=20)
+- **Code Repository:** [GitHub](https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform)
+- **Issue:** [#264](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/264)
+
+### 🎯 Key Learnings
+
+Today i learn about how we make better file structure
 
 ---
 
