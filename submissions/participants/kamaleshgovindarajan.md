@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/kamaleshgovindarajan/AWSTerraform.git
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-29
 
@@ -46,6 +46,25 @@ Today I have learnt about What is IaC and How terraform is efficient in provisio
 
 Today I learned about the variables in Terraform - based on purpose and precedence in Terraform Variables.
 Learned the separate file structures for main.tf, variable.tf, locals.tf, outputs.tf, provider.tf.
+
+---
+
+## Day 6: Terraform File Structure
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform File Structure](https://medium.com/@kamaleshhgovindarajan/essential-file-structure-and-best-practices-for-terraform-projects-4370cdec9f95)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/kamalesh-govindarajan-4317782b4_630-aws-terraform-project-structure-best-activity-7400582800170672128-O17x?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEuTg2UB52I1OR5VCjK9ADsiJUI-0mWVTpk)
+- **Code Repository:** [GitHub](https://github.com/kamaleshgovindarajan/AWSTerraform.git)
+- **Issue:** [#253](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/253)
+
+### 🎯 Key Learnings
+
+Today I learned about the Terraform File Structure and their beat Practices.
+Had a basic overview about the terraform modules and file structure for different envs.
 
 ---
 
