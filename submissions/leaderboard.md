@@ -6,17 +6,17 @@
 
 | Rank | Participant | Days Completed | Current Streak | Latest Day | Last Submission | Status |
 |------|-------------|----------------|----------------|------------|-----------------|--------|
-| 🥇 | ![medashabari](https://github.com/medashabari.png?size=32) [@medashabari](https://github.com/medashabari) | 4/30 | 2 days | Day 5 | 2025-12-01 | 🔥 Active |
-| 🥈 | ![dhanushboopthy](https://github.com/dhanushboopthy.png?size=32) [@dhanushboopthy](https://github.com/dhanushboopthy) | 4/30 | 1 day | Day 3 | 2025-11-27 | ⚡ Recent |
-| 🥉 | ![Vrushal10](https://github.com/Vrushal10.png?size=32) [@Vrushal10](https://github.com/Vrushal10) | 4/30 | 2 days | Day 4 | 2025-11-28 | ⚡ Recent |
-| #4 | ![Saurabh-shukla1](https://github.com/Saurabh-shukla1.png?size=32) [@Saurabh-shukla1](https://github.com/Saurabh-shukla1) | 4/30 | 4 days | Day 4 | 2025-11-27 | ⚡ Recent |
-| #5 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 4/30 | 4 days | Day 4 | 2025-11-27 | ⚡ Recent |
-| #6 | ![BejadiRajeshReddy](https://github.com/BejadiRajeshReddy.png?size=32) [@BejadiRajeshReddy](https://github.com/BejadiRajeshReddy) | 4/30 | 2 days | Day 3 | 2025-11-26 | 💤 Inactive |
-| #7 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 4/30 | 4 days | Day 4 | 2025-11-27 | ⚡ Recent |
-| #8 | ![wekamlesh](https://github.com/wekamlesh.png?size=32) [@wekamlesh](https://github.com/wekamlesh) | 3/30 | 2 days | Day 1 | 2025-11-25 | 💤 Inactive |
-| #9 | ![sainathvelaga](https://github.com/sainathvelaga.png?size=32) [@sainathvelaga](https://github.com/sainathvelaga) | 3/30 | 3 days | Day 4 | 2025-11-28 | ⚡ Recent |
-| #10 | ![prasoongupta925](https://github.com/prasoongupta925.png?size=32) [@prasoongupta925](https://github.com/prasoongupta925) | 3/30 | 1 day | Day 3 | 2025-11-27 | ⚡ Recent |
-| #11 | ![piyusdev2006](https://github.com/piyusdev2006.png?size=32) [@piyusdev2006](https://github.com/piyusdev2006) | 3/30 | 1 day | Day 4 | 2025-11-28 | ⚡ Recent |
+| 🥇 | ![piyusdev2006](https://github.com/piyusdev2006.png?size=32) [@piyusdev2006](https://github.com/piyusdev2006) | 4/30 | 1 day | Day 5 | 2025-11-30 | 🔥 Active |
+| 🥈 | ![medashabari](https://github.com/medashabari.png?size=32) [@medashabari](https://github.com/medashabari) | 4/30 | 2 days | Day 5 | 2025-12-01 | 🔥 Active |
+| 🥉 | ![dhanushboopthy](https://github.com/dhanushboopthy.png?size=32) [@dhanushboopthy](https://github.com/dhanushboopthy) | 4/30 | 1 day | Day 3 | 2025-11-27 | ⚡ Recent |
+| #4 | ![Vrushal10](https://github.com/Vrushal10.png?size=32) [@Vrushal10](https://github.com/Vrushal10) | 4/30 | 2 days | Day 4 | 2025-11-28 | ⚡ Recent |
+| #5 | ![Saurabh-shukla1](https://github.com/Saurabh-shukla1.png?size=32) [@Saurabh-shukla1](https://github.com/Saurabh-shukla1) | 4/30 | 4 days | Day 4 | 2025-11-27 | ⚡ Recent |
+| #6 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 4/30 | 4 days | Day 4 | 2025-11-27 | ⚡ Recent |
+| #7 | ![BejadiRajeshReddy](https://github.com/BejadiRajeshReddy.png?size=32) [@BejadiRajeshReddy](https://github.com/BejadiRajeshReddy) | 4/30 | 2 days | Day 3 | 2025-11-26 | 💤 Inactive |
+| #8 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 4/30 | 4 days | Day 4 | 2025-11-27 | ⚡ Recent |
+| #9 | ![wekamlesh](https://github.com/wekamlesh.png?size=32) [@wekamlesh](https://github.com/wekamlesh) | 3/30 | 2 days | Day 1 | 2025-11-25 | 💤 Inactive |
+| #10 | ![sainathvelaga](https://github.com/sainathvelaga.png?size=32) [@sainathvelaga](https://github.com/sainathvelaga) | 3/30 | 3 days | Day 4 | 2025-11-28 | ⚡ Recent |
+| #11 | ![prasoongupta925](https://github.com/prasoongupta925.png?size=32) [@prasoongupta925](https://github.com/prasoongupta925) | 3/30 | 1 day | Day 3 | 2025-11-27 | ⚡ Recent |
 | #12 | ![kondamanish](https://github.com/kondamanish.png?size=32) [@kondamanish](https://github.com/kondamanish) | 3/30 | 3 days | Day 4 | 2025-11-27 | ⚡ Recent |
 | #13 | ![bishalranjit0606](https://github.com/bishalranjit0606.png?size=32) [@bishalranjit0606](https://github.com/bishalranjit0606) | 3/30 | 1 day | Day 4 | 2025-11-28 | ⚡ Recent |
 | #14 | ![bhaskaratejabulusu](https://github.com/bhaskaratejabulusu.png?size=32) [@bhaskaratejabulusu](https://github.com/bhaskaratejabulusu) | 3/30 | 1 day | Day 4 | 2025-11-27 | ⚡ Recent |
@@ -64,7 +64,7 @@
 ## 📊 Challenge Statistics
 
 - **Total Participants:** 52
-- **Total Submissions:** 121
+- **Total Submissions:** 122
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-12-03
 

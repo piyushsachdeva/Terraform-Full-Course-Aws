@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/piyusdev2006/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -88,6 +88,31 @@
 - Remote backends like AWS S3 provide reliability and collaboration
 - State locking prevents race conditions in team environments
 - Terraform commands behave differently once a remote backend is configured
+
+---
+
+## Day 5: Terraform Variables in AWS – Input vs Output vs Local Variables
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS – Input vs Output vs Local Variables](https://codedotdev.medium.com/day05-terraform-variables-in-aws-input-vs-output-vs-local-variables-complete-hands-on-guide-55a52809749f)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/ns51_devops-terraform-aws-ugcPost-7400768509921665024-WynR?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvV2UIBPRm9p0cACKvqC65HEDLocVKNy9Y)
+- **Code Repository:** [GitHub](https://github.com/piyusdev2006/Terraform-Full-Course-Aws)
+- **Issue:** [#261](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/261)
+
+### 🎯 Key Learnings
+
+## What I learned today:
+
+🔹 How input variables remove hardcoding and allow environment-based configs
+🔹 How local variables help compute and reuse values within Terraform
+🔹 How output variables return useful information after deployment
+🔹 Tested variable precedence (CLI > tfvars > env-vars > defaults)
+🔹 Used variables with AWS S3 and VPC resources to see real-time behavior
+🔹 Ran all relevant Terraform commands to observe how outputs and variables interact
 
 ---
 
