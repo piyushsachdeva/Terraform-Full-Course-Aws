@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anjali76Codes/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -48,6 +48,26 @@ I learned how the AWS provider connects Terraform with AWS and why it's needed b
 I figured out how the provider configuration and authentication work together.
 I also got a clear idea of how Terraform manages AWS resources through the provider plugin.
 Plus I went through some basic Terraform commands that help in planning and applying changes.
+
+---
+
+## Day 6: Terraform Project Structure
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform Project Structure](https://terraformlacwithawschallenge.hashnode.dev/day06-terraform-project-structure)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7400561120085938176/)
+- **Code Repository:** [GitHub](https://github.com/anjali76Codes/Terraform-Full-Course-Aws/tree/main)
+- **Issue:** [#249](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/249)
+
+### 🎯 Key Learnings
+
+Today I learned how to split my Terraform setup into a proper multi-file structure instead of keeping everything in one place.
+I set up files for variables, locals, providers, backend and outputs so the project stays clean and easier to manage.
+I also added tfvars, gitignore and example files to follow a safe workflow that works well for bigger setups.
 
 ---
 
