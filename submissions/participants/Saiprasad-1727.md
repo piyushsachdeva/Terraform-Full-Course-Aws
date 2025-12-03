@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/blob/main/DAY-02/DAY-02-Providerd.md
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -95,6 +95,28 @@ Today i have learned about
 -- Terraform Automatically Loads All .tf Files
 -- Recommended Terraform File Structure
 -- Introduction to Advanced Structures
+
+---
+
+## Day 5: Terraform Variables and Types
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables and Types](https://saiprasadannam.substack.com/p/infrastructure-as-code-iac-day-05)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7400244616664633344/?originTrackingId=DQ8ge6EGzISOIScJk%2B7fBA%3D%3D)
+- **Code Repository:** [GitHub](https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/tree/main/DAY-05)
+- **Issue:** [#223](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/223)
+
+### 🎯 Key Learnings
+
+Today i have learned 
+-- what is Variable and how do we use it 
+-- types of variables (based on purpose and values)
+-- Terraform Variable Precedence (Highest → Lowest)
+-- Benefits of using variables in terraform
 
 ---
 
