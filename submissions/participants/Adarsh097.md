@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 4 days
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 5/30
+- **Current Streak:** 5 days
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -91,6 +91,28 @@
 1. state file
 2. terraform compare desired to actual state using .tfstate file for resource updation and creation.
 3. s3 bucket to securely store the state file withe enabled versioning and encryption.
+
+---
+
+## Day 5: Terraform Variables in AWS - Input vs Output vs Local Variables
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS - Input vs Output vs Local Variables](https://dev.to/adarsh_gupta_c5fecf658fd7/terraform-variables-in-aws-input-vs-output-vs-local-variables-2jm0)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/adarsh-gupta-ad555_30daysofawsterraform-30daysofawsterraform-activity-7400188158237302784-kql-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5K1_4BxQQMT1CdUK4VCPo8aRp9A-CUcYw)
+- **Code Repository:** [GitHub](https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-5)
+- **Issue:** [#209](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/209)
+
+### 🎯 Key Learnings
+
+1. Input variable
+2. Local variable
+3. Output variable
+4. Introduction of complex and any type
+5. precedence of variable initialization
 
 ---
 
