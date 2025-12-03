@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/varshith-mohan/Terraform-AWS/tree/main
 
 ## Progress Overview
-- **Days Completed:** 2/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Days Completed:** 3/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -55,6 +55,29 @@ understood Terraform variable types which are essential for writing clean, modul
 Input Variables – To pass values into Terraform configurations
 Output Variables – To display values from a Terraform configuration.
 Local Values – To create internal variables for organizing and simplifying infrastructure code.
+
+---
+
+## Day 6: Terraform File Structure
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform File Structure](https://medium.com/@iamvarshith45/day-6-terraform-file-structure-b0e280c2cf6f)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/varshithmohan_aws-terraform-cloudcomputing-activity-7400773821256982528-_don?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOUsG0BKiRvXjdtA3TgVX7vet_QBEoly48)
+- **Code Repository:** [GitHub](https://github.com/varshith-mohan/Terraform-AWS)
+- **Issue:** [#265](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/265)
+
+### 🎯 Key Learnings
+
+I have earned about the Terraform File Structure and their best Practices.
+and understood basic overview about the terraform modules and file structure for different environments.
+Consistent naming across all files with clear, descriptive file names,
+README + comments for better documentation,
+Size Management Using modules for reusable components
+This steps made the project look clean and 100% easier to scale efficiently.
 
 ---
 
