@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 3 days
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 4/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -76,6 +76,24 @@ What is the process to authenticate and authorize into AWS Cloud and create reso
 Today I learned on creating S3 Buckets using terraform.
 Authenticating and Authorizing for AWS Account.
 S3 bucket management.
+
+---
+
+## Day 5: Terraform Variables in AWS
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS](https://dev.to/anil_kumar_noolu/terraform-variables-in-aws-4ppg)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/anilkumarr17147/status/1994447044677697687?t=bfI4IfUw30DLr3fTpVSH3g&s=19)
+- **Code Repository:** [GitHub](https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws)
+- **Issue:** [#216](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/216)
+
+### 🎯 Key Learnings
+
+Today I learned about variables in Terraform, variable types and their precedence
 
 ---
 
