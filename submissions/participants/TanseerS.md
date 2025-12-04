@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/TanseerS/Terraform-AWS/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -146,6 +146,32 @@ Topics Covered:
 <img width=1440 height=900 alt=Image src=https://github.com/user-attachments/assets/539fd86e-5d68-4e31-b6de-61ec3329a4d9 />
 
 <img width=1202 height=504 alt=Image src=https://github.com/user-attachments/assets/aa84369c-5baf-4b94-8c70-b76cbc9d35da />
+
+---
+
+## Day 3: S3 Bucket creation using terraform
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - S3 Bucket creation using terraform](https://terraform-and-aws.hashnode.dev/creating-an-s3-bucket-using-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/KhanTanseer2/status/1993931502967771196?s=20)
+- **Code Repository:** [GitHub](https://github.com/TanseerS/Terraform-AWS/tree/main/Day-3)
+- **Issue:** [#144](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/144)
+
+### 🎯 Key Learnings
+
+Covered:
+
+- How S3 buckets work
+- Why Terraform makes bucket creation easier
+- Step by step resource creation
+- Real world use cases
+
+<img width=1440 height=900 alt=Image src=https://github.com/user-attachments/assets/7eeef905-3f9b-48a8-be47-32396130fbd6 />
+<img width=988 height=403 alt=Image src=https://github.com/user-attachments/assets/c43fe04f-67dd-441e-b48e-fbf2f81df6ba />
 
 ---
 
