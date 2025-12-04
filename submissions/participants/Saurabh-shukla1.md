@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 6/30
+- **Days Completed:** 7/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -121,6 +121,24 @@ Its fun learning how to organize the file in terraform with its best practices
 ### 🎯 Key Learnings
 
 Learned about Terraform variables in aws
+
+---
+
+## Day 7: Type Constraints in Terraform
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 7 - Type Constraints in Terraform](https://medium.com/@saurabhshukla6392/day-7-type-constraints-in-terraform-b50d457728a7)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Tech_KeenMe/status/1995176484961665049)
+- **Code Repository:** [GitHub](https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws)
+- **Issue:** [#284](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/284)
+
+### 🎯 Key Learnings
+
+It Sunday, Got full time to revise prv topic and learned new one too that is about Type constraints
 
 ---
 
