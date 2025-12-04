@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/Sh1vam6/30Days-of-AWS-Terraform
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-30
 
@@ -67,6 +67,24 @@ Today I learned about different Terraform Variables and also did hands-on.
 ### 🎯 Key Learnings
 
 Today I learned how to create s3 bucket using Terraform , excited for other videos.
+
+---
+
+## Day 2: Terraform AWS Provider 
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform AWS Provider ](https://shivamgautam.hashnode.dev/day-2-of-aws-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/sh1vam6_30daysofawsterraform-30daysofawsterraform-share-7400796692234584064-Hzcp?utm_source=share&utm_medium=member_desktop&rcm=ACoAADMI-FsBQ31jhDHEDb_pOSpvLKTm5ja2Z2E)
+- **Code Repository:** [GitHub](https://github.com/Sh1vam6/30Days-of-AWS-Terraform)
+- **Issue:** [#267](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/267)
+
+### 🎯 Key Learnings
+
+Today I learned about Terraform providers and the importance of Terraform versions and providers.
 
 ---
 
