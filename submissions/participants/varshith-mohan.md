@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/varshith-mohan/Terraform-AWS/tree/main
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 2 days
 - **Last Submission:** 2025-11-28
 
@@ -129,6 +129,27 @@ and The Terraform workflow is clean and predictable:
  init → validate → plan → apply → destroy
 and additionally 
 Git + Terraform gives complete auditability, consistency, and automation across multiple dev, staging and production environments.
+
+---
+
+## Day 1: Introduction to Terraform
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Introduction to Terraform](https://medium.com/@bubbyplaycricket/day-1-terraform-and-infrastructure-as-code-iac-af09cb41b76f)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/varshithmohan_devops-terraform-iac-activity-7400245306786951168-YRRX?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOUsG0BKiRvXjdtA3TgVX7vet_QBEoly48)
+- **Code Repository:** [GitHub](https://github.com/varshith-mohan/Terraform-AWS/tree/main)
+- **Issue:** [#225](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/225)
+
+### 🎯 Key Learnings
+
+I clearly understood that IaC tools are basically talking to cloud APIs for us. And with that, you can create repeatable, scalable infrastructure without the stress of manual setup, and 
+Why Terraform is one of the most powerful IaC tools, understood the 
+Terraform’s core workflow: Write → Init → Plan → Apply 
+and Setting up Terraform locally.
 
 ---
 

@@ -9,10 +9,10 @@
 | 🥇 | ![Saurabh-shukla1](https://github.com/Saurabh-shukla1.png?size=32) [@Saurabh-shukla1](https://github.com/Saurabh-shukla1) | 7/30 | 1 day | Day 7 | 2025-11-30 | 🔥 Active |
 | 🥈 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 7/30 | 7 days | Day 7 | 2025-11-30 | 🔥 Active |
 | 🥉 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 7/30 | 7 days | Day 7 | 2025-11-30 | 🔥 Active |
-| #4 | ![arnab-logs](https://github.com/arnab-logs.png?size=32) [@arnab-logs](https://github.com/arnab-logs) | 6/30 | 1 day | Day 7 | 2025-11-30 | 🔥 Active |
-| #5 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 6/30 | 2 days | Day 4 | 2025-11-27 | 🔥 Active |
-| #6 | ![Mathanki](https://github.com/Mathanki.png?size=32) [@Mathanki](https://github.com/Mathanki) | 6/30 | 4 days | Day 7 | 2025-11-30 | 🔥 Active |
-| #7 | ![varshith-mohan](https://github.com/varshith-mohan.png?size=32) [@varshith-mohan](https://github.com/varshith-mohan) | 5/30 | 2 days | Day 2 | 2025-11-28 | 🔥 Active |
+| #4 | ![varshith-mohan](https://github.com/varshith-mohan.png?size=32) [@varshith-mohan](https://github.com/varshith-mohan) | 6/30 | 2 days | Day 1 | 2025-11-28 | 🔥 Active |
+| #5 | ![arnab-logs](https://github.com/arnab-logs.png?size=32) [@arnab-logs](https://github.com/arnab-logs) | 6/30 | 1 day | Day 7 | 2025-11-30 | 🔥 Active |
+| #6 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 6/30 | 2 days | Day 4 | 2025-11-27 | 🔥 Active |
+| #7 | ![Mathanki](https://github.com/Mathanki.png?size=32) [@Mathanki](https://github.com/Mathanki) | 6/30 | 4 days | Day 7 | 2025-11-30 | 🔥 Active |
 | #8 | ![medashabari](https://github.com/medashabari.png?size=32) [@medashabari](https://github.com/medashabari) | 5/30 | 2 days | Day 3 | 2025-11-29 | 🔥 Active |
 | #9 | ![kondamanish](https://github.com/kondamanish.png?size=32) [@kondamanish](https://github.com/kondamanish) | 5/30 | 1 day | Day 6 | 2025-11-29 | 🔥 Active |
 | #10 | ![YashChavanWeb](https://github.com/YashChavanWeb.png?size=32) [@YashChavanWeb](https://github.com/YashChavanWeb) | 5/30 | 1 day | Day 7 | 2025-11-30 | 🔥 Active |
@@ -66,7 +66,7 @@
 ## 📊 Challenge Statistics
 
 - **Total Participants:** 54
-- **Total Submissions:** 183
+- **Total Submissions:** 184
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-12-04
 
