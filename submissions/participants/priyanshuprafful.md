@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/priyanshuprafful/AWS-Terraform-
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 5/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -85,6 +85,24 @@ Terraform File Structure Best Practices
 
 Providers 
 Sample Resource Creation ( VPC)
+
+---
+
+## Day 3: Create S3 Bucket via Terraform
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create S3 Bucket via Terraform](https://terraform-day3.hashnode.dev/building-our-first-cloud-house-provisioning-an-aws-s3-bucket-with-terraform-day-3-of-30)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/priyanshu8787_devops-aws-terraform-activity-7399805467750895616-ejJB)
+- **Code Repository:** [GitHub](https://github.com/priyanshuprafful/AWS-Terraform-)
+- **Issue:** [#159](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/159)
+
+### 🎯 Key Learnings
+
+Creation Of S3 bucket via terraform
 
 ---
 
