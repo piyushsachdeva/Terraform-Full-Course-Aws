@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anjali76Codes/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -86,6 +86,27 @@ I also added tfvars, gitignore and example files to follow a safe workflow that 
 ### 🎯 Key Learnings
 
 Terraform variables help avoid repetition and keep environments consistent across resources. Input variables control values from outside, locals help build clean naming patterns, and outputs return important IDs after apply. Understanding when to use each type makes the configuration easier to maintain and reduces errors. This keeps the setup flexible as the project grows.
+
+---
+
+## Day 3: Create S3 Bucket
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create S3 Bucket](https://hashnode.com/draft/6924a85bfdaa66425ba84f15)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7399480279884763136/)
+- **Code Repository:** [GitHub](https://github.com/anjali76Codes/Terraform-Full-Course-Aws/blob/main/lessons/day03/Notes.md)
+- **Issue:** [#114](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/114)
+
+### 🎯 Key Learnings
+
+I learned how to create an S3 bucket using Terraform and how a resource block is structured.
+I now understand why bucket names must be globally unique and how tags help with organization.
+I also got comfortable with the full Terraform workflow from init to plan, apply and destroy.
+Working through this made the state file and update behavior much clearer.
 
 ---
 
