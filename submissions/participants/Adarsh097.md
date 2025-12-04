@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-1
 
 ## Progress Overview
-- **Days Completed:** 6/30
-- **Current Streak:** 6 days
-- **Last Submission:** 2025-11-29
+- **Days Completed:** 7/30
+- **Current Streak:** 7 days
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -133,6 +133,26 @@
 1. Project structure
 2. Organising folder on the basis of environment, services and modules.
 3. Practice same for the day-5 code
+
+---
+
+## Day 7: AWS Terraform Type Constraints
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 7 - AWS Terraform Type Constraints](https://dev.to/adarsh_gupta_c5fecf658fd7/aws-terraform-type-constraints-explained-5d2)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/adarsh-gupta-ad555_30daysofawsterraform-30daysofawsterraform-activity-7400914775955820545-qadn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5K1_4BxQQMT1CdUK4VCPo8aRp9A-CUcYw)
+- **Code Repository:** [GitHub](https://github.com/Adarsh097/Terraform-Mastery/tree/main/Day-7)
+- **Issue:** [#281](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/281)
+
+### 🎯 Key Learnings
+
+1. Understanding types constraints
+2. number, boolean, string
+3. list, map, object, tuple, set
 
 ---
 
