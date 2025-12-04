@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/bishalranjit0606/30-Days-Of-Aws-Terraform
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -63,6 +63,24 @@ Today i learned about terraform providers. typer of provider and the operators u
 ### 🎯 Key Learnings
 
 Today I learned the vital importance of the Terraform State File! I successfully implemented an AWS S3 Remote Backend to ensure state durability, team collaboration, and state locking.
+
+---
+
+## Day 3: aws s3 creation from terreform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - aws s3 creation from terreform](https://medium.com/@bishalranjit2002/create-an-aws-s3-bucket-using-terraform-560527a7c44a)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/BishalRanjit66/status/1993717852797636613)
+- **Code Repository:** [GitHub](https://github.com/bishalranjit0606/30-Days-Of-Aws-Terraform/tree/main/day3)
+- **Issue:** [#116](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/116)
+
+### 🎯 Key Learnings
+
+today i learned about how to create the s3 in aws using terraform.
 
 ---
 
