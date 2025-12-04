@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/arnab-logs/30-Days-of-Terraform/tree/main/day-01
 
 ## Progress Overview
-- **Days Completed:** 6/30
+- **Days Completed:** 7/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -146,6 +146,29 @@ I learned that:
 -Using type constraints with AWS resources (like EC2, S3) makes code flexible, readable, and easier to update.
 -They reduce repetition, prevent mistakes, and improve maintainability as infrastructure scales.
 -Overall, type constraints make Terraform code safer, more structured, and ready for real-world cloud projects.
+
+---
+
+## Day 3: Create an S3 bucket using terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an S3 bucket using terraform](https://learning-out-loud-my-devops-journey.hashnode.dev/day-28-day-03-our-first-aws-resource-with-terraform-creating-an-s3-bucket)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/iamarnabnandi_30daysofawsterraform-activity-7399512234240176129-jluI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADrH7I4Bqi8Arg0Je9JPIHTlEKr6G9C9JwM)
+- **Code Repository:** [GitHub](https://github.com/arnab-logs/30-Days-of-Terraform/tree/main/day-03)
+- **Issue:** [#131](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/131)
+
+### 🎯 Key Learnings
+
+-Set up workspace and main.tf file
+-Configured AWS provider in Terraform
+-Created first S3 bucket with tags
+-Used terraform init, plan, apply
+-Updated and destroyed resources safely
+-Learned Terraform’s predictable workflow
 
 ---
 
