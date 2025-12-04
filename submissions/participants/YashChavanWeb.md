@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/YashChavanWeb/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-28
+- **Days Completed:** 5/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -93,6 +93,30 @@ Today I got to know about,
 - I discovered Local Variables help avoid repetition in modules.
 - I found Output Variables capture resource details after deployment.
 - I realized Variable Precedence controls how values get overridden.
+
+---
+
+## Day 7: AWS Terraform Type Constraints
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 7 - AWS Terraform Type Constraints](https://terraform-with-aws.hashnode.dev/day-7-type-constraints-in-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/yashchavanweb_30daysofawsterraform-terraform-infrastructureascode-activity-7400939420067074048-S1_e?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOxF0Bb_jrJGYnEfOH6ZnNkRuI2CZ235Y)
+- **Code Repository:** [GitHub](https://github.com/YashChavanWeb/Terraform-Full-Course-Aws)
+- **Issue:** [#282](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/282)
+
+### 🎯 Key Learnings
+
+Here’s what I learned today:
+
+How to use primitive types like string, number, and boolean to create simple yet effective infrastructure variables.
+
+How to work with non-primitive types like list, set, map, tuple, and object to structure more complex data and manage multiple configurations.
+
+The importance of type constraints to ensure data consistency and prevent errors in larger Terraform configurations, making my infrastructure-as-code more maintainable.
 
 ---
 
