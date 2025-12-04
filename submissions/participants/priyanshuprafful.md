@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/priyanshuprafful/AWS-Terraform-
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -66,6 +66,25 @@ Installation On RHEL 9 server with full aws admin access .
 ### 🎯 Key Learnings
 
 Terraform File Structure Best Practices 
+
+---
+
+## Day 2: Providers , Sample Resource Creation ( VPC) 
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Providers , Sample Resource Creation ( VPC) ](https://terraform-day2.hashnode.dev/day-2-the-magic-of-terraform-providers-your-bridge-to-the-cloud)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/priyanshu8787_30daysofterraform-terraform-aws-activity-7399549639189860352-oEvN)
+- **Code Repository:** [GitHub](https://github.com/priyanshuprafful/AWS-Terraform-)
+- **Issue:** [#133](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/133)
+
+### 🎯 Key Learnings
+
+Providers 
+Sample Resource Creation ( VPC)
 
 ---
 
