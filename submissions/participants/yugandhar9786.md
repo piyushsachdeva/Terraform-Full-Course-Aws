@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/yugandhar9786/terraform/tree/main/day-3
 
 ## Progress Overview
-- **Days Completed:** 1/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 2/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -35,6 +35,27 @@ S3 bucket names must be globally unique, so no two people in the world can use t
 The Terraform workflow to create infrastructure is init → plan → apply → verify → destroy.
 
 Always clean up unused resources (terraform destroy) to avoid unnecessary AWS costs.
+
+---
+
+## Day 4: State File Management - Remote Backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - State File Management - Remote Backend](https://medium.com/@yugandharkanaparthi9/day-4-terraform-state-management-remote-backend-with-s3-native-locking-no-dynamodb-needed-6f81c11e6961)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/yugandhar-kanaparthi2003_30daysofawsterraform-30daysofawsterraform-activity-7399764505162883072-c3od?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6KIywBckgZ8CEHrBGdDD9fLpbByEOPrn8)
+- **Code Repository:** [GitHub](https://github.com/yugandhar9786/terraform/tree/main/day-4)
+- **Issue:** [#149](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/149)
+
+### 🎯 Key Learnings
+
+Terraform state is the single source of truth for infrastructure
+Remote backend is mandatory for team environments
+S3 Native Locking removes the need for DynamoDB in Terraform 1.10+
+Easier, cheaper, and more secure than before
 
 ---
 
