@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/priyanshuprafful/AWS-Terraform-
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 2 days
 - **Last Submission:** 2025-11-27
 
@@ -103,6 +103,23 @@ Sample Resource Creation ( VPC)
 ### 🎯 Key Learnings
 
 Creation Of S3 bucket via terraform
+
+---
+
+## Day 4: State File And S3 Bucket Creation
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - State File And S3 Bucket Creation](https://terraform-day4.hashnode.dev/the-secret-map-of-the-cloud-why-the-terraform-state-file-is-your-most-valuable-and-dangerous-asset)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/priyanshu8787_devops-cloudsecurity-terraform-activity-7399874702271217664-kbRq)
+- **Code Repository:** [GitHub](https://github.com/priyanshuprafful/AWS-Terraform-)
+- **Issue:** [#182](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/182)
+
+### 🎯 Key Learnings
+
 
 ---
 
