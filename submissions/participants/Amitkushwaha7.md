@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/Amitkushwaha7/TerraformFullCourse.git
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-30
 
@@ -94,6 +94,37 @@ Today, I learned the fundamentals of Infrastructure as Code (IaC) and why automa
  I learned how Terraform Loads .tf files, why file structure matters, and how separating resources like VPC, S3, and providers into different files makes the project much easier to manage.
 
 <img width=1491 height=611 alt=Image src=https://github.com/user-attachments/assets/3e94a9fc-6121-4a1e-a192-e031a559b3d6 />
+
+---
+
+## Day 5: Terraform Variables in AWS - Input vs Output vs Local Variables
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables in AWS - Input vs Output vs Local Variables](https://dev.to/amit_kumar_7db8e36a64dd45/day-05-terraform-variables-in-aws-input-vs-output-vs-local-variables-50cm)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amitkushwaha7_30daysofterraformchallenge-activity-7400817275865481216-uRFz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9oIyoBad7iXzGfT0vr42stLe45G8ym-YY)
+- **Code Repository:** [GitHub](https://github.com/Amitkushwaha7/TerraformFullCourse/tree/ca062ab9dde9fb5ef84f09d843cac967420d0dce/Day-05)
+- **Issue:** [#273](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/273)
+
+### 🎯 Key Learnings
+
+Today i learned to
+
+<img width=891 height=371 alt=Image src=https://github.com/user-attachments/assets/24190585-fd77-4096-9782-c2d4dbc241d8 />
+<img width=1208 height=240 alt=Image src=https://github.com/user-attachments/assets/cec034bc-40be-43dd-af57-8079af70d9c7 />
+<img width=1514 height=558 alt=Image src=https://github.com/user-attachments/assets/74285862-4369-4838-b228-4829b09682ab />
+<img width=1829 height=495 alt=Image src=https://github.com/user-attachments/assets/be737c50-637a-4cef-a4c9-ec937c50a205 />
+<img width=1562 height=296 alt=Image src=https://github.com/user-attachments/assets/bb854ccd-0eeb-432e-8d48-37c4bae42dca />
+<img width=699 height=311 alt=Image src=https://github.com/user-attachments/assets/ef4f25ef-c60d-4f59-85b9-8755811ebe8d />
+
+Input variables → values we pass into Terraform
+Local variables → internal computed values
+Output variables → values Terraform shows after deployment
+I also tested how Terraform decides which variable value to use (default → tfvars → env vars → command-line).
+ A small S3 Bucket, EC2 instance, VPC demo helped me understand everything clearly.
 
 ---
 
