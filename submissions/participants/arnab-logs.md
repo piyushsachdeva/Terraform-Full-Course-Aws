@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/arnab-logs/30-Days-of-Terraform/tree/main/day-01
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -123,6 +123,29 @@ I learned that:
 - Local variables help shape and reuse values internally.
 - Output variables show key resource info after creation.
 - Variable precedence determines which value Terraform uses.
+
+---
+
+## Day 7: Terraform Type Constraints
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 7 - Terraform Type Constraints](https://learning-out-loud-my-devops-journey.hashnode.dev/day-32-day-07-aws-terraform-type-constraints)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/iamarnabnandi_30daysofawsterraform-activity-7400937726663036928-Z1pt?utm_source=share&utm_medium=member_desktop&rcm=ACoAADrH7I4Bqi8Arg0Je9JPIHTlEKr6G9C9JwM)
+- **Code Repository:** [GitHub](https://github.com/arnab-logs/30-Days-of-Terraform/tree/main/day-07)
+- **Issue:** [#289](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/289)
+
+### 🎯 Key Learnings
+
+-Terraform type constraints help define what kind of value a variable can hold, ensuring configurations are predictable and errors are minimized.
+-Primitive types: number, string, boolean — the simplest building blocks for variables.
+-Complex types: list, set, map, tuple, object — allow grouping multiple values, sometimes of different types, for organized and reusable configurations.
+-Using type constraints with AWS resources (like EC2, S3) makes code flexible, readable, and easier to update.
+-They reduce repetition, prevent mistakes, and improve maintainability as infrastructure scales.
+-Overall, type constraints make Terraform code safer, more structured, and ready for real-world cloud projects.
 
 ---
 
