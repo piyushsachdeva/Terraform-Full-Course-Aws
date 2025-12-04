@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day01
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -108,6 +108,23 @@ Like apply, it requires a confirmation prompt (or -auto-approve).
 - **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_day-730-mastering-terraform-variable-types-activity-7400960272246636544-YEoj?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
 - **Code Repository:** [GitHub](https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day07/my%20task)
 - **Issue:** [#290](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/290)
+
+### 🎯 Key Learnings
+
+
+---
+
+## Day 5: Terraform Variables
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables](https://dev.to/gokulprasath_n_42438fd633/day-530-the-power-of-variables-dry-principles-precedence-50ph)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_day-530-the-power-of-variables-dry-principles-activity-7400209259155611648-bz51?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
+- **Code Repository:** [GitHub](_Noresponse_)
+- **Issue:** [#229](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/229)
 
 ### 🎯 Key Learnings
 
