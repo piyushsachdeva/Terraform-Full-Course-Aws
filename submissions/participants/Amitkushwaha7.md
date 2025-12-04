@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Amitkushwaha7/TerraformFullCourse.git
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -125,6 +125,27 @@ Local variables → internal computed values
 Output variables → values Terraform shows after deployment
 I also tested how Terraform decides which variable value to use (default → tfvars → env vars → command-line).
  A small S3 Bucket, EC2 instance, VPC demo helped me understand everything clearly.
+
+---
+
+## Day 3: AWS S3 Bucket Using Terraform 
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - AWS S3 Bucket Using Terraform ](https://dev.to/amit_kumar_7db8e36a64dd45/day-03-creating-an-s3-bucket-with-terraform-1e1a)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amitkushwaha7_terraform-awsterraform-awscloud-activity-7399495416741912576-kDH1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE9oIyoBad7iXzGfT0vr42stLe45G8ym-YY)
+- **Code Repository:** [GitHub](https://github.com/Amitkushwaha7/TerraformFullCourse.git)
+- **Issue:** [#120](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/120)
+
+### 🎯 Key Learnings
+
+- Set up the AWS provider
+- Wrote the S3 bucket resource block
+- Added basic tags for identification
+- Ran the full Terraform workflow: init, plan, apply, and destroy.
 
 ---
 
