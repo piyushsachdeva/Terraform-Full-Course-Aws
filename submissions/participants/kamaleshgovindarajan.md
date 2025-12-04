@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/kamaleshgovindarajan/AWSTerraform.git
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 5/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -83,6 +83,23 @@ Had a basic overview about the terraform modules and file structure for differen
 ### 🎯 Key Learnings
 
 Today I learned the practical implementation of provisioning the basic AWS resources and the dependencies between resources in Terraform.
+
+---
+
+## Day 4: Terraform State file Management using AWS S3
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file Management using AWS S3](https://medium.com/@kamaleshhgovindarajan/securing-your-infrastructure-with-terraform-remote-backend-day-4-bd9231c1b933)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/kamalesh-govindarajan-4317782b4_30daysofawsterraform-activity-7399874720747126784-pnor?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEuTg2UB52I1OR5VCjK9ADsiJUI-0mWVTpk)
+- **Code Repository:** [GitHub](https://github.com/kamaleshgovindarajan/AWSTerraform.git)
+- **Issue:** [#183](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/183)
+
+### 🎯 Key Learnings
+
 
 ---
 
