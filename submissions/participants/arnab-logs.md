@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/arnab-logs/30-Days-of-Terraform/tree/main/day-01
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -102,6 +102,27 @@ I learned that:
 - Use terraform.tfvars.example for sharing.
 - Handle growth via environments or .tfvars separation.
 - Root module is the main project folder.
+
+---
+
+## Day 5: Terraform Variables
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables](https://learning-out-loud-my-devops-journey.hashnode.dev/day-30-day-05-terraform-variables-input-output-and-local)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/iamarnabnandi_30daysofawsterraform-activity-7400189737472536576-SVor?utm_source=share&utm_medium=member_desktop&rcm=ACoAADrH7I4Bqi8Arg0Je9JPIHTlEKr6G9C9JwM)
+- **Code Repository:** [GitHub](https://github.com/arnab-logs/30-Days-of-Terraform/tree/main/day-05)
+- **Issue:** [#210](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/210)
+
+### 🎯 Key Learnings
+
+- Input variables let us define values once and reuse across resources.
+- Local variables help shape and reuse values internally.
+- Output variables show key resource info after creation.
+- Variable precedence determines which value Terraform uses.
 
 ---
 
