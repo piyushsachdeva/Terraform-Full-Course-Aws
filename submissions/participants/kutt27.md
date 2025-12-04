@@ -6,9 +6,9 @@
 **Personal Practice Repo:** n/a
 
 ## Progress Overview
-- **Days Completed:** 4/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 5/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -97,6 +97,25 @@
 - Writing a simple Terraform file
 - Practical deep down into: terraform init, plan, apply and destroy
 - Managing naming conflict on an AWS bucket: AWS bucket names must be unique across all AWS accounts in all regions within a partition
+
+---
+
+## Day 4: Terraform State file management with AWS S3
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management with AWS S3](https://amals27.hashnode.dev/terraform-state-management)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amal-s27_30daysofawsterraform-activity-7399843327233404928-WPbE?utm_source=share&utm_medium=member_desktop&rcm=ACoAADITuXYB_z6HwgAdORpOS6vf6yoneZlgQFQ)
+- **Code Repository:** [GitHub](https://github.com/kutt27/terraform-30-days)
+- **Issue:** [#174](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/174)
+
+### 🎯 Key Learnings
+
+- state file management
+- state file protection
 
 ---
 
