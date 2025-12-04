@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/medashabari/terraform-aws-complete/tree/main/day1
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 2 days
-- **Last Submission:** 2025-12-01
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -102,6 +102,34 @@ What I learned today:
 - Variable precedence → CLI > auto.tfvars > tfvars > environment variables > defaults > prompt
 
 <img width=1881 height=3344 alt=Image src=https://github.com/user-attachments/assets/b9d6f3e1-beef-4595-8ed6-995911eb0c3b />
+
+---
+
+## Day 3: S3 - VPC implicit dependency
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - S3 - VPC implicit dependency](https://medium.com/@shabarimeda/understanding-aws-authentication-for-terraform-0e0dc3a0ba17)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/shabarish-meda_30daysofawsterraform-30daysofawsterraform-share-7400576369824395264-SDOo?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD3PQ5gBrzRUsYrFvDAHTj93UBwyIwLTeYs)
+- **Code Repository:** [GitHub](https://github.com/medashabari/terraform-aws-complete/tree/main/day3)
+- **Issue:** [#251](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/251)
+
+### 🎯 Key Learnings
+
+How AWS authentication works
+
+ • AWS CLI setup (aws configure)
+
+ • Environment variables for AWS access
+
+ • Using IAM roles for secure deployments
+
+ • Creating an S3 bucket with Terraform
+
+ • **Difference between implicit and explicit dependency**
 
 ---
 
