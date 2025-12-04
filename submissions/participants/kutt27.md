@@ -6,9 +6,9 @@
 **Personal Practice Repo:** n/a
 
 ## Progress Overview
-- **Days Completed:** 5/30
-- **Current Streak:** 2 days
-- **Last Submission:** 2025-11-27
+- **Days Completed:** 6/30
+- **Current Streak:** 1 day
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -116,6 +116,23 @@
 
 - state file management
 - state file protection
+
+---
+
+## Day 6: Terraform Project Structure
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - Terraform Project Structure](https://amals27.hashnode.dev/terraform-project-structure)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amal-s27_30daysofawsterraform-activity-7400576243202719745-9f7A?utm_source=share&utm_medium=member_desktop&rcm=ACoAADITuXYB_z6HwgAdORpOS6vf6yoneZlgQFQ)
+- **Code Repository:** [GitHub](https://github.com/kutt27/terraform-30-days/tree/main/06-Terraform-Project-Structure)
+- **Issue:** [#250](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/250)
+
+### 🎯 Key Learnings
+
 
 ---
 
