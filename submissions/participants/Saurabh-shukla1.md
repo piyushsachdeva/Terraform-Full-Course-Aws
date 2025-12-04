@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -103,6 +103,24 @@ state file management in Terraform
 ### 🎯 Key Learnings
 
 Its fun learning how to organize the file in terraform with its best practices
+
+---
+
+## Day 5: Terraform Variables
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 5 - Terraform Variables](https://medium.com/@saurabhshukla6392/day-5-terraform-variables-in-aws-986b3a35d26e)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Tech_KeenMe/status/1994377379347857496)
+- **Code Repository:** [GitHub](https://github.com/Saurabh-shukla1/Terraform-Full-Course-Aws)
+- **Issue:** [#202](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/202)
+
+### 🎯 Key Learnings
+
+Learned about Terraform variables in aws
 
 ---
 
