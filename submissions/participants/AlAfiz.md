@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/AlAfiz/Practice-terraform-providers/tree/master/Day%2004
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-27
 
@@ -96,6 +96,26 @@
 4. Terraform init download plugins.
 5. Setting up my IAM user with access keys and connecting to the CLI. 
 6. Terraform plan to preview the creation of a VPC from configuration.
+
+---
+
+## Day 1: Introduction to Terraform
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Introduction to Terraform](https://dev.to/alafiz/my-first-day-with-terraform-1di9)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/threeandhalfman/status/1993984166619234705?s=20)
+- **Code Repository:** [GitHub](https://github.com/AlAfiz/Practice-terraform-providers/tree/master)
+- **Issue:** [#147](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/147)
+
+### 🎯 Key Learnings
+
+- Terraform helps to provision infrastructure in a repeatable pattern using code, this reduces risk of errors and improves predictability in infrastructure environment.
+- Terraform is not the only IaC tool but the most popular, and it's cloud agnostic.
+- Without IaC, cloud provisioning would take hours. It's concepts and tools are just awesome.
 
 ---
 
