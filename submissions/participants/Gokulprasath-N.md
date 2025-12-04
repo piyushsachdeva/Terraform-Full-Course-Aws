@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day01
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-25
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -91,6 +91,23 @@ Like apply, it requires a confirmation prompt (or -auto-approve).
 - **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_30daysofawsterraform-aws-terraform-activity-7399094170549682177-5wJw?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
 - **Code Repository:** [GitHub](https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day02)
 - **Issue:** [#65](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/65)
+
+### 🎯 Key Learnings
+
+
+---
+
+## Day 7: Type Constraints
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 7 - Type Constraints](https://medium.com/@gokulkumargn/day-7-30-mastering-terraform-variable-types-constraints-%EF%B8%8F-641338b97718?postPublishedType=initial)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_day-730-mastering-terraform-variable-types-activity-7400960272246636544-YEoj?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
+- **Code Repository:** [GitHub](https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day07/my%20task)
+- **Issue:** [#290](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/290)
 
 ### 🎯 Key Learnings
 
