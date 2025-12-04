@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/varshith-mohan/Terraform-AWS/tree/main
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 2 days
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -78,6 +78,33 @@ Consistent naming across all files with clear, descriptive file names,
 README + comments for better documentation,
 Size Management Using modules for reusable components
 This steps made the project look clean and 100% easier to scale efficiently.
+
+---
+
+## Day 3: AWS S3 Bucket with Terraform
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - AWS S3 Bucket with Terraform](https://medium.com/@varshithmohan/aws-s3-bucket-with-terraform-a5eff19909a0)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/varshithmohan_aws-s3-bucket-with-terraform-activity-7400436511508398080-Mnc3?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOUsG0BKiRvXjdtA3TgVX7vet_QBEoly48)
+- **Code Repository:** [GitHub](https://github.com/varshith-mohan/Terraform-AWS)
+- **Issue:** [#232](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/232)
+
+### 🎯 Key Learnings
+
+explored
+ - How Terraform providers work
+ - IAM user creation and Policy
+ - Configuring AWS as the provider
+ - Writing a resource block to create an S3 bucket
+ - Understanding Terraform init, plan, and apply and - - auto-aproove workflow
+
+My S3 bucket now includes proper tagging and follows IaC best practices. 
+Authentication and Authorization to AWS resources
+Created a terraform file to provision aws S3 bucket 
 
 ---
 
