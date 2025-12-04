@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/JibinJoseph2000/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 2 days
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -73,6 +73,27 @@
 - Types of variables
 - Precedence of input variable configurations possible
 - Sample practice guide
+
+---
+
+## Day 2: Terraform AWS Provider
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform AWS Provider](https://getting-started-with-terraform-aws.hashnode.dev/iac-day-2-of-my-30daysofawsterraform-journey)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/jibinjoseph2000_30daysofawsterraform-terraform-aws-activity-7399510851789103104-JDQc?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjmrYsB3rFK78_GdvzE8PFRYAW9QrhWdkw)
+- **Code Repository:** [GitHub](https://github.com/JibinJoseph2000/Terraform-Full-Course-Aws/blob/main/lessons/day02/)
+- **Issue:** [#132](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/132)
+
+### 🎯 Key Learnings
+
+- What is Terraform Provider
+- Different types of Terraform Provider
+- Version locking and Version constraints in terraform
+- Sample terraform script
 
 ---
 
