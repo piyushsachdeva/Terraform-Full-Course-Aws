@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/piyusdev2006/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -113,6 +113,30 @@
 🔹 Tested variable precedence (CLI > tfvars > env-vars > defaults)
 🔹 Used variables with AWS S3 and VPC resources to see real-time behavior
 🔹 Ran all relevant Terraform commands to observe how outputs and variables interact
+
+---
+
+## Day 3: Creatind an AWS S3 Bucket Using Terraform
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Creatind an AWS S3 Bucket Using Terraform](https://medium.com/@codedotdev/terraform-day-03-creating-an-aws-s3-bucket-using-terraform-resource-provisioning-6de17fd31744)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/ns51_devops-terraform-iac-ugcPost-7399839119519961088-NFhF?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvV2UIBPRm9p0cACKvqC65HEDLocVKNy9Y)
+- **Code Repository:** [GitHub](https://github.com/piyusdev2006/Terraform-Full-Course-Aws)
+- **Issue:** [#172](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/172)
+
+### 🎯 Key Learnings
+
+## What I learned today (Day-03):
+
+- Created an AWS S3 bucket using Terraform
+- Wrote provider config and resource block in main.tf
+- Executed key Terraform commands: init, validate, plan, apply, destroy
+- Modified the configuration and observed how Terraform detects changes
+- Understood how the Terraform state file tracks and manages infrastructure
 
 ---
 
