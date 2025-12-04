@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/andylovecloud/Terraform-Full-Course-Aws/tree/main/lessons/day02
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -102,6 +102,29 @@ Highest Priority: Command Line (-var)
 
 
 ✅ The Solution: Terraform allows us to define infrastructure as code—making it automated, consistent, and reusable.
+
+---
+
+## Day 3: Create an AWS S3 Bucket Using Terraform (it's simple)
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an AWS S3 Bucket Using Terraform (it's simple)](https://dev.to/andylovecloud/day-03-provisioning-your-first-aws-s3-bucket-with-terraform-1efl)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/anduytranhuynh_330-create-an-aws-s3-bucket-using-terraform-activity-7399510237830959104-qdcz?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAyVz1gByMoLT7eaAGviuC1HEPufG4tspEY)
+- **Code Repository:** [GitHub](https://github.com/andylovecloud/Terraform-Full-Course-Aws/tree/main/lessons/day03)
+- **Issue:** [#127](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/127)
+
+### 🎯 Key Learnings
+
+The core workflow for creating an AWS S3 bucket:
+ ✅ Define your configuration in [main.tf](http://main.tf/)
+ ✅ Initialize with terraform init
+ ✅ Plan changes using terraform plan
+ ✅ Apply to provision resources with terraform apply
+ ✅ Destroy when done using terraform destroy
 
 ---
 
