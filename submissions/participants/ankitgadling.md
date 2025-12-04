@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ankitgadling/terraformwithaws
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -65,6 +65,24 @@ IaC is useful when we need to create cloud resources repeatedly. Using Terraform
 
 State files are the backbone of Terraform.
 Store them remotely, lock them properly, and never touch them manually.
+
+---
+
+## Day 3: Create an AWS S3 Bucket Using Terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an AWS S3 Bucket Using Terraform](https://dev.to/ankitgadling/day-3-create-an-aws-s3-bucket-using-terraform-2dn8)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/ankit_gadling/status/1993738140901888494?s=20)
+- **Code Repository:** [GitHub](https://github.com/ankitgadling/terraformwithaws)
+- **Issue:** [#125](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/125)
+
+### 🎯 Key Learnings
+
+today i have learned how implicit dependency works in terraform
 
 ---
 
