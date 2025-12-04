@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anjali76Codes/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-30
 
 ---
 
@@ -107,6 +107,23 @@ I learned how to create an S3 bucket using Terraform and how a resource block is
 I now understand why bucket names must be globally unique and how tags help with organization.
 I also got comfortable with the full Terraform workflow from init to plan, apply and destroy.
 Working through this made the state file and update behavior much clearer.
+
+---
+
+## Day 7: Terraform Type Constraints
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 7 - Terraform Type Constraints](https://terraformlacwithawschallenge.hashnode.dev/day7-terraform-type-constraints)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/feed/update/urn:li:activity:7400934350097358848/)
+- **Code Repository:** [GitHub](https://github.com/anjali76Codes/Terraform-Full-Course-Aws/tree/main)
+- **Issue:** [#283](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/283)
+
+### 🎯 Key Learnings
+
 
 ---
 
