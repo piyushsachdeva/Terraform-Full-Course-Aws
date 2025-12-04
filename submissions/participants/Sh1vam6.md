@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Sh1vam6/30Days-of-AWS-Terraform
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -85,6 +85,31 @@ Today I learned how to create s3 bucket using Terraform , excited for other vide
 ### 🎯 Key Learnings
 
 Today I learned about Terraform providers and the importance of Terraform versions and providers.
+
+---
+
+## Day 1: Introduction to IAC
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Introduction to IAC](https://shivamgautam.hashnode.dev/day1-of-aws-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/sh1vam6_30daysofawsterraform-30daysofawsterraform-share-7400647478028644352-sjyl?utm_source=share&utm_medium=member_desktop&rcm=ACoAADMI-FsBQ31jhDHEDb_pOSpvLKTm5ja2Z2E)
+- **Code Repository:** [GitHub](https://github.com/Sh1vam6/30Days-of-AWS-Terraform)
+- **Issue:** [#259](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/259)
+
+### 🎯 Key Learnings
+
+ Day 1 of my Terraform learning journey:
+
+1. What is Infrastructure as Code (IaC)
+2. Why IaC is needed
+3. What is Terraform
+4. How Terraform works
+5. Basic workflow commands
+6. Install + setup steps
 
 ---
 
