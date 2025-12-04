@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day01
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-25
 
 ---
 
@@ -77,6 +77,23 @@ Destroying: To remove the resource, run terraform destroy.
 This will delete the bucket from AWS.
 
 Like apply, it requires a confirmation prompt (or -auto-approve).
+
+---
+
+## Day 2: AWS Provider 
+**Date:** 2025-11-25  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - AWS Provider ](https://medium.com/@gokulkumargn/day-2-30-mastering-terraform-providers-version-constraints-%EF%B8%8F-06c2794ebc62?postPublishedType=initial)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_30daysofawsterraform-aws-terraform-activity-7399094170549682177-5wJw?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
+- **Code Repository:** [GitHub](https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day02)
+- **Issue:** [#65](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/65)
+
+### 🎯 Key Learnings
+
 
 ---
 
