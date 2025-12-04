@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/YashChavanWeb/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -117,6 +117,31 @@ How to use primitive types like string, number, and boolean to create simple yet
 How to work with non-primitive types like list, set, map, tuple, and object to structure more complex data and manage multiple configurations.
 
 The importance of type constraints to ensure data consistency and prevent errors in larger Terraform configurations, making my infrastructure-as-code more maintainable.
+
+---
+
+## Day 3: Create an AWS S3 Bucket Using Terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an AWS S3 Bucket Using Terraform](https://terraform-with-aws.hashnode.dev/day-3-creating-an-s3-bucket-using-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/yashchavanweb_terraform-aws-infrastructureascode-activity-7399497747831328769-kd1z?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOxF0Bb_jrJGYnEfOH6ZnNkRuI2CZ235Y)
+- **Code Repository:** [GitHub](https://github.com/YashChavanWeb/Terraform-Full-Course-Aws)
+- **Issue:** [#122](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/122)
+
+### 🎯 Key Learnings
+
+I provisioned an 𝗦𝟯 𝗯𝘂𝗰𝗸𝗲𝘁 𝗼𝗻 𝗔𝗪𝗦! 
+
+Here's a quick rundown of the process:
+
+- 𝗪𝗿𝗶𝘁𝗲 𝘁𝗵𝗲 𝗖𝗼𝗻𝗳𝗶𝗴𝘂𝗿𝗮𝘁𝗶𝗼𝗻: Define the S3 bucket in a simple .tf file.
+- 𝗣𝗿𝗲𝘃𝗶𝗲𝘄 𝗖𝗵𝗮𝗻𝗴𝗲𝘀: Use terraform plan to see what will be created/modified.
+- 𝗔𝗽𝗽𝗹𝘆 𝘁𝗵𝗲 𝗣𝗹𝗮𝗻: Run terraform apply to provision the resources.
+- 𝗗𝗲𝘀𝘁𝗿𝗼𝘆 𝗪𝗵𝗲𝗻 𝗗𝗼𝗻𝗲: Clean up with terraform destroy to avoid unnecessary costs.
 
 ---
 
