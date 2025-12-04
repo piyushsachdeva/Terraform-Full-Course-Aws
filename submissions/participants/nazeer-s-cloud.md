@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/nazeer-s-cloud/Terraform-Full-Course-Aws/tree/main/lessons/day01/day01_task_submission
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -45,6 +45,24 @@ Today I learned what Terraform is and how it enables Infrastructure as Code on A
 ### 🎯 Key Learnings
 
 Today I learned how Terraform stores infrastructure information inside a state file. I also configured remote state using an S3 backend. I understood the importance of state locking and learned that DynamoDB locking is now deprecated, as S3 provides built-in server-side locking. This helps in collaboration and prevents state corruption.
+
+---
+
+## Day 2: Terraform Versioning, Provider Versioning, AWS CLI Setup
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform Versioning, Provider Versioning, AWS CLI Setup](https://hashnode.com/post/cmiftrouf000e02la5gpz9ubp)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/nazeer-s-cloud_230-terraform-aws-provider-explained-activity-7399387539016617984-7GpM?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD_3vmkBmtPwplLWDSDQ6NtcJOwszyHs10U)
+- **Code Repository:** [GitHub](https://hashnode.com/post/cmiftrouf000e02la5gpz9ubp)
+- **Issue:** [#98](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/98)
+
+### 🎯 Key Learnings
+
+Today I learned how Terraform handles versioning for both Terraform core and providers. I understood version constraints (=, >=, <=, ~>, ranges) and how they prevent breaking changes. I also installed and configured AWS CLI, which is required for Terraform to interact with AWS. This forms the foundation before building real infrastructure.
 
 ---
 
