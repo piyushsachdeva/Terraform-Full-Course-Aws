@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/varshith-mohan/Terraform-AWS/tree/main
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 2 days
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -105,6 +105,30 @@ explored
 My S3 bucket now includes proper tagging and follows IaC best practices. 
 Authentication and Authorization to AWS resources
 Created a terraform file to provision aws S3 bucket 
+
+---
+
+## Day 2: Terraform Versioning and AWS Provider
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform Versioning and AWS Provider](https://medium.com/@bubbyplaycricket/day-2-versioning-in-terraform-setting-up-aws-cli-120db13986d9)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/varshithmohan_devops-terraform-iac-activity-7400263009539121152-x_Tb?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOUsG0BKiRvXjdtA3TgVX7vet_QBEoly48)
+- **Code Repository:** [GitHub](https://github.com/varshith-mohan/Terraform-AWS)
+- **Issue:** [#228](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/228)
+
+### 🎯 Key Learnings
+
+Manual cloud provisioning does not scale — it slows teams, causes drift, and invites misconfigurations so 
+IaC solves this with code-driven, repeatable, version-controlled infrastructure.
+Terraform remains the top choice because of its cloud-agnostic nature (AWS, Azure, GCP, Kubernetes & more).
+and The Terraform workflow is clean and predictable:
+ init → validate → plan → apply → destroy
+and additionally 
+Git + Terraform gives complete auditability, consistency, and automation across multiple dev, staging and production environments.
 
 ---
 
