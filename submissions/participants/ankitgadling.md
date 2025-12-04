@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ankitgadling/terraformwithaws
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-24
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -46,6 +46,25 @@ Versioning matters - lock it down to avoid surprises
 ### 🎯 Key Learnings
 
 IaC is useful when we need to create cloud resources repeatedly. Using Terraform provides the ability to automate this process, saving time, money, and reducing manual errors.
+
+---
+
+## Day 4: Terraform State File Management with Remote Backends
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State File Management with Remote Backends](https://dev.to/ankitgadling/day-4-terraform-state-file-management-with-remote-backends-s3-native-locking-14f5)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/ankit_gadling/status/1994086427005734963?s=20)
+- **Code Repository:** [GitHub](https://github.com/ankitgadling/terraformwithaws)
+- **Issue:** [#176](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/176)
+
+### 🎯 Key Learnings
+
+State files are the backbone of Terraform.
+Store them remotely, lock them properly, and never touch them manually.
 
 ---
 
