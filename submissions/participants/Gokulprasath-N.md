@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day01
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -125,6 +125,23 @@ Like apply, it requires a confirmation prompt (or -auto-approve).
 - **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_day-530-the-power-of-variables-dry-principles-activity-7400209259155611648-bz51?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
 - **Code Repository:** [GitHub](_Noresponse_)
 - **Issue:** [#229](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/229)
+
+### 🎯 Key Learnings
+
+
+---
+
+## Day 4: Terraform State file management
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State file management](https://medium.com/@gokulkumargn/day-4-30-the-heart-of-terraform-state-files-remote-backends-%EF%B8%8F-2842360d7085)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/gokulprasath-n_30daysofawsterraform-aws-terraform-activity-7399879505785503745-Jabh?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADpuYVMBDniXo9yNNR3dTMoe7XPh7tZCvYI)
+- **Code Repository:** [GitHub](https://github.com/Gokulprasath-N/Terraform-Full-Course-Aws/tree/main/lessons/day04)
+- **Issue:** [#184](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/184)
 
 ### 🎯 Key Learnings
 
