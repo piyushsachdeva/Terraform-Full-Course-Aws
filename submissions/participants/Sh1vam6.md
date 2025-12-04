@@ -6,7 +6,7 @@
 **Personal Practice Repo:** https://github.com/Sh1vam6/30Days-of-AWS-Terraform
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
 - **Last Submission:** 2025-11-30
 
@@ -49,6 +49,24 @@ Learning Terraform core concepts today —
 ### 🎯 Key Learnings
 
 Today I learned about different Terraform Variables and also did hands-on.
+
+---
+
+## Day 3: Create an AWS S3 Bucket Using Terraform
+**Date:** 2025-11-30  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an AWS S3 Bucket Using Terraform](https://shivamgautam.hashnode.dev/day-3-of-aws-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/sh1vam6_30daysofawsterraform-30daysofawsterraform-share-7400859096104493057-925E?utm_source=share&utm_medium=member_desktop&rcm=ACoAADMI-FsBQ31jhDHEDb_pOSpvLKTm5ja2Z2E)
+- **Code Repository:** [GitHub](https://github.com/Sh1vam6/30Days-of-AWS-Terraform)
+- **Issue:** [#276](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/276)
+
+### 🎯 Key Learnings
+
+Today I learned how to create s3 bucket using Terraform , excited for other videos.
 
 ---
 
