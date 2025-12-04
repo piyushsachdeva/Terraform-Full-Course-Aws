@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform/tree/main/Day1
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -99,6 +99,24 @@ Today i learn about how we make better file structure
 ### 🎯 Key Learnings
 
 I learn how to make our statefile secure
+
+---
+
+## Day 3: Create an AWS S3 Bucket Using Terraform 
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an AWS S3 Bucket Using Terraform ](https://medium.com/@rudrakshkanungo2022/creating-an-aws-s3-bucket-using-terraform-258846da830e)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Rudraks42272163/status/1993732275243294785?s=20)
+- **Code Repository:** [GitHub](https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform)
+- **Issue:** [#121](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/121)
+
+### 🎯 Key Learnings
+
+Today i learn  how to create s3 bucket on aws with IAC
 
 ---
 
