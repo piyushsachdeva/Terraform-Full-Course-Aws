@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 5/30
+- **Days Completed:** 6/30
 - **Current Streak:** 2 days
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -112,6 +112,24 @@ Today I learned about variables in Terraform, variable types and their precedenc
 ### 🎯 Key Learnings
 
 Today I learned about Terraform project Structure Best practices, how to organize and split terraform code to multiple .tf files and keep them logically organized.
+
+---
+
+## Day 4: Terraform State File Management and Remote Backend
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - Terraform State File Management and Remote Backend](https://dev.to/anil_kumar_noolu/terraform-state-file-management-23l3)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/anilkumarr17147/status/1994068774774063405?t=zHXXo0PqQoHE98nl5TKWQg&s=19)
+- **Code Repository:** [GitHub](https://github.com/anilkumar-noolu/Terraform-Full-Course-Aws)
+- **Issue:** [#170](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/170)
+
+### 🎯 Key Learnings
+
+Today I learned about Terraform State File Management and how Remote Backend is operated and what are its benefits and how important is StateFile and Remote Backend.
 
 ---
 

@@ -6,12 +6,12 @@
 
 | Rank | Participant | Days Completed | Current Streak | Latest Day | Last Submission | Status |
 |------|-------------|----------------|----------------|------------|-----------------|--------|
-| 🥇 | ![Saurabh-shukla1](https://github.com/Saurabh-shukla1.png?size=32) [@Saurabh-shukla1](https://github.com/Saurabh-shukla1) | 6/30 | 1 day | Day 5 | 2025-11-28 | 🔥 Active |
-| 🥈 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 6/30 | 6 days | Day 6 | 2025-11-29 | 🔥 Active |
-| 🥉 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 6/30 | 6 days | Day 6 | 2025-11-29 | 🔥 Active |
-| #4 | ![kondamanish](https://github.com/kondamanish.png?size=32) [@kondamanish](https://github.com/kondamanish) | 5/30 | 1 day | Day 6 | 2025-11-29 | 🔥 Active |
-| #5 | ![arnab-logs](https://github.com/arnab-logs.png?size=32) [@arnab-logs](https://github.com/arnab-logs) | 5/30 | 1 day | Day 5 | 2025-11-28 | 🔥 Active |
-| #6 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 5/30 | 2 days | Day 6 | 2025-11-29 | 🔥 Active |
+| 🥇 | ![anilkumar-noolu](https://github.com/anilkumar-noolu.png?size=32) [@anilkumar-noolu](https://github.com/anilkumar-noolu) | 6/30 | 2 days | Day 4 | 2025-11-27 | 🔥 Active |
+| 🥈 | ![Saurabh-shukla1](https://github.com/Saurabh-shukla1.png?size=32) [@Saurabh-shukla1](https://github.com/Saurabh-shukla1) | 6/30 | 1 day | Day 5 | 2025-11-28 | 🔥 Active |
+| 🥉 | ![Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub.png?size=32) [@Mo-Adnan-Mo-Ayyub](https://github.com/Mo-Adnan-Mo-Ayyub) | 6/30 | 6 days | Day 6 | 2025-11-29 | 🔥 Active |
+| #4 | ![Adarsh097](https://github.com/Adarsh097.png?size=32) [@Adarsh097](https://github.com/Adarsh097) | 6/30 | 6 days | Day 6 | 2025-11-29 | 🔥 Active |
+| #5 | ![kondamanish](https://github.com/kondamanish.png?size=32) [@kondamanish](https://github.com/kondamanish) | 5/30 | 1 day | Day 6 | 2025-11-29 | 🔥 Active |
+| #6 | ![arnab-logs](https://github.com/arnab-logs.png?size=32) [@arnab-logs](https://github.com/arnab-logs) | 5/30 | 1 day | Day 5 | 2025-11-28 | 🔥 Active |
 | #7 | ![Vrushal10](https://github.com/Vrushal10.png?size=32) [@Vrushal10](https://github.com/Vrushal10) | 5/30 | 3 days | Day 05 | 2025-11-29 | 🔥 Active |
 | #8 | ![TanseerS](https://github.com/TanseerS.png?size=32) [@TanseerS](https://github.com/TanseerS) | 5/30 | 1 day | Day 6 | 2025-11-30 | 🔥 Active |
 | #9 | ![Rudraksh121a](https://github.com/Rudraksh121a.png?size=32) [@Rudraksh121a](https://github.com/Rudraksh121a) | 5/30 | 1 day | Day 4 | 2025-11-27 | 🔥 Active |
@@ -64,7 +64,7 @@
 ## 📊 Challenge Statistics
 
 - **Total Participants:** 52
-- **Total Submissions:** 166
+- **Total Submissions:** 167
 - **Average Completion:**  days per participant
 - **Last Updated:** 2025-12-04
 
