@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/nazeer-s-cloud/Terraform-Full-Course-Aws/tree/main/lessons/day01/day01_task_submission
 
 ## Progress Overview
-- **Days Completed:** 3/30
-- **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Days Completed:** 4/30
+- **Current Streak:** 2 days
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -63,6 +63,24 @@ Today I learned how Terraform stores infrastructure information inside a state f
 ### 🎯 Key Learnings
 
 Today I learned how Terraform handles versioning for both Terraform core and providers. I understood version constraints (=, >=, <=, ~>, ranges) and how they prevent breaking changes. I also installed and configured AWS CLI, which is required for Terraform to interact with AWS. This forms the foundation before building real infrastructure.
+
+---
+
+## Day 3: AWS CLI Configuration & S3 Bucket Creation
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - AWS CLI Configuration & S3 Bucket Creation](https://nazeer-s-cloud.hashnode.dev/day-03-creating-my-first-s3-bucket-using-aws-cli-and-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/nazeer-s-cloud_330-create-an-aws-s3-bucket-using-terraform-activity-7399677389053681664-0Qpc?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD_3vmkBmtPwplLWDSDQ6NtcJOwszyHs10U)
+- **Code Repository:** [GitHub](https://github.com/nazeer-s-cloud/Terraform-Full-Course-Aws/tree/main/lessons/day03/day03_task_submission)
+- **Issue:** [#141](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/141)
+
+### 🎯 Key Learnings
+
+Today I learned how to configure AWS CLI using access keys and verify authentication. I also created my first S3 bucket using both AWS CLI and Terraform. This helped me understand how Terraform interacts with AWS after authentication is complete.
 
 ---
 
