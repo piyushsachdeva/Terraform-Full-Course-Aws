@@ -6,9 +6,9 @@
 **Personal Practice Repo:** n/a
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -76,6 +76,27 @@
 ### 🎯 Key Learnings
 
 - Terraform variables
+
+---
+
+## Day 3: AWS S3 Bucket creation using Terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - AWS S3 Bucket creation using Terraform](https://amals27.hashnode.dev/aws-s3-bucket-creation-using-terraform)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/amal-s27_30daysofawsterraform-activity-7399485428929835009-2-WW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADITuXYB_z6HwgAdORpOS6vf6yoneZlgQFQ)
+- **Code Repository:** [GitHub](git@github.com:kutt27/terraform-30-days.git)
+- **Issue:** [#117](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/117)
+
+### 🎯 Key Learnings
+
+- Terraform naming
+- Writing a simple Terraform file
+- Practical deep down into: terraform init, plan, apply and destroy
+- Managing naming conflict on an AWS bucket: AWS bucket names must be unique across all AWS accounts in all regions within a partition
 
 ---
 
