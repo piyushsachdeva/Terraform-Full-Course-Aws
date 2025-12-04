@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/blob/main/DAY-02/DAY-02-Providerd.md
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-28
+- **Last Submission:** 2025-11-24
 
 ---
 
@@ -117,6 +117,30 @@ Today i have learned
 -- types of variables (based on purpose and values)
 -- Terraform Variable Precedence (Highest → Lowest)
 -- Benefits of using variables in terraform
+
+---
+
+## Day 1: Day 1: Introduction to Terraform
+**Date:** 2025-11-24  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Day 1: Introduction to Terraform](https://saiprasadannam.substack.com/p/infrastructure-as-code-iac-inspired)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/saiprasad-annam_130-how-does-terraform-work-intro-to-activity-7400194662512140288-CETy?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAChoEAoBkIo2wehBR8kDv3DVqnQ29h7OqvI)
+- **Code Repository:** [GitHub](https://github.com/Saiprasad-1727/30-DAYS-OF-Terraform/tree/main/DAY-01)
+- **Issue:** [#23](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/23)
+
+### 🎯 Key Learnings
+
+Today i have learned
+- Understanding Infrastructure as Code (IaC)
+- Why we need IaC
+- What is Terraform and its benefits
+- Challenges with the traditional approach
+- Terraform Workflow
+- Installing Terraform
 
 ---
 
