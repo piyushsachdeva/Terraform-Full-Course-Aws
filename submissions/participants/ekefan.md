@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ekefan/Terraform-Full-Course-Aws/tree/main/practice
 
 ## Progress Overview
-- **Days Completed:** 2/30
+- **Days Completed:** 3/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-27
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -50,6 +50,23 @@
 - Learned that the apply command tells Terraform to provision the resources on the cloud platform
 - Learned that looking up the documentation is important
 - Learned how to remove resources when necessary with IaC
+
+---
+
+## Day 2: Terraform Provider
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform Provider](https://dev.to/ekefan/terraform-provider-deep-dive-1e1m)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/emmanuelebenezer_terraform-provider-deep-dive-activity-7399395135970684928-lYXQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC1PCgwBQNtl36sNRv_AhiSUFcRLJv--Rn4)
+- **Code Repository:** [GitHub](https://github.com/ekefan/Terraform-Full-Course-Aws/tree/main/practice/day02)
+- **Issue:** [#100](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/100)
+
+### 🎯 Key Learnings
+
 
 ---
 
