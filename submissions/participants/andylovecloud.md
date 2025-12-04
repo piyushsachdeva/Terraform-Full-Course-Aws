@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/andylovecloud/Terraform-Full-Course-Aws/tree/main/lessons/day02
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-24
 
 ---
 
@@ -81,6 +81,27 @@ Lowest Priority: default inside the block
 Mid Priority: terraform.tfvars files
 
 Highest Priority: Command Line (-var)
+
+---
+
+## Day 1: Terraform -install-autocomplete
+**Date:** 2025-11-24  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 1 - Terraform -install-autocomplete](https://dev.to/andylovecloud/day-01-how-does-terraform-work-intro-to-iac-3d6p)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/anduytranhuynh_130-how-does-terraform-work-intro-to-activity-7398711701463883777-53eH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAyVz1gByMoLT7eaAGviuC1HEPufG4tspEY)
+- **Code Repository:** [GitHub](https://github.com/andylovecloud/Terraform-Full-Course-Aws/blob/main/lessons/day01/day-1-MySetup.md)
+- **Issue:** [#16](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/16)
+
+### 🎯 Key Learnings
+
+🚫 The Manual Trap: Clicking through consoles feels easy at first, but for a simple 3-tier architecture across 6 environments (Dev, QA, Prod, etc.), it can take upwards of 12 hours!
+
+
+✅ The Solution: Terraform allows us to define infrastructure as code—making it automated, consistent, and reusable.
 
 ---
 
