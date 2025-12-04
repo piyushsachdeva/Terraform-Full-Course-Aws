@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/kamaleshgovindarajan/AWSTerraform.git
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-29
+- **Last Submission:** 2025-11-26
 
 ---
 
@@ -65,6 +65,24 @@ Learned the separate file structures for main.tf, variable.tf, locals.tf, output
 
 Today I learned about the Terraform File Structure and their beat Practices.
 Had a basic overview about the terraform modules and file structure for different envs.
+
+---
+
+## Day 3: Create an AWS S3 Bucket using Terraform
+**Date:** 2025-11-26  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 3 - Create an AWS S3 Bucket using Terraform](https://medium.com/@kamaleshhgovindarajan/mastering-the-fundamentals-core-terraform-workflow-and-secure-provisioning-58e9f8812ca4)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/kamalesh-govindarajan-4317782b4_30daysofawsterraform-activity-7399491268076183553-iOLy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEuTg2UB52I1OR5VCjK9ADsiJUI-0mWVTpk)
+- **Code Repository:** [GitHub](https://github.com/kamaleshgovindarajan/AWSTerraform.git)
+- **Issue:** [#119](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/119)
+
+### 🎯 Key Learnings
+
+Today I learned the practical implementation of provisioning the basic AWS resources and the dependencies between resources in Terraform.
 
 ---
 
