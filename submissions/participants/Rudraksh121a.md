@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform/tree/main/Day1
 
 ## Progress Overview
-- **Days Completed:** 4/30
+- **Days Completed:** 5/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -81,6 +81,24 @@ Today i learn about why variable are important
 ### 🎯 Key Learnings
 
 Today i learn about how we make better file structure
+
+---
+
+## Day 4:  Terraform State file management with AWS S3
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 -  Terraform State file management with AWS S3](https://medium.com/@rudrakshkanungo2022/terraform-remote-state-6562bf13b690)
+
+### 🔗 Links
+- **Social Media:** [Post](https://x.com/Rudraks42272163/status/1994105911372337239?s=20)
+- **Code Repository:** [GitHub](https://github.com/Rudraksh121a/30-Days-of-AWS-Terraform.git)
+- **Issue:** [#181](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/181)
+
+### 🎯 Key Learnings
+
+I learn how to make our statefile secure
 
 ---
 
