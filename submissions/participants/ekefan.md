@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/ekefan/Terraform-Full-Course-Aws/tree/main/practice
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-28
 
 ---
 
@@ -64,6 +64,23 @@
 - **Social Media:** [Post](https://www.linkedin.com/posts/emmanuelebenezer_terraform-provider-deep-dive-activity-7399395135970684928-lYXQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC1PCgwBQNtl36sNRv_AhiSUFcRLJv--Rn4)
 - **Code Repository:** [GitHub](https://github.com/ekefan/Terraform-Full-Course-Aws/tree/main/practice/day02)
 - **Issue:** [#100](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/100)
+
+### 🎯 Key Learnings
+
+
+---
+
+## Day 4: State File Management - Remote Backend
+**Date:** 2025-11-28  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 4 - State File Management - Remote Backend](https://dev.to/ekefan/securing-your-infrastructure-state-on-aws-with-terraform-56kn)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/emmanuelebenezer_30daysofawsterraform-activity-7400189926329217024-P3mA?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC1PCgwBQNtl36sNRv_AhiSUFcRLJv--Rn4)
+- **Code Repository:** [GitHub](https://github.com/ekefan/Terraform-Full-Course-Aws/tree/main/practice/day04)
+- **Issue:** [#212](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/212)
 
 ### 🎯 Key Learnings
 
