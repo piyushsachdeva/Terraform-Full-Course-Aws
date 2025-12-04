@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/YashChavanWeb/Terraform-Full-Course-Aws
 
 ## Progress Overview
-- **Days Completed:** 6/30
+- **Days Completed:** 7/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-26
+- **Last Submission:** 2025-11-29
 
 ---
 
@@ -142,6 +142,23 @@ Here's a quick rundown of the process:
 - 𝗣𝗿𝗲𝘃𝗶𝗲𝘄 𝗖𝗵𝗮𝗻𝗴𝗲𝘀: Use terraform plan to see what will be created/modified.
 - 𝗔𝗽𝗽𝗹𝘆 𝘁𝗵𝗲 𝗣𝗹𝗮𝗻: Run terraform apply to provision the resources.
 - 𝗗𝗲𝘀𝘁𝗿𝗼𝘆 𝗪𝗵𝗲𝗻 𝗗𝗼𝗻𝗲: Clean up with terraform destroy to avoid unnecessary costs.
+
+---
+
+## Day 6: AWS Terraform Project Structure Best Practices
+**Date:** 2025-11-29  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 6 - AWS Terraform Project Structure Best Practices](https://terraform-with-aws.hashnode.dev/day-6-terraform-file-structure-breakdown)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/yashchavanweb_30daysofawsterraform-terraform-infrastructureascode-activity-7400538585617203200-TCoL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIOxF0Bb_jrJGYnEfOH6ZnNkRuI2CZ235Y)
+- **Code Repository:** [GitHub](https://github.com/YashChavanWeb/Terraform-Full-Course-Aws)
+- **Issue:** [#242](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/242)
+
+### 🎯 Key Learnings
+
 
 ---
 
