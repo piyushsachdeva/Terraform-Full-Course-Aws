@@ -6,9 +6,9 @@
 **Personal Practice Repo:** https://github.com/AlAfiz/Practice-terraform-providers/tree/master/Day%2004
 
 ## Progress Overview
-- **Days Completed:** 3/30
+- **Days Completed:** 4/30
 - **Current Streak:** 1 day
-- **Last Submission:** 2025-11-30
+- **Last Submission:** 2025-11-27
 
 ---
 
@@ -73,6 +73,29 @@
 3. Ouput variables are useful when i need resource IDs after provisioning.
 4. How dynamic Local variables are for computed values.
 5. How to change variable values using terraform,tfvars, environment variables and terraform plan -var=environment=test.
+
+---
+
+## Day 2: Terraform Providers
+**Date:** 2025-11-27  
+**Status:** ✅ Completed
+
+### 📝 Blog Post
+[Day 2 - Terraform Providers](https://dev.to/alafiz/day-2-the-knowledge-of-terraform-providers-49a1)
+
+### 🔗 Links
+- **Social Media:** [Post](https://www.linkedin.com/posts/zakariyau-mukhtar-01162137b_day-2-the-knowledge-of-terraform-providers-activity-7399813830006198272-Pov-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF3i4M0Bz3am0ywJwnZx8RbfVrIVxsqgAug)
+- **Code Repository:** [GitHub](https://github.com/AlAfiz/Practice-terraform-providers/tree/f9a87069c368fa5d9637c9a75824bd3365e3329c/day%202)
+- **Issue:** [#171](https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/issues/171)
+
+### 🎯 Key Learnings
+
+1. Terraform Core do not manage resources but providers do.
+2. Always pin provider version to avoid error.
+3. Always rely on AWS provider documentation for accurate configuration blocks.
+4. Terraform init download plugins.
+5. Setting up my IAM user with access keys and connecting to the CLI. 
+6. Terraform plan to preview the creation of a VPC from configuration.
 
 ---
 
