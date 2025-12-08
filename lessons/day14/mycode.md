@@ -1,5 +1,5 @@
 
-# 🌐 Day 15: Global Static Website with Custom Domain on AWS using Terraform
+ Global Static Website with Custom Domain on AWS using Terraform
 
 ## Project Goal
 This project extends the secure S3 + CloudFront static website architecture (Day 14) by adding a custom domain, HTTPS via ACM, and automated cache invalidation to create a fully production-ready, globally distributed website.
