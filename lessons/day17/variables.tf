@@ -10,12 +10,20 @@ variable "app_name" {
   default     = "my-app-bluegreen"
 }
 
-variable "solution_stack_name" {
+# variable "solution_stack_name" {
+#   description = "Elastic Beanstalk solution stack name (platform)"
+#   type        = string
+#   # Node.js 20 running on 64bit Amazon Linux 2023
+#   default = "64bit Amazon Linux 2023 v6.6.8 running Node.js 20"
+# }
+
+variable "platform_arn" {
   description = "Elastic Beanstalk solution stack name (platform)"
   type        = string
-  # Node.js 20 running on 64bit Amazon Linux 2023
-  default = "64bit Amazon Linux 2023 v6.6.8 running Node.js 20"
+  default     = "arn:aws:elasticbeanstalk:us-east-1::platform/Node.js 20 running on 64bit Amazon Linux 2023/6.7.0"
+
 }
+
 
 variable "instance_type" {
   description = "EC2 instance type for Elastic Beanstalk environments"

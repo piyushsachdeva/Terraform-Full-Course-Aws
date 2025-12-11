@@ -20,11 +20,12 @@ resource "aws_elastic_beanstalk_application_version" "v2" {
 
 # Green Environment (Staging/Pre-production)
 resource "aws_elastic_beanstalk_environment" "green" {
-  name                = "${var.app_name}-green"
-  application         = aws_elastic_beanstalk_application.app.name
-  solution_stack_name = var.solution_stack_name
-  tier                = "WebServer"
-  version_label       = aws_elastic_beanstalk_application_version.v2.name
+  name         = "${var.app_name}-green"
+  application  = aws_elastic_beanstalk_application.app.name
+  platform_arn = var.platform_arn
+
+  tier          = "WebServer"
+  version_label = aws_elastic_beanstalk_application_version.v2.name
 
   # IAM Settings
   setting {
