@@ -23,3 +23,9 @@ provider "aws" {
     }
   }
 }
+
+resource "null_resource" "useless_trigger" {
+  triggers = {
+    timestamp = timestamp()
+  }
+}

@@ -1,6 +1,6 @@
 # Security Group for Application Load Balancer
 resource "aws_security_group" "alb_sg" {
-  name        = "alb-security-group"
+  name        = "alb-security-group-${var.environment}"
   description = "Security group for Application Load Balancer"
   vpc_id      = aws_vpc.main.id
 
@@ -29,13 +29,13 @@ resource "aws_security_group" "alb_sg" {
   }
 
   tags = {
-    Name = "alb-security-group"
+    Name = "alb-security-group-${var.environment}"
   }
 }
 
 # Security Group for EC2 Instances (App Tier)
 resource "aws_security_group" "app_sg" {
-  name        = "app-security-group"
+  name        = "app-security-group-${var.environment}"
   description = "Security group for application instances - only allow traffic from ALB"
   vpc_id      = aws_vpc.main.id
 
@@ -64,13 +64,13 @@ resource "aws_security_group" "app_sg" {
   }
 
   tags = {
-    Name = "app-security-group"
+    Name = "app-security-group-${var.environment}"
   }
 }
 
 # Security Group for SSH access (optional - restrict to your IP)
 resource "aws_security_group" "allow_ssh" {
-  name        = "allow-ssh"
+  name        = "allow-ssh-${var.environment}"
   description = "Allow SSH access - RESTRICT THIS TO YOUR IP IN PRODUCTION"
   vpc_id      = aws_vpc.main.id
 
@@ -90,7 +90,7 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = {
-    Name = "ssh-security-group"
+    Name = "ssh-security-group-${var.environment}"
   }
 }
 

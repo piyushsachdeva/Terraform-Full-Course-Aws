@@ -3,7 +3,7 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
-    Name = "main-vpc"
+    Name = "main-vpc-${var.environment}"
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "public" {
   availability_zone       = element(var.availability_zones, count.index)
   map_public_ip_on_launch = true
   tags = {
-    Name = "public-subnet-${count.index + 1}"
+    Name = "public-subnet-${var.environment}-${count.index + 1}"
   }
 }
 
@@ -24,14 +24,14 @@ resource "aws_subnet" "private" {
   cidr_block        = element(var.private_subnet_cidrs, count.index)
   availability_zone = element(var.availability_zones, count.index)
   tags = {
-    Name = "private-subnet-${count.index + 1}"
+    Name = "private-subnet-${var.environment}-${count.index + 1}"
   }
 }
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
   tags = {
-    Name = "public-route-table"
+    Name = "public-route-table-${var.environment}"
   }
 }
 
@@ -50,14 +50,14 @@ resource "aws_route_table_association" "public" {
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
   tags = {
-    Name = "main-internet-gateway"
+    Name = "main-internet-gateway-${var.environment}"
   }
 }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
   tags = {
-    Name = "private-route-table"
+    Name = "private-route-table-${var.environment}"
   }
 }
 
@@ -77,7 +77,7 @@ resource "aws_nat_gateway" "main" {
   allocation_id = aws_eip.main.id
   subnet_id     = aws_subnet.public[0].id
   tags = {
-    Name = "main-nat-gateway"
+    Name = "main-nat-gateway-${var.environment}"
   }
 }
 
@@ -85,7 +85,7 @@ resource "aws_eip" "main" {
   domain = "vpc"
 
   tags = {
-    Name = "main-nat-eip"
+    Name = "main-nat-eip-${var.environment}"
   }
 
   depends_on = [aws_internet_gateway.main]

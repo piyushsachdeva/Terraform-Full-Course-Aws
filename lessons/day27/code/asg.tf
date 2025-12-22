@@ -29,7 +29,7 @@ resource "aws_launch_template" "app" {
 }
 
 resource "aws_autoscaling_group" "app_asg" {
-  name                      = "app-asg"
+  name                      = "app-asg-${var.environment}"
   min_size                  = var.min_size
   max_size                  = var.max_size
   desired_capacity          = var.desired_capacity
@@ -45,14 +45,14 @@ resource "aws_autoscaling_group" "app_asg" {
 
   tag {
     key                 = "Name"
-    value               = "app-instance"
+    value               = "app-instance-${var.environment}"
     propagate_at_launch = true
   }
 }
 
 # Simple Scaling Policy - Scale Out
 resource "aws_autoscaling_policy" "scale_out" {
-  name                   = "scale-out"
+  name                   = "scale-out-${var.environment}"
   scaling_adjustment     = 1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
@@ -61,7 +61,7 @@ resource "aws_autoscaling_policy" "scale_out" {
 
 # Simple Scaling Policy - Scale In
 resource "aws_autoscaling_policy" "scale_in" {
-  name                   = "scale-in"
+  name                   = "scale-in-${var.environment}"
   scaling_adjustment     = -1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 300
@@ -70,7 +70,7 @@ resource "aws_autoscaling_policy" "scale_in" {
 
 # Target Tracking Scaling Policy - CPU Utilization
 resource "aws_autoscaling_policy" "target_tracking" {
-  name                   = "target-tracking-policy"
+  name                   = "target-tracking-policy-${var.environment}"
   autoscaling_group_name = aws_autoscaling_group.app_asg.name
   policy_type            = "TargetTrackingScaling"
 
@@ -84,7 +84,7 @@ resource "aws_autoscaling_policy" "target_tracking" {
 
 # CloudWatch Alarm for High CPU
 resource "aws_cloudwatch_metric_alarm" "high_cpu" {
-  alarm_name          = "high-cpu-utilization"
+  alarm_name          = "high-cpu-utilization-${var.environment}"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -102,7 +102,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu" {
 
 # CloudWatch Alarm for Low CPU
 resource "aws_cloudwatch_metric_alarm" "low_cpu" {
-  alarm_name          = "low-cpu-utilization"
+  alarm_name          = "low-cpu-utilization-${var.environment}"
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
