@@ -55,7 +55,7 @@ variable "ami_id" {
 variable "instance_type" {
   description = "The EC2 instance type"
   type        = string
-  default     = "t3.micro"
+  default     = "t2.micro"
 }
 
 variable "desired_capacity" {
@@ -74,4 +74,10 @@ variable "min_size" {
   description = "The minimum number of EC2 instances in the Auto Scaling Group"
   type        = number
   default     = 1
+}
+
+variable "s3_bucket_name" {
+  description = "The name of the S3 bucket (prefix)"
+  type        = string
+  default     = "terraform-day15-prod-bucket"
 }

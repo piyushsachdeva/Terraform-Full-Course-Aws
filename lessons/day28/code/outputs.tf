@@ -23,12 +23,22 @@ output "load_balancer_arn" {
   value       = aws_lb.app_lb.arn
 }
 
+output "s3_bucket_name" {
+  description = "Name of the S3 bucket"
+  value       = aws_s3_bucket.my_bucket.bucket
+}
+
+output "s3_bucket_arn" {
+  description = "ARN of the S3 bucket"
+  value       = aws_s3_bucket.my_bucket.arn
+}
+
 output "autoscaling_group_name" {
   description = "Name of the Auto Scaling Group"
   value       = aws_autoscaling_group.app_asg.name
 }
 
-output "nat_gateway_ips" {
-  description = "Elastic IPs of the NAT Gateways"
-  value       = aws_eip.main[*].public_ip
+output "nat_gateway_ip" {
+  description = "Elastic IP of the NAT Gateway"
+  value       = aws_eip.main.public_ip
 }

@@ -1,22 +1,6 @@
 # AWS Production Infrastructure - Demo Guide
 
-## �️ Dedicated Infrastructure Repository
-
-This repository follows the **Infrastructure as Code (IaC)** best practice of "Separation of Concerns". It is strictly dedicated to managing the AWS platform resources.
-
-### 🔄 CI/CD Workflow (Infrastructure Only)
-This repository uses a dedicated GitHub Actions workflow (`.github/workflows/terraform.yml`) that:
-1.  **Plans** changes on Pull Requests (with Security & Linting checks).
-2.  **Applies** changes to `dev`, `test`, or `prod` environments based on the branch.
-
-### 🤝 Integration with Application Code
-In a real-world scenario, this repository would interface with a separate **Application Repository**:
-1.  **App Repo:** Builds the application and creates an AMI (Amazon Machine Image).
-2.  **Infra Repo (This one):** Receives the new `ami_id` and performs a rolling update of the Auto Scaling Group.
-
-*Note: For demonstration purposes, this repo currently uses a `user_data.sh` script to bootstrap Nginx, simulating the application layer.*
-
-## �🎯 Overview
+## 🎯 Overview
 
 This demo guide walks you through deploying a production-grade 2-tier AWS infrastructure using Terraform. The infrastructure includes:
 
