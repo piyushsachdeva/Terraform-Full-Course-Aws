@@ -1,0 +1,267 @@
+name: Terraform Drift Detection
+
+on:
+  schedule:
+    - cron: "*/1 * * * *" # Runs every minute
+    # - cron: "0 8 * * *" # Runs daily at 8am UTC (comment out can use used in place of minute schedule)
+  workflow_dispatch: # Allows manual triggering
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  AWS_REGION: us-east-1
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+jobs:
+  drift-detection:
+    name: Detect Drift
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Determine Environment
+        id: env-vars
+        run: |
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "environment=prod" >> $GITHUB_OUTPUT
+            echo "ENVIRONMENT=prod" >> $GITHUB_ENV
+          else
+            echo "environment=dev" >> $GITHUB_OUTPUT
+            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+          fi
+          echo "Detecting drift for: $ENVIRONMENT environment"
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.10.3
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        run: |
+          # Initialize with environment-specific backend configuration
+          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
+
+      - name: Terraform Plan (Drift Detection)
+        id: plan
+        run: |
+          set +e  # Don't exit on error
+          terraform plan -detailed-exitcode -no-color > plan_output.txt 2>&1
+          EXIT_CODE=$?
+          echo "exitcode=$EXIT_CODE" >> $GITHUB_OUTPUT
+          cat plan_output.txt
+          exit 0  # Always succeed so workflow continues
+
+      - name: Analyze Drift
+        if: steps.plan.outputs.exitcode == '2'
+        uses: actions/github-script@v6
+        env:
+          PLAN_OUTPUT: plan_output.txt
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const planOutput = fs.readFileSync(process.env.PLAN_OUTPUT, 'utf8');
+            const body = `### Drift Detected & Auto-Remediation Started
+
+            Terraform has detected changes in the infrastructure that are not in the state file.
+            Auto-fix will be applied automatically.
+
+            <details>
+            <summary>Show Plan</summary>
+
+            \`\`\`terraform
+            ${planOutput.slice(0, 65000)}
+            \`\`\`
+
+            </details>
+
+            Action: Auto-applying changes...`;
+
+            // Check for existing drift issues
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              creator: 'github-actions[bot]',
+              labels: 'drift-detection'
+            });
+
+            const env = '${{ env.ENVIRONMENT }}';
+            const existingIssue = issues.data.find(issue => 
+              issue.title.includes(`Terraform Drift Detected [${env}]`)
+            );
+
+            if (existingIssue) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssue.number,
+                body: `## New Drift Detected\n\n${body}`
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `🚨 Terraform Drift Detected [${env}]`,
+                body: body,
+                labels: ['drift-detection', 'auto-fix', env]
+              });
+            }
+
+      - name: Auto-Fix Drift
+        if: steps.plan.outputs.exitcode == '2'
+        id: apply
+        run: |
+          echo "Applying Terraform changes to fix drift..."
+          terraform apply -auto-approve -no-color > apply_output.txt 2>&1
+        continue-on-error: true
+
+      - name: Notify Slack - Drift Detected & Fixed
+        if: steps.plan.outputs.exitcode == '2' && steps.apply.outcome == 'success'
+        run: |
+          curl -X POST ${{ env.SLACK_WEBHOOK_URL }} \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "text": "✅ Terraform Drift Auto-Fixed",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "✅ Drift Detected & Automatically Fixed"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref_name }}\n*Workflow:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run>"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Terraform has automatically applied changes to remediate infrastructure drift."
+                }
+              }
+            ]
+          }'
+
+      - name: Notify Slack - Auto-Fix Failed
+        if: steps.plan.outputs.exitcode == '2' && steps.apply.outcome == 'failure'
+        run: |
+          curl -X POST ${{ env.SLACK_WEBHOOK_URL }} \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "text": "❌ Terraform Drift Auto-Fix Failed",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "❌ Drift Detected but Auto-Fix Failed"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref_name }}\n*Workflow:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run>\n\n⚠️ *Manual intervention required!*"
+                }
+              }
+            ]
+          }'
+
+      - name: Update Issue on Success
+        if: steps.plan.outputs.exitcode == '2' && steps.apply.outcome == 'success'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'drift-detection'
+            });
+
+            for (const issue of issues.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: '✅ Drift has been automatically remediated. Closing issue.'
+              });
+              
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed'
+              });
+            }
+
+      - name: Publish Drift Summary
+        if: steps.plan.outputs.exitcode == '2'
+        run: |
+          echo "### 🚨 Drift Detected & Auto-Fixed" >> $GITHUB_STEP_SUMMARY
+          echo "Terraform has detected and automatically fixed infrastructure drift." >> $GITHUB_STEP_SUMMARY
+          echo "Check the [logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details." >> $GITHUB_STEP_SUMMARY
+
+      - name: Close Old Drift Issues
+        if: steps.plan.outputs.exitcode == '0'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'drift-detection'
+            });
+
+            for (const issue of issues.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: '✅ No drift detected. Infrastructure is now in sync.'
+              });
+              
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed'
+              });
+            }
+
+      - name: No Drift
+        if: steps.plan.outputs.exitcode == '0'
+        run: |
+          echo "No drift detected. Infrastructure is in sync."
+          echo "### ✅ No Drift Detected" >> $GITHUB_STEP_SUMMARY
+          echo "Infrastructure is in sync with the configuration." >> $GITHUB_STEP_SUMMARY
+
+      - name: Terraform Plan Failure
+        if: steps.plan.outputs.exitcode == '1'
+        run: |
+          echo "::error::Terraform plan failed."
+          exit 1

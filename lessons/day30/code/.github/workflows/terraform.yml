@@ -1,0 +1,206 @@
+name: "Terraform CI/CD"
+
+on:
+  push:
+    branches:
+      - main # Production
+      - dev # Development
+  pull_request:
+    branches:
+      - main
+      - dev
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+env:
+  AWS_REGION: us-east-1
+  TF_VERSION: "1.10.3"
+
+jobs:
+  terraform-plan:
+    name: "Terraform Plan"
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.env-vars.outputs.environment }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Determine Environment
+        id: env-vars
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BRANCH_NAME="${{ github.base_ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
+
+          if [[ "$BRANCH_NAME" == "main" ]]; then
+            echo "environment=prod" >> $GITHUB_OUTPUT
+            echo "ENVIRONMENT=prod" >> $GITHUB_ENV
+          else
+            echo "environment=dev" >> $GITHUB_OUTPUT
+            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+          fi
+
+          echo "Deploying to: $ENVIRONMENT"
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        run: |
+          # Initialize with environment-specific backend configuration
+          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
+
+      - name: Terraform Format Check
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        id: plan
+        run: |
+          terraform plan -no-color -out=tfplan | tee plan_output.txt
+        continue-on-error: true
+
+      - name: Comment PR with Plan
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const planOutput = fs.readFileSync('plan_output.txt', 'utf8');
+
+            const output = `#### Terraform Plan for \`${{ env.ENVIRONMENT }}\` Environment 🌍
+
+            <details>
+            <summary>Show Plan</summary>
+
+            \`\`\`terraform
+            ${planOutput.slice(0, 60000)}
+            \`\`\`
+
+            </details>
+
+            - **Format:** \`${{ steps.fmt.outcome }}\`
+            - **Validate:** \`${{ steps.validate.outcome }}\`
+            - **Plan:** \`${{ steps.plan.outcome }}\`
+
+            *Pushed by: @${{ github.actor }}*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            });
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+      - name: Upload Plan
+        if: steps.plan.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan-${{ env.ENVIRONMENT }}
+          path: tfplan
+          retention-days: 5
+          if-no-files-found: warn
+
+  terraform-apply:
+    name: "Terraform Apply"
+    needs: terraform-plan
+    if: github.event_name == 'push' && needs.terraform-plan.result == 'success'
+    runs-on: ubuntu-latest
+    environment: ${{ needs.terraform-plan.outputs.environment }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Determine Environment
+        id: env-vars
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          if [[ "$BRANCH_NAME" == "main" ]]; then
+            echo "ENVIRONMENT=prod" >> $GITHUB_ENV
+          else
+            echo "ENVIRONMENT=dev" >> $GITHUB_ENV
+          fi
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        run: |
+          # Initialize with environment-specific backend configuration
+          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
+
+      - name: Download Plan
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        id: download
+        with:
+          name: tfplan-${{ env.ENVIRONMENT }}
+
+      - name: Check if Plan Exists
+        id: check-plan
+        run: |
+          if [ -f "tfplan" ]; then
+            echo "plan_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "plan_exists=false" >> $GITHUB_OUTPUT
+            echo "⚠️ No plan file found - infrastructure may already be up to date"
+          fi
+
+      - name: Terraform Apply
+        if: steps.check-plan.outputs.plan_exists == 'true'
+        run: |
+          echo "Applying Terraform changes for $ENVIRONMENT environment..."
+          terraform apply -auto-approve tfplan
+
+      - name: No Changes to Apply
+        if: steps.check-plan.outputs.plan_exists == 'false'
+        run: |
+          echo "### ℹ️ No Changes to Apply" >> $GITHUB_STEP_SUMMARY
+          echo "Infrastructure is already up to date. No plan file was generated." >> $GITHUB_STEP_SUMMARY
+
+      - name: Output Infrastructure Info
+        if: steps.check-plan.outputs.plan_exists == 'true'
+        run: |
+          echo "### 🚀 Infrastructure Deployed Successfully" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** $ENVIRONMENT" >> $GITHUB_STEP_SUMMARY
+          echo "**Region:** ${{ env.AWS_REGION }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          terraform output >> $GITHUB_STEP_SUMMARY
