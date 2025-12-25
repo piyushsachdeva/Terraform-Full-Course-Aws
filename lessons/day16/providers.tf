@@ -17,8 +17,4 @@
     alias  = "primary"
   }
 
-  # Provider for the secondary region (us-west-2)
-  provider "aws" {
-    region = var.secondary_region
-    alias  = "secondary"
-  }
+  

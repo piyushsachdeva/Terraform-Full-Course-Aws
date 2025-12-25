@@ -33,3 +33,5 @@ resource "aws_iam_group_membership" "engineers" {
   users = [for user in aws_iam_user.users : user.name if user.tags.Department == "Engineers"]
   group = aws_iam_group.engineers.name
 }
+
+
