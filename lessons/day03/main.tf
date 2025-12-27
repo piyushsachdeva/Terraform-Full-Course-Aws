@@ -14,7 +14,7 @@ provider "aws" {
 
 # Create a S3 bucket
 resource "aws_s3_bucket" "tf_test_baivab_bucket" {
-  bucket = "my-tf-test-baiv-bucket"
+  bucket = "my-tf-test-baiv-bucket-101"
 
   tags = {
     Name        = "My bucket"
