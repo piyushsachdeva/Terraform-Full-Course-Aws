@@ -1,0 +1,73 @@
+name: "Terraform Destroy"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to destroy'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+      confirm_destroy:
+        description: 'Type "DESTROY" to confirm'
+        required: true
+        type: string
+
+env:
+  TF_LOG: INFO
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  terraform-destroy:
+    name: "Terraform Destroy"
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify Confirmation
+        run: |
+          if [ "${{ inputs.confirm_destroy }}" != "DESTROY" ]; then
+            echo "Error: You must type 'DESTROY' to confirm destruction."
+            exit 1
+          fi
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Set Environment Variables
+        id: env-vars
+        run: |
+          ENV_NAME="${{ inputs.environment }}"
+          if [[ "$ENV_NAME" == "prod" ]]; then
+            echo "WORKSPACE_NAME=prod" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=prod.tfvars" >> $GITHUB_ENV
+          elif [[ "$ENV_NAME" == "test" ]]; then
+            echo "WORKSPACE_NAME=test" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=test.tfvars" >> $GITHUB_ENV
+          else
+            echo "WORKSPACE_NAME=dev" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=dev.tfvars" >> $GITHUB_ENV
+          fi
+
+      - name: Select Terraform Workspace
+        run: |
+          terraform workspace select $WORKSPACE_NAME || terraform workspace new $WORKSPACE_NAME
+
+      - name: Terraform Destroy
+        run: terraform destroy -var-file=$TF_VAR_FILE -auto-approve
