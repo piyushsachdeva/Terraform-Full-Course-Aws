@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudOps Goal Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #eef0ff;
+            --secondary: #ff6b6b;
+            --secondary-dark: #ff5252;
+            --secondary-light: #ffeded;
+            --text: #333;
+            --text-light: #666;
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+            --success: #4caf50;
+        }
+
+        /* Dark theme variables */
+        [data-theme="dark"] {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #1e1b4b;
+            --secondary: #ef4444;
+            --secondary-dark: #dc2626;
+            --secondary-light: #450a0a;
+            --text: #f8fafc;
+            --text-light: #cbd5e1;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --border: #475569;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Better background gradient for the body */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+            background-attachment: fixed;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+
+        /* Dark theme background */
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+        }        /* Improved container glassmorphism - REMOVED float animation */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 1px 2px rgba(255, 255, 255, 0.3) inset;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, box-shadow;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dark theme container adjustments - keep original glassmorphism */
+        [data-theme="dark"] .container {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                0 1px 2px rgba(255, 255, 255, 0.3) inset;
+        }
+
+        /* Add subtle background pattern */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 49%, rgba(255, 255, 255, 0.05) 50%, transparent 51%);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Improved header styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Enhanced logo styling with better glow effect */
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            box-shadow: 
+                0 4px 15px rgba(67, 97, 238, 0.3),
+                0 0 15px rgba(67, 97, 238, 0.5);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-glow 2s infinite;
+            will-change: transform, box-shadow;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Add shine effect on logo */
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            20%, 100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* Better pulsing glow effect */
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(67, 97, 238, 0.5), 0 0 25px rgba(67, 97, 238, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            }
+        }
+
+        /* Enhanced heading with gradient text */
+        h2 {
+            background: linear-gradient(45deg, #4361ee, #7209b7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            font-size: 28px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        /* Improved input group styling */
+        .input-group {
+            display: flex;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .input-group:focus-within {
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Enhanced text input */
+        input[type="text"] {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            color: var(--text);
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(102, 102, 102, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus::placeholder {
+            opacity: 0.7;
+            transform: translateX(5px);
+        }
+
+        /* Dark theme input and button adjustments - keep original styling */
+        [data-theme="dark"] input[type="text"] {
+            background-color: transparent;
+            color: var(--text);
+        }
+
+        [data-theme="dark"] input[type="text"]::placeholder {
+            color: rgba(248, 250, 252, 0.6);
+        }
+
+        [data-theme="dark"] .add-btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+        }
+
+        [data-theme="dark"] .input-group {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] .input-group:focus-within {
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Enhanced add button with liquid effect */
+        .add-btn {
+            padding: 0 25px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .add-btn:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        /* Liquid button effect */
+        .add-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            z-index: -1;
+            transition: all 0.4s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .add-btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Enhanced ripple effect */
+        .add-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+            will-change: transform, opacity;
+        }
+
+        .add-btn:focus:not(:active)::after {
+            animation: ripple-enhanced 0.6s ease-out;
+        }
+
+        @keyframes ripple-enhanced {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(25, 25);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced goal item styling */
+        .goal-item {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 20px 0;
+            padding: 20px 24px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 4px solid var(--primary);
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.05),
+                0 1px 1px rgba(255, 255, 255, 0.1) inset;
+            animation: slideIn 0.5s ease-out;
+            will-change: transform, opacity;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dark theme goal item adjustments - keep original styling */
+        [data-theme="dark"] .goal-item {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-left: 4px solid var(--primary);
+        }
+
+        [data-theme="dark"] .goal-item:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Add subtle hover light effect */
+        .goal-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.05) 50%, 
+                transparent 100%
+            );
+            transition: all 0.8s ease;
+        }
+
+        .goal-item:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced hover effects */
+        .goal-item:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            background-color: rgba(255, 255, 255, 0.25);
+            border-left: 4px solid var(--primary-dark);
+        }
+
+        /* Improved delete button styling */
+        .delete-button {
+            background: rgba(255, 107, 107, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center;
+            will-change: transform;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .delete-button:hover {
+            background: rgba(255, 82, 82, 0.8);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .delete-button:active {
+            transform: scale(0.95) translateY(2px);
+        }
+
+        /* Add liquid effect to delete button */
+        .delete-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary-dark), var(--secondary));
+            z-index: -1;
+            transition: all 0.4s ease;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+        .delete-button:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* Enhanced success message animation */
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #2e7d32;
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-15px);
+            animation: success-slide-in 0.5s ease forwards;
+            display: none;
+            will-change: opacity, transform;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+            font-weight: 500;
+        }
+
+        @keyframes success-slide-in {
+            0% {
+                opacity: 0;
+                transform: translateY(-15px) scale(0.95);
+            }
+            70% {
+                transform: translateY(2px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Improved empty state styling */
+        .empty-state {
+            text-align: center;
+            color: var(--text);
+            padding: 50px 0;
+            animation: fadeIn 1s ease-out;
+            background-color: rgba(238, 240, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            margin: 20px 0;
+            border: 1px dashed rgba(67, 97, 238, 0.3);
+            will-change: opacity;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dark theme empty state adjustments - keep original styling */
+        [data-theme="dark"] .empty-state {
+            background-color: rgba(238, 240, 255, 0.15);
+            border: 1px dashed rgba(99, 102, 241, 0.3);
+        }
+
+        /* Add subtle animation to empty state */
+        .empty-state p {
+            position: relative;
+            animation: subtle-bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Enhanced footer */
+        footer {
+            text-align: center;
+            margin: 40px auto 20px;
+            padding: 15px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            animation: fadeIn 1.2s ease-out;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Dark theme footer adjustments - keep original styling */
+        [data-theme="dark"] footer {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+            padding: 2px 4px;
+            transition: all 0.3s ease;
+            will-change: transform;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        footer a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        footer a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            color: var(--text);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark theme toggle button adjustments - keep original styling */
+        [data-theme="dark"] .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Add slideIn animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Add fadeIn animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light theme">
+        🌙
+    </button>
+
+    <div class="container">
+        <div class="header">
+            <img src="https://dka798bhdh3k6.cloudfront.net/cloudops-logo-bg-removed.png" alt="DevDotCom Logo" class="logo">
+            <h2>Track Your Terraform Journey Goals</h2>
+        </div>
+        
+        <form id="goal-form">
+            <div class="input-group">
+                <input type="text" name="goal_name" placeholder="Enter your next DevOps goal..." required>
+                <button type="submit" class="add-btn">Add Goal</button>
+            </div>
+            <div id="success-message" class="success-message">Goal added successfully!</div>
+        </form>
+        
+        <ul class="goal-list" id="goal-list" style="display: none;"></ul>
+        <div class="empty-state" id="empty-state">
+            <p>No goals yet. Add your first CloudOps goal above!</p>
+        </div>
+    </div>
+
+    <footer>
+        Made with ❤️ by <a href="https://thecloudopscommunity.org" target="_blank" rel="noopener">The CloudOps Community</a>
+    </footer>
+    
+    <script>
+        // Load goals when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadGoals();
+            initThemeToggle();
+        });
+
+        // Theme toggle functionality
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme preference or default to light mode
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+            
+            // Theme toggle event listener
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+            });
+        }
+
+        function setTheme(theme) {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update toggle button icon
+            themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+            themeToggle.title = `Switch to ${theme === 'light' ? 'dark' : 'light'} theme`;
+        }
+
+        // Function to load goals from the API
+        function loadGoals() {
+            fetch('/api/goals')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.goals && data.goals.length > 0) {
+                        displayGoals(data.goals);
+                    } else {
+                        document.getElementById('goal-list').style.display = 'none';
+                        document.getElementById('empty-state').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading goals:', error);
+                });
+        }
+
+        // Function to display goals in the UI
+        function displayGoals(goals) {
+            const goalsList = document.getElementById('goal-list');
+            goalsList.innerHTML = '';
+            
+            goals.forEach(goal => {
+                const goalItem = document.createElement('li');
+                goalItem.className = 'goal-item';
+                goalItem.innerHTML = `
+                    <span class="goal-text">${goal.Name}</span>
+                    <button class="delete-button" data-id="${goal.ID}">Remove</button>
+                `;
+                goalsList.appendChild(goalItem);
+            });
+            
+            document.getElementById('goal-list').style.display = 'block';
+            document.getElementById('empty-state').style.display = 'none';
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', deleteGoal);
+            });
+        }
+
+        // Add goal form handling
+        document.getElementById('goal-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the standard form submission
+            
+            const button = this.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Processing...';
+            
+            // Get form data
+            const goalNameInput = this.querySelector('input[name="goal_name"]');
+            const goalName = goalNameInput.value;
+            
+            // Send API request
+            fetch('/api/goals', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ goal_name: goalName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show success message
+                const successMsg = document.getElementById('success-message');
+                successMsg.style.display = 'block';
+                
+                // Reload goals to display the updated list
+                loadGoals();
+                
+                // Reset the form
+                goalNameInput.value = '';
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+                
+                // Reset button text
+                button.textContent = originalText;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                button.textContent = originalText;
+            });
+        });
+
+        // Function to handle goal deletion
+        function deleteGoal(e) {
+            const goalId = e.target.dataset.id;
+            const originalText = e.target.textContent;
+            e.target.textContent = 'Removing...';
+            e.target.disabled = true;
+            
+            fetch(`/api/goals/${goalId}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Find and remove the goal item
+                    const goalItem = e.target.closest('.goal-item');
+                    goalItem.style.opacity = '0';
+                    goalItem.style.transform = 'translateX(20px)';
+                    
+                    // After animation completes, remove the element
+                    setTimeout(() => {
+                        goalItem.remove();
+                        
+                        // Check if there are any goals left
+                        if (document.querySelectorAll('.goal-item').length === 0) {
+                            document.getElementById('goal-list').style.display = 'none';
+                            document.getElementById('empty-state').style.display = 'block';
+                        }
+                    }, 300);
+                } else {
+                    alert('Failed to remove goal: ' + (data.error || 'Unknown error'));
+                    e.target.textContent = originalText;
+                    e.target.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while removing the goal');
+                e.target.textContent = originalText;
+                e.target.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
