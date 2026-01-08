@@ -1,4 +1,4 @@
-#!/bin/bash
+git #!/bin/bash
 set -e
 
 # Colors for output

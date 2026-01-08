@@ -1,4 +1,4 @@
-#!/bin/bash
+u#!/bin/bash
 set -e
 
 # Logging function
