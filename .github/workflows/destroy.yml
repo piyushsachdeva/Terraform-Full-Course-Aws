@@ -1,4 +1,4 @@
-name: "Terraform Destroy"
+name: "Terraform Destroy new"
 
 on:
   workflow_dispatch:
@@ -61,7 +61,7 @@ jobs:
       - name: Terraform Init
         run: |
           # Initialize with environment-specific backend configuration
-          terraform init -backend-config="backend-${{ inputs.environment }}.hcl"
+          terraform init -reconfigure -backend-config="backend-${{ inputs.environment }}.hcl"
 
       - name: Terraform Destroy Plan
         id: destroy-plan
