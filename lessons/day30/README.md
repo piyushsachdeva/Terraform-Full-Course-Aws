@@ -25,16 +25,6 @@ terraform init -backend-config="backend-dev.hcl"
 terraform apply
 ```
 
-## 📁 Project Structure
-
-```
-terraform-drift-detection/
-├── .github/workflows/drift_detection.yml
-├── scripts/ (setup-backend.sh, user_data.sh)
-├── main.tf, vpc.tf, security_groups.tf, alb.tf, asg.tf, s3.tf
-├── variables.tf, outputs.tf, backend.tf
-└── backend-dev.hcl, backend-prod.hcl
-```
 
 ## 🔄 How It Works
 
@@ -44,6 +34,25 @@ terraform-drift-detection/
 4. Create/close GitHub issues and Slack notifications
 
 ## 🧪 Test Drift
+
+# Checkout dev and make a small change
+```bash
+git checkout dev
+echo "# Demo $(date)" >> lessons/day30/code/README.md
+git add .
+git commit -m "Trigger dev deployment"
+git push origin dev
+```
+
+# Watch in GitHub Actions
+# URL: https://github.com/piyushsachdeva/Terraform-Full-Course-Aws/actions
+
+# After dev succeeds, merge to main
+```bash
+git checkout main
+git merge dev
+git push origin main
+```
 
 ```bash
 # Manually modify a resource
