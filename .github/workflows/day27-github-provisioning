@@ -1,0 +1,211 @@
+name: "Terraform Multi-Env CI/CD"
+
+on:
+  push:
+    branches:
+      - main
+      - test
+      - dev
+    paths:
+      - 'lessons/day27/code/**'
+
+  pull_request:
+    branches:
+      - main
+      - test
+      - dev
+    paths:
+      - 'lessons/day27/code/**'
+
+env:
+  TF_LOG: INFO
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  # BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  terraform-plan:
+    name: "Terraform Plan"
+    runs-on: ubuntu-latest
+    outputs:
+      tf_workspace: ${{ steps.env-vars.outputs.tf_workspace }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./lessons/day27/code/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v3
+        with:
+          tflint_version: v0.52.0
+
+      - name: Init TFLint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: tflint --init
+
+      - name: Run TFLint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: tflint -f compact
+
+      - name: Run Trivy vulnerability scanner in IaC mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "config"
+          hide-progress: false
+          format: "table"
+          exit-code: "0"
+          ignore-unfixed: true
+          severity: "CRITICAL,HIGH"
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate
+
+      - name: Set Environment Variables
+        id: env-vars
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BRANCH_NAME="${{ github.base_ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
+
+          if [[ "$BRANCH_NAME" == "main" ]]; then
+            echo "WORKSPACE_NAME=prod" >> $GITHUB_ENV
+            echo "tf_workspace=prod" >> $GITHUB_OUTPUT
+            echo "TF_VAR_FILE=prod.tfvars" >> $GITHUB_ENV
+          elif [[ "$BRANCH_NAME" == "test" ]]; then
+            echo "WORKSPACE_NAME=test" >> $GITHUB_ENV
+            echo "tf_workspace=test" >> $GITHUB_OUTPUT
+            echo "TF_VAR_FILE=test.tfvars" >> $GITHUB_ENV
+          else
+            echo "WORKSPACE_NAME=dev" >> $GITHUB_ENV
+            echo "tf_workspace=dev" >> $GITHUB_OUTPUT
+            echo "TF_VAR_FILE=dev.tfvars" >> $GITHUB_ENV
+          fi
+
+      - name: Select Terraform Workspace
+        run: |
+          terraform workspace select $WORKSPACE_NAME || terraform workspace new $WORKSPACE_NAME
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -var-file=$TF_VAR_FILE -no-color -input=false -out=tfplan
+        continue-on-error: true
+
+      - name: Update Pull Request
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        env:
+          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+            #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+            #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+            #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
+            #### Environment 🌍 \`${{ env.WORKSPACE_NAME }}\`
+
+            <details><summary>Show Plan</summary>
+
+            \`\`\`\n
+            ${process.env.PLAN}
+            \`\`\`
+
+            </details>
+
+            *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan-${{ env.WORKSPACE_NAME }}
+          path: ./lessons/day27/code/tfplan
+
+  terraform-apply:
+    name: "Terraform Apply"
+    needs: terraform-plan
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: ${{ needs.terraform-plan.outputs.tf_workspace }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./lessons/day27/code/
+        
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Set Environment Variables
+        id: env-vars
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          if [[ "$BRANCH_NAME" == "main" ]]; then
+            echo "WORKSPACE_NAME=prod" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=prod.tfvars" >> $GITHUB_ENV
+          elif [[ "$BRANCH_NAME" == "test" ]]; then
+            echo "WORKSPACE_NAME=test" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=test.tfvars" >> $GITHUB_ENV
+          else
+            echo "WORKSPACE_NAME=dev" >> $GITHUB_ENV
+            echo "TF_VAR_FILE=dev.tfvars" >> $GITHUB_ENV
+          fi
+
+      - name: Select Terraform Workspace
+        run: |
+          terraform workspace select $WORKSPACE_NAME || terraform workspace new $WORKSPACE_NAME
+
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan-${{ env.WORKSPACE_NAME }}
+          path: ./lessons/day27/code/
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false tfplan
