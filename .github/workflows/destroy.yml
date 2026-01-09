@@ -1,4 +1,4 @@
-name: "Terraform Destroy"
+name: "Terraform Destroy day30"
 
 on:
   workflow_dispatch:
