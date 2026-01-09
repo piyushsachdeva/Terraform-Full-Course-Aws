@@ -67,7 +67,7 @@ aws ec2 create-tags --resources i-xxx --tags Key=Test,Value=val
 
 ```yaml
 schedule:
-  - cron: "*/5 * * * *"  # Every 5 minutes
+  - cron: "*/1 * * * *"  # Every 1 minute
 ```
 
 ## 🐛 Troubleshooting
