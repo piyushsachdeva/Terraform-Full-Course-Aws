@@ -38,9 +38,9 @@ variable "db_name" {
 }
 
 variable "recovery_window_in_days" {
-  description = "Number of days to retain secret after deletion"
+  description = "Number of days to retain secret after deletion (0 for immediate deletion, 7-30 for recovery window)"
   type        = number
-  default     = 7
+  default     = 0 # Immediate deletion for dev/test. Use 7+ for production
 }
 
 variable "tags" {

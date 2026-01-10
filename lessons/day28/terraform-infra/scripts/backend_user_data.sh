@@ -10,14 +10,16 @@ log "Starting backend setup..."
 
 # Update system
 log "Updating system packages..."
-yum update -y
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get upgrade -y
 
 # Install Docker and dependencies
 log "Installing Docker and utilities..."
-yum install -y docker jq nc bind-utils
+apt-get install -y docker.io jq netcat-openbsd dnsutils unzip curl
 systemctl start docker
 systemctl enable docker
-usermod -aG docker ec2-user
+usermod -aG docker ubuntu
 log "✅ Docker installed and started successfully"
 
 # Install AWS CLI v2
@@ -163,8 +165,9 @@ done
 
 # Install CloudWatch Agent
 log "Installing CloudWatch Agent..."
-wget -q https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
-rpm -U ./amazon-cloudwatch-agent.rpm
+wget -q https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+dpkg -i -E ./amazon-cloudwatch-agent.deb
+rm -f ./amazon-cloudwatch-agent.deb
 
 # Configure CloudWatch Logs
 log "Configuring CloudWatch Logs..."

@@ -2,23 +2,25 @@
 set -e
 
 # Update system
-yum update -y
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get upgrade -y
 
 # Install useful tools
-yum install -y \
+apt-get install -y \
     vim \
     git \
     htop \
     wget \
     curl \
     jq \
-    bind-utils
+    dnsutils
 
 # Install Docker (for troubleshooting)
-yum install -y docker
+apt-get install -y docker.io
 systemctl start docker
 systemctl enable docker
-usermod -aG docker ec2-user
+usermod -aG docker ubuntu
 
 # Install AWS CLI v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -27,17 +29,19 @@ unzip -q awscliv2.zip
 rm -rf aws awscliv2.zip
 
 # Install Session Manager plugin
-yum install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+dpkg -i session-manager-plugin.deb
+rm -f session-manager-plugin.deb
 
 # Configure AWS CLI region
 REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/region)
-mkdir -p /home/ec2-user/.aws
-cat > /home/ec2-user/.aws/config << EOF
+mkdir -p /home/ubuntu/.aws
+cat > /home/ubuntu/.aws/config << EOF
 [default]
 region = $REGION
 output = json
 EOF
-chown -R ec2-user:ec2-user /home/ec2-user/.aws
+chown -R ubuntu:ubuntu /home/ubuntu/.aws
 
 # Set up message of the day
 cat > /etc/motd << 'EOF'
@@ -55,7 +59,7 @@ cat > /etc/motd << 'EOF'
 EOF
 
 # Create helpful aliases
-cat >> /home/ec2-user/.bashrc << 'EOF'
+cat >> /home/ubuntu/.bashrc << 'EOF'
 
 # Helpful aliases
 alias ll='ls -lah'
@@ -69,6 +73,6 @@ alias rds-list='aws rds describe-db-instances --query "DBInstances[*].[DBInstanc
 echo "💡 Tip: Use 'ec2-list' to see all EC2 instances or 'rds-list' for RDS instances"
 EOF
 
-chown ec2-user:ec2-user /home/ec2-user/.bashrc
+chown ubuntu:ubuntu /home/ubuntu/.bashrc
 
 echo "Bastion host setup complete - $(date)" > /var/log/user-data.log

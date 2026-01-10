@@ -4,6 +4,14 @@ resource "aws_secretsmanager_secret" "db_credentials" {
   description             = "Database credentials for ${var.project} ${var.environment} environment"
   recovery_window_in_days = var.recovery_window_in_days
 
+  # Force immediate deletion on destroy (0 days recovery window)
+  # Only use in dev/test environments!
+  # For production, keep recovery_window_in_days = 7 or higher
+  lifecycle {
+    # Prevent accidental deletion in production
+    prevent_destroy = false
+  }
+
   tags = merge(
     var.tags,
     {

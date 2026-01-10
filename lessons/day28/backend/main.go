@@ -82,11 +82,14 @@ func createConnection() (*sql.DB, error) {
 func main() {
 	router := gin.Default()
 
-	// Configure CORS to allow requests from frontend
+	// Configure CORS to allow requests from any origin
+	// This is necessary for AWS deployment where frontend is behind public ALB
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000", "http://frontend:3000"}
-	config.AllowMethods = []string{"GET", "POST", "DELETE", "OPTIONS"}
-	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
+	config.AllowAllOrigins = true
+	config.AllowMethods = []string{"GET", "POST", "DELETE", "OPTIONS", "PUT", "PATCH"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
+	config.ExposeHeaders = []string{"Content-Length"}
+	config.AllowCredentials = false
 	router.Use(cors.New(config))
 
 	// Connect to PostgreSQL database
