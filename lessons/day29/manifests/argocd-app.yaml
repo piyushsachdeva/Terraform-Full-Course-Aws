@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/itsBaivab/gitops-configs.git
+    repoURL: https://github.com/piyushsachdeva/gitops-manifest-awstf.git
     targetRevision: main
     path: 3tire-configs
   destination:
