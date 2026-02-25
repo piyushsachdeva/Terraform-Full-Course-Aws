@@ -3,20 +3,20 @@
 # Update the package repository
 apt-get update -y
 
-# Install necessary packages
-apt-get install -y nginx
+# Install Docker
+apt-get install -y docker.io
 
-# Start the Nginx service
-systemctl start nginx
+# Start and enable Docker service
+systemctl start docker
+systemctl enable docker
 
-# Enable Nginx to start on boot
-systemctl enable nginx
+# Add ubuntu user to docker group (optional, but good practice)
+usermod -aG docker ubuntu
 
-# Create a simple HTML page
-echo "<h1>Welcome to the AWS Infrastructure Project - Proper 2-Tier Architecture (Ubuntu)</h1>" > /var/www/html/index.html
-
-# Adjust the firewall to allow HTTP traffic
-ufw allow 'Nginx Full'
-
-# Restart nginx to ensure it's serving content
-systemctl restart nginx
+# Pull and run the Django application container
+# Mapping Host Port 80 (ALB traffic) to Container Port 8000 (Django default)
+docker run -d \
+  --name django-app \
+  --restart always \
+  -p 80:8000 \
+  itsbaivab/django-app
