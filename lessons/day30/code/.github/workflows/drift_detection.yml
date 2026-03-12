@@ -54,7 +54,7 @@ jobs:
       - name: Terraform Init
         run: |
           # Initialize with environment-specific backend configuration
-          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
+          terraform init -reconfigure -backend-config="backend-dev.hcl"
 
       - name: Terraform Plan (Drift Detection)
         id: plan
