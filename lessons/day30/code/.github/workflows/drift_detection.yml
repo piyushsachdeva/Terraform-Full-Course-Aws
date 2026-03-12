@@ -52,12 +52,9 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform Init
-        working-directory: lessons/day30/code
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ env.AWS_REGION }}
-        run: terraform init -input=false
+        run: |
+          # Initialize with environment-specific backend configuration
+          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
 
       - name: Terraform Plan (Drift Detection)
         id: plan
