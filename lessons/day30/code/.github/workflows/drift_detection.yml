@@ -55,9 +55,7 @@ jobs:
         working-directory: lessons/day30/code
         run: |
           # Initialize with environment-specific backend configuration
-             terraform init \
-            -reconfigure \
-            -input=false
+             terraform init -input=false
 
       - name: Terraform Plan (Drift Detection)
         id: plan
