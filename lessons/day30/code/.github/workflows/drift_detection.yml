@@ -52,9 +52,12 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform Init
+        working-directory: lessons/day30/code
         run: |
           # Initialize with environment-specific backend configuration
-          terraform init -reconfigure -backend-config="backend-dev.hcl"
+             terraform init \
+            -reconfigure \
+            -input=false
 
       - name: Terraform Plan (Drift Detection)
         id: plan
