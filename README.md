@@ -245,7 +245,7 @@ This course consists of video lessons covering basic to advanced Terraform conce
 - [Code Sample](/lessons/day30)
 
 
-### Video 0: Terrafrom Drift Detection using Terraform Cloud
+### Video 30: Terrafrom Drift Detection using Terraform Cloud
 - Drift detection setup
 - Monitoring infrastructure changes
 - [Code Sample](/lessons/day31)
