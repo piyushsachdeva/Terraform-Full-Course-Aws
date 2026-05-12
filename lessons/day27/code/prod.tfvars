@@ -1,5 +1,5 @@
 environment          = "production"
-instance_type        = "t2.micro" # Or t3.medium for prod
+instance_type        = "t3.micro" # Or t3.medium for prod
 desired_capacity     = 2
 min_size             = 2
 max_size             = 10

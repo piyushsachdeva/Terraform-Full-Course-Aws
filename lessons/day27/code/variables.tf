@@ -1,7 +1,7 @@
 variable "region" {
   description = "The AWS region to deploy the infrastructure"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1"
 }
 
 variable "environment" {
@@ -43,14 +43,10 @@ variable "private_subnet_count" {
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
+  default     = ["ap-south-1a", "ap-south-1b"]
 }
 
-variable "ami_id" {
-  description = "AMI ID for EC2 instances"
-  type        = string
-  default     = "ami-0c398cb65a93047f2" # Ubuntu 22.04 LTS
-}
+
 
 variable "instance_type" {
   description = "The EC2 instance type"
@@ -74,4 +70,10 @@ variable "min_size" {
   description = "The minimum number of EC2 instances in the Auto Scaling Group"
   type        = number
   default     = 1
+}
+
+variable "s3_bucket_name" {
+  description = "The name of the S3 bucket (prefix)"
+  type        = string
+  default     = "terraform-day15-prod-bucket"
 }
