@@ -5,8 +5,6 @@
 Welcome to the Terraform Functions comprehensive learning guide! This two-day module covers Terraform's built-in functions through 12 hands-on assignments. Each assignment focuses on specific functions and real-world use cases.
 
 
-**📋 For step-by-step demo instructions, see [DEMO_GUIDE.md](DEMO_GUIDE.md)**
-
 ---
 
 ## 🎯 Learning Objectives
@@ -30,7 +28,7 @@ Practice these fundamental commands in `terraform console` before starting the a
 # Basic String Manipulation
 lower("HELLO WORLD")
 max(5, 12, 9)
-trim("  hello  ")
+trim("  hello  ", " ")
 chomp("hello\n")
 reverse(["a", "b", "c"])
 ```
