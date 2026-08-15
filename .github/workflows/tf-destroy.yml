@@ -1,0 +1,188 @@
+name: "Terraform Destroy"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to destroy (dev or prod)"
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+      confirm_destroy:
+        description: 'Type "DESTROY" to confirm deletion'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  AWS_REGION: us-east-1
+  TF_VERSION: "1.10.3"
+
+jobs:
+  terraform-destroy:
+    name: "Destroy ${{ inputs.environment }} Infrastructure"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lessons/day30/code
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify Destroy Confirmation
+        run: |
+          if [ "${{ inputs.confirm_destroy }}" != "DESTROY" ]; then
+            echo "❌ Error: You must type 'DESTROY' exactly to confirm infrastructure deletion."
+            echo "This is a safety measure to prevent accidental destruction."
+            exit 1
+          fi
+          echo "✅ Destroy confirmation verified"
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        run: |
+          # Initialize with environment-specific backend configuration
+          terraform init -reconfigure -backend-config="backend-${{ inputs.environment }}.hcl"
+
+      - name: Terraform Destroy Plan
+        id: destroy-plan
+        run: |
+          echo "📋 Generating destroy plan for ${{ inputs.environment }} environment..."
+          terraform plan -destroy -no-color > destroy_plan.txt
+        continue-on-error: true
+
+      - name: Show Destroy Plan
+        run: |
+          echo "### 🗑️ Resources to be Destroyed" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** ${{ inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "<details>" >> $GITHUB_STEP_SUMMARY
+          echo "<summary>Destroy Plan</summary>" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat destroy_plan.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "</details>" >> $GITHUB_STEP_SUMMARY
+
+      - name: Terraform Destroy
+        id: destroy
+        run: |
+          echo "🗑️ Destroying ${{ inputs.environment }} infrastructure..."
+          terraform destroy -auto-approve -no-color | tee destroy_output.txt
+        continue-on-error: true
+
+      - name: Create Destroy Report Issue
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            let destroyOutput = '';
+            try {
+              destroyOutput = fs.readFileSync('lessons/day30/code/destroy_output.txt', 'utf8');
+            } catch (e) {
+              destroyOutput = 'No output captured';
+            }
+
+            const success = '${{ steps.destroy.outcome }}' === 'success';
+            const title = success 
+              ? '✅ Infrastructure Destroyed: ${{ inputs.environment }}'
+              : '❌ Infrastructure Destroy Failed: ${{ inputs.environment }}';
+
+            const body = `### Infrastructure Destruction Report
+
+            **Environment:** \`${{ inputs.environment }}\`
+            **Status:** ${success ? '✅ Success' : '❌ Failed'}
+            **Triggered by:** @${{ github.actor }}
+            **Workflow Run:** [View Logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            <details>
+            <summary>Destroy Output</summary>
+
+            \`\`\`
+            ${destroyOutput.slice(0, 60000)}
+            \`\`\`
+
+            </details>
+
+            ${success ? '✅ All resources have been successfully destroyed.' : '⚠️ Some resources may not have been destroyed. Please review the logs and clean up manually if needed.'}`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['infrastructure', 'destroy', '${{ inputs.environment }}']
+            });
+
+      - name: Notify Slack
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_URL" ]; then
+            echo "Slack webhook not configured, skipping notification"
+            exit 0
+          fi
+
+          STATUS="${{ steps.destroy.outcome }}"
+          if [ "$STATUS" = "success" ]; then
+            EMOJI="✅"
+            STATUS_TEXT="Successfully Destroyed"
+          else
+            EMOJI="❌"
+            STATUS_TEXT="Destroy Failed"
+          fi
+
+          curl -X POST $SLACK_WEBHOOK_URL \
+          -H 'Content-Type: application/json' \
+          -d "{
+            \"text\": \"$EMOJI Infrastructure $STATUS_TEXT\",
+            \"blocks\": [
+              {
+                \"type\": \"header\",
+                \"text\": {
+                  \"type\": \"plain_text\",
+                  \"text\": \"$EMOJI Infrastructure $STATUS_TEXT\"
+                }
+              },
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*Environment:* ${{ inputs.environment }}\n*Repository:* ${{ github.repository }}\n*Triggered by:* ${{ github.actor }}\n*Workflow:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run>\"
+                }
+              }
+            ]
+          }"
+
+      - name: Destroy Status
+        run: |
+          if [ "${{ steps.destroy.outcome }}" = "success" ]; then
+            echo "### ✅ Infrastructure Destroyed Successfully" >> $GITHUB_STEP_SUMMARY
+            echo "All resources in the ${{ inputs.environment }} environment have been destroyed." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ❌ Infrastructure Destroy Failed" >> $GITHUB_STEP_SUMMARY
+            echo "Some resources may still exist. Please check AWS console and logs." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi

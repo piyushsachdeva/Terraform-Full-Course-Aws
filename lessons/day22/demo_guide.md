@@ -16,24 +16,8 @@ This project demonstrates a production-ready, 3-tier architecture pattern on AWS
 
 The infrastructure is designed for security and high availability (at the network level).
 
-```mermaid
-graph TD
-    User[User / Internet] -->|HTTP:80| IGW[Internet Gateway]
-    IGW -->|Route Table| PublicSubnet[Public Subnet (US-East-1a)]
-    
-    subgraph VPC [VPC: 10.0.0.0/16]
-        subgraph Public_Zone [Public Zone]
-            EC2[EC2 Instance<br>Flask App]
-        end
-        
-        subgraph Private_Zone [Private Zone]
-            RDS[(RDS MySQL<br>Database)]
-        end
-    end
-    
-    EC2 -->|MySQL:3306| RDS
-    EC2 -.->|Retrieve Password| SecretsManager[AWS Secrets Manager]
-```
+<img width="1132" height="827" alt="image" src="https://github.com/user-attachments/assets/da02aa23-1f1c-46c5-b4bc-7558a313c632" />
+
 
 ### Component Details
 

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 3tier-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/piyushsachdeva/gitops-manifest-awstf.git
+    targetRevision: main
+    path: 3tire-configs
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: 3tirewebapp-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
