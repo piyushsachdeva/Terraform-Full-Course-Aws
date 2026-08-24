@@ -4,6 +4,8 @@ data "aws_availability_zones" "available" {
     values = ["opt-in-not-required"]
   }
 }
+#TODO
+# create a backend
 
 locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
@@ -11,7 +13,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  version = "~> 6.0"
 
   name = "gitops-vpc"
   cidr = var.vpc_cidr
