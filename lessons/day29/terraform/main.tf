@@ -1,12 +1,3 @@
-##terraform {
-#  backend "s3" {
-#    bucket       = "my-company-tf-state"
-#    key          = "prod/services/terraform.tfstate"
-#    region       = "eu-west-1"
-    
-#    use_lockfile = true  # Enables native S3 locking without DynamoDB
-#  }
-#}
 resource "aws_s3_bucket" "tf_state" {
   bucket        = "my-tf-state-prod"
   force_destroy = false # Protects state from accidental deletion
@@ -45,7 +36,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 6.0"
+  version = "~> 5.0"
 
   name = "gitops-vpc"
   cidr = var.vpc_cidr
