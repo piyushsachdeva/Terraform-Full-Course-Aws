@@ -1,11 +1,19 @@
+##terraform {
+#  backend "s3" {
+#    bucket       = "my-company-tf-state"
+#    key          = "prod/services/terraform.tfstate"
+#    region       = "eu-west-1"
+    
+#    use_lockfile = true  # Enables native S3 locking without DynamoDB
+#  }
+#}
+
 data "aws_availability_zones" "available" {
   filter {
     name   = "opt-in-status"
     values = ["opt-in-not-required"]
   }
 }
-//TODO
-// create a backend
 
 locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
