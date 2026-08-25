@@ -13,9 +13,11 @@ pipeline {
     }
 
     stages {
-        stage('Clean Workspace') {
+        stage('Clean and Prep Workspace') {
             steps {
                 cleanWs()
+                // Explicitly verify and create workspace root if needed
+                sh 'mkdir -p ${WORKSPACE}'
             }
         }
 
