@@ -43,8 +43,8 @@ pipeline {
                                 sh 'terraform apply -input=false tfplan'
                             } else if (params.ACTION == 'Destroy') {
                                 sh 'terraform destroy --auto-approve'
-                            } else  (params.ACTION == 'Plan') {
-                                sh 'terraform plan'
+                            } else if (params.ACTION == 'Plan') {
+                                sh 'terraform plan -out=tfplan'
                             }
                         }
                     }
