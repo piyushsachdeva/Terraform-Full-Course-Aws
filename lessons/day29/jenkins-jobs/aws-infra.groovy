@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     // Optional: automatically provision Terraform CLI if HashiCorp Terraform plugin is configured in Tools
-    tools {
-        terraform 'terraform-default' // Name defined under Manage Jenkins -> Tools
-    }
+    //tools {
+    //    terraform 'terraform-default' // Name defined under Manage Jenkins -> Tools
+    //}
 
     parameters {
         string(name: 'GIT_REPO', defaultValue: 'https://github.com/your-org/your-repo.git')
