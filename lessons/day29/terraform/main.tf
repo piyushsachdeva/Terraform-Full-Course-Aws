@@ -4,8 +4,8 @@ data "aws_availability_zones" "available" {
     values = ["opt-in-not-required"]
   }
 }
-#TODO
-# create a backend
+//TODO
+// create a backend
 
 locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
