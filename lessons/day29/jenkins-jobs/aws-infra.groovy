@@ -9,7 +9,7 @@ pipeline {
     parameters {
         string(name: 'GIT_REPO', defaultValue: 'https://github.com/your-org/your-repo.git')
         string(name: 'GIT_BRANCH', defaultValue: 'main')
-        choice(name: 'ACTION', choices: ['Apply', 'Destroy'])
+        choice(name: 'ACTION', choices: ['Plan', 'Apply', 'Destroy'])
     }
 
     stages {
@@ -43,6 +43,8 @@ pipeline {
                                 sh 'terraform apply -input=false tfplan'
                             } else if (params.ACTION == 'Destroy') {
                                 sh 'terraform destroy --auto-approve'
+                            } else  (params.ACTION == 'Plan') {
+                                sh 'terraform plan'
                             }
                         }
                     }
