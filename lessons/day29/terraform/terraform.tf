@@ -1,10 +1,16 @@
 terraform {
-  required_version = ">= 1.0"
+  required_version = ">= 1.5.0"
+
+  backend "s3" {
+    bucket = "vitninlab-tf-state-prod-gitops"
+    key    = "eks/terraform.tfstate"
+    region = "us-east-1"
+  }
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = ">= 6.59.0" # Updated from ~> 5.0 to satisfy EKS v21 requirements
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
