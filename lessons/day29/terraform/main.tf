@@ -1,10 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket = "vitninlab-tf-state-prod-gitops"
-    key    = "eks/terraform.tfstate"
-    region = "us-east-1"
-  }
-
 data "aws_availability_zones" "available" {
   filter {
     name   = "opt-in-status"
