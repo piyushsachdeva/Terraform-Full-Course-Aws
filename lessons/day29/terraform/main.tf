@@ -5,14 +5,6 @@ terraform {
     region = "us-east-1"
   }
 
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 6.59.0"
-    }
-  }
-}
-
 data "aws_availability_zones" "available" {
   filter {
     name   = "opt-in-status"
