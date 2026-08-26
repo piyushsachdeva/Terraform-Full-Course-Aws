@@ -54,7 +54,7 @@ module "ebs_csi_irsa_role" {
 resource "aws_eks_addon" "ebs_csi" {
   cluster_name             = "gitops-eks-cluster"
   addon_name               = "aws-ebs-csi-driver"
-  service_account_role_arn = module_ebs_csi_irsa_role.iam_role_arn
+  service_account_role_arn = module.ebs_csi_irsa_role.iam_role_arn
 
   # Ensure worker node groups exist before add-on attempts initialization
   depends_on = [
