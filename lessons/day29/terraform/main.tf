@@ -74,16 +74,19 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  cluster_name    = var.cluster_name
-  kubernetes_version = "1.33"
+  # MUST be "name", NOT "cluster_name"
+  name                   = var.cluster_name
+  kubernetes_version     = "1.32"
 
-  cluster_endpoint_public_access = true
+  # MUST be "endpoint_public_access", NOT "cluster_endpoint_public_access"
+  endpoint_public_access = true
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
-  eks_managed_node_groups = {
+  # MUST be "node_groups", NOT "eks_managed_node_groups"
+  node_groups = {
     initial = {
       instance_types = ["t3.medium"]
 
@@ -95,7 +98,6 @@ module "eks" {
     }
   }
 
-  enable_irsa = true
   enable_cluster_creator_admin_permissions = true
 
   tags = {
