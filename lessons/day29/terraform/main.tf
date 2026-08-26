@@ -1,27 +1,27 @@
-resource "aws_s3_bucket" "tf_state" {
-  bucket        = "my-tf-state-prod"
-  force_destroy = false # Protects state from accidental deletion
+#resource "aws_s3_bucket" "tf_state" {
+#  bucket        = "vitninlab-tf-state-prod"
+#  force_destroy = false # Protects state from accidental deletion
 
-  lifecycle {
-    prevent_destroy = true
-  }
-}
+#  lifecycle {
+#    prevent_destroy = true
+#  }
+#}
 
-resource "aws_s3_bucket_versioning" "tf_state_versioning" {
-  bucket = aws_s3_bucket.tf_state.id
-  versioning_configuration {
-    status = "Enabled" # Crucial: Allows rolling back corrupted state files
-  }
-}
+#resource "aws_s3_bucket_versioning" "tf_state_versioning" {
+#  bucket = aws_s3_bucket.tf_state.id
+#  versioning_configuration {
+#    status = "Enabled" # Crucial: Allows rolling back corrupted state files
+#  }
+#}
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "tf_state_crypto" {
-  bucket = aws_s3_bucket.tf_state.id
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
-    }
-  }
-}
+#resource "aws_s3_bucket_server_side_encryption_configuration" "tf_state_crypto" {
+#  bucket = aws_s3_bucket.tf_state.id
+#  rule {
+#    apply_server_side_encryption_by_default {
+#     sse_algorithm = "AES256"
+#    }
+#  }
+#}
 
 data "aws_availability_zones" "available" {
   filter {
@@ -32,6 +32,34 @@ data "aws_availability_zones" "available" {
 
 locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
+}
+
+# 1. Create IAM Role for EBS CSI Driver (IRSA)
+module "ebs_csi_irsa_role" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version = "~> 5.0"
+
+  role_name             = "ebs-csi-controller-role-gitops"
+  attach_ebs_csi_policy = true
+
+  oidc_providers = {
+    ex = {
+      provider_arn               = module.eks.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
+    }
+  }
+}
+
+# 2. Add EKS Addon with Service Account Role ARN
+resource "aws_eks_addon" "ebs_csi" {
+  cluster_name             = "gitops-eks-cluster"
+  addon_name               = "aws-ebs-csi-driver"
+  service_account_role_arn = module_ebs_csi_irsa_role.iam_role_arn
+
+  # Ensure worker node groups exist before add-on attempts initialization
+  depends_on = [
+    module.eks.eks_managed_node_groups
+  ]
 }
 
 module "vpc" {
