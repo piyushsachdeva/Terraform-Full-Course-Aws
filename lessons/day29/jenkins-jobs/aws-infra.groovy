@@ -37,16 +37,20 @@ pipeline {
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     dir('lessons/day29/terraform') {
-                        sh 'terraform init'
-                        
                         script {
+                            // 1. Always initialize backend first to pull state from S3
+                            sh 'terraform init -input=false'
+
                             if (params.ACTION == 'Apply') {
-                                sh 'terraform plan -out=tfplan'
+                                // Generate plan and apply the precise plan file generated
+                                sh 'terraform plan -input=false -out=tfplan'
                                 sh 'terraform apply -input=false tfplan'
                             } else if (params.ACTION == 'Destroy') {
-                                sh 'terraform destroy --auto-approve'
+                                // Destroy target resources using remote state
+                                sh 'terraform destroy -input=false --auto-approve'
                             } else if (params.ACTION == 'Plan') {
-                                sh 'terraform plan -out=tfplan'
+                                // Generate plan without applying
+                                sh 'terraform plan -input=false -out=tfplan'
                             }
                         }
                     }
