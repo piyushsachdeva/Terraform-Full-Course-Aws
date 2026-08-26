@@ -85,8 +85,7 @@ module "eks" {
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
-  # MUST be "node_groups", NOT "eks_managed_node_groups"
-  node_groups = {
+  eks_managed_node_groups = {
     initial = {
       instance_types = ["t3.medium"]
 
