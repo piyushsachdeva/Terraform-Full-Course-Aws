@@ -54,11 +54,13 @@ module "vpc" {
   enable_dns_support   = true
 
   public_subnet_tags = {
-    "kubernetes.io/role/elb" = 1
+    "kubernetes.io/role/elb"                      = "1"
+    "kubernetes.io/cluster/gitops-eks-cluster"   = "shared"
   }
 
   private_subnet_tags = {
-    "kubernetes.io/role/internal-elb" = 1
+    "kubernetes.io/role/internal-elb"             = "1"
+    "kubernetes.io/cluster/gitops-eks-cluster"   = "shared"
   }
 }
 
@@ -66,17 +68,22 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  # MUST be "name", NOT "cluster_name"
-  name                   = var.cluster_name
-  kubernetes_version     = "1.32"
+  name               = var.cluster_name
+  kubernetes_version = "1.32"
 
-  # MUST be "endpoint_public_access", NOT "cluster_endpoint_public_access"
-  endpoint_public_access = true
+  # Cluster API Access & Authentication
+  endpoint_public_access  = true
+  endpoint_private_access = true
+
+  # Enables EKS Access Entries API for node authentication
+  authentication_mode                      = "API_AND_CONFIG_MAP"
+  enable_cluster_creator_admin_permissions = true
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
+  # Node Groups Configuration
   eks_managed_node_groups = {
     initial = {
       instance_types = ["t3.medium"]
@@ -86,17 +93,21 @@ module "eks" {
       desired_size = 2
 
       subnet_ids = module.vpc.private_subnets
+
+      # Ensure nodes have the standard EKS worker policies attached
+      iam_role_additional_policies = {
+        AmazonEKSWorkerNodePolicy          = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+        AmazonEKS_CNI_Policy               = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+        AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      }
     }
   }
-
-  enable_cluster_creator_admin_permissions = true
 
   tags = {
     Environment = "dev"
     Terraform   = "true"
   }
 }
-
 # EBS CSI Driver IAM Role
 module "ebs_csi_driver_irsa" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
