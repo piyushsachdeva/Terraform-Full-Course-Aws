@@ -40,29 +40,10 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  # v21 syntax arguments
   name               = var.cluster_name
   kubernetes_version = "1.32"
 
-  # CRITICAL: Instructs EKS to process access_entries
-  authentication_mode = "API_AND_CONFIG_MAP"
-
-  timeouts = {
-    create = "60m"
-    update = "60m"
-    delete = "30m"
-  }
-
-  # Endpoint connectivity
-  endpoint_public_access  = true
-  endpoint_private_access = true
-
-  # Networking
-  vpc_id                   = module.vpc.vpc_id
-  subnet_ids               = module.vpc.private_subnets
-  control_plane_subnet_ids = module.vpc.private_subnets
-
-  # Enable creator permissions so Terraform can finish setting up cluster resources
+  authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
 
   access_entries = {
@@ -80,7 +61,10 @@ module "eks" {
     }
   }
 
-  # Managed Node Group configuration
+  vpc_id                   = module.vpc.vpc_id
+  subnet_ids               = module.vpc.private_subnets
+  control_plane_subnet_ids = module.vpc.private_subnets
+
   eks_managed_node_groups = {
     initial = {
       instance_types = ["t3.medium"]
@@ -93,8 +77,7 @@ module "eks" {
     }
   }
 
-  tags = {
-    Environment = "dev"
-    Terraform   = "true"
-  }
+  depends_on = [
+    module.vpc
+  ]
 }
