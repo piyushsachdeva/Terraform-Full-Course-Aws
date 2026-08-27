@@ -48,7 +48,6 @@ module "eks" {
   kubernetes_version = "1.32"
 
   authentication_mode                      = "API_AND_CONFIG_MAP"
-  enable_cluster_creator_admin_permissions = true
   enable_irsa                              = true
 
   timeouts = {
