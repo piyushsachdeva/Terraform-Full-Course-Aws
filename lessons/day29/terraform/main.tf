@@ -43,7 +43,8 @@ module "eks" {
   # v21 syntax arguments
   name               = var.cluster_name
   kubernetes_version = "1.32"
-  cluster_timeouts = {
+
+  timeouts = {
     create = "60m"
     update = "60m"
     delete = "30m"
@@ -60,6 +61,19 @@ module "eks" {
 
   # Enable creator permissions so Terraform can finish setting up cluster resources
   enable_cluster_creator_admin_permissions = true
+  access_entries = {
+    admin_user = {
+      principal_arn = "arn:aws:iam::174022949714:user/sergearn:aws:iam::174022949714:user/serge"
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
 
   # Managed Node Group configuration
   eks_managed_node_groups = {
