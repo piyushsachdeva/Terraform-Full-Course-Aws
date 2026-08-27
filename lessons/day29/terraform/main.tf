@@ -46,14 +46,18 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
+  create = true
+
   name               = var.cluster_name
   kubernetes_version = "1.32"
 
-  # v21 syntax for authentication mode
+  # Core API & Creator Access
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
 
-  # v21 syntax for cluster execution timeouts
+  # Enable OIDC Provider for IAM Roles for Service Accounts (IRSA)
+  enable_irsa = true
+
   timeouts = {
     create = "60m"
     update = "60m"
@@ -69,7 +73,23 @@ module "eks" {
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
-  # v21 Access Entries mapping
+  # Core EKS Cluster Add-ons
+  cluster_addons = {
+    coredns = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
+    vpc-cni = {
+      most_recent = true
+    }
+    aws-ebs-csi-driver = {
+      most_recent = true
+    }
+  }
+
+  # Cluster API Access Entries
   access_entries = {
     admin_user = {
       principal_arn = "arn:aws:iam::174022949714:user/serge"
@@ -85,7 +105,7 @@ module "eks" {
     }
   }
 
-  # v21 Managed Node Group definition
+  # Managed Node Group configuration
   eks_managed_node_groups = {
     initial = {
       create         = true
@@ -96,6 +116,13 @@ module "eks" {
       desired_size = 2
 
       subnet_ids = module.vpc.private_subnets
+
+      # Explicit IAM Policies for EC2 Instances to join EKS cleanly
+      iam_role_additional_policies = {
+        AmazonEKSWorkerNodePolicy          = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+        AmazonEKS_CNI_Policy               = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+        AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      }
     }
   }
 
