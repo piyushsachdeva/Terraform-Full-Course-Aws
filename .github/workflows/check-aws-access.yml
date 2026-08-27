@@ -1,4 +1,4 @@
-name: Check AWS access
+name: Check AWS access keys
 
 on:
   push:
