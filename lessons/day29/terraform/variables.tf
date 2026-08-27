@@ -1,4 +1,4 @@
-#varibly.tf by Claude
+#varibles.tf by Claude
 
 variable "region" {
   description = "AWS region"
