@@ -82,5 +82,53 @@ pipeline {
                 }
             }
         }
+
+        stage('Post-Deployment Verification') {
+            when {
+                expression { 
+                    return params.ACTION in ['Apply-All', 'Apply-EKS-Only'] 
+                }
+            }
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-credentials-id',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    script {
+                        echo '--- Configuring kubeconfig and verifying cluster health ---'
+                        
+                        // 1. Fetch cluster credentials into the workspace kubeconfig
+                        sh '''
+                            aws eks update-kubeconfig \
+                              --region us-east-1 \
+                              --name gitops-eks-cluster
+                        '''
+
+                        // 2. Verify worker nodes are Ready
+                        sh '''
+                            echo "=== Cluster Nodes ==="
+                            kubectl get nodes -o wide
+                            
+                            echo "=== Waiting for Nodes to reach Ready status ==="
+                            kubectl wait --for=condition=Ready nodes --all --timeout=120s
+                        '''
+
+                        // 3. Verify core system pods (CoreDNS, kube-proxy, aws-node)
+                        sh '''
+                            echo "=== kube-system Pods ==="
+                            kubectl get pods -n kube-system
+                            
+                            echo "=== Waiting for CoreDNS pods to be ready ==="
+                            kubectl wait --for=condition=Ready pod \
+                              -l k8s-app=kube-dns \
+                              -n kube-system \
+                              --timeout=180s
+                        '''
+                    }
+                }
+            }
+        }
     }
 }
