@@ -9,6 +9,9 @@ locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
 }
 
+# ------------------------------------------------------------------------------
+# VPC Module
+# ------------------------------------------------------------------------------
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
@@ -26,19 +29,19 @@ module "vpc" {
   enable_dns_support   = true
 
   public_subnet_tags = {
-    "kubernetes.io/role/elb"                  = "1"
+    "kubernetes.io/role/elb"                      = "1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 
   private_subnet_tags = {
-    "kubernetes.io/role/internal-elb"         = "1"
+    "kubernetes.io/role/internal-elb"             = "1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 }
 
-data "aws_partition" "current" {}
-data "aws_caller_identity" "current" {}
-
+# ------------------------------------------------------------------------------
+# EKS Module (v21.x Strict Syntax)
+# ------------------------------------------------------------------------------
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
@@ -46,20 +49,45 @@ module "eks" {
   name               = var.cluster_name
   kubernetes_version = "1.32"
 
-  # Explicitly set partition and account ID to prevent computed count errors
-  partition  = data.aws_partition.current.partition
-  account_id = data.aws_caller_identity.current.account_id
-
+  # v21 syntax for authentication mode
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
 
+  # v21 syntax for cluster execution timeouts
+  timeouts = {
+    create = "60m"
+    update = "60m"
+    delete = "30m"
+  }
+
+  # Endpoint Connectivity
+  endpoint_public_access  = true
+  endpoint_private_access = true
+
+  # Networking
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
+  # v21 Access Entries mapping
+  access_entries = {
+    admin_user = {
+      principal_arn = "arn:aws:iam::174022949714:user/serge"
+
+      policy_associations = {
+        admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
+
+  # v21 Managed Node Group definition
   eks_managed_node_groups = {
     initial = {
-      # Ensure create is explicitly set to true
       create         = true
       instance_types = ["t3.medium"]
 
