@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  check-aaccess:
-    runs-on: ubuntu-slim
+  check-access:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
