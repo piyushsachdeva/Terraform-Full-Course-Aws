@@ -74,7 +74,7 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.private_subnets
 
   # Core EKS Cluster Add-ons
-  cluster_addons = {
+  addons = {
     coredns = {
       most_recent = true
     }
