@@ -59,6 +59,8 @@ module "eks" {
   endpoint_private_access      = true
   endpoint_public_access_cidrs = var.cluster_endpoint_public_access_cidrs
 
+  enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
@@ -72,10 +74,6 @@ module "eks" {
     }
     vpc-cni = {
       most_recent = true
-    }
-    aws-ebs-csi-driver = {
-      most_recent             = true
-      service_account_role_arn = module.ebs_csi_irsa.iam_role_arn
     }
   }
 
@@ -136,5 +134,19 @@ module "ebs_csi_irsa" {
 
   depends_on = [
     module.eks
+  ]
+}
+
+# Standalone addon resource (kept outside module.eks's addons map) so the
+# addon -> IRSA role -> cluster dependency chain doesn't form a cycle back
+# through module.eks's own addons input.
+resource "aws_eks_addon" "ebs_csi" {
+  cluster_name             = module.eks.cluster_name
+  addon_name               = "aws-ebs-csi-driver"
+  service_account_role_arn = module.ebs_csi_irsa.iam_role_arn
+
+  depends_on = [
+    module.eks,
+    module.ebs_csi_irsa
   ]
 }
