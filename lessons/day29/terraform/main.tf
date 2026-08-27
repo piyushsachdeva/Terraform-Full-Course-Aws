@@ -44,6 +44,9 @@ module "eks" {
   name               = var.cluster_name
   kubernetes_version = "1.32"
 
+  # CRITICAL: Instructs EKS to process access_entries
+  cluster_authentication_mode = "API_AND_CONFIG_MAP"
+
   timeouts = {
     create = "60m"
     update = "60m"
@@ -61,9 +64,11 @@ module "eks" {
 
   # Enable creator permissions so Terraform can finish setting up cluster resources
   enable_cluster_creator_admin_permissions = true
+
   access_entries = {
     admin_user = {
       principal_arn = "arn:aws:iam::174022949714:user/serge"
+
       policy_associations = {
         admin = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
