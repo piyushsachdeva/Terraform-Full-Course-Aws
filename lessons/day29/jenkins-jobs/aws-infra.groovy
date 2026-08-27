@@ -9,6 +9,7 @@ pipeline {
             choices: [
                 'Apply-All', 
                 'Apply-VPC-Only', 
+                'Apply-EKS-Only',
                 'Plan', 
                 'Destroy-EKS-Only', 
                 'Destroy-VPC-Only', 
@@ -45,6 +46,10 @@ pipeline {
                             if (params.ACTION == 'Apply-VPC-Only') {
                                 echo '--- Provisioning VPC Module Only ---'
                                 sh 'terraform apply -target=module.vpc -input=false -auto-approve'
+
+                            } else if (params.ACTION == 'Apply-EKS-Only') {
+                                echo '--- Provisioning EKS Module Only ---'
+                                sh 'terraform apply -target=module.eks -input=false -auto-approve'
 
                             } else if (params.ACTION == 'Apply-All') {
                                 echo '--- Step 1: Guaranteeing VPC Subnets Exist ---'
