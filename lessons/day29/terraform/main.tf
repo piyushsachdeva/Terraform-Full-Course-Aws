@@ -1,3 +1,5 @@
+# main.tf
+
 data "aws_availability_zones" "available" {
   filter {
     name   = "opt-in-status"
@@ -9,9 +11,6 @@ locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
 }
 
-# ------------------------------------------------------------------------------
-# VPC Module
-# ------------------------------------------------------------------------------
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
@@ -39,9 +38,6 @@ module "vpc" {
   }
 }
 
-# ------------------------------------------------------------------------------
-# EKS Module (v21.x Strict Syntax)
-# ------------------------------------------------------------------------------
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
@@ -51,12 +47,9 @@ module "eks" {
   name               = var.cluster_name
   kubernetes_version = "1.32"
 
-  # Core API & Creator Access
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
-
-  # Enable OIDC Provider for IAM Roles for Service Accounts (IRSA)
-  enable_irsa = true
+  enable_irsa                              = true
 
   timeouts = {
     create = "60m"
@@ -64,16 +57,13 @@ module "eks" {
     delete = "30m"
   }
 
-  # Endpoint Connectivity
   endpoint_public_access  = true
   endpoint_private_access = true
 
-  # Networking
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
   control_plane_subnet_ids = module.vpc.private_subnets
 
-  # Core EKS Cluster Add-ons
   addons = {
     coredns = {
       most_recent = true
@@ -89,7 +79,6 @@ module "eks" {
     }
   }
 
-  # Cluster API Access Entries
   access_entries = {
     admin_user = {
       principal_arn = "arn:aws:iam::174022949714:user/serge"
@@ -105,7 +94,6 @@ module "eks" {
     }
   }
 
-  # Managed Node Group configuration
   eks_managed_node_groups = {
     initial = {
       create         = true
@@ -117,7 +105,6 @@ module "eks" {
 
       subnet_ids = module.vpc.private_subnets
 
-      # Explicit IAM Policies for EC2 Instances to join EKS cleanly
       iam_role_additional_policies = {
         AmazonEKSWorkerNodePolicy          = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
         AmazonEKS_CNI_Policy               = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
