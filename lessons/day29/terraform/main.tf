@@ -1,4 +1,4 @@
-# main.tf
+# main.tf by Claude
 
 data "aws_availability_zones" "available" {
   filter {
@@ -6,6 +6,8 @@ data "aws_availability_zones" "available" {
     values = ["opt-in-not-required"]
   }
 }
+
+data "aws_caller_identity" "current" {}
 
 locals {
   azs = slice(data.aws_availability_zones.available.names, 0, 2)
@@ -28,12 +30,11 @@ module "vpc" {
   enable_dns_support   = true
 
   public_subnet_tags = {
-    "kubernetes.io/role/elb"                      = "1"
+    "kubernetes.io/role/elb"                    = "1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
-
   private_subnet_tags = {
-    "kubernetes.io/role/internal-elb"             = "1"
+    "kubernetes.io/role/internal-elb"           = "1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 }
@@ -42,13 +43,11 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  create = true
-
   name               = var.cluster_name
-  kubernetes_version = "1.32"
+  kubernetes_version = var.kubernetes_version
 
-  authentication_mode                      = "API_AND_CONFIG_MAP"
-  enable_irsa                              = true
+  authentication_mode = "API_AND_CONFIG_MAP"
+  enable_irsa         = true
 
   timeouts = {
     create = "60m"
@@ -56,8 +55,11 @@ module "eks" {
     delete = "30m"
   }
 
-  endpoint_public_access  = true
-  endpoint_private_access = true
+  endpoint_public_access       = true
+  endpoint_private_access      = true
+  endpoint_public_access_cidrs = var.cluster_endpoint_public_access_cidrs
+
+  cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
@@ -74,14 +76,14 @@ module "eks" {
       most_recent = true
     }
     aws-ebs-csi-driver = {
-      most_recent = true
+      most_recent             = true
+      service_account_role_arn = module.ebs_csi_irsa.iam_role_arn
     }
   }
 
   access_entries = {
     admin_user = {
-      principal_arn = "arn:aws:iam::174022949714:user/serge"
-
+      principal_arn = var.admin_principal_arn
       policy_associations = {
         admin = {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
@@ -95,7 +97,6 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
-      create         = true
       instance_types = ["t3.medium"]
 
       min_size     = 2
@@ -103,12 +104,10 @@ module "eks" {
       desired_size = 2
 
       subnet_ids = module.vpc.private_subnets
-
-      iam_role_additional_policies = {
-        AmazonEKSWorkerNodePolicy          = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-        AmazonEKS_CNI_Policy               = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-        AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-      }
+      # Note: AmazonEKSWorkerNodePolicy, AmazonEKS_CNI_Policy, and
+      # AmazonEC2ContainerRegistryReadOnly are attached by default by
+      # this module version's node group submodule — no need to
+      # re-attach them here.
     }
   }
 
@@ -119,5 +118,25 @@ module "eks" {
 
   depends_on = [
     module.vpc
+  ]
+}
+
+# IRSA role for the EBS CSI driver addon — required for PVC/PV provisioning
+module "ebs_csi_irsa" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version = "~> 5.0"
+
+  role_name             = "${var.cluster_name}-ebs-csi"
+  attach_ebs_csi_policy = true
+
+  oidc_providers = {
+    main = {
+      provider_arn               = module.eks.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
+    }
+  }
+
+  depends_on = [
+    module.eks
   ]
 }
