@@ -36,6 +36,9 @@ module "vpc" {
   }
 }
 
+data "aws_partition" "current" {}
+data "aws_caller_identity" "current" {}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
@@ -43,23 +46,12 @@ module "eks" {
   name               = var.cluster_name
   kubernetes_version = "1.32"
 
+  # Explicitly set partition and account ID to prevent computed count errors
+  partition  = data.aws_partition.current.partition
+  account_id = data.aws_caller_identity.current.account_id
+
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
-
-  access_entries = {
-    admin_user = {
-      principal_arn = "arn:aws:iam::174022949714:user/serge"
-
-      policy_associations = {
-        admin = {
-          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-          access_scope = {
-            type = "cluster"
-          }
-        }
-      }
-    }
-  }
 
   vpc_id                   = module.vpc.vpc_id
   subnet_ids               = module.vpc.private_subnets
@@ -67,6 +59,8 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
+      # Ensure create is explicitly set to true
+      create         = true
       instance_types = ["t3.medium"]
 
       min_size     = 2
@@ -75,6 +69,11 @@ module "eks" {
 
       subnet_ids = module.vpc.private_subnets
     }
+  }
+
+  tags = {
+    Environment = "dev"
+    Terraform   = "true"
   }
 
   depends_on = [
