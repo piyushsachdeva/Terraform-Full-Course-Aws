@@ -45,7 +45,7 @@ module "eks" {
   kubernetes_version = "1.32"
 
   # CRITICAL: Instructs EKS to process access_entries
-  cluster_authentication_mode = "API_AND_CONFIG_MAP"
+  authentication_mode = "API_AND_CONFIG_MAP"
 
   timeouts = {
     create = "60m"
