@@ -43,6 +43,11 @@ module "eks" {
   # v21 syntax arguments
   name               = var.cluster_name
   kubernetes_version = "1.32"
+  cluster_timeouts = {
+    create = "60m"
+    update = "60m"
+    delete = "30m"
+  }
 
   # Endpoint connectivity
   endpoint_public_access  = true
