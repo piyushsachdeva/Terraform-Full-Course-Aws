@@ -99,11 +99,13 @@ module "eks" {
       max_size     = 3
       desired_size = 2
 
-      subnet_ids = module.vpc.private_subnets
-      # Note: AmazonEKSWorkerNodePolicy, AmazonEKS_CNI_Policy, and
-      # AmazonEC2ContainerRegistryReadOnly are attached by default by
-      # this module version's node group submodule — no need to
-      # re-attach them here.
+      subnet_ids     = module.vpc.private_subnets
+
+      timeouts = {
+        create = "40m"
+        update = "40m"
+        delete = "20m"
+      }      
     }
   }
 
