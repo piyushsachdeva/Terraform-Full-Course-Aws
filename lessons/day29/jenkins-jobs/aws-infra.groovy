@@ -5,14 +5,14 @@ pipeline {
         string(name: 'GIT_REPO', defaultValue: 'https://github.com/your-org/your-repo.git')
         string(name: 'GIT_BRANCH', defaultValue: 'main')
         choice(
-            name: 'ACTION', 
+            name: 'ACTION',
             choices: [
-                'Apply-All', 
-                'Apply-VPC-Only', 
+                'Apply-All',
+                'Apply-VPC-Only',
                 'Apply-EKS-Only',
-                'Plan', 
-                'Destroy-EKS-Only', 
-                'Destroy-VPC-Only', 
+                'Plan',
+                'Destroy-EKS-Only',
+                'Destroy-VPC-Only',
                 'Destroy-All'
             ]
         )
@@ -25,45 +25,14 @@ pipeline {
             }
         }
 
-        stage('Install CLI Tools') {
+        stage('Preflight Tools') {
             steps {
                 sh '''
                     set -e
-
-                    export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
-
-                    echo '--- Checking for required CLIs ---'
-
-                    if ! command -v aws >/dev/null 2>&1; then
-                        echo 'AWS CLI not found. Installing...'
-
-                        if command -v sudo >/dev/null 2>&1; then
-                            sudo apt-get update
-                            sudo apt-get install -y awscli curl unzip
-                        elif [ "$(id -u)" -eq 0 ]; then
-                            apt-get update
-                            apt-get install -y awscli curl unzip
-                        else
-                            python3 -m pip install --user awscli
-                        fi
-                    fi
-
-                    if ! command -v kubectl >/dev/null 2>&1; then
-                        echo 'kubectl not found. Installing...'
-                        curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-                        chmod +x kubectl
-
-                        if [ "$(id -u)" -eq 0 ] || command -v sudo >/dev/null 2>&1; then
-                            install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-                        else
-                            mkdir -p "$HOME/bin"
-                            install -m 0755 kubectl "$HOME/bin/kubectl"
-                        fi
-                    fi
-
-                    export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
-                    echo "AWS CLI: $(aws --version)"
-                    echo "kubectl: $(kubectl version --client --output=yaml | head -n 10)"
+                    echo '--- Verifying required tools ---'
+                    aws --version
+                    kubectl version --client --short
+                    terraform version
                 '''
             }
         }
@@ -108,7 +77,7 @@ pipeline {
 
                             } else if (params.ACTION == 'Destroy-VPC-Only') {
                                 echo '--- Safety Check: Verifying EKS state in AWS ---'
-                                
+
                                 def clusterStatus = sh(
                                     script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
                                     returnStdout: true
@@ -123,7 +92,7 @@ pipeline {
 
                             } else if (params.ACTION == 'Destroy-All') {
                                 echo '--- Safety Check: Verifying EKS state before destroying ---'
-                                
+
                                 def clusterStatus = sh(
                                     script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
                                     returnStdout: true
@@ -150,8 +119,8 @@ pipeline {
 
         stage('Post-Deployment Verification') {
             when {
-                expression { 
-                    return params.ACTION in ['Apply-All', 'Apply-EKS-Only'] 
+                expression {
+                    return params.ACTION in ['Apply-All', 'Apply-EKS-Only']
                 }
             }
             steps {
@@ -163,7 +132,7 @@ pipeline {
                 ]]) {
                     script {
                         echo '--- Configuring kubeconfig and verifying cluster health ---'
-                        
+
                         sh '''
                             aws eks update-kubeconfig \
                               --region us-east-1 \
@@ -173,7 +142,7 @@ pipeline {
                         sh '''
                             echo "=== Cluster Nodes ==="
                             kubectl get nodes -o wide
-                            
+
                             echo "=== Waiting for Nodes to reach Ready status ==="
                             kubectl wait --for=condition=Ready nodes --all --timeout=120s
                         '''
@@ -181,7 +150,7 @@ pipeline {
                         sh '''
                             echo "=== kube-system Pods ==="
                             kubectl get pods -n kube-system
-                            
+
                             echo "=== Waiting for CoreDNS pods to be ready ==="
                             kubectl wait --for=condition=Ready pod \
                               -l k8s-app=kube-dns \
