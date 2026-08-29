@@ -92,7 +92,7 @@ module "eks" {
     }
   }
 
-  cluster_security_group_additional_rules = {
+  security_group_additional_rules = {
     ingress_nodes_443 = {
       description                = "Node groups to cluster API"
       protocol                   = "tcp"
@@ -193,45 +193,3 @@ resource "aws_eks_addon" "ebs_csi" {
     module.ebs_csi_irsa
   ]
 }
-# Pin to a specific ArgoCD release tag
-data "http" "argocd_manifest" {
-  url = "https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.0/manifests/install.yaml"
-}
-
-data "kubectl_file_documents" "argocd" {
-  content = data.http.argocd_manifest.response_body
-}
-
-resource "kubectl_manifest" "argocd" {
-  for_each = {
-    for doc in data.kubectl_file_documents.argocd.manifests :
-    "${yamldecode(doc).kind}/${yamldecode(doc).metadata.name}" => doc
-    if !(
-      yamldecode(doc).kind == "Service" &&
-      yamldecode(doc).metadata.name == "argocd-server"
-    )
-  }
-
-  yaml_body          = each.value
-  override_namespace = "argocd"
-  wait_for_rollout   = true
-
-  depends_on = [module.eks]
-}
-
-# Sole owner of argocd-server Service
-resource "kubectl_manifest" "argocd_server_lb" {
-  yaml_body = <<-YAML
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: argocd-server
-      namespace: argocd
-    spec:
-      type: LoadBalancer
-  YAML
-
-  ignore_fields = ["spec.ports", "spec.selector", "spec.clusterIP"]
-
-  depends_on = [kubectl_manifest.argocd]
-}   
