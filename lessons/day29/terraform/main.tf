@@ -197,52 +197,28 @@ resource "aws_eks_addon" "ebs_csi" {
   ]
 }
 # Install ArgoCD using kubectl provider
-data "http" "argocd_manifest" {
-  url = "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
-}
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = "argocd"
+  version    = "7.7.0"
 
-resource "kubectl_manifest" "argocd" {
-  for_each = { for doc in split("---", data.http.argocd_manifest.response_body) : 
-    sha256(doc) => doc if trimspace(doc) != "" 
+  create_namespace = true
+
+  set {
+    name  = "server.service.type"
+    value = "LoadBalancer"
   }
 
-  yaml_body = each.value
-  override_namespace = "argocd"
-
-  depends_on = [kubernetes_namespace_v1.argocd]
+  depends_on = [
+    module.eks,
+    aws_eks_addon.ebs_csi
+  ]
 }
 
-# Patch ArgoCD server service to LoadBalancer
-resource "null_resource" "patch_argocd_service" {
-  provisioner "local-exec" {
-    command = <<-EOT
-      # Update kubeconfig first
-      aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}
-      
-      # Wait a bit for service to be created
-      sleep 10
-      
-      # Patch service to LoadBalancer (ignore errors if already patched)
-      kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}' || true
-    EOT
-  }
-
-  depends_on = [kubectl_manifest.argocd]
-}
-
-# Application namespace - managed by ArgoCD Application manifest
-# Commenting out to avoid stuck namespace during destroy
-# The namespace is created by ArgoCD from the GitOps repository
-# resource "kubernetes_namespace_v1" "app" {
-#   metadata {
-#     name = "3tirewebapp-dev"
-#   }
-#   depends_on = [module.eks]
-# }
-
-# Deploy application via ArgoCD Application CRD
 resource "kubectl_manifest" "app_deployment" {
   yaml_body = file("${path.module}/../manifests/argocd-app.yaml")
 
-  depends_on = [kubectl_manifest.argocd]
+  depends_on = [helm_release.argocd]
 }
