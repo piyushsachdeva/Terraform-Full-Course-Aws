@@ -162,7 +162,7 @@ module "eks" {
 
 # IRSA role for the EBS CSI driver addon — required for PVC/PV provisioning
 module "ebs_csi_irsa" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts"
   version = "~> 6.0"
 
   role_name             = "${var.cluster_name}-ebs-csi"
