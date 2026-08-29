@@ -1,4 +1,4 @@
-# main.tf by Claude
+# main.tf
 
 data "aws_availability_zones" "available" {
   filter {
@@ -73,7 +73,8 @@ module "eks" {
       most_recent = true
     }
     vpc-cni = {
-      most_recent = true
+      most_recent    = true
+      before_compute = true
     }
   }
 
@@ -91,6 +92,44 @@ module "eks" {
     }
   }
 
+  cluster_security_group_additional_rules = {
+    ingress_nodes_443 = {
+      description                = "Node groups to cluster API"
+      protocol                   = "tcp"
+      from_port                  = 443
+      to_port                    = 443
+      type                       = "ingress"
+      source_node_security_group = true
+    }
+  }
+
+  node_security_group_additional_rules = {
+    ingress_cluster_443 = {
+      description                   = "Cluster API to node kubelets/webhooks"
+      protocol                      = "tcp"
+      from_port                     = 443
+      to_port                       = 443
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+    ingress_cluster_kubelet = {
+      description                   = "Cluster API to node kubelet"
+      protocol                      = "tcp"
+      from_port                     = 10250
+      to_port                       = 10250
+      type                          = "ingress"
+      source_cluster_security_group = true
+    }
+    ingress_self_all = {
+      description = "Node to node all traffic"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
+      self        = true
+    }
+  }
+
   eks_managed_node_groups = {
     initial = {
       instance_types = ["t3.medium"]
@@ -99,13 +138,15 @@ module "eks" {
       max_size     = 3
       desired_size = 2
 
-      subnet_ids     = module.vpc.private_subnets
+      subnet_ids = module.vpc.private_subnets
 
-      timeouts = {
-        create = "40m"
-        update = "40m"
-        delete = "20m"
-      }      
+      iam_role_additional_policies = {
+        AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      }
+      # Note: AmazonEKSWorkerNodePolicy, AmazonEKS_CNI_Policy, and
+      # AmazonEC2ContainerRegistryReadOnly are attached by default by
+      # this module version's node group submodule — no need to
+      # re-attach them here.
     }
   }
 
@@ -152,62 +193,45 @@ resource "aws_eks_addon" "ebs_csi" {
     module.ebs_csi_irsa
   ]
 }
-# ArgoCD Namespace
-resource "kubernetes_namespace_v1" "argocd" {
-  metadata {
-    name = "argocd"
+# Pin to a specific ArgoCD release tag
+data "http" "argocd_manifest" {
+  url = "https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.0/manifests/install.yaml"
+}
+
+data "kubectl_file_documents" "argocd" {
+  content = data.http.argocd_manifest.response_body
+}
+
+resource "kubectl_manifest" "argocd" {
+  for_each = {
+    for doc in data.kubectl_file_documents.argocd.manifests :
+    "${yamldecode(doc).kind}/${yamldecode(doc).metadata.name}" => doc
+    if !(
+      yamldecode(doc).kind == "Service" &&
+      yamldecode(doc).metadata.name == "argocd-server"
+    )
   }
+
+  yaml_body          = each.value
+  override_namespace = "argocd"
+  wait_for_rollout   = true
 
   depends_on = [module.eks]
 }
 
-# Install ArgoCD using kubectl provider
-data "http" "argocd_manifest" {
-  url = "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"
-}
+# Sole owner of argocd-server Service
+resource "kubectl_manifest" "argocd_server_lb" {
+  yaml_body = <<-YAML
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: argocd-server
+      namespace: argocd
+    spec:
+      type: LoadBalancer
+  YAML
 
-resource "kubectl_manifest" "argocd" {
-  for_each = { for doc in split("---", data.http.argocd_manifest.response_body) : 
-    sha256(doc) => doc if trimspace(doc) != "" 
-  }
-
-  yaml_body = each.value
-  override_namespace = "argocd"
-
-  depends_on = [kubernetes_namespace_v1.argocd]
-}
-
-# Patch ArgoCD server service to LoadBalancer
-resource "null_resource" "patch_argocd_service" {
-  provisioner "local-exec" {
-    command = <<-EOT
-      # Update kubeconfig first
-      aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}
-      
-      # Wait a bit for service to be created
-      sleep 10
-      
-      # Patch service to LoadBalancer (ignore errors if already patched)
-      kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}' || true
-    EOT
-  }
+  ignore_fields = ["spec.ports", "spec.selector", "spec.clusterIP"]
 
   depends_on = [kubectl_manifest.argocd]
-}
-
-# Application namespace - managed by ArgoCD Application manifest
-# Commenting out to avoid stuck namespace during destroy
-# The namespace is created by ArgoCD from the GitOps repository
-# resource "kubernetes_namespace_v1" "app" {
-#   metadata {
-#     name = "3tirewebapp-dev"
-#   }
-#   depends_on = [module.eks]
-# }
-
-# Deploy application via ArgoCD Application CRD
-resource "kubectl_manifest" "app_deployment" {
-  yaml_body = file("${path.module}/../manifests/argocd-app.yaml")
-
-  depends_on = [kubectl_manifest.argocd]
-}
+}   
