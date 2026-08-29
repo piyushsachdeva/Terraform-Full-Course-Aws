@@ -173,7 +173,7 @@ resource "aws_iam_role" "ebs_csi" {
       Action = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringEquals = {
-          "${module.eks.oidc_provider_url}:sub" = "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+          "${replace(module.eks.cluster_oidc_issuer_url, "https://", "")}:sub" = "system:serviceaccount:kube-system:ebs-csi-controller-sa"
         }
       }
     }]
@@ -189,4 +189,10 @@ resource "aws_eks_addon" "ebs_csi" {
   cluster_name             = module.eks.cluster_name
   addon_name               = "aws-ebs-csi-driver"
   service_account_role_arn = aws_iam_role.ebs_csi.arn
+
+  depends_on = [
+    module.eks,
+    aws_iam_role.ebs_csi,
+    aws_iam_role_policy_attachment.ebs_csi
+  ]
 }
