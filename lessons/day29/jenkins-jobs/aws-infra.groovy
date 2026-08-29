@@ -31,7 +31,7 @@ pipeline {
                     set -e
                     echo '--- Verifying required tools ---'
                     aws --version
-                    kubectl version --client --short
+                    kubectl version --client
                     terraform version
                 '''
             }
