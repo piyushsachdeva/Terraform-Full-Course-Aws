@@ -206,10 +206,16 @@ resource "helm_release" "argocd" {
 
   create_namespace = true
 
-  set {
-    name  = "server.service.type"
-    value = "LoadBalancer"
-  }
+  set = [
+    {
+      name  = "server.service.type"
+      value = "LoadBalancer"
+    },
+    {
+      name  = "configs.params.server.insecure"
+      value = "false"
+    }
+  ]
 
   depends_on = [
     module.eks,
