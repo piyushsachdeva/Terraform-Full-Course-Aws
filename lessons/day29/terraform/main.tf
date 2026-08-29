@@ -160,35 +160,33 @@ module "eks" {
   ]
 }
 
-# IRSA role for the EBS CSI driver addon — required for PVC/PV provisioning
-module "ebs_csi_irsa" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts"
-  version = "~> 6.0"
+resource "aws_iam_role" "ebs_csi" {
+  name = "${var.cluster_name}-ebs-csi"
 
-  attach_ebs_csi_policy = true
-
-  oidc_providers = {
-    main = {
-      provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
-    }
-  }
-
-  depends_on = [
-    module.eks
-  ]
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Federated = module.eks.oidc_provider_arn
+      }
+      Action = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "${module.eks.oidc_provider_url}:sub" = "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+        }
+      }
+    }]
+  })
 }
 
-# Standalone addon resource (kept outside module.eks's addons map) so the
-# addon -> IRSA role -> cluster dependency chain doesn't form a cycle back
-# through module.eks's own addons input.
+resource "aws_iam_role_policy_attachment" "ebs_csi" {
+  role       = aws_iam_role.ebs_csi.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+}
+
 resource "aws_eks_addon" "ebs_csi" {
   cluster_name             = module.eks.cluster_name
   addon_name               = "aws-ebs-csi-driver"
-  service_account_role_arn = module.ebs_csi_irsa.iam_role_arn
-
-  depends_on = [
-    module.eks,
-    module.ebs_csi_irsa
-  ]
+  service_account_role_arn = aws_iam_role.ebs_csi.arn
 }
