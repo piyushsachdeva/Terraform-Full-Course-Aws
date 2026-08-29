@@ -25,6 +25,31 @@ pipeline {
             }
         }
 
+        stage('Install CLI Tools') {
+            steps {
+                sh '''
+                    set -e
+
+                    echo '--- Checking for required CLIs ---'
+
+                    if ! command -v aws >/dev/null 2>&1; then
+                        echo 'AWS CLI not found. Installing...'
+                        apt-get update
+                        apt-get install -y awscli curl unzip
+                    fi
+
+                    if ! command -v kubectl >/dev/null 2>&1; then
+                        echo 'kubectl not found. Installing...'
+                        curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                        install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+                    fi
+
+                    echo "AWS CLI: $(aws --version)"
+                    echo "kubectl: $(kubectl version --client --output=yaml | head -n 5)"
+                '''
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 git url: "${params.GIT_REPO}", branch: "${params.GIT_BRANCH}"
@@ -64,12 +89,34 @@ pipeline {
                                 sh 'terraform destroy -target=module.eks -input=false -auto-approve'
 
                             } else if (params.ACTION == 'Destroy-VPC-Only') {
-                                echo '--- Destroying VPC Module Only ---'
+                                echo '--- Safety Check: Verifying EKS state in AWS ---'
+                                
+                                def clusterStatus = sh(
+                                    script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
+                                    returnStdout: true
+                                ).trim()
+
+                                if (clusterStatus != 'NOT_FOUND') {
+                                    error("ABORTING: EKS Cluster 'gitops-eks-cluster' currently exists (Status: ${clusterStatus}). You must run 'Destroy-EKS-Only' or 'Destroy-All' first!")
+                                }
+
+                                echo '--- No active EKS cluster found. Safe to destroy VPC ---'
                                 sh 'terraform destroy -target=module.vpc -input=false -auto-approve'
 
                             } else if (params.ACTION == 'Destroy-All') {
-                                echo '--- Step 1: Destroying EKS Cluster First ---'
-                                sh 'terraform destroy -target=module.eks -input=false -auto-approve'
+                                echo '--- Safety Check: Verifying EKS state before destroying ---'
+                                
+                                def clusterStatus = sh(
+                                    script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
+                                    returnStdout: true
+                                ).trim()
+
+                                if (clusterStatus != 'NOT_FOUND') {
+                                    echo "--- Active EKS cluster detected (Status: ${clusterStatus}). Destroying EKS first... ---"
+                                    sh 'terraform destroy -target=module.eks -input=false -auto-approve'
+                                } else {
+                                    echo '--- No active EKS cluster found. Skipping EKS deletion... ---'
+                                }
 
                                 echo '--- Step 2: Destroying VPC & Remaining Resources ---'
                                 sh 'terraform destroy -input=false -auto-approve'
@@ -99,14 +146,12 @@ pipeline {
                     script {
                         echo '--- Configuring kubeconfig and verifying cluster health ---'
                         
-                        // 1. Fetch cluster credentials into the workspace kubeconfig
                         sh '''
                             aws eks update-kubeconfig \
                               --region us-east-1 \
                               --name gitops-eks-cluster
                         '''
 
-                        // 2. Verify worker nodes are Ready
                         sh '''
                             echo "=== Cluster Nodes ==="
                             kubectl get nodes -o wide
@@ -115,7 +160,6 @@ pipeline {
                             kubectl wait --for=condition=Ready nodes --all --timeout=120s
                         '''
 
-                        // 3. Verify core system pods (CoreDNS, kube-proxy, aws-node)
                         sh '''
                             echo "=== kube-system Pods ==="
                             kubectl get pods -n kube-system
