@@ -82,7 +82,7 @@ pipeline {
                                         echo '--- EKS destroy timed out or hit stale state. Checking whether AWS already deleted the cluster. ---'
                                         if ! aws eks list-clusters --region us-east-1 --query 'clusters' --output text | grep -q .; then
                                             echo '--- AWS reports no EKS cluster. Removing stale EKS state entries. ---'
-                                            terraform state list | grep -E 'module\.eks|aws_eks_addon\.ebs_csi|aws_iam_role\.ebs_csi|aws_iam_role_policy_attachment\.ebs_csi' | while read -r item; do
+                                            terraform state list | grep -E "module\\.eks|aws_eks_addon\\.ebs_csi|aws_iam_role\\.ebs_csi|aws_iam_role_policy_attachment\\.ebs_csi" | while read -r item; do
                                                 terraform state rm "$item" || true
                                             done
                                         fi
@@ -136,7 +136,7 @@ pipeline {
                                 } else {
                                     echo '--- No active EKS cluster found in AWS. Checking for stale Terraform EKS state... ---'
                                     sh '''
-                                        terraform state list | grep -E 'module\.eks|aws_eks_addon\.ebs_csi|aws_iam_role\.ebs_csi|aws_iam_role_policy_attachment\.ebs_csi' | while read -r item; do
+                                        terraform state list | grep -E "module\\.eks|aws_eks_addon\\.ebs_csi|aws_iam_role\\.ebs_csi|aws_iam_role_policy_attachment\\.ebs_csi" | while read -r item; do
                                             terraform state rm "$item" || true
                                         done
                                     '''
