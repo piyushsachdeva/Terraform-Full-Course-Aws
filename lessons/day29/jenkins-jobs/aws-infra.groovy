@@ -119,7 +119,7 @@ pipeline {
                                     error("EKS cluster exists, remove EKS first")
                                 }
 
-                                echo '--- No active EKS cluster found. Destroying VPC safely: cleaning AWS dependencies first ---'
+                                echo '--- No active EKS cluster found. Cleaning VPC dependencies before deletion ---'
                                 sh '''
                                     set -e
                                     vpc_id=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=gitops-vpc" --query 'Vpcs[0].VpcId' --output text 2>/dev/null || true)
@@ -127,15 +127,29 @@ pipeline {
                                     if [ -n "$vpc_id" ] && [ "$vpc_id" != "None" ]; then
                                         echo "Found VPC: $vpc_id"
 
+                                        echo '--- Removing ELBs attached to VPC ---'
                                         aws elbv2 describe-load-balancers --query "LoadBalancers[?VpcId=='$vpc_id'].[LoadBalancerArn]" --output text | while read -r lb_arn; do
                                             [ -n "$lb_arn" ] && aws elbv2 delete-load-balancer --load-balancer-arn "$lb_arn" || true
                                         done
 
+                                        echo '--- Removing NAT gateways from VPC ---'
                                         aws ec2 describe-nat-gateways --filter "Name=vpc-id,Values=$vpc_id" --query 'NatGateways[?State!=`deleted`].NatGatewayId' --output text | tr '\t' '\n' | while read -r nat_id; do
                                             [ -n "$nat_id" ] && aws ec2 delete-nat-gateway --nat-gateway-id "$nat_id" || true
                                         done
+
+                                        echo '--- Releasing EIPs in VPC ---'
+                                        aws ec2 describe-addresses --query 'Addresses[?Domain==`vpc`].AllocationId' --output text | tr '\t' '\n' | while read -r alloc_id; do
+                                            [ -n "$alloc_id" ] && aws ec2 release-address --allocation-id "$alloc_id" || true
+                                        done
+
+                                        echo '--- Detaching Internet Gateway if present ---'
+                                        igw_id=$(aws ec2 describe-internet-gateways --filters "Name=attachment.vpc-id,Values=$vpc_id" --query 'InternetGateways[0].InternetGatewayId' --output text 2>/dev/null || true)
+                                        if [ -n "$igw_id" ] && [ "$igw_id" != "None" ]; then
+                                            aws ec2 detach-internet-gateway --internet-gateway-id "$igw_id" --vpc-id "$vpc_id" || true
+                                        fi
                                     fi
 
+                                    echo '--- Destroying VPC via Terraform ---'
                                     terraform destroy -target=module.vpc -input=false -auto-approve
                                 '''
 
@@ -172,15 +186,29 @@ pipeline {
                                     if [ -n "$vpc_id" ] && [ "$vpc_id" != "None" ]; then
                                         echo "Found VPC: $vpc_id"
 
+                                        echo '--- Removing ELBs attached to VPC ---'
                                         aws elbv2 describe-load-balancers --query "LoadBalancers[?VpcId=='$vpc_id'].[LoadBalancerArn]" --output text | while read -r lb_arn; do
                                             [ -n "$lb_arn" ] && aws elbv2 delete-load-balancer --load-balancer-arn "$lb_arn" || true
                                         done
 
+                                        echo '--- Removing NAT gateways from VPC ---'
                                         aws ec2 describe-nat-gateways --filter "Name=vpc-id,Values=$vpc_id" --query 'NatGateways[?State!=`deleted`].NatGatewayId' --output text | tr '\t' '\n' | while read -r nat_id; do
                                             [ -n "$nat_id" ] && aws ec2 delete-nat-gateway --nat-gateway-id "$nat_id" || true
                                         done
+
+                                        echo '--- Releasing EIPs in VPC ---'
+                                        aws ec2 describe-addresses --query 'Addresses[?Domain==`vpc`].AllocationId' --output text | tr '\t' '\n' | while read -r alloc_id; do
+                                            [ -n "$alloc_id" ] && aws ec2 release-address --allocation-id "$alloc_id" || true
+                                        done
+
+                                        echo '--- Detaching Internet Gateway if present ---'
+                                        igw_id=$(aws ec2 describe-internet-gateways --filters "Name=attachment.vpc-id,Values=$vpc_id" --query 'InternetGateways[0].InternetGatewayId' --output text 2>/dev/null || true)
+                                        if [ -n "$igw_id" ] && [ "$igw_id" != "None" ]; then
+                                            aws ec2 detach-internet-gateway --internet-gateway-id "$igw_id" --vpc-id "$vpc_id" || true
+                                        fi
                                     fi
 
+                                    echo '--- Destroying remaining Terraform resources ---'
                                     terraform destroy -input=false -auto-approve
                                 '''
 
