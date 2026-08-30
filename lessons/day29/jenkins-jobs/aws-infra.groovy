@@ -43,7 +43,7 @@ pipeline {
             }
         }
 
-        stage('Terraform Execution') {
+        stage('Terraform Validate') {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
@@ -54,7 +54,23 @@ pipeline {
                     dir('lessons/day29/terraform') {
                         script {
                             sh 'terraform init -input=false'
+                            sh 'terraform validate'
+                        }
+                    }
+                }
+            }
+        }
 
+        stage('Terraform Execution') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-credentials-id',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    dir('lessons/day29/terraform') {
+                        script {
                             if (params.ACTION == 'Apply-VPC-Only') {
                                 echo '--- Provisioning VPC Module Only ---'
                                 sh 'terraform apply -target=module.vpc -input=false -auto-approve'
