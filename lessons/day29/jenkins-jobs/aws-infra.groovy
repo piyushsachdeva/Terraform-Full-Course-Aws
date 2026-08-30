@@ -79,7 +79,7 @@ pipeline {
                                     destroy_rc=$?
 
                                     if [ "$destroy_rc" -ne 0 ]; then
-                                        echo '--- EKS destroy timed out or hit stale state. Checking whether AWS already deleted the cluster. ---'
+                                        echo '--- EKS destroy timed out or hit stale state. Checking AWS and state cleanup ---'
                                         if ! aws eks list-clusters --region us-east-1 --query 'clusters' --output text | grep -q .; then
                                             echo '--- AWS reports no EKS cluster. Removing stale EKS state entries. ---'
                                             terraform state list | grep -E "module\\.eks|aws_eks_addon\\.ebs_csi|aws_iam_role\\.ebs_csi|aws_iam_role_policy_attachment\\.ebs_csi" | while read -r item; do
@@ -92,58 +92,70 @@ pipeline {
                                 '''
 
                             } else if (params.ACTION == 'Destroy-VPC-Only') {
-                                echo '--- Safety Check: Verifying EKS state in AWS ---'
+                                echo '--- Destroying VPC safely: cleaning AWS dependencies first ---'
+                                sh '''
+                                    set -e
+                                    vpc_id=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=gitops-vpc" --query 'Vpcs[0].VpcId' --output text 2>/dev/null || true)
 
-                                def clusterStatus = sh(
-                                    script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
-                                    returnStdout: true
-                                ).trim()
+                                    if [ -n "$vpc_id" ] && [ "$vpc_id" != "None" ]; then
+                                        echo "Found VPC: $vpc_id"
 
-                                if (clusterStatus != 'NOT_FOUND') {
-                                    error("ABORTING: EKS Cluster 'gitops-eks-cluster' currently exists (Status: ${clusterStatus}). You must run 'Destroy-EKS-Only' or 'Destroy-All' first!")
-                                }
+                                        aws elbv2 describe-load-balancers --query "LoadBalancers[?VpcId=='$vpc_id'].[LoadBalancerArn]" --output text | while read -r lb_arn; do
+                                            [ -n "$lb_arn" ] && aws elbv2 delete-load-balancer --load-balancer-arn "$lb_arn" || true
+                                        done
 
-                                echo '--- No active EKS cluster found. Safe to destroy VPC ---'
-                                sh 'terraform destroy -target=module.vpc -input=false -auto-approve'
+                                        aws ec2 describe-nat-gateways --filter "Name=vpc-id,Values=$vpc_id" --query 'NatGateways[?State!=`deleted`].NatGatewayId' --output text | tr '\t' '\n' | while read -r nat_id; do
+                                            [ -n "$nat_id" ] && aws ec2 delete-nat-gateway --nat-gateway-id "$nat_id" || true
+                                        done
+                                    fi
+
+                                    terraform destroy -target=module.vpc -input=false -auto-approve
+                                '''
 
                             } else if (params.ACTION == 'Destroy-All') {
-                                echo '--- Safety Check: Verifying EKS state before destroying ---'
+                                echo '--- Destroying all resources safely ---'
+                                sh '''
+                                    set +e
 
-                                def clusterStatus = sh(
-                                    script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
-                                    returnStdout: true
-                                ).trim()
+                                    cluster_status=$(aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND')
 
-                                if (clusterStatus != 'NOT_FOUND') {
-                                    echo "--- Active EKS cluster detected (Status: ${clusterStatus}). Destroying EKS first... ---"
-                                    sh '''
-                                        set +e
+                                    if [ "$cluster_status" != "NOT_FOUND" ]; then
+                                        echo "--- Active EKS cluster detected (Status: $cluster_status). Destroying EKS first... ---"
                                         terraform destroy -target=module.eks -input=false -auto-approve
                                         destroy_rc=$?
 
                                         if [ "$destroy_rc" -ne 0 ]; then
-                                            echo '--- EKS destroy timed out or hit stale state. Checking whether AWS already deleted the cluster. ---'
                                             if ! aws eks list-clusters --region us-east-1 --query 'clusters' --output text | grep -q .; then
-                                                echo '--- AWS reports no EKS cluster. Removing stale EKS state entries. ---'
                                                 terraform state list | grep -E "module\\.eks|aws_eks_addon\\.ebs_csi|aws_iam_role\\.ebs_csi|aws_iam_role_policy_attachment\\.ebs_csi" | while read -r item; do
                                                     terraform state rm "$item" || true
                                                 done
                                             fi
                                         fi
 
-                                        exit $destroy_rc
-                                    '''
-                                } else {
-                                    echo '--- No active EKS cluster found in AWS. Checking for stale Terraform EKS state... ---'
-                                    sh '''
+                                        [ "$destroy_rc" -eq 0 ] || exit "$destroy_rc"
+                                    else
+                                        echo '--- No active EKS cluster found in AWS. Cleaning stale EKS state if needed. ---'
                                         terraform state list | grep -E "module\\.eks|aws_eks_addon\\.ebs_csi|aws_iam_role\\.ebs_csi|aws_iam_role_policy_attachment\\.ebs_csi" | while read -r item; do
                                             terraform state rm "$item" || true
                                         done
-                                    '''
-                                }
+                                    fi
 
-                                echo '--- Step 2: Destroying VPC & Remaining Resources ---'
-                                sh 'terraform destroy -input=false -auto-approve'
+                                    vpc_id=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=gitops-vpc" --query 'Vpcs[0].VpcId' --output text 2>/dev/null || true)
+
+                                    if [ -n "$vpc_id" ] && [ "$vpc_id" != "None" ]; then
+                                        echo "Found VPC: $vpc_id"
+
+                                        aws elbv2 describe-load-balancers --query "LoadBalancers[?VpcId=='$vpc_id'].[LoadBalancerArn]" --output text | while read -r lb_arn; do
+                                            [ -n "$lb_arn" ] && aws elbv2 delete-load-balancer --load-balancer-arn "$lb_arn" || true
+                                        done
+
+                                        aws ec2 describe-nat-gateways --filter "Name=vpc-id,Values=$vpc_id" --query 'NatGateways[?State!=`deleted`].NatGatewayId' --output text | tr '\t' '\n' | while read -r nat_id; do
+                                            [ -n "$nat_id" ] && aws ec2 delete-nat-gateway --nat-gateway-id "$nat_id" || true
+                                        done
+                                    fi
+
+                                    terraform destroy -input=false -auto-approve
+                                '''
 
                             } else if (params.ACTION == 'Plan') {
                                 sh 'terraform plan -input=false'
