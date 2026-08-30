@@ -92,7 +92,18 @@ pipeline {
                                 '''
 
                             } else if (params.ACTION == 'Destroy-VPC-Only') {
-                                echo '--- Destroying VPC safely: cleaning AWS dependencies first ---'
+                                echo '--- Safety check: verifying EKS cluster state before VPC destroy ---'
+
+                                def clusterStatus = sh(
+                                    script: "aws eks describe-cluster --name gitops-eks-cluster --region us-east-1 --query 'cluster.status' --output text 2>/dev/null || echo 'NOT_FOUND'",
+                                    returnStdout: true
+                                ).trim()
+
+                                if (clusterStatus != 'NOT_FOUND') {
+                                    error("EKS cluster exists, remove EKS first")
+                                }
+
+                                echo '--- No active EKS cluster found. Destroying VPC safely: cleaning AWS dependencies first ---'
                                 sh '''
                                     set -e
                                     vpc_id=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=gitops-vpc" --query 'Vpcs[0].VpcId' --output text 2>/dev/null || true)
