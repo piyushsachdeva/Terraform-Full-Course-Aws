@@ -73,7 +73,23 @@ pipeline {
 
                             } else if (params.ACTION == 'Destroy-EKS-Only') {
                                 echo '--- Destroying EKS Module Only ---'
-                                sh 'terraform destroy -target=module.eks -input=false -auto-approve'
+                                sh '''
+                                    set +e
+                                    terraform destroy -target=module.eks -input=false -auto-approve
+                                    destroy_rc=$?
+
+                                    if [ "$destroy_rc" -ne 0 ]; then
+                                        echo '--- EKS destroy timed out or hit stale state. Checking whether AWS already deleted the cluster. ---'
+                                        if ! aws eks list-clusters --region us-east-1 --query 'clusters' --output text | grep -q .; then
+                                            echo '--- AWS reports no EKS cluster. Removing stale EKS state entries. ---'
+                                            terraform state list | grep -E 'module\.eks|aws_eks_addon\.ebs_csi|aws_iam_role\.ebs_csi|aws_iam_role_policy_attachment\.ebs_csi' | while read -r item; do
+                                                terraform state rm "$item" || true
+                                            done
+                                        fi
+                                    fi
+
+                                    exit $destroy_rc
+                                '''
 
                             } else if (params.ACTION == 'Destroy-VPC-Only') {
                                 echo '--- Safety Check: Verifying EKS state in AWS ---'
@@ -100,9 +116,30 @@ pipeline {
 
                                 if (clusterStatus != 'NOT_FOUND') {
                                     echo "--- Active EKS cluster detected (Status: ${clusterStatus}). Destroying EKS first... ---"
-                                    sh 'terraform destroy -target=module.eks -input=false -auto-approve'
+                                    sh '''
+                                        set +e
+                                        terraform destroy -target=module.eks -input=false -auto-approve
+                                        destroy_rc=$?
+
+                                        if [ "$destroy_rc" -ne 0 ]; then
+                                            echo '--- EKS destroy timed out or hit stale state. Checking whether AWS already deleted the cluster. ---'
+                                            if ! aws eks list-clusters --region us-east-1 --query 'clusters' --output text | grep -q .; then
+                                                echo '--- AWS reports no EKS cluster. Removing stale EKS state entries. ---'
+                                                terraform state list | grep -E 'module\.eks|aws_eks_addon\.ebs_csi|aws_iam_role\.ebs_csi|aws_iam_role_policy_attachment\.ebs_csi' | while read -r item; do
+                                                    terraform state rm "$item" || true
+                                                done
+                                            fi
+                                        fi
+
+                                        exit $destroy_rc
+                                    '''
                                 } else {
-                                    echo '--- No active EKS cluster found. Skipping EKS deletion... ---'
+                                    echo '--- No active EKS cluster found in AWS. Checking for stale Terraform EKS state... ---'
+                                    sh '''
+                                        terraform state list | grep -E 'module\.eks|aws_eks_addon\.ebs_csi|aws_iam_role\.ebs_csi|aws_iam_role_policy_attachment\.ebs_csi' | while read -r item; do
+                                            terraform state rm "$item" || true
+                                        done
+                                    '''
                                 }
 
                                 echo '--- Step 2: Destroying VPC & Remaining Resources ---'
@@ -143,19 +180,34 @@ pipeline {
                             echo "=== Cluster Nodes ==="
                             kubectl get nodes -o wide
 
-                            echo "=== Waiting for Nodes to reach Ready status ==="
-                            kubectl wait --for=condition=Ready nodes --all --timeout=120s
+                            echo "=== Waiting for all nodes to become Ready ==="
+                            for i in $(seq 1 30); do
+                                ready=$(kubectl get nodes -o jsonpath='{range .items[*]}{.status.conditions[?(@.type=="Ready")].status}{"\n"}{end}' | grep -c True || true)
+                                total=$(kubectl get nodes --no-headers | wc -l)
+                                if [ "$total" -gt 0 ] && [ "$ready" -eq "$total" ]; then
+                                    echo "All nodes are Ready."
+                                    break
+                                fi
+                                echo "Waiting for nodes... ($ready/$total ready)"
+                                sleep 10
+                            done
                         '''
 
                         sh '''
                             echo "=== kube-system Pods ==="
                             kubectl get pods -n kube-system
 
-                            echo "=== Waiting for CoreDNS pods to be ready ==="
-                            kubectl wait --for=condition=Ready pod \
-                              -l k8s-app=kube-dns \
-                              -n kube-system \
-                              --timeout=180s
+                            echo "=== Waiting for CoreDNS to be ready ==="
+                            for i in $(seq 1 30); do
+                                ready=$(kubectl get pods -n kube-system -l k8s-app=kube-dns -o jsonpath='{.items[*].status.containerStatuses[*].ready}' | tr ' ' '\n' | grep -c true || true)
+                                total=$(kubectl get pods -n kube-system -l k8s-app=kube-dns --no-headers | wc -l)
+                                if [ "$total" -gt 0 ] && [ "$ready" -ge 2 ]; then
+                                    echo "CoreDNS is ready."
+                                    break
+                                fi
+                                echo "Waiting for CoreDNS... ($ready/$total ready)"
+                                sleep 10
+                            done
                         '''
                     }
                 }
