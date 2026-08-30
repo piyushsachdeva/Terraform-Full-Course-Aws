@@ -205,6 +205,8 @@ resource "helm_release" "argocd" {
   version    = "7.7.0"
 
   create_namespace = true
+  timeout          = 600
+  wait             = true
 
   set = [
     {
