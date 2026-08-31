@@ -15,7 +15,7 @@ commonAnnotations:
 
 images:
   - name: itsbaivab/frontend
-    newTag: v2
+    newTag: v3
   - name: itsbaivab/backend
     newTag: latest
   - name: postgres
