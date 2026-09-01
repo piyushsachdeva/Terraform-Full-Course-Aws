@@ -44,8 +44,8 @@ db_backup_retention     = 7
 db_skip_final_snapshot  = true   # false for production
 
 # Docker Hub Configuration
-frontend_docker_image = "slimeril/goal-tracker-frontend:latest"
-backend_docker_image  = "slimeril/goal-tracker-backend:latest"
+frontend_docker_image = "slimeril/goal-tracker-frontend:v1"
+backend_docker_image  = "slimeril/goal-tracker-backend:v1"
 dockerhub_username    = ""  # Leave empty for public images
 dockerhub_password    = ""  # Leave empty for public images, or use access token
 
