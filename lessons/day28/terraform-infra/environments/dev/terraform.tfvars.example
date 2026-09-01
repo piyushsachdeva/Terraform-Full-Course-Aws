@@ -39,13 +39,13 @@ db_allocated_storage    = 20
 db_engine_version       = "15.5"
 db_name                 = "goalsdb"
 db_username             = "postgres"
-db_multi_az             = false  # true for high availability
+db_multi_az             = true  # true for high availability
 db_backup_retention     = 7
 db_skip_final_snapshot  = true   # false for production
 
 # Docker Hub Configuration
-frontend_docker_image = "your-dockerhub-username/goal-tracker-frontend:latest"
-backend_docker_image  = "your-dockerhub-username/goal-tracker-backend:latest"
+frontend_docker_image = "slimeril/goal-tracker-frontend:latest"
+backend_docker_image  = "slimeril/goal-tracker-backend:latest"
 dockerhub_username    = ""  # Leave empty for public images
 dockerhub_password    = ""  # Leave empty for public images, or use access token
 
