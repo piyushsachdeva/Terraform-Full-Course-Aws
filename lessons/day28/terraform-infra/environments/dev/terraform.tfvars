@@ -15,7 +15,7 @@ database_subnet_cidrs = ["10.0.31.0/24", "10.0.32.0/24"]
 single_nat_gateway   = true  # false for high availability (costs more)
 
 # SSH Configuration
-ssh_key_name     = "aws-serge-key"  # REQUIRED: Replace with your key pair name
+ssh_key_name     = "serge-aws-key"  # REQUIRED: Replace with your key pair name
 allowed_ssh_cidr = "5.29.110.82/32"          # CHANGE THIS: Use your IP address like "1.2.3.4/32"
 
 # Bastion Configuration
