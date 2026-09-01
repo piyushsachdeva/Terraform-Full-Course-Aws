@@ -15,7 +15,7 @@ database_subnet_cidrs = ["10.0.31.0/24", "10.0.32.0/24"]
 single_nat_gateway   = true  # false for high availability (costs more)
 
 # SSH Configuration
-ssh_key_name     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD6AiXUKwp4XuSC7vhh8I/fH1mcMe3oWAakuf74ULXkMCCOyXojNrSxwguCqRLF1bkq7j5GT8ULZbarClXVuKxlQNY2pMvdNhoQO05ryMblHdKpiho+d8OS/W1q/o5xyMJRlDQbTyRJdUqtnO6d51N5CfNHIFxLYhgTYBrc4Ni1snoMcfwyxv7kprivHWg4hZ8bL8WZQ8hvpKA2StuMcGiWtv0nA7RLa5ujRtVhroFXaPayF5q/oYd05clbHiO0qrk8o7mrcnbkaBgYTHm2FJdD49QWK8EbCsaFKozBNHEM3W3STbLNp1bI4W9Xh4cC8tyJPJSwXBy08PB5AUwN9VpFDyDDPhaVjg4qz0yWBhL9+6HpYh2WTtX2nJyar+INA503bk7w3al3yuBrfMTRx5k7VqW08QbKjWGUDry+wNyhYEQ9hy6TLj6Dv7XztsaSEOe3ukVdYs6LIrO/2l0zjSJ2nEWh+ukjcVWf4OD0KT29MLdFxQQEP+4VYXN6Blc2vhz8D+kyKJdMh4d0DK+lp5AfFTqHi0ByOJp7qpJmNEHj/56n45L70A09qVR5Rgpa7Ja53k2cZzZZCtzjBpT4fwth8iSWSiHy0tGQBMeoApvA9R0OYuA6wwbXqo2AT6FxChPOVhqPE6UdHfNrcm28Wa8u383bQozFrQ3OqMzn9Xp2GQ== vitnin@protonmail.com"  # REQUIRED: Replace with your key pair name
+ssh_key_name     = "aws-serge-key"  # REQUIRED: Replace with your key pair name
 allowed_ssh_cidr = "5.29.110.82/32"          # CHANGE THIS: Use your IP address like "1.2.3.4/32"
 
 # Bastion Configuration
