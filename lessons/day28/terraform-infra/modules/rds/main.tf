@@ -34,7 +34,7 @@ resource "aws_db_parameter_group" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.environment}-${var.project}-pg15"
+      Name = "${var.environment}-${var.project}-pg17"
     }
   )
 }
