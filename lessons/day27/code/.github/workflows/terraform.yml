@@ -6,12 +6,16 @@ on:
       - main
       - test
       - dev
+    paths:
+      - './lessons/day27/code/**"
 
   pull_request:
     branches:
       - main
       - test
       - dev
+    paths:
+      - './lessons/day27/code/**"  
 
 env:
   TF_LOG: INFO
@@ -33,6 +37,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./lessons/day27/code/
 
     steps:
       - name: Checkout
@@ -162,6 +167,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./lessons/day27/code/
 
     steps:
       - name: Checkout
