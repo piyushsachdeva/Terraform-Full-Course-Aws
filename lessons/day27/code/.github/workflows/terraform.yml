@@ -7,7 +7,7 @@ on:
       - test
       - dev
     paths:
-      - 'lessons/day27/code/**"
+      - './lessons/day27/code/**"
 
   pull_request:
     branches:
