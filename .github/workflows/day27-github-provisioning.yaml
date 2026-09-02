@@ -40,7 +40,6 @@ jobs:
       run:
         shell: bash
         working-directory: ./lessons/day27/code/
-       
 
     steps:
       - name: Checkout
@@ -48,14 +47,15 @@ jobs:
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v5
-        
+        with:
+          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.13.3
-
-      - name: Comment PR with Plan
-        uses: actions/github-script@v8    
 
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v3
@@ -88,7 +88,7 @@ jobs:
 
       - name: Terraform Format
         id: fmt
-        run: terraform fmt -recurcive -check 
+        run: terraform fmt -recursive -check
 
       - name: Terraform Validate
         id: validate
