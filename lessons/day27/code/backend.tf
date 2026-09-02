@@ -5,5 +5,7 @@ terraform {
     bucket = "vitninlab-tf-state-prod-gitops"
     key    = "eks/terraform.tfstate"
     region = "us-east-1"
+    use_lockfile = true  # S3 Native Locking (Terraform 1.13+)
+    encrypt      = true
   }
 }
