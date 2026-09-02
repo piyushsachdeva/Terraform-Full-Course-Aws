@@ -6,6 +6,8 @@ on:
       - main
       - test
       - dev
+    paths:
+      - 'code/day27/**"
 
   pull_request:
     branches:
