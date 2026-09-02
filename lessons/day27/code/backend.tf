@@ -4,6 +4,6 @@ terraform {
   backend "s3" {
     bucket = "vitninlab-tf-state-prod-gitops"
     key    = "eks/terraform.tfstate"
-    region = "us-east-1"    
+    region = "us-east-1"
   }
 }
