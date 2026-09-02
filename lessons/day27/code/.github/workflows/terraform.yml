@@ -37,6 +37,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: lessons/day27/code/**
 
     steps:
       - name: Checkout
