@@ -15,7 +15,7 @@ on:
       - test
       - dev
     paths:
-      - 'lessons/day27/code/**"  
+      - './lessons/day27/code/**"  
 
 env:
   TF_LOG: INFO
@@ -37,7 +37,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: lessons/day27/code/
+        working-directory: ./lessons/day27/code/
 
     steps:
       - name: Checkout
@@ -167,6 +167,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./lessons/day27/code/
 
     steps:
       - name: Checkout
