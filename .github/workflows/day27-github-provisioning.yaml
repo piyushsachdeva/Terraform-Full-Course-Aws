@@ -32,6 +32,8 @@ jobs:
   terraform-plan:
     name: "Terraform Plan"
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true" 
     outputs:
       tf_workspace: ${{ steps.env-vars.outputs.tf_workspace }}
     defaults:
