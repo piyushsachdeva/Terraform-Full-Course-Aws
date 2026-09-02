@@ -41,12 +41,18 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.13.3
+
+      - name: Comment PR with Plan
+        uses: actions/github-script@v8    
 
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v3
