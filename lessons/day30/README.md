@@ -29,12 +29,13 @@ terraform apply
 
 ```
 terraform-drift-detection/
-├── .github/workflows/drift_detection.yml
 ├── scripts/ (setup-backend.sh, user_data.sh)
 ├── main.tf, vpc.tf, security_groups.tf, alb.tf, asg.tf, s3.tf
 ├── variables.tf, outputs.tf, backend.tf
 └── backend-dev.hcl, backend-prod.hcl
 ```
+
+The Day 30 GitHub workflows are in the repository-root `.github/workflows/` directory.
 
 ## 🔄 How It Works
 
@@ -54,7 +55,7 @@ aws ec2 create-tags --resources i-xxx --tags Key=Test,Value=val
 
 ## 🔧 Configuration
 
-**Change detection frequency** in `.github/workflows/drift_detection.yml`:
+**Change detection frequency** in the repository-root `.github/workflows/drift_detection.yml`:
 
 ```yaml
 schedule:

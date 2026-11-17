@@ -87,9 +87,9 @@ This demo creates a complete web application infrastructure:
 
 | Workflow | File | Trigger | Purpose |
 |----------|------|---------|---------|
-| **CI/CD** | `terraform.yml` | Push to main/dev | Deploy infrastructure |
-| **Drift Detection** | `drift_detection.yml` | Every 1 minute (prod only) + Manual | Detect & auto-fix drift |
-| **Destroy** | `destroy.yml` | Manual trigger | Safely destroy infrastructure |
+| **CI/CD** | `.github/workflows/day30-terraform.yml` (repository root) | Push to main/dev | Deploy infrastructure |
+| **Drift Detection** | `.github/workflows/drift_detection.yml` (repository root) | Every 1 minute (prod only) + Manual | Detect & auto-fix drift |
+| **Destroy** | `.github/workflows/day30-destroy.yml` (repository root) | Manual trigger | Safely destroy infrastructure |
 
 ---
 
@@ -372,7 +372,7 @@ Don't want to wait for the automatic schedule (runs every minute)?
 
 ## Understanding the Workflows
 
-### Workflow 1: Terraform CI/CD (`terraform.yml`)
+### Workflow 1: Terraform CI/CD (`day30-terraform.yml`)
 
 **Triggers:**
 
@@ -729,7 +729,7 @@ gh issue list --label drift-detection --state closed --json createdAt,closedAt
 gh issue list --label drift-detection --json body
 ```
 
-### Workflow 3: Destroy (`destroy.yml`)
+### Workflow 3: Destroy (`day30-destroy.yml`)
 
 **Triggers:**
 
@@ -1108,7 +1108,7 @@ AWS Resources                   S3 State Backend
 
 ### Workflow 1: CI/CD Pipeline - Deep Dive
 
-**File:** `.github/workflows/terraform.yml`
+**File:** `.github/workflows/day30-terraform.yml` (repository root)
 
 #### Architecture: Two-Job Sequential Workflow
 
@@ -1486,7 +1486,7 @@ terraform output >> $GITHUB_STEP_SUMMARY
 
 ### Workflow 2: Drift Detection - Deep Dive
 
-**File:** `.github/workflows/drift_detection.yml`
+**File:** `.github/workflows/drift_detection.yml` (repository root)
 
 #### Single-Job Architecture with Conditional Logic
 
@@ -1701,7 +1701,7 @@ continue-on-error: true
 
 ### Workflow 3: Destroy - Deep Dive
 
-**File:** `.github/workflows/destroy.yml`
+**File:** `.github/workflows/day30-destroy.yml` (repository root)
 
 #### Safety-First Architecture
 

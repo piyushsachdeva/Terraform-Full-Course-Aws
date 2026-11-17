@@ -23,6 +23,9 @@ jobs:
   terraform-plan:
     name: "Terraform Plan"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lessons/day30/code
     outputs:
       environment: ${{ steps.env-vars.outputs.environment }}
 
@@ -65,7 +68,7 @@ jobs:
       - name: Terraform Init
         run: |
           # Initialize with environment-specific backend configuration
-          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
+          terraform init -reconfigure -backend-config="backend-${{ steps.env-vars.outputs.environment }}.hcl"
 
       - name: Terraform Format Check
         id: fmt
@@ -91,7 +94,7 @@ jobs:
             const fs = require('fs');
             const planOutput = fs.readFileSync('plan_output.txt', 'utf8');
 
-            const output = `#### Terraform Plan for \`${{ env.ENVIRONMENT }}\` Environment 🌍
+            const output = `#### Terraform Plan for \`${{ steps.env-vars.outputs.environment }}\` Environment 🌍
 
             <details>
             <summary>Show Plan</summary>
@@ -123,8 +126,8 @@ jobs:
         if: steps.plan.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
-          name: tfplan-${{ env.ENVIRONMENT }}
-          path: tfplan
+          name: tfplan-${{ steps.env-vars.outputs.environment }}
+          path: lessons/day30/code/tfplan
           retention-days: 5
           if-no-files-found: warn
 
@@ -134,6 +137,9 @@ jobs:
     if: github.event_name == 'push' && needs.terraform-plan.result == 'success'
     runs-on: ubuntu-latest
     environment: ${{ needs.terraform-plan.outputs.environment }}
+    defaults:
+      run:
+        working-directory: lessons/day30/code
 
     steps:
       - name: Checkout
@@ -144,8 +150,10 @@ jobs:
         run: |
           BRANCH_NAME="${{ github.ref_name }}"
           if [[ "$BRANCH_NAME" == "main" ]]; then
+            echo "environment=prod" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=prod" >> $GITHUB_ENV
           else
+            echo "environment=dev" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=dev" >> $GITHUB_ENV
           fi
 
@@ -165,14 +173,15 @@ jobs:
       - name: Terraform Init
         run: |
           # Initialize with environment-specific backend configuration
-          terraform init -reconfigure -backend-config="backend-${{ env.ENVIRONMENT }}.hcl"
+          terraform init -reconfigure -backend-config="backend-${{ steps.env-vars.outputs.environment }}.hcl"
 
       - name: Download Plan
         uses: actions/download-artifact@v4
         continue-on-error: true
         id: download
         with:
-          name: tfplan-${{ env.ENVIRONMENT }}
+          name: tfplan-${{ steps.env-vars.outputs.environment }}
+          path: lessons/day30/code
 
       - name: Check if Plan Exists
         id: check-plan

@@ -28,14 +28,19 @@ jobs:
     name: "Destroy ${{ inputs.environment }} Infrastructure"
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    defaults:
+      run:
+        working-directory: lessons/day30/code
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Verify Destroy Confirmation
+        env:
+          CONFIRM_DESTROY: ${{ inputs.confirm_destroy }}
         run: |
-          if [ "${{ inputs.confirm_destroy }}" != "DESTROY" ]; then
+          if [ "$CONFIRM_DESTROY" != "DESTROY" ]; then
             echo "❌ Error: You must type 'DESTROY' exactly to confirm infrastructure deletion."
             echo "This is a safety measure to prevent accidental destruction."
             exit 1
@@ -58,7 +63,7 @@ jobs:
       - name: Terraform Init
         run: |
           # Initialize with environment-specific backend configuration
-          terraform init -backend-config="backend-${{ inputs.environment }}.hcl"
+          terraform init -reconfigure -backend-config="backend-${{ inputs.environment }}.hcl"
 
       - name: Terraform Destroy Plan
         id: destroy-plan
@@ -96,13 +101,13 @@ jobs:
             const fs = require('fs');
             let destroyOutput = '';
             try {
-              destroyOutput = fs.readFileSync('destroy_output.txt', 'utf8');
+              destroyOutput = fs.readFileSync('lessons/day30/code/destroy_output.txt', 'utf8');
             } catch (e) {
               destroyOutput = 'No output captured';
             }
 
             const success = '${{ steps.destroy.outcome }}' === 'success';
-            const title = success 
+            const title = success
               ? '✅ Infrastructure Destroyed: ${{ inputs.environment }}'
               : '❌ Infrastructure Destroy Failed: ${{ inputs.environment }}';
 
