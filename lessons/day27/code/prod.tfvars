@@ -1,6 +1,6 @@
 environment          = "production"
 instance_type        = "t2.micro" # Or t3.medium for prod
-desired_capacity     = 2
+desired_capacity     = 1
 min_size             = 2
 max_size             = 10
 vpc_cidr             = "10.2.0.0/16"
